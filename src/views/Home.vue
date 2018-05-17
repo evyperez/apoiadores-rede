@@ -40,6 +40,8 @@
         <h2>
           Doar
         </h2>
+
+        <Payment />
       </div>
     </article>
 
@@ -81,12 +83,12 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import Payment from '@/components/Payment.vue';
 
 export default {
   name: 'home',
   components: {
-    HelloWorld,
+    Payment,
   },
 };
 </script>
