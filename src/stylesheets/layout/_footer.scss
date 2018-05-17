@@ -1,0 +1,94 @@
+.site-footer {
+	padding-top: $leading * 2rem;
+	padding-bottom: $leading * 2rem;
+
+	color: palette('white');
+
+	background-color: palette('gray', 'dark');
+}
+
+.site-footer {
+	@include link-undercover;
+}
+
+.site-footer .rede-sustentabilidade[class] {
+	max-width: 50rem;
+
+	margin-right: auto;
+	margin-bottom: $leading * 3rem;
+	margin-left: auto;
+
+	@media screen and (min-width: breakpoint('desktop')) {
+		float: left;
+	}
+}
+
+.site-footer .rede-sustentabilidade a {
+	@include image-replacement;
+
+	display: block;
+
+	height: $leading * 2rem;
+	min-width: 213px;
+	min-height: 39px;
+
+	background-image: url('../assets/images/icons/logo-rede-bottom.png');
+	background-position: 50% 50%;
+}
+
+.site-footer__copyright {
+	margin-right: auto;
+	margin-left: auto;
+
+	line-height: $leading * 2rem;
+
+	vertical-align: middle;
+
+	color: palette('orange');
+
+	@media screen and (min-width: breakpoint('desktop')) {
+		clear: both;
+
+		text-align: right;
+	}
+}
+
+.site-footer__copyright > * {
+	display: inline;
+}
+
+.site-footer__copyright div {
+}
+
+.site-footer__copyright ul {
+}
+
+.site-footer__copyright li {
+	display: inline-block;
+
+	padding-right: $gutter * 0.5;
+	padding-left: $gutter * 0.5;
+}
+
+.site-footer__copyright a {
+	@include image-replacement;
+
+	display: block;
+
+	height: $leading * 2rem;
+
+	background-position: 50% 50%;
+}
+
+.site-footer__copyright .apoiadores a {
+	min-width: 148px;
+
+	background-image: url('../assets/images/icons/logo-apoiadores.png');
+}
+
+.site-footer__copyright .appcivico a {
+	min-width: 138px;
+
+	background-image: url('../assets/images/icons/logo-appcivico.png');
+	background-position: 50% 35%;
+}

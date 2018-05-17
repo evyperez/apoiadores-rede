@@ -1,0 +1,52 @@
+.campaign-progress {
+	margin-top: $leading * 3rem;
+	margin-bottom: $leading * 3rem;
+
+	font-weight: 800;
+}
+
+.campaign-progress p,
+.campaign-progress em,
+.campaign-progress a {
+	margin: 0;
+
+	font-style: normal;
+
+	text-transform: lowercase;
+}
+
+.campaign-progress p {
+	&:first-child {
+		font-weight: 900;
+		font-size: ms(2);
+	}
+}
+
+.campaign-progress .currency {
+	display: block;
+
+	font-size: ms(1);
+	line-height: 1;
+
+	text-transform: none;
+}
+
+.campaign-progress .amount {
+	display: block;
+
+	overflow: hidden;
+
+	font-size: ms(4);
+	line-height: 1.125;
+
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.campaign-progress progress {
+	max-width: 30rem;
+}
+
+.campaign-progress progress + p {
+	text-transform: uppercase;
+}

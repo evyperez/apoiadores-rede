@@ -1,0 +1,52 @@
+@mixin progress-bar-bg {
+	&::-webkit-progress-bar {
+		@content;
+	}
+
+	.progress-bar {
+		@content;
+	}
+
+	@content;
+}
+
+@mixin progress-bar-fg {
+	&[value]::-moz-progress-bar {
+		@content;
+	}
+
+	&[value]::-webkit-progress-value {
+		@content;
+	}
+
+	.progress-bar > span {
+		@include hide-text;
+
+		@content;
+	}
+}
+
+progress {
+	@include progress-bar-fg {
+		// sass-lint:disable-line mixins-before-declarations
+		background-color: palette('green', 'light');
+	}
+	@include progress-bar-bg {
+		// sass-lint:disable-line mixins-before-declarations
+		background-color: palette('orange', 'dark');
+	}
+
+	display: block;
+
+	width: 100%;
+	height: $leading / 2 * 1rem;
+
+	color: palette('green', 'light');
+
+	background-color: palette('orange', 'dark');
+	// Get rid of default border in Firefox.
+
+	border: 0;
+
+	appearance: none;
+}

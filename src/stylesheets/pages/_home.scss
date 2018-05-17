@@ -1,0 +1,63 @@
+.home-page article {
+	padding-top: $leading * 3rem;
+	padding-bottom: $leading * 3rem;
+}
+
+.home-page article {
+}
+
+.home__intro {
+	color: palette('white');
+
+	background-image: url('../assets/images/backgrounds/bg-circles-frase.png');
+	background-color: palette('orange');
+}
+
+.home-page .container > * {
+	max-width: 50rem;
+
+	margin-right: 0;
+	margin-left: auto;
+}
+
+.home__intro p,
+.home__intro ul,
+.home__intro h2 {
+	max-width: 50rem;
+
+	margin-right: 0;
+	margin-left: auto;
+}
+
+.home__intro h2 {
+	max-width: 100%;
+
+	font-size: ms(2);
+	line-height: 1;
+
+	text-transform: uppercase;
+
+	color: inherit;
+
+	@media screen and (min-width: breakpoint('phablet')) {
+		font-size: ms(4);
+	}
+
+	@media screen and (min-width: breakpoint('tablet')) {
+		font-size: ms(6);
+	}
+}
+
+.home__donate {
+	$bg: palette('green');
+
+	color: text-contrast($bg, palette('white'));
+
+	background-color: $bg;
+}
+
+.home__goals {
+	$bg: palette('gray', 'light');
+
+	background-color: $bg;
+}

@@ -1,0 +1,50 @@
+.site-header {
+	position: relative;
+
+	height: 100vh;
+
+	color: palette('white');
+
+	background-image:
+		url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
+		url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
+		url('../assets/images/backgrounds/img-destaque.jpg');
+	background-position: right 90%, left bottom, 0 0;
+	background-size: auto, auto, cover;
+	background-color: palette('gray', 'dark');
+}
+
+.site-header .main-menu[class] {
+	width: 100%;
+
+	margin-right: 0;
+	margin-left: auto;
+
+	font-size: ms(-1);
+
+	@media screen and(min-width: breakpoint('desktop')) {
+		width: auto;
+	}
+
+	@media screen and (min-width: breakpoint('phablet')) {
+		font-size: inherit;
+	}
+}
+
+.site-label {
+	@include image-replacement;
+
+	position: absolute;
+	top: 50%;
+
+	width: 100%;
+	min-height: 167px;
+
+	background-image: url('../assets/images/textReplace/img-title.png');
+	background-size: contain;
+
+	.site-header &[class] {
+		margin-right: 0;
+		margin-left: auto;
+	}
+}
