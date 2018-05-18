@@ -27,13 +27,13 @@ function formatBRLDec(amount) {
 
 function formatBRL(amount) {
   let formated = `${amount}`;
-  formated = formated.replace(/([0-9]{2})$/g, ',$1');
+  formated = formated.replace(/([0-9]{2})$/g, '');
 
   if (formated.length > 6) {
     formated = formated.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
   }
 
-  return Math.trunc(parseFloat(formated, 10));
+  return formated;
 }
 
 function cleanPhone(phone) {
