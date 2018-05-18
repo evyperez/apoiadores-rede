@@ -1,16 +1,19 @@
-/* eslint-disable no-undef, arrow-body-style, no-param-reassign, no-console */
+/* eslint-disable no-undef, arrow-body-style, no-param-reassign, no-console, camelcase */
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 
 Vue.use(Vuex);
 
-const api = 'https://dapi.votolegal.com.br/api2/';
+const api = 'https://dapi.votolegal.com.br/api2';
 
 export default new Vuex.Store({
   state: {
     paymentStep: 'selectValue',
     amount: 0,
+    token: '',
+    donation: {},
+    iugu: {},
   },
   mutations: {
     SET_PAYMENT_STEP(state, { data }) {
@@ -18,6 +21,15 @@ export default new Vuex.Store({
     },
     SET_PAYMENT_AMOUNT(state, { data }) {
       state.amount = data.amount;
+    },
+    SET_TOKEN(state, { token }) {
+      state.token = token;
+    },
+    SET_DONATION(state, { donation }) {
+      state.donation = donation;
+    },
+    SET_IUGU(state, { iugu }) {
+      state.iugu = iugu;
     },
   },
   actions: {
@@ -27,6 +39,65 @@ export default new Vuex.Store({
     },
     CHANGE_PAYMENT_STEP({ commit }, data) {
       commit('SET_PAYMENT_STEP', { data });
+    },
+    GET_TOKEN({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        axios({
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          url: `${api}/device-authentication`,
+          data,
+        }).then(
+          (response) => {
+            const { device_authorization_token_id } = response.data;
+            commit('SET_TOKEN', { token: device_authorization_token_id });
+            resolve(response);
+          },
+          (err) => {
+            console.error(err.response);
+            reject(err.response);
+          },
+        );
+      });
+    },
+    GET_DONATION({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        axios({
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          url: `${api}/donations`,
+          data,
+        }).then(
+          (response) => {
+            const { donation, ui } = response.data;
+            commit('SET_DONATION', { donation });
+            commit('SET_IUGU', { iugu: ui.messages[1] });
+            resolve();
+          },
+          (err) => {
+            console.error(err.response);
+            reject(err.response);
+          },
+        );
+      });
+    },
+    START_DONATION({ commit, state }, iuguId) {
+      return new Promise((resolve, reject) => {
+        axios({
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          url: `${api}/donations/${state.donation.id}?device_authorization_token_id=${state.token}&credit_card_token=${iuguId}`,
+        }).then(
+          (response) => {
+            console.log(response);
+            resolve();
+          },
+          (err) => {
+            console.error(err.response);
+            reject(err.response);
+          },
+        );
+      });
     },
   },
 });
