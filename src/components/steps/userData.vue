@@ -84,6 +84,7 @@ export default {
       surname: '',
       cpf: '',
       email: '',
+      donationFp: '',
       validation: {
         errors: {},
       },
@@ -128,34 +129,115 @@ export default {
       }
     },
     registerUser(data) {
-      this.$store.dispatch('GET_TOKEN')
-        .then((res) => {
-          const payload = {
-            payment_method: 'credit_card',
-            device_authorization_token_id: res.data.device_authorization_token_id,
-            email: data.email,
-            cpf: data.cpf,
-            name: `${data.name} ${data.surname}`,
-            amount: this.amount,
-            candidate_id: 1,
-            phone: '11232323232',
-            birthdate: '1979-11-03',
-          }
-          this.$store.dispatch('GET_DONATION', payload)
+      this.getDonationFP()
+        .then(() => {
+          this.$store.dispatch('GET_TOKEN')
             .then((res) => {
-              const user = {
-                name: data.name,
-                surname: data.surname,
+              const payload = {
+                payment_method: 'credit_card',
+                device_authorization_token_id: res.data.device_authorization_token_id,
+                email: data.email,
+                cpf: data.cpf,
+                name: `${data.name} ${data.surname}`,
+                amount: this.amount,
+                candidate_id: 1,
+                donation_fp: this.donationFp,
+                phone: '11232323232',
+                birthdate: '1979-11-03',
               }
-              this.$store.dispatch('SAVE_USERNAME', user)
-              this.handleIugu();
-              this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
-            });
+              this.$store.dispatch('GET_DONATION', payload)
+                .then((res) => {
+                  const user = {
+                    name: data.name,
+                    surname: data.surname,
+                  }
+                  this.$store.dispatch('SAVE_USERNAME', user)
+                  this.handleIugu();
+                  this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
+                });
+          });
+        });
+    },
+    getDonationFP() {
+      return new Promise((resolve) => {
+        const d1 = new Date();
+        const fp = new VotolegalFP({
+          excludeUserAgent: true,
+          dontUseFakeFontInCanvas: true
+        });
+
+        fp.get((result, components) => {
+
+          const d2 = new Date();
+
+          const info = {
+            ms: d2 - d1,
+            id: result
+          }
+
+          for (let index in components) {
+            const obj = components[index];
+
+            if (obj.key == 'canvas' || obj.key == 'webgl') {
+              info[obj.key] = obj.value.toString().length;
+            } else {
+              info[obj.key] = obj.value.toString();
+            }
+          }
+
+          const Base64 = {
+            _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+            encode: function (e) {
+              let t = "";
+              let n, r, i, s, o, u, a;
+              let f = 0;
+              e = Base64._utf8_encode(e);
+              while (f < e.length) {
+                n = e.charCodeAt(f++);
+                r = e.charCodeAt(f++);
+                i = e.charCodeAt(f++);
+                s = n >> 2;
+                o = (n & 3) << 4 | r >> 4;
+                u = (r & 15) << 2 | i >> 6;
+                a = i & 63;
+                if (isNaN(r)) {
+                    u = a = 64
+                } else if (isNaN(i)) {
+                    a = 64
+                }
+                t = t + this._keyStr.charAt(s) + this._keyStr.charAt(o) + this._keyStr.charAt(u) + this._keyStr.charAt(a)
+              }
+              return t
+            },
+            _utf8_encode: function (e) {
+              e = e.replace(/rn/g, "n");
+              let t = "";
+              for (let n = 0; n < e.length; n++) {
+                const r = e.charCodeAt(n);
+                if (r < 128) {
+                  t += String.fromCharCode(r)
+                } else if (r > 127 && r < 2048) {
+                  t += String.fromCharCode(r >> 6 | 192);
+                  t += String.fromCharCode(r & 63 | 128)
+                } else {
+                  t += String.fromCharCode(r >> 12 | 224);
+                  t += String.fromCharCode(r >> 6 & 63 | 128);
+                  t += String.fromCharCode(r & 63 | 128)
+                }
+              }
+              return t
+            }
+          }
+
+          const donation_fp = Base64.encode(JSON.stringify(info));
+          this.donationFp = donation_fp;
+          resolve();
+        });
       });
     },
     handleIugu() {
       Iugu.setAccountID(this.iugu.account_id);
-      Iugu.setTestMode(true);
+      Iugu.setTestMode(this.iugu.is_testing === 1 ? true : false);
     }
   },
 };
