@@ -1,11 +1,10 @@
 <template>
   <section class="content">
-    <h2>Escolha um valor para doar</h2>
     <form @submit.prevent="validateForm">
       <fieldset>
         <div class="input-wrapper" v-for="pledge in pledges" :key="pledge">
           <input type="radio" :id="`amount_${pledge}`" name="amount" v-model="amount" :value="pledge" @change="validateForm">
-          <label :for="`amount_${pledge}`" class="bigger">R$ {{ customizedValue(pledge) }}</label>
+          <label :for="`amount_${pledge}`" class="bigger">R$ {{ pledge | formatBRL }}</label>
         </div>
 
 				<div class="input-wrapper">
@@ -22,6 +21,7 @@
             :disabled="amount === 'other' ? false : true"
             @keyup="formatOther">
           <div class="real-value">{{ formatedOther }}</div>
+					<a href="#" @click.prevent="validateForm">OK</a>
         </div>
       </fieldset>
       <p class="error" v-if="errorMessage != ''">
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { validate, formatBRL } from '../../utilities';
+import { validate, formatBRLDec } from '../../utilities';
 
 export default {
 	name: 'selectValue',
@@ -53,10 +53,6 @@ export default {
 		};
 	},
 	methods: {
-		customizedValue(pledge) {
-			const value = formatBRL(pledge);
-			return Math.trunc(parseFloat(value, 10))
-		},
 		validateForm() {
 			console.log('validate');
 
@@ -64,7 +60,7 @@ export default {
 			const values = amount === 'other' ? { amount, other } : { amount };
 			const validation = validate(values);
 
-			if (amount === 'other' && other < 3000) {
+			if (amount === 'other' && other < 2000) {
 				this.errorMessage = 'O valor mínimo da doação é de R$ 30,00';
 				return;
 			}
@@ -78,12 +74,14 @@ export default {
 		saveStep(values) {
 			const data = {
 				amount: values.amount !== 'other' ? values.amount : this.cleanOther(values.other),
+				step: 'userData',
 			};
 
+			this.$store.dispatch('CHANGE_PAYMENT_AMOUNT', data);
 			console.log('data', data);
 		},
 		formatOther() {
-			this.formatedOther = formatBRL(this.other);
+			this.formatedOther = formatBRLDec(this.other);
 		},
 		cleanOther(value) {
 			return value.replace(/\d{2}$/g, '00');
