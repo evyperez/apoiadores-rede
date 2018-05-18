@@ -43,12 +43,12 @@ export default {
 			other: '',
       formatedOther: '',
       pledges: [
-        1000,
-        3000,
+        2000,
         5000,
         10000,
         20000,
-        50000,
+				50000,
+				100000,
       ],
 		};
 	},
@@ -59,7 +59,10 @@ export default {
 			const validation = validate(values);
 
 			if (amount === 'other' && other < 2000) {
-				this.errorMessage = 'O valor mínimo da doação é de R$ 30,00';
+				this.errorMessage = 'O valor mínimo da doação é de R$ 20,00';
+				return;
+			} else if (amount === 'other' && other > 1000000) {
+				this.errorMessage = 'O valor máximo da doação é de R$ 10.000,00';
 				return;
 			}
 
