@@ -54,8 +54,6 @@ export default {
 	},
 	methods: {
 		validateForm() {
-			console.log('validate');
-
 			const { amount, other } = this;
 			const values = amount === 'other' ? { amount, other } : { amount };
 			const validation = validate(values);
@@ -78,7 +76,6 @@ export default {
 			};
 
 			this.$store.dispatch('CHANGE_PAYMENT_AMOUNT', data);
-			console.log('data', data);
 		},
 		formatOther() {
 			this.formatedOther = formatBRLDec(this.other);
