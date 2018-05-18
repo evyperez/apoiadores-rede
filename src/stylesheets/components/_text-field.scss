@@ -10,11 +10,13 @@
 
 	width: 100%;
 
-	padding: 0.1em 0.2em 0;
+	padding: 1em 0.2em 0;
+	margin-bottom: $leading * 0.5rem;
 
 	text-indent: 0.5ex; /* 2 */
 
 	cursor: text;
+	color: palette('text', 'dark');
 
 	box-sizing: inherit;
 
@@ -33,7 +35,7 @@
 	}
 
 	&:focus {
-		outline: 1px solid;
+		outline: 1px dotted;
 	}
 
 	&:focus:required:invalid {

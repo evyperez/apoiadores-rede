@@ -94,6 +94,8 @@ $modularscale: (
 $_green--light: rgb(4, 255, 134);
 $_green--base: rgb(17, 135, 100);
 
+$_orange--light: tint(rgb(235, 92, 56), 50%);
+
 /// List all available colors and tones.
 ///
 /// @access private
@@ -163,12 +165,14 @@ $palette: (
 	'tap-highlight': rgb(255, 94, 153),
 	'target-highlight': rgb(255, 255, 102),
 	'orange': (
+		'light': $_orange--light,
 		'base': rgb(235, 92, 56),
 		'dark': rgb(208, 78, 42),
 	),
 	'green': (
 		'light': $_green--light,
 		'base': $_green--base,
+		'dark': shade($_green--base, 35%),
 	),
 	'text': (
 		'dark': hsl(0, 0%, 13%),
@@ -180,12 +184,12 @@ $palette: (
 /// Default border-radius
 /// @todo Customize it to match your design.
 /// @type number
-$rounded-corner: 0 !default;
+$rounded-corner: 5px !default;
 
 /// border default width
 /// @todo Customize it to match your design.
 /// @type number
-$stroke: 1px !default;
+$stroke: 0 !default;
 
 /// gutter default width
 /// @todo Customize it to match your design.
