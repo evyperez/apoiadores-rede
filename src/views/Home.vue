@@ -5,7 +5,7 @@
         <h2>
           Ajude a Rede e Marina a divulgarem ideias transformadoras Brasil afora
         </h2>
-        <p>Nunc non euismod ex. Phasellus condimentum ipsum leo, vitae commodo diam venenatis a. Donec et est imperdiet, auctor arcu interdum, maximus eros. Morbi sollicitudin vitae diam vitae cursus. Suspendisse lectus nulla, finibus a luctus non, fringilla sit amet sem. Nam non eros quis nibh mollis laoreet vel quis sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        <p>Nunc non euismod exx. Phasellus condimentum ipsum leo, vitae commodo diam venenatis a. Donec et est imperdiet, auctor arcu interdum, maximus eros. Morbi sollicitudin vitae diam vitae cursus. Suspendisse lectus nulla, finibus a luctus non, fringilla sit amet sem. Nam non eros quis nibh mollis laoreet vel quis sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
 
         <section id="campaign-progress" class="campaign-progress">
           <p>
