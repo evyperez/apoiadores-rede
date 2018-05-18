@@ -16,6 +16,8 @@ export default new Vuex.Store({
     iugu: {},
     message: [],
     username: {},
+    candidate: {},
+    donations: [],
   },
   mutations: {
     SET_PAYMENT_STEP(state, { data }) {
@@ -38,6 +40,12 @@ export default new Vuex.Store({
     },
     SET_MESSAGE(state, { message }) {
       state.message = message;
+    },
+    SET_CANDIDATE(state, { res }) {
+      state.candidate = res.candidate;
+    },
+    SET_DONATIONS(state, { res }) {
+      state.donations = res.donations;
     },
   },
   actions: {
@@ -114,6 +122,34 @@ export default new Vuex.Store({
           (err) => {
             console.error(err.response);
             reject(err.response);
+          },
+        );
+      });
+    },
+    GET_CANDIDATE_INFO({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        axios.get(`https://dapi.votolegal.com.br/api/candidate/${id}`).then(
+          (response) => {
+            commit('SET_CANDIDATE', { res: response.data });
+            resolve();
+          },
+          (err) => {
+            reject(err.response);
+            console.error(err);
+          },
+        );
+      });
+    },
+    GET_DONATIONS({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        axios.get(`https://dapi.votolegal.com.br/api/candidate/${id}/donate`).then(
+          (response) => {
+            commit('SET_DONATIONS', { res: response.data });
+            resolve();
+          },
+          (err) => {
+            reject(err.response);
+            console.error(err);
           },
         );
       });
