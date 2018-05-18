@@ -14,7 +14,7 @@ function validate(fields) {
   return { valid, errors };
 }
 
-function formatBRL(amount) {
+function formatBRLDec(amount) {
   let formated = `${amount}`;
   formated = formated.replace(/([0-9]{2})$/g, ',$1');
 
@@ -23,6 +23,17 @@ function formatBRL(amount) {
   }
 
   return formated;
+}
+
+function formatBRL(amount) {
+  let formated = `${amount}`;
+  formated = formated.replace(/([0-9]{2})$/g, ',$1');
+
+  if (formated.length > 6) {
+    formated = formated.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
+  }
+
+  return Math.trunc(parseFloat(formated, 10));
 }
 
 function cleanPhone(phone) {
@@ -113,4 +124,5 @@ export {
   formatCNPJ,
   removeAccented,
   formatDateBasic,
+  formatBRLDec,
 };
