@@ -4,6 +4,9 @@
       <h2>Escolha um valor para doar</h2>
        <selectValue />
     </template>
+    <template v-else-if="paymentStep === 'finalMessage'">
+      <finalMessage />
+    </template>
     <template v-else>
       <h2>Você escolheu doar: <strong v-if="amount">R$ {{ amount | formatBRL }}</strong></h2>
       <a href="#" @click.prevent="goBack('selectValue')">voltar</a>
@@ -28,6 +31,7 @@
 import selectValue from '@/components/steps/selectValue.vue';
 import userData from '@/components/steps/userData.vue';
 import cardData from '@/components/steps/cardData.vue';
+import finalMessage from '@/components/steps/finalMessage.vue';
 
 export default {
   name: 'Payment',
@@ -35,6 +39,7 @@ export default {
     selectValue,
     userData,
     cardData,
+    finalMessage,
   },
   computed: {
     paymentStep() {
