@@ -9,21 +9,9 @@
             type="text"
             v-model="number"
             name="number"
-            v-mask="'#### #### #### #### ####'">
+            v-mask="'#### #### #### ####'">
           <div class="error" v-if="validation.errors.number">
             {{ validation.errors.number }}
-          </div>
-        </div>
-        <div :class="`input-wrapper
-          ${validation.errors.name_on_card ? 'has-error' : ''}`">
-          <label for="name_on_card">Nome impresso no cartão</label>
-          <input
-            type="text"
-            v-model="name_on_card"
-            name="name_on_card"
-            maxlength="26">
-          <div class="error" v-if="validation.errors.name_on_card">
-            {{ validation.errors.name_on_card }}
           </div>
         </div>
         <div :class="`input-wrapper
@@ -88,7 +76,6 @@ export default {
     return {
       loading: false,
       errorMessage: '',
-      name_on_card: '',
       csc: '',
       number: '',
       validity_month: '',
@@ -99,6 +86,11 @@ export default {
       },
     };
   },
+  computed: {
+    username() {
+      return this.$store.state.username;
+    },
+  },
   methods: {
     toggleLoading() {
       this.loading = !this.loading;
@@ -107,7 +99,6 @@ export default {
       this.toggleLoading();
 
       const {
-        name_on_card,
         csc,
         number,
         validity_year,
@@ -115,7 +106,6 @@ export default {
       } = this;
 
       const fields = {
-        name_on_card,
         csc,
         number,
         validity_year,
@@ -129,10 +119,11 @@ export default {
 
 
         this.saveCard({
-            name_on_card: removeAccented(name_on_card),
+            name: removeAccented(name),
             csc,
             number: number.replace(/\s+/g, ''),
-            validity: validity_year + validity_month,
+            validity_year,
+            validity_month,
           });
       } else {
         this.validation = validation;
@@ -148,7 +139,21 @@ export default {
 			return result[0].type.replace('-', '');
 		},
     saveCard(card) {
-      console.log(card)
+      const cc = Iugu.CreditCard(
+        card.number,
+        card.validity_month,
+        card.validity_year,
+        this.username.name,
+        this.username.surname,
+        card.csc);
+
+      Iugu.createPaymentToken(cc, (response) => {
+        if (response.errors) {
+          alert("Erro salvando cartão");
+        } else {
+          this.$store.dispatch('START_DONATION', response.id);
+        }
+      });
     },
   },
 };
