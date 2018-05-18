@@ -1,17 +1,77 @@
 .site-header {
 	position: relative;
 
-	height: 100vh;
-
 	color: palette('white');
 
 	background-image:
 		url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
 		url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
-		url('../assets/images/backgrounds/img-destaque.jpg');
+		url('../assets/images/backgrounds/img-destaque--320.jpg');
+
 	background-position: right 90%, left bottom, 0 0;
 	background-size: auto, auto, cover;
 	background-color: palette('gray', 'dark');
+
+	@media screen and (min-width: 480px) {
+		background-image:
+		url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
+		url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
+		url('../assets/images/backgrounds/img-destaque--480.jpg');
+	}
+
+	@media screen and (min-width: 600px) {
+		background-image:
+		url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
+		url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
+		url('../assets/images/backgrounds/img-destaque--600.jpg');
+	}
+
+	@media screen and (min-width: 768px) {
+		background-image:
+		url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
+		url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
+		url('../assets/images/backgrounds/img-destaque--768.jpg');
+	}
+
+	@media screen and (min-width: 800px) {
+		background-image:
+		url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
+		url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
+		url('../assets/images/backgrounds/img-destaque--800.jpg');
+	}
+
+	@media screen and (min-width: 960px) {
+		background-image:
+		url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
+		url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
+		url('../assets/images/backgrounds/img-destaque--960.jpg');
+	}
+
+	@media screen and (min-width: 1200px) {
+		background-image:
+		url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
+		url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
+		url('../assets/images/backgrounds/img-destaque--1200.jpg');
+	}
+
+	@media screen and (min-width: 1400px) {
+		background-image:
+			url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
+			url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
+			url('../assets/images/backgrounds/img-destaque.jpg');
+	}
+
+	@media screen and (min-width: 1600px) {
+		background-image:
+			url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
+			url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
+			url('../assets/images/backgrounds/img-destaque--1600.jpg');
+	}
+}
+
+.site-header .container {
+	min-height: 100vh;
+	position: relative;
 }
 
 .site-header .main-menu[class] {
@@ -36,15 +96,22 @@
 
 	position: absolute;
 	top: 50%;
+	right: $gutter;
+	left: $gutter;
 
-	width: 100%;
 	min-height: 167px;
 
 	background-image: url('../assets/images/textReplace/img-title.png');
 	background-size: contain;
 
 	.site-header &[class] {
+		max-width: 100%;
 		margin-right: 0;
 		margin-left: auto;
+	}
+
+	@media screen and (min-width: 750px) {
+		width: 687px;
+		left: auto;
 	}
 }
