@@ -10,22 +10,22 @@
       <nav class="main-menu">
         <ul>
           <li>
-            <a href="home__donate">
+            <a href="#home__donate">
               Doar
             </a>
           </li>
           <li>
-            <a href="home__knowMore">
+            <a href="#home__knowMore">
               Saiba mais
             </a>
           </li>
           <li>
-            <a href="home__goals">
+            <a href="#home__goals">
               Metas
             </a>
           </li>
           <li>
-            <a href="home__donors">
+            <a href="#home__donors">
               Doadores
             </a>
           </li>
