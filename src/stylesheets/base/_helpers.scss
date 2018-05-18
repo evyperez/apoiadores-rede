@@ -1,5 +1,5 @@
 %loading-bg {
-	background-image: url('#{$base-url}loading.svg');
+	background-image: url('../assets/images/backgrounds/loading.svg');
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	background-color: palette('loading', 'background');
@@ -11,11 +11,15 @@
 	cursor: wait;
 
 	&::after {
+		@extend %loading-bg;
+
+		border-radius: $rounded-corner;
+
 		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+		top: $gutter * -0.5;
+		right: $gutter * -0.5;
+		bottom: $gutter * -0.5;
+		left: $gutter * -0.5;
 
 		z-index: layer('modal');
 
@@ -49,8 +53,9 @@
 [aria-busy='true'] {
 	> body,
 	&:not(html) {
-		@extend %loading-bg;
 		@extend %loading-el;
+
+		position: relative;
 	}
 }
 

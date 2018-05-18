@@ -1,6 +1,6 @@
 <template>
   <section>
-    <form @submit.prevent="validateForm">
+    <form @submit.prevent="validateForm" :aria-busy="loading ? 'true' : 'false'">
       <fieldset>
         <div :class="`input-wrapper
           ${validation.errors.number ? 'has-error' : ''}`">
