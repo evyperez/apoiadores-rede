@@ -10,48 +10,130 @@ fieldset ul {
 	margin: 0;
 }
 
-fieldset li {
-	display: block;
+.of-radios-and-checks {
+	@include clearfix;
 
-	padding: 0;
-	margin: 0;
+	font-size: ms(2);
+	color: palette('white');
+	margin-right: $gutter * -0.5;
+	margin-left: $gutter * -0.5;
+
+	font-weight: 800;
+}
+
+.of-radios-and-checks button,
+.of-radios-and-checks input {
+	font-weight: inherit;
+
+	&:hover,
+	&:focus {
+		outline: 0;
+	}
+}
+
+.of-radios-and-checks .input-wrapper {
+	display: block;
+	width: 33.33333%;
+	float: left;
+
+	padding-right: $gutter * 0.5;
+	margin-bottom: $gutter;
+	padding-left: $gutter * 0.5;
 
 	white-space: nowrap;
 
 	list-style-type: none;
+	overflow: hidden;
 
 	&::before {
 		content: none;
 	}
 }
 
-li label {
-	display: inline;
-
-	padding: 0 0.5em;
+.of-radios-and-checks .input-wrapper--full-width {
+	width: 100%;
 }
 
-/**
- * It's recommended that you don't attempt to style these elements.
- * Firefox's implementation doesn't respect box-sizing, padding, or width.
- *
- * 1. Address box sizing set to `content-box` in IE 8/9/10.
- * 2. Remove excess padding in IE 8/9/10.
- * 3. Reset height (applied by a rule above).
- * 4. Revert the webkit blur effect on focus in Safari for better visual effect.
- */
+.of-radios-and-checks .has-real-value {
+	background-color: palette('white');
+	border-radius: $rounded-corner;
+	color: palette('text', 'dark');
+	float: none;
+	margin-right: $gutter * 0.5;
+	margin-left: $gutter * 0.5;
+	padding-top: $leading * 1rem;
+	padding-bottom: $leading * 1rem;
+	position: relative;
+	width: auto;
+}
+
+.of-radios-and-checks label {
+	display: block;
+
+	padding: $leading * 1rem 0;
+	white-space: nowrap;
+	text-align: center;
+	font-weight: inherit;
+	background-color: palette('green');
+	border-radius: $rounded-corner;
+	font-size: inherit;
+	position: static;
+	color: inherit;
+}
+
+.of-radios-and-checks label:hover {
+	background-color: palette('orange');
+}
+
+.of-radios-and-checks :checked + label {
+	background-color: palette('orange');
+}
+
+.has-real-value label {
+	display: inline;
+	background-color: transparent;
+	padding: 0;
+
+	&:hover,
+	&:focus {
+		color: inherit;
+		background-color: transparent;
+	}
+}
+
+.has-real-value [type='text'] {
+	color: inherit;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	color: transparent;
+	background: transparent;
+	margin: 0;
+	padding: 0;
+}
+
+.has-real-value .real-value {
+}
+
+.has-real-value [type='button'] {
+	border: 0;
+	background-color: palette('gray');
+	color: palette('white');
+	padding-right: $gutter * 0.5;
+	padding-left: $gutter * 0.5;
+	position: absolute;
+	top: $leading * 1rem;
+	right: $gutter * 0.5;
+	z-index: 2;
+}
+
 [type='checkbox'],
 [type='radio'] {
-	width: auto;
-	height: auto; /* 3 */
-
-	padding: 0; /* 2 */
-
-	vertical-align: middle;
-
-	cursor: pointer;
-
-	box-sizing: border-box; /* 1 */
+	display: none;
 
 	&:hover {
 	}
@@ -72,17 +154,6 @@ li label {
 [type='checkbox'] {
 	&:checked {
 	}
-}
-
-li:hover {
-	> input,
-	> label {
-		color: palette('black');
-	}
-}
-
-li :checked + label {
-	font-weight: bold;
 }
 
 [disabled] + label,

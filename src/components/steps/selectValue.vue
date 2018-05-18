@@ -1,13 +1,13 @@
 <template>
   <section class="content">
     <form @submit.prevent="validateForm">
-      <fieldset>
+      <fieldset class="of-radios-and-checks">
         <div class="input-wrapper" v-for="pledge in pledges" :key="pledge">
           <input type="radio" :id="`amount_${pledge}`" name="amount" v-model="amount" :value="pledge" @change="validateForm">
           <label :for="`amount_${pledge}`" class="bigger">R$ {{ pledge | formatBRL }}</label>
         </div>
 
-				<div class="input-wrapper">
+		<div class="input-wrapper input-wrapper--full-width">
           <input type="radio" id="amount_other" name="amount" v-model="amount" value="other">
           <label for="amount_other">OUTROS</label>
         </div>
@@ -20,8 +20,8 @@
             v-model="other"
             :disabled="amount === 'other' ? false : true"
             @keyup="formatOther">
-          <div class="real-value">{{ formatedOther }}</div>
-					<a href="#" @click.prevent="validateForm">OK</a>
+          <span class="real-value">{{ formatedOther }}</span>
+			<button type="button" href="#" @click.prevent="validateForm">OK</button>
         </div>
       </fieldset>
       <p class="error" v-if="errorMessage != ''">

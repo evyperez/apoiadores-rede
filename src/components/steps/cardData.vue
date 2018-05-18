@@ -56,7 +56,7 @@
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
-      <button type="submit" :disabled="loading">Continuar</button>
+      <button class="donation-nav donation-nav--forward" type="submit" :disabled="loading">Continuar</button>
     </form>
   </section>
 </template>

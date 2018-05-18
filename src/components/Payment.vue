@@ -9,7 +9,7 @@
     </template>
     <template v-else>
       <h2>Você escolheu doar: <strong v-if="amount">R$ {{ amount | formatBRL }}</strong></h2>
-      <a href="#" @click.prevent="goBack('selectValue')">voltar</a>
+      <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack('selectValue')">voltar</a>
 
       <ul>
         <li :class="paymentStep === 'userData' ? 'active' : ''">
