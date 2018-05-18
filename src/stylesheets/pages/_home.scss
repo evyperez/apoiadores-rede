@@ -63,6 +63,12 @@
 	font-weight: inherit;
 }
 
+.home__donate .donation-form[class] {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 33.75rem;
+}
+
 .donation-nav[class] {
 	color: palette('green', 'light');
 

@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <div class="donation-form">
     <template v-if="paymentStep === 'selectValue'">
       <h2>Escolha um valor para doar</h2>
        <selectValue />
@@ -23,7 +23,7 @@
       <userData v-if="paymentStep === 'userData'"/>
       <cardData v-if="paymentStep === 'cardData'"/>
     </template>
-  </article>
+  </div>
 </template>
 
 <script>
