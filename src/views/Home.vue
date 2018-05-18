@@ -37,10 +37,6 @@
 
     <article id="home__donate" class="home__donate">
       <div class="container" id="donation-wrap">
-        <h2>
-          Doar
-        </h2>
-
         <Payment />
       </div>
     </article>
