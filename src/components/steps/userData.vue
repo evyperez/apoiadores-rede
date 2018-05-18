@@ -103,7 +103,8 @@ export default {
 			}
 		},
 		registerUser(data) {
-			console.log(data);
+      console.log(data);
+      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
 		},
 	},
 };
