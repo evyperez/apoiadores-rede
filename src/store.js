@@ -14,6 +14,8 @@ export default new Vuex.Store({
     token: '',
     donation: {},
     iugu: {},
+    message: [],
+    username: {},
   },
   mutations: {
     SET_PAYMENT_STEP(state, { data }) {
@@ -25,11 +27,17 @@ export default new Vuex.Store({
     SET_TOKEN(state, { token }) {
       state.token = token;
     },
+    SET_USERNAME(state, { user }) {
+      state.username = user;
+    },
     SET_DONATION(state, { donation }) {
       state.donation = donation;
     },
     SET_IUGU(state, { iugu }) {
       state.iugu = iugu;
+    },
+    SET_MESSAGE(state, { message }) {
+      state.message = message;
     },
   },
   actions: {
@@ -39,6 +47,9 @@ export default new Vuex.Store({
     },
     CHANGE_PAYMENT_STEP({ commit }, data) {
       commit('SET_PAYMENT_STEP', { data });
+    },
+    SAVE_USERNAME({ commit }, user) {
+      commit('SET_USERNAME', { user });
     },
     GET_TOKEN({ commit }, data) {
       return new Promise((resolve, reject) => {
@@ -86,10 +97,18 @@ export default new Vuex.Store({
         axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          url: `${api}/donations/${state.donation.id}?device_authorization_token_id=${state.token}&credit_card_token=${iuguId}`,
+          url: `${api}/donations/${state.donation.id}?device_authorization_token_id=${
+            state.token
+          }&credit_card_token=${iuguId}`,
         }).then(
           (response) => {
-            console.log(response);
+            const data = {
+              step: 'finalMessage',
+            };
+
+            commit('SET_MESSAGE', { message: response.data.ui.messages });
+            commit('SET_PAYMENT_STEP', { data });
+
             resolve();
           },
           (err) => {
