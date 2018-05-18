@@ -11,21 +11,21 @@
           <p>
             <span class="currency">R$</span>
             <strong class="amount">
-              XXXAMOUNT
+              {{ candidate.total_donated | formatBRLDec }}
             </strong>
-            Doados por XXX pessoas
+            Doados por {{ candidate.people_donated }} pessoas
           </p>
 
-          <progress value="[[ value ]]" max="[[ expected ]]">
+          <progress :value="candidate.total_donated" :max="expected">
             <div class="progress-bar">
-              <span style="width: [[ value ]]%">
-                valor
+              <span :style="{width: `${porcentage}%`}">
+                {{ porcentage }}
               </span>
             </div>
           </progress>
 
           <p>
-            <em class="amount-percent">PORCENTAGEM</em> da meta de <span class="donations-expected"> XXXESPERADO</span>
+            <em class="amount-percent">PORCENTAGEM</em> da meta de <span class="donations-expected"> R$ {{ expected | formatBRLDec }}</span>
           </p>
 
           <p>
@@ -72,6 +72,11 @@
         </h2>
 
         <p>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na dire;cão de uma política mais transparente, mais representativa e mais colaborativa:</p>
+        <p>
+          <span v-for="(person, i) in donations">
+            {{ person.name }}{{ i < donations.length -1 ? ',' : '' }}
+          </span>
+        </p>
       </div>
     </article>
   </main>
@@ -85,6 +90,34 @@ export default {
   name: 'home',
   components: {
     Payment,
+  },
+  mounted() {
+    this.$store.dispatch('GET_CANDIDATE_INFO', 1);
+    this.$store.dispatch('GET_DONATIONS', 1);
+  },
+  computed: {
+    candidate() {
+      return this.$store.state.candidate;
+    },
+    donations() {
+      return this.$store.state.donations;
+    },
+    expected() {
+      if (this.candidate) {
+        const value = this.candidate.raising_goal.replace('.', '');
+        return parseFloat(value, 10);
+      }
+
+      return 0
+    },
+    porcentage() {
+      if (this.candidate) {
+        const value = (this.candidate.total_donated * 100) / this.expected;
+        return value
+      }
+
+      return 0
+    }
   },
 };
 </script>
