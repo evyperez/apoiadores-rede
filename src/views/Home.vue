@@ -11,7 +11,8 @@
           <p>
             <span class="currency">R$</span>
             <strong class="amount">
-              {{ candidate.total_donated | formatBRLDec }}
+              <template v-if="candidate.total_donated">{{ candidate.total_donated | formatBRL }}</template>
+              <template v-else>0</template>
             </strong>
             Doados por {{ candidate.people_donated }} pessoas
           </p>
@@ -25,7 +26,7 @@
           </progress>
 
           <p>
-            <em class="amount-percent">PORCENTAGEM</em> da meta de <span class="donations-expected"> R$ {{ expected | formatBRLDec }}</span>
+            <em class="amount-percent">{{ porcentage }}%</em> da meta de <span class="donations-expected"> R$ {{ expected | formatBRLDec }}</span>
           </p>
 
           <p>
@@ -73,7 +74,7 @@
 
         <p>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na dire;cão de uma política mais transparente, mais representativa e mais colaborativa:</p>
         <p>
-          <span v-for="(person, i) in donations">
+          <span v-for="(person, i) in donations" :key="person.id">
             {{ person.name }}{{ i < donations.length -1 ? ',' : '' }}
           </span>
         </p>
@@ -104,8 +105,10 @@ export default {
     },
     expected() {
       if (this.candidate) {
-        const value = this.candidate.raising_goal.replace('.', '');
-        return parseFloat(value, 10);
+        if (this.candidate.raising_goal) {
+          const value = this.candidate.raising_goal.replace('.', '');
+          return parseFloat(value, 10);
+        }
       }
 
       return 0
