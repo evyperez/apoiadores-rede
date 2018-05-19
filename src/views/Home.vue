@@ -103,7 +103,9 @@ export default {
     Payment,
   },
   mounted() {
-    const candidateId = 130;
+    const candidateId = window.location.path === 'somosrede.com.br'
+    ? 40
+    : 130;
     this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
     this.$store.dispatch('GET_DONATIONS', candidateId);
   },
