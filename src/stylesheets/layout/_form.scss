@@ -471,3 +471,10 @@ x-moz-errormessage {
 [type='radio']:-moz-focusring {
 	outline-width: 0;
 }
+
+form .error {
+	border: 1px solid palette('orange');
+	margin-top: 20px;
+	padding: 10px;
+	font-size: 0.9em;
+}

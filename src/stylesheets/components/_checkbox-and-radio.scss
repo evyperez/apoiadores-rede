@@ -162,3 +162,20 @@ fieldset ul {
 
 	color: palette('disabled', 'foreground');
 }
+
+.checkbox-custom{
+	@include clearfix;
+
+	color: palette('white');
+	padding-right: 0.9375rem;
+}
+
+.checkbox-custom [type="checkbox"] {
+	display: inline-block;
+}
+
+.checkbox-custom label {
+	position: relative;
+	color: palette('white');
+	line-height: 0;
+}
