@@ -1,8 +1,6 @@
 <template>
   <section>
-    <template v-if="message[1].type === 'msg'">
-      <h2>{{ message[1].text }}</h2>
-    </template>
+    <h2 v-for="(message, i) in messages" :key="i">{{ message.text }}</h2>
   </section>
 </template>
 
@@ -10,8 +8,8 @@
 export default {
   name: 'finalMessage',
   computed: {
-    message() {
-      return this.$store.state.message;
+    messages() {
+      return this.$store.state.messages;
     },
   },
 }
