@@ -154,12 +154,24 @@ export default {
                   this.$store.dispatch('SAVE_USERNAME', user)
                   this.handleIugu();
                   this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
+                }).catch((err) => {
+                  this.toggleLoading();
+                  this.handleErrorMessage(err);
                 });
-          });
+            }).catch((err) => {
+              this.toggleLoading();
+              this.handleErrorMessage(err);
+            });
+        }).catch(() => {
+          this.toggleLoading();
+          this.errorMessage = 'Ocorreu um erro inesperado, tente novamente!';
         });
     },
+    handleErrorMessage(err) {
+      this.errorMessage = err.data[0].message;
+    },
     getDonationFP() {
-      return new Promise((resolve) => {
+      return new Promise((resolve, reject) => {
         const d1 = new Date();
         const fp = new VotolegalFP({
           excludeUserAgent: true,
@@ -230,8 +242,13 @@ export default {
           }
 
           const donation_fp = Base64.encode(JSON.stringify(info));
-          this.donationFp = donation_fp;
-          resolve();
+
+          if(donation_fp) {
+            this.donationFp = donation_fp;
+            resolve();
+          } else {
+            reject();
+          }
         });
       });
     },
