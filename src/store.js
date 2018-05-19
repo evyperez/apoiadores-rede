@@ -62,6 +62,9 @@ export default new Vuex.Store({
     SAVE_USERNAME({ commit }, user) {
       commit('SET_USERNAME', { user });
     },
+    ADD_TOKEN({ commit }, data) {
+      commit('SET_TOKEN', { token: data });
+    },
     GET_TOKEN({ commit }, data) {
       return new Promise((resolve, reject) => {
         axios({
