@@ -27,7 +27,7 @@
       <fieldset class="checkbox-custom">
         <div class="input-wrapper">
           <input type="checkbox" id="maxdonation" name="maxdonation" v-model="maxdonation">
-          <label for="maxdonation">Declaro que minhas doações não ultrapassam 10% dos meus rendimentos brutos do ano anterior, a origem do dinheiro não é estrangeira, não sou concessionário ou permissionário de serviço público e concordo com os termos de doação.</label>
+          <label for="maxdonation">Declaro que minhas doações não ultrapassam 10% dos meus rendimentos brutos do ano anterior, a origem do dinheiro não é estrangeira, não sou concessionário ou permissionário de serviço público e concordo com os <a href="./termos.pdf" target="_blank">termos de doação</a>.</label>
         </div>
       </fieldset>
       <p class="error" v-if="errorMessage != ''">
