@@ -103,8 +103,9 @@ export default {
     Payment,
   },
   mounted() {
-    this.$store.dispatch('GET_CANDIDATE_INFO', 1);
-    this.$store.dispatch('GET_DONATIONS', 1);
+    const candidateId = 130;
+    this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
+    this.$store.dispatch('GET_DONATIONS', candidateId);
   },
   computed: {
     candidate() {
