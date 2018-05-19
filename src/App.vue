@@ -18,6 +18,24 @@ export default {
     Header,
     Footer,
   },
+  mounted() {
+    this.handleSession();
+  },
+  methods: {
+    handleSession() {
+      if(window.localStorage) {
+        const token = localStorage.getItem('vlm_token');
+        if (token !== null) {
+          this.$store.dispatch('ADD_TOKEN', token);
+        } else {
+          this.$store.dispatch('GET_TOKEN')
+            .then((res) => {
+              localStorage.setItem('vlm_token', res.data.device_authorization_token_id);
+            });
+        }
+      }
+    }
+  }
 }
 </script>
 
