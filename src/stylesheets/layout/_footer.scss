@@ -70,7 +70,7 @@
 	padding-left: $gutter * 0.5;
 }
 
-.site-footer__copyright a {
+.site-footer__copyright ul a {
 	@include image-replacement;
 
 	display: block;
@@ -80,13 +80,13 @@
 	background-position: 50% 50%;
 }
 
-.site-footer__copyright .apoiadores a {
+.site-footer__copyright ul .apoiadores a {
 	min-width: 148px;
 
 	background-image: url('../assets/images/icons/logo-apoiadores.png');
 }
 
-.site-footer__copyright .appcivico a {
+.site-footer__copyright ul .appcivico a {
 	min-width: 138px;
 
 	background-image: url('../assets/images/icons/logo-appcivico.png');
@@ -97,4 +97,8 @@
 	display: block;
 	font-size: 0.8em;
 	color: palette('white');
+}
+
+.site-footer__copyright p a {
+	color: inherit;
 }
