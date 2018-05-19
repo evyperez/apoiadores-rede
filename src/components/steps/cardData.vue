@@ -152,15 +152,23 @@ export default {
 
       Iugu.createPaymentToken(cc, (response) => {
         if (response.errors) {
-          alert("Erro salvando cartão");
+          this.toggleLoading();
+          this.errorMessage =  'Erro salvando cartão';
         } else {
           const payload = {
             cc_hash,
             id: response.id,
           }
-          this.$store.dispatch('START_DONATION', payload);
+          this.$store.dispatch('START_DONATION', payload)
+            .catch((err) => {
+              this.toggleLoading();
+              this.handleErrorMessage(err);
+            });
         }
       });
+    },
+    handleErrorMessage(err) {
+      this.errorMessage = err.data[0].message;
     },
     getCardHash(number) {
       const fp = new VotolegalFP({
