@@ -9,7 +9,7 @@
     </template>
     <template v-else>
       <h2>Você escolheu doar: <strong v-if="amount">R$ {{ amount | formatBRL }}</strong></h2>
-      <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack('selectValue')">voltar</a>
+      <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack()">voltar</a>
 
       <ul>
         <li :class="paymentStep === 'userData' ? 'active' : ''">
@@ -50,7 +50,8 @@ export default {
     },
   },
   methods: {
-    goBack(step) {
+    goBack() {
+      const step = this.paymentStep === 'userData' ? 'selectValue' : 'userData';
       this.$store.dispatch('CHANGE_PAYMENT_STEP', { step });
     },
   },
