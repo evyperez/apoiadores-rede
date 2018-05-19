@@ -92,3 +92,9 @@
 	background-image: url('../assets/images/icons/logo-appcivico.png');
 	background-position: 50% 35%;
 }
+
+.site-footer__copyright p {
+	display: block;
+	font-size: 0.8em;
+	color: palette('white');
+}
