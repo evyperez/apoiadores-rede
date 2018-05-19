@@ -14,7 +14,7 @@ export default new Vuex.Store({
     token: '',
     donation: {},
     iugu: {},
-    message: [],
+    messages: [],
     username: {},
     candidate: {},
     donations: [],
@@ -38,8 +38,8 @@ export default new Vuex.Store({
     SET_IUGU(state, { iugu }) {
       state.iugu = iugu;
     },
-    SET_MESSAGE(state, { message }) {
-      state.message = message;
+    SET_MESSAGES(state, { messages }) {
+      state.messages = messages;
     },
     SET_CANDIDATE(state, { res }) {
       state.candidate = res.candidate;
@@ -66,17 +66,15 @@ export default new Vuex.Store({
           headers: { 'Content-Type': 'application/json' },
           url: `${api}/device-authentication`,
           data,
-        }).then(
-          (response) => {
-            const { device_authorization_token_id } = response.data;
-            commit('SET_TOKEN', { token: device_authorization_token_id });
-            resolve(response);
-          },
-          (err) => {
-            console.error(err.response);
-            reject(err.response);
-          },
-        );
+        }).then((response) => {
+          const { device_authorization_token_id } = response.data;
+          commit('SET_TOKEN', { token: device_authorization_token_id });
+          resolve(response);
+        }).catch((err) => {
+          console.log('eroooooo', error.response.data);
+          console.error(err.response);
+          reject(err.response);
+        });
       });
     },
     GET_DONATION({ commit }, data) {
@@ -113,7 +111,7 @@ export default new Vuex.Store({
               step: 'finalMessage',
             };
 
-            commit('SET_MESSAGE', { message: response.data.ui.messages });
+            commit('SET_MESSAGES', { messages: response.data.ui.messages });
             commit('SET_PAYMENT_STEP', { data });
 
             resolve();
