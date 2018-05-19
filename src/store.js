@@ -5,7 +5,10 @@ import axios from 'axios';
 
 Vue.use(Vuex);
 
-const api = 'https://dapi.votolegal.com.br/api2';
+const api =
+  window.location.path === 'somosrede.com.br'
+    ? 'https://api.votolegal.com.br'
+    : 'https://dapi.votolegal.com.br';
 
 export default new Vuex.Store({
   state: {
@@ -64,17 +67,19 @@ export default new Vuex.Store({
         axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          url: `${api}/device-authentication`,
+          url: `${api}/api2/device-authentication`,
           data,
-        }).then((response) => {
-          const { device_authorization_token_id } = response.data;
-          commit('SET_TOKEN', { token: device_authorization_token_id });
-          resolve(response);
-        }).catch((err) => {
-          console.log('eroooooo', error.response.data);
-          console.error(err.response);
-          reject(err.response);
-        });
+        })
+          .then((response) => {
+            const { device_authorization_token_id } = response.data;
+            commit('SET_TOKEN', { token: device_authorization_token_id });
+            resolve(response);
+          })
+          .catch((err) => {
+            console.log('eroooooo', error.response.data);
+            console.error(err.response);
+            reject(err.response);
+          });
       });
     },
     GET_DONATION({ commit }, data) {
@@ -82,7 +87,7 @@ export default new Vuex.Store({
         axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          url: `${api}/donations`,
+          url: `${api}/api2/donations`,
           data,
         }).then(
           (response) => {
@@ -103,8 +108,9 @@ export default new Vuex.Store({
         axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          url: `${api}/donations/${state.donation.id}?device_authorization_token_id=${
-            state.token}&credit_card_token=${payload.id}&cc_hash=${payload.cc_hash}`,
+          url: `${api}/api2/donations/${state.donation.id}?device_authorization_token_id=${
+            state.token
+          }&credit_card_token=${payload.id}&cc_hash=${payload.cc_hash}`,
         }).then(
           (response) => {
             const data = {
@@ -125,7 +131,7 @@ export default new Vuex.Store({
     },
     GET_CANDIDATE_INFO({ commit }, id) {
       return new Promise((resolve, reject) => {
-        axios.get(`https://dapi.votolegal.com.br/api/candidate/${id}`).then(
+        axios.get(`${api}/api/candidate/${id}`).then(
           (response) => {
             commit('SET_CANDIDATE', { res: response.data });
             resolve();
@@ -139,7 +145,7 @@ export default new Vuex.Store({
     },
     GET_DONATIONS({ commit }, id) {
       return new Promise((resolve, reject) => {
-        axios.get(`https://dapi.votolegal.com.br/api/candidate/${id}/donate`).then(
+        axios.get(`${api}/api/candidate/${id}/donate`).then(
           (response) => {
             commit('SET_DONATIONS', { res: response.data });
             resolve();
