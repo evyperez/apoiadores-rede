@@ -56,6 +56,7 @@
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
+      <p class="form__disclaimer">Será enviado um recibo em seu e-mail com todos os dados sobre a doação.<br> Não armazenamos seus dados de cartão de crédito.</p>
       <button class="donation-nav donation-nav--forward" type="submit" :disabled="loading">Continuar</button>
     </form>
   </section>
