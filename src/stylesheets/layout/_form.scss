@@ -478,3 +478,14 @@ form .error {
 	padding: 10px;
 	font-size: 0.9em;
 }
+
+form .input-wrapper .error {
+	margin-top: -10px;
+	border: 0;
+	padding: 0;
+	margin-bottom: 20px;
+}
+
+form .has-error input {
+	border: 1px solid palette('orange');
+}
