@@ -139,6 +139,8 @@ export default {
 			return result[0].type.replace('-', '');
 		},
     saveCard(card) {
+      const cc_hash = this.getCardHash(card.number);
+
       const cc = Iugu.CreditCard(
         card.number,
         card.validity_month,
@@ -151,10 +153,23 @@ export default {
         if (response.errors) {
           alert("Erro salvando cartão");
         } else {
-          this.$store.dispatch('START_DONATION', response.id);
+          const payload = {
+            cc_hash,
+            id: response.id,
+          }
+          this.$store.dispatch('START_DONATION', payload);
         }
       });
     },
+    getCardHash(number) {
+      const fp = new VotolegalFP({
+        excludeUserAgent: true,
+        dontUseFakeFontInCanvas: true
+      });
+
+      const hash = fp.x64hash128(number, 31);
+      return hash;
+    }
   },
 };
 </script>

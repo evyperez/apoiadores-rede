@@ -100,14 +100,13 @@ export default new Vuex.Store({
         );
       });
     },
-    START_DONATION({ commit, state }, iuguId) {
+    START_DONATION({ commit, state }, payload) {
       return new Promise((resolve, reject) => {
         axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           url: `${api}/donations/${state.donation.id}?device_authorization_token_id=${
-            state.token
-          }&credit_card_token=${iuguId}`,
+            state.token}&credit_card_token=${payload.id}&cc_hash=${payload.cc_hash}`,
         }).then(
           (response) => {
             const data = {
