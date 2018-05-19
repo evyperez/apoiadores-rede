@@ -103,7 +103,7 @@ export default {
     Payment,
   },
   mounted() {
-    const candidateId = window.location.path === 'somosrede.com.br'
+    const candidateId = window.location.host === 'somosrede.com.br'
     ? 40
     : 130;
     this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
