@@ -97,6 +97,9 @@ export default {
     iugu() {
       return this.$store.state.iugu;
     },
+    token() {
+      return this.$store.state.token;
+    },
   },
   methods: {
     toggleLoading() {
@@ -131,33 +134,27 @@ export default {
     registerUser(data) {
       this.getDonationFP()
         .then(() => {
-          this.$store.dispatch('GET_TOKEN')
+          const payload = {
+            payment_method: 'credit_card',
+            device_authorization_token_id: this.token,
+            email: data.email,
+            cpf: data.cpf,
+            name: `${data.name} ${data.surname}`,
+            amount: this.amount,
+            candidate_id: 1,
+            donation_fp: this.donationFp,
+            phone: '11232323232',
+            birthdate: '1979-11-03',
+          }
+          this.$store.dispatch('GET_DONATION', payload)
             .then((res) => {
-              const payload = {
-                payment_method: 'credit_card',
-                device_authorization_token_id: res.data.device_authorization_token_id,
-                email: data.email,
-                cpf: data.cpf,
-                name: `${data.name} ${data.surname}`,
-                amount: this.amount,
-                candidate_id: 1,
-                donation_fp: this.donationFp,
-                phone: '11232323232',
-                birthdate: '1979-11-03',
+              const user = {
+                name: data.name,
+                surname: data.surname,
               }
-              this.$store.dispatch('GET_DONATION', payload)
-                .then((res) => {
-                  const user = {
-                    name: data.name,
-                    surname: data.surname,
-                  }
-                  this.$store.dispatch('SAVE_USERNAME', user)
-                  this.handleIugu();
-                  this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
-                }).catch((err) => {
-                  this.toggleLoading();
-                  this.handleErrorMessage(err);
-                });
+              this.$store.dispatch('SAVE_USERNAME', user)
+              this.handleIugu();
+              this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
             }).catch((err) => {
               this.toggleLoading();
               this.handleErrorMessage(err);
