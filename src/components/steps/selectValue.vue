@@ -26,7 +26,7 @@
       </fieldset>
       <fieldset class="checkbox-custom">
         <div class="input-wrapper">
-          <input type="checkbox" id="maxdonation" name="maxdonation" v-model="maxdonation">
+          <input type="checkbox" id="maxdonation" name="maxdonation" v-model="maxdonation" @change="checkAmount">
           <label for="maxdonation">Declaro que minhas doações não ultrapassam 10% dos meus rendimentos brutos do ano anterior, a origem do dinheiro não é estrangeira, não sou concessionário ou permissionário de serviço público e concordo com os <a href="./termos.pdf" target="_blank">termos de doação</a>.</label>
         </div>
       </fieldset>
@@ -98,6 +98,11 @@ export default {
     cleanOther(value) {
       return value.replace(/\d{2}$/g, '00');
     },
+    checkAmount() {
+      if(this.amount !== '') {
+        this.validateForm();
+      }
+    }
   },
 };
 </script>
