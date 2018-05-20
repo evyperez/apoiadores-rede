@@ -48,6 +48,12 @@ fieldset ul {
 	&::before {
 		content: none;
 	}
+
+	@media (max-width: 320px) {
+		padding-right: $gutter * 0.1;
+		padding-left: $gutter * 0.1;
+		margin-bottom: $gutter * 0.3;
+	}
 }
 
 .of-radios-and-checks .input-wrapper--full-width {
@@ -79,6 +85,11 @@ fieldset ul {
 	font-size: inherit;
 	position: static;
 	color: inherit;
+
+	@media (max-width: 320px) {
+		font-size: 0.8em;
+		padding: 1rem 0;
+	}
 }
 
 .of-radios-and-checks label:hover {
