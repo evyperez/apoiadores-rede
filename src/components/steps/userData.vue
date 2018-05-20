@@ -100,6 +100,9 @@ export default {
     token() {
       return this.$store.state.token;
     },
+    candidate() {
+      return this.$store.state.candidate;
+    },
   },
   methods: {
     toggleLoading() {
@@ -141,7 +144,7 @@ export default {
             cpf: data.cpf,
             name: `${data.name} ${data.surname}`,
             amount: this.amount,
-            candidate_id: 1,
+            candidate_id: this.candidate.id,
             donation_fp: this.donationFp,
             phone: '11232323232',
             birthdate: '1979-11-03',
