@@ -27,11 +27,11 @@
           </progress>
 
           <p>
-            <em class="amount-percent">{{ porcentage }}%</em> da meta de <span class="donations-expected"> R$ {{ expected | formatBRLDec }}</span>
+            <em class="amount-percent">{{ porcentage }}%</em> da meta de <span class="donations-expected"> R$ {{ expected | formatBRL }}</span>
           </p>
 
           <p>
-            <a href="#home__donors">Veja quem doou</a>
+            <a href="#home__donors" class="campaign-progress__link">Veja quem doou</a>
           </p>
         </section>
       </div>
@@ -119,8 +119,7 @@ export default {
     expected() {
       if (this.candidate) {
         if (this.candidate.raising_goal) {
-          const value = this.candidate.raising_goal.replace('.', '');
-          return parseFloat(value, 10);
+          return this.candidate.raising_goal * 100;
         }
       }
 
