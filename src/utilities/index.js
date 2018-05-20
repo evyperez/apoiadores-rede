@@ -29,7 +29,9 @@ function formatBRL(amount) {
   let formated = `${amount}`;
   formated = formated.replace(/([0-9]{2})$/g, '');
 
-  if (formated.length > 6) {
+  if (formated.length === 6) {
+    formated = formated.replace(/([0-9]{3})([0-9]{3}$)/g, '$1.$2');
+  } else if (formated.length >= 7) {
     formated = formated.replace(/([0-9]{3})([0-9]{3}$)/g, '.$1.$2');
   }
 
