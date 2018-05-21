@@ -84,8 +84,8 @@
 
         <p>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</p>
         <p>
-          <span v-for="(person, i) in donations" :key="person.id">
-            {{ person.name }}{{ i < donations.length -1 ? ',' : '' }}
+          <span v-for="(person, i) in donations" :key="i">
+            {{ person }}{{ i < donations.length -1 ? ',' : '' }}
           </span>
         </p>
       </div>
@@ -119,7 +119,7 @@ export default {
     expected() {
       if (this.candidate) {
         if (this.candidate.raising_goal) {
-          return this.candidate.raising_goal * 100;
+          return this.candidate.raising_goal;
         }
       }
 
@@ -128,7 +128,7 @@ export default {
     porcentage() {
       if (this.candidate) {
         const value = (this.candidate.total_donated * 100) / this.expected;
-        return value
+        return Math.ceil(value);
       }
 
       return 0
