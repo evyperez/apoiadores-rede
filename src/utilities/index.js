@@ -27,13 +27,10 @@ function formatBRLDec(amount) {
 
 function formatBRL(amount) {
   let formated = `${amount}`;
-  formated = formated.replace(/([0-9]{2})$/g, '');
 
-  if (formated.length === 6) {
-    formated = formated.replace(/([0-9]{3})([0-9]{3}$)/g, '$1.$2');
-  } else if (formated.length >= 7) {
-    formated = formated.replace(/([0-9]{3})([0-9]{3}$)/g, '.$1.$2');
-  }
+  console.log(formated);
+
+  formated = formated.substring(0, formated.length - 2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
 
   return formated;
 }
