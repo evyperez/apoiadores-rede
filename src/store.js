@@ -48,7 +48,7 @@ export default new Vuex.Store({
       state.candidate = res.candidate;
     },
     SET_DONATIONS(state, { res }) {
-      state.donations = res.donations;
+      state.donations = res.names;
     },
   },
   actions: {
@@ -134,7 +134,7 @@ export default new Vuex.Store({
     },
     GET_CANDIDATE_INFO({ commit }, id) {
       return new Promise((resolve, reject) => {
-        axios.get(`${api}/api/candidate/${id}`).then(
+        axios.get(`${api}/public-api/candidate-summary/${id}`).then(
           (response) => {
             commit('SET_CANDIDATE', { res: response.data });
             resolve();
@@ -148,7 +148,7 @@ export default new Vuex.Store({
     },
     GET_DONATIONS({ commit }, id) {
       return new Promise((resolve, reject) => {
-        axios.get(`${api}/api/candidate/${id}/donate`).then(
+        axios.get(`${api}/public-api/candidate-donations/${id}/donators-name`).then(
           (response) => {
             commit('SET_DONATIONS', { res: response.data });
             resolve();
