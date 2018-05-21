@@ -28,8 +28,6 @@ function formatBRLDec(amount) {
 function formatBRL(amount) {
   let formated = `${amount}`;
 
-  console.log(formated);
-
   formated = formated.substring(0, formated.length - 2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
 
   return formated;
