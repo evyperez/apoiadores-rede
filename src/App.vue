@@ -24,13 +24,16 @@ export default {
   methods: {
     handleSession() {
       if(window.localStorage) {
-        const token = localStorage.getItem('vlm_token');
+        const tokenName = window.location.host === 'somosrede.com.br'
+						? 'prod_apm_token'
+						: 'dev_apm_token';
+        const token = localStorage.getItem(tokenName);
         if (token !== null) {
           this.$store.dispatch('ADD_TOKEN', token);
         } else {
           this.$store.dispatch('GET_TOKEN')
             .then((res) => {
-              localStorage.setItem('vlm_token', res.data.device_authorization_token_id);
+              localStorage.setItem(tokenName, res.data.device_authorization_token_id);
             });
         }
       }
