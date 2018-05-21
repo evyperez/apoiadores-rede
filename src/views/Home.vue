@@ -31,7 +31,7 @@
           </p>
 
           <p>
-            <a href="#home__donors" class="campaign-progress__link">Veja quem doou</a>
+            <a href="#home__donors" class="campaign-progress__link" v-scroll-to="'#home__goals'">Veja quem doou</a>
           </p>
         </section>
       </div>
@@ -82,7 +82,7 @@
           Doadores
         </h2>
 
-        <p>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</p>
+        <p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
         <p>
           <span v-for="(person, i) in donations" :key="i">
             {{ person }}{{ i < donations.length -1 ? ',' : '' }}

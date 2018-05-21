@@ -10,22 +10,22 @@
       <nav class="main-menu">
         <ul>
           <li>
-            <a href="#home__donate">
+            <a href="#home__donate" v-scroll-to="'#home__donate'">
               Doar
             </a>
           </li>
           <li>
-            <a href="#home__knowMore">
+            <a href="#home__knowMore" v-scroll-to="'#home__knowMore'">
               Saiba mais
             </a>
           </li>
           <li>
-            <a href="#home__goals">
+            <a href="#home__goals" v-scroll-to="'#home__goals'">
               Metas
             </a>
           </li>
           <li>
-            <a href="#home__donors">
+            <a href="#home__donors" v-scroll-to="'#home__donors'">
               Doadores
             </a>
           </li>
