@@ -104,7 +104,7 @@ export default {
   },
   mounted() {
     const candidateId = window.location.host === 'somosrede.com.br'
-    ? 52
+    ? 40
     : 130;
     this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
     this.$store.dispatch('GET_DONATIONS', candidateId);
