@@ -1,4 +1,4 @@
-# Apoiadores for Marina Silva
+# Apoiadores for Rede 
 
 > Powered by Vue.js
 
