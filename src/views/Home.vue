@@ -31,7 +31,7 @@
           </p>
 
           <p>
-            <a href="#home__donors" class="campaign-progress__link" v-scroll-to="'#home__goals'">Veja quem doou</a>
+            <a href="#home__donors" class="campaign-progress__link" v-scroll-to="'#home__donors'">Veja quem doou</a>
           </p>
         </section>
       </div>
