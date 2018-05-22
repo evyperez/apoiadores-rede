@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { validate, formatBRLDec } from '../../utilities';
+import { validate, formatBRLDec, formatBRL } from '../../utilities';
 
 export default {
   name: 'selectValue',
@@ -59,19 +59,26 @@ export default {
       maxdonation: false,
     };
   },
+  computed: {
+		candidate() {
+      return this.$store.state.candidate;
+    },
+	},
   methods: {
     validateForm() {
       const { amount, other, maxdonation } = this;
       const values = amount === 'other' ? { amount, other } : { amount };
+      const maxvalue = this.candidate ? this.candidate.max_donation_value : 106400;
+			const minvalue = this.candidate ? this.candidate.min_donation_value : 2000;
 
       if (maxdonation) {
         const validation = validate(values);
 
-        if (amount === 'other' && other < 2000) {
-          this.errorMessage = 'O valor mínimo da doação é de R$ 20,00';
+        if (amount === 'other' && other < minvalue) {
+          this.errorMessage = `O valor mínimo da doação é de R$ ${formatBRL(minvalue)}`;
           return;
-        } else if (amount === 'other' && other > 1000000) {
-          this.errorMessage = 'O valor máximo da doação é de R$ 10.000,00';
+        } else if (amount === 'other' && other > maxvalue) {
+          this.errorMessage = `O valor máximo da doação é de R$ ${formatBRL(maxvalue)}`;
           return;
         }
 
