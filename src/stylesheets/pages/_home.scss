@@ -5,9 +5,6 @@ $default-articles-padding: $leading * 3rem;
 	padding-bottom: $default-articles-padding;
 }
 
-.home-page article {
-}
-
 .home__intro {
 	color: palette('white');
 
@@ -56,6 +53,20 @@ $default-articles-padding: $leading * 3rem;
 	color: text-contrast($bg, palette('white'));
 
 	background-color: $bg;
+}
+
+#home__donate {
+	padding-bottom: $gutter * 5;
+}
+
+.subtitle {
+	font-size: ms(-1);
+	color: palette('white');
+	padding-right: 0.9375rem;
+}
+
+.subtitle a {
+	color: palette('white');
 }
 
 .home__donate h2 strong {
@@ -197,7 +208,6 @@ $default-articles-padding: $leading * 3rem;
 		background-image: url('../assets/images/backgrounds/img-saibamais--1280.jpg');
 	}
 }
-
 
 .home__goals {
 	$bg: palette('gray', 'light');

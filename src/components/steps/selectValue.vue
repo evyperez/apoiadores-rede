@@ -24,12 +24,8 @@
           <button type="button" href="#" @click.prevent="validateForm">OK</button>
         </div>
       </fieldset>
-      <fieldset class="checkbox-custom">
-        <div class="input-wrapper">
-          <input type="checkbox" id="maxdonation" name="maxdonation" v-model="maxdonation" @change="checkAmount">
-          <label for="maxdonation">Declaro que minhas doações não ultrapassam 10% dos meus rendimentos brutos do ano anterior, a origem do dinheiro não é estrangeira, não sou concessionário ou permissionário de serviço público e concordo com os <a href="./termos.pdf" target="_blank">termos de doação</a>.</label>
-        </div>
-      </fieldset>
+		<p class="subtitle">Ao doar, você concorda com os <a href="./termos.pdf" target="_blank">termos de uso e política de privacidade</a></p>
+
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
@@ -56,7 +52,6 @@ export default {
         50000,
         100000,
       ],
-      maxdonation: false,
     };
   },
   computed: {
@@ -66,30 +61,27 @@ export default {
 	},
   methods: {
     validateForm() {
-      const { amount, other, maxdonation } = this;
+      const { amount, other } = this;
       const values = amount === 'other' ? { amount, other } : { amount };
       const maxvalue = this.candidate ? this.candidate.max_donation_value : 106400;
 			const minvalue = this.candidate ? this.candidate.min_donation_value : 2000;
 
-      if (maxdonation) {
-        const validation = validate(values);
+	const validation = validate(values);
 
-        if (amount === 'other' && other < minvalue) {
-          this.errorMessage = `O valor mínimo da doação é de R$ ${formatBRL(minvalue)}`;
-          return;
-        } else if (amount === 'other' && other > maxvalue) {
-          this.errorMessage = `O valor máximo da doação é de R$ ${formatBRL(maxvalue)}`;
-          return;
-        }
+	if (amount === 'other' && other < minvalue) {
+		this.errorMessage = `O valor mínimo da doação é de R$ ${formatBRL(minvalue)}`;
+		return;
+	} else if (amount === 'other' && other > maxvalue) {
+		this.errorMessage = `O valor máximo da doação é de R$ ${formatBRL(maxvalue)}`;
+		return;
+	}
 
-        if (validation.valid) {
-          this.saveStep(values);
-        } else {
-          this.errorMessage = 'Todos os campos são obrigatórios';
-        }
-      } else {
-        this.errorMessage = 'É obrigatório concordar com as condições acima.';
-      }
+	if (validation.valid) {
+		this.saveStep(values);
+	} else {
+		this.errorMessage = 'Todos os campos são obrigatórios';
+	}
+
     },
     saveStep(values) {
       const data = {
