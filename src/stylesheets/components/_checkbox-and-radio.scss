@@ -67,8 +67,8 @@ fieldset ul {
 	float: none;
 	margin-right: $gutter * 0.5;
 	margin-left: $gutter * 0.5;
-	padding-top: $leading * 1rem;
-	padding-bottom: $leading * 1rem;
+	padding-top: $leading * 0.3em;
+	padding-bottom: $leading * 0.3em;
 	position: relative;
 	width: auto;
 }
@@ -76,7 +76,10 @@ fieldset ul {
 .of-radios-and-checks label {
 	display: block;
 
-	padding: $leading * 1rem 0;
+	padding-top: $leading * 0.4rem;
+	padding-bottom: $leading * 0.4rem;
+	padding-left: 0;
+	padding-right: 0;
 	white-space: nowrap;
 	text-align: center;
 	font-weight: inherit;
@@ -131,9 +134,6 @@ fieldset ul {
 	padding: 0;
 }
 
-.has-real-value .real-value {
-}
-
 .has-real-value [type='button'] {
 	border: 0;
 	background-color: palette('gray');
@@ -141,7 +141,7 @@ fieldset ul {
 	padding-right: $gutter * 0.5;
 	padding-left: $gutter * 0.5;
 	position: absolute;
-	top: $leading * 1rem;
+	top: $leading * 0.3em;
 	right: $gutter * 0.5;
 	z-index: 2;
 }

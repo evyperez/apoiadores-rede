@@ -33,6 +33,13 @@
           <p>
             <a href="#home__donors" class="campaign-progress__link" v-scroll-to="'#home__donors'">Veja quem doou</a>
           </p>
+          <p class="contact-rede">
+			contato
+          </p>
+          <p class="contact-rede-email">
+			<a href="mailto:financiamento@redesustentabilidade.org.br">financiamento&#8203@redesustentabilidade.org.br</a>
+          </p>
+
         </section>
       </div>
     </article>
