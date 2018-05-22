@@ -146,8 +146,6 @@ export default {
             amount: this.amount,
             candidate_id: this.candidate.id,
             donation_fp: this.donationFp,
-            phone: '11232323232',
-            birthdate: '1979-11-03',
           }
           this.$store.dispatch('GET_DONATION', payload)
             .then((res) => {
