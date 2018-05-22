@@ -54,3 +54,26 @@
 a.campaign-progress__link {
 	color: inherit;
 }
+
+.campaign-progress .contact-rede {
+	margin-top: $leading * 2rem;
+	font-size: 2rem;
+	line-height: 1;
+}
+
+.campaign-progress .contact-rede-email {
+	margin-bottom: 0;
+	word-spacing: normal;
+	-webkit-hyphens: manual;
+	-ms-hyphens: manual;
+	hyphens: manual;
+
+	& a {
+		color: palette('white');
+		text-decoration: none;
+	}
+
+	& a:hover {
+		text-decoration: underline;
+	}
+}
