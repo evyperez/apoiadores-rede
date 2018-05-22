@@ -29,6 +29,12 @@ nav li {
 	&::before {
 		content: none;
 	}
+
+	@media (max-width: 350px) {
+		padding-left: $gutter * 0.2;
+		padding-right: $gutter * 0.2;
+		font-size: 0.9em;
+	}
 }
 
 menu a,
