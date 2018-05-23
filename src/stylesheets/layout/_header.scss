@@ -69,40 +69,47 @@
 	}
 }
 
+
 .site-header .container {
-	min-height: 100vh;
+	min-height: 35em;
+	height: 100vh;
 	position: relative;
 }
 
 .site-header .main-menu[class] {
 	width: 100%;
 
-	margin-right: 0;
+	margin-right: auto;
 	margin-left: auto;
 
 	font-size: ms(-1);
 
-	@media screen and(min-width: breakpoint('desktop')) {
-		width: auto;
-	}
-
 	@media screen and (min-width: breakpoint('phablet')) {
 		font-size: inherit;
 	}
+
+	@media screen and(min-width: breakpoint('wide')) {
+		width: auto;
+		margin-right: 0;
+		margin-left: auto;
+	}
+
 }
 
 .site-label {
-	@include image-replacement;
-
+	text-align: right;
 	position: absolute;
-	top: 50%;
-	right: $gutter;
-	left: $gutter;
+	right: $gutter * 2;
+	left: $gutter * 2;
+	top: 45%;
+	transform: translateY(-50%);
 
-	min-height: 167px;
-
-	background-image: url('../assets/images/textReplace/img-title.png');
-	background-size: contain;
+	@media screen and (min-width: breakpoint('desktop')) {
+		top: 50%;
+		transform: translateY(-50%);
+		right: $gutter * 1;
+		left: $gutter * 1;
+	}
 
 	.site-header &[class] {
 		max-width: 100%;
@@ -114,4 +121,51 @@
 		width: 687px;
 		left: auto;
 	}
+}
+
+.logo-rede {
+	@include image-replacement;
+		background-image: url('../assets/images/textReplace/img-title.png');
+		background-position: right;
+
+		background-size: 200px auto;
+		padding: 0;
+		margin: 0;
+		display: block;
+		min-height: 30px;
+
+		@media screen and (min-width: 400px) {
+			background-size: 250px auto;
+			min-height: 35px;
+		}
+
+		@media screen and (min-width: breakpoint('phablet')) {
+			background-size: 360px auto;
+			min-height: 45px;
+		}
+
+		@media screen and (min-width: breakpoint('tablet')) {
+			background-size: 450px auto;
+			min-height: 55px;
+		}
+
+		@media screen and (min-width: breakpoint('desktop')) {
+			background-position: right;
+			background-size: 600px auto;
+			min-height: 75px;
+		}
+}
+
+a.call-to-action {
+	color: palette('green', 'menu');
+	font-size: ms(1);
+	text-decoration: none;
+	font-weight: 800;
+	font-style: italic;
+	text-transform: uppercase;
+
+	@media screen and (min-width: breakpoint('phablet')) {
+		font-size: ms(4);
+	}
+
 }
