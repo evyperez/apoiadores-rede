@@ -10,13 +10,8 @@
       <nav class="main-menu">
         <ul>
           <li>
-            <a href="#home__donate" v-scroll-to="'#home__donate'">
-              Doar
-            </a>
-          </li>
-          <li>
             <a href="#home__knowMore" v-scroll-to="'#home__knowMore'">
-              Saiba mais
+              Saiba Mais
             </a>
           </li>
           <li>
@@ -29,21 +24,21 @@
               Doadores
             </a>
           </li>
+          <li class="donate-nav">
+            <a href="#home__donate" v-scroll-to="'#home__donate'">
+              Doar
+            </a>
+          </li>
         </ul>
       </nav>
       <div class="site-label">
-        <h1>
-          <span>
-            Eu
-          </span>
-            apoio
-          <a href="/">
-            Marina
-            <span>
-              Silva
-            </span>
-          </a>
-        </h1>
+			<a class="logo-rede" href="/">
+				Somos Rede
+			</a>
+
+			<a class="call-to-action" href="#home__donate" v-scroll-to="'#home__donate'">
+				> quero doar
+			</a>
       </div>
     </div>
   </header>
