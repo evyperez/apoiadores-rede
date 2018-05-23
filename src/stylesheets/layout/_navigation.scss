@@ -5,16 +5,18 @@ nav {
 	font-weight: 800;
 
 	text-transform: uppercase;
+	margin-top: $gutter * 1;
 }
 
 menu ul,
 menu ol,
 nav ul,
 nav ol {
+	text-align: center;
 	display: table-row;
 
-	padding: 0;
 	margin: 0;
+	padding: 0;
 
 	list-style: none;
 }
@@ -23,18 +25,57 @@ menu li,
 nav li {
 	display: table-cell;
 
-	padding: $gutter * 0.5 $gutter * 0.25;
-	margin: 0;
+	margin-left: $gutter * 0.5;
+	margin-right: $gutter * 0.5;
+	margin-top: $gutter * 0.2;
+	margin-bottom: $gutter * 0.2;
 
 	&::before {
 		content: none;
 	}
 
-	@media (max-width: 350px) {
-		padding-left: $gutter * 0.2;
-		padding-right: $gutter * 0.2;
-		font-size: 0.9em;
+	@media screen and (min-width: breakpoint('desktop')) {
+		font-size: ms(1);
+		padding-left: $gutter * 1;
+		padding-right: $gutter * 1;
+		padding-top: $gutter * 0.2;
+		padding-bottom: $gutter * 0.2;
 	}
+
+}
+li.donate-nav {
+	color: palette('green', 'menu');
+}
+
+
+.donate-nav a {
+	border: 2px solid palette('green', 'menu');
+	padding-top: $gutter * 0.1;
+	padding-bottom: $gutter * 0.1;
+
+	border-radius: 10px;
+
+	@media screen and (min-width: breakpoint('tablet')) {
+		padding-left: 0;
+		padding-right: 0;
+
+	}
+
+	@media screen and (min-width: breakpoint('desktop')) {
+		font-size: ms(1);
+		padding-left: $gutter * 0.5;
+		padding-right: $gutter * 0.5;
+		padding-top: $gutter * 0.2;
+		padding-bottom: $gutter * 0.2;
+	}
+
+	&:link:focus,
+	&:focus,
+	&:active {
+		background-color: palette('green', 'menu');
+		color: palette('gray', 'x-dark');
+	}
+
 }
 
 menu a,
