@@ -32,10 +32,7 @@
         </ul>
       </nav>
       <div class="site-label">
-			<a class="logo-rede" href="/">
-				Somos Rede
-			</a>
-
+			<h1>#Somos<span class="orange-highlight">Rede</span></h1>
 			<a class="call-to-action" href="#home__donate" v-scroll-to="'#home__donate'">
 				> quero doar
 			</a>

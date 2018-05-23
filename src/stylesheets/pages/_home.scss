@@ -1,4 +1,4 @@
-$default-articles-padding: $leading * 3rem;
+$default-articles-padding: 12.5rem;
 
 .home-page article {
 	padding-top: $default-articles-padding;
@@ -53,10 +53,6 @@ $default-articles-padding: $leading * 3rem;
 	color: text-contrast($bg, palette('white'));
 
 	background-color: $bg;
-}
-
-#home__donate {
-	padding-bottom: $gutter * 5;
 }
 
 .subtitle {
