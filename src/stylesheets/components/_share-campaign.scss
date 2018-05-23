@@ -1,0 +1,46 @@
+#wrap-share {
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+
+#wrap-share li {
+	display: inline-block;
+	position: relative;
+	border-radius: 50%;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-right: 0.1em;
+	margin-left: 0.1em;
+	background-color: red;
+	width: 36px;
+	height: 36px;
+}
+
+#wrap-share a {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 36px;
+	height: 36px;
+
+}
+
+#wrap-share .twitter {
+	background: url('../assets/images/icons/ic-logo-twitter-green.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: auto 20px;
+
+	&:hover {
+		background: url('../assets/images/icons/ic-logo-twitter.png');
+	}
+}
+
+#wrap-share .facebook {
+	background: url('../assets/images/icons/ic-logo-facebook-green.png');
+	&:hover {
+		background: url('../assets/images/icons/ic-logo-facebook-green.png');
+	}
+}
