@@ -11,24 +11,37 @@
 	margin: 0;
 
 	font-style: normal;
-
-	text-transform: lowercase;
 }
 
-.campaign-progress p {
-	&:first-child {
-		font-weight: 900;
-		font-size: ms(2);
+#campaign-progress .campaign-progress__link {
+	margin-top: $leading * 1em;
+	color: palette('green', 'light');
+	text-transform: lowercase;
+
+	&:hover:link {
+		color: palette('white');
 	}
 }
 
-.campaign-progress .currency {
-	display: block;
-
-	font-size: ms(1);
+.campaign-progress-amount {
+	font-weight: 800;
+	font-size: ms(2);
 	line-height: 1;
 
+	@media screen and(min-width: breakpoint('phablet')) {
+		font-size: ms(3);
+	}
+}
+
+
+.campaign-progress .currency {
+	display: block;
+	font-weight: 800;
+	font-size: ms(2);
+	line-height: 0.5;
+
 	text-transform: none;
+
 }
 
 .campaign-progress .amount {
@@ -36,20 +49,29 @@
 
 	overflow: hidden;
 
-	font-size: ms(4);
-	line-height: 1.125;
+	font-size: ms(5);
+	line-height: 1.0;
+	font-weight: 800;
 
 	text-overflow: ellipsis;
 	white-space: nowrap;
+
+	@media screen and(min-width: breakpoint('phablet')) {
+		font-size: ms(7);
+	}
+}
+
+.campaign-progress-porcentage {
+	font-size: ms(0);
+	text-transform: uppercase;
 }
 
 .campaign-progress progress {
+	margin-top: 1em;
+	margin-bottom: 1em;
 	max-width: 30rem;
 }
 
-.campaign-progress progress + p {
-	text-transform: uppercase;
-}
 
 a.campaign-progress__link {
 	color: inherit;
@@ -64,13 +86,16 @@ a.campaign-progress__link {
 .campaign-progress .contact-rede-email {
 	margin-bottom: 0;
 	word-spacing: normal;
+	text-transform: lowercase;
 
 	& a {
 		color: palette('white');
+		text-transform: lowercase;
 		text-decoration: none;
 	}
 
 	& a:hover {
 		text-decoration: underline;
+		color: palette('green', 'light');
 	}
 }

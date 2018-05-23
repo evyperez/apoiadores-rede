@@ -15,8 +15,8 @@
               <template v-if="candidate.total_donated">{{ candidate.total_donated | formatBRL }}</template>
               <template v-else>0</template>
             </strong>
-            Doados por {{ candidate.people_donated }} pessoas
           </p>
+		  <p class="campaign-progress-amount">Doados por {{ candidate.people_donated }} pessoas</p>
 
           <progress :value="candidate.total_donated" :max="expected">
             <div class="progress-bar">
@@ -26,16 +26,18 @@
             </div>
           </progress>
 
-          <p>
-            <em class="amount-percent">{{ porcentage }}%</em> da meta de <span class="donations-expected"> R$ {{ expected | formatBRL }}</span>
+          <p class="campaign-progress-porcentage">
+            {{ porcentage }}% da meta de R$ {{ expected | formatBRL }}
           </p>
 
           <p>
             <a href="#home__donors" class="campaign-progress__link" v-scroll-to="'#home__donors'">Veja quem doou</a>
           </p>
+
           <p class="contact-rede">
 			contato
           </p>
+
           <p class="contact-rede-email">
 			<a href="mailto:financiamento@redesustentabilidade.org.br">financiamento&#8203@redesustentabilidade.org.br</a>
           </p>
