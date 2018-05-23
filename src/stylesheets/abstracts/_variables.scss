@@ -91,7 +91,6 @@ $modularscale: (
 	base: 1rem,
 	ratio: 1.25
 );
-$_green--light: rgb(4, 255, 134);
 $_green--base: rgb(17, 135, 100);
 
 $_orange--light: tint(rgb(235, 92, 56), 50%);
@@ -153,6 +152,9 @@ $palette: (
 		'foreground': rgb(51, 51, 51),
 		'background': rgb(215, 255, 90),
 	),
+	'progress': (
+		'base': rgb(0, 255, 145),
+	),
 	'placeholder': (
 		'base': hsl(0, 0%, 34%),
 		'focus': hsl(0, 0%, 56%),
@@ -166,12 +168,13 @@ $palette: (
 	'target-highlight': transparent,
 	'orange': (
 		'light': $_orange--light,
-		'base': rgb(235, 92, 56),
+
+		'base': rgb(255, 102, 51),
 		'dark': rgb(208, 78, 42),
 		'highlight': rgb(255, 102, 51),
 	),
 	'green': (
-		'light': $_green--light,
+		'light': rgb(139, 255, 205),
 		'base': $_green--base,
 		'dark': shade($_green--base, 35%),
 		'menu': rgb(0, 255, 153),
