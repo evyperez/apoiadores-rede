@@ -69,11 +69,10 @@
 	}
 }
 
-
 .site-header .container {
+	position: relative;
 	min-height: 35em;
 	height: 100vh;
-	position: relative;
 }
 
 .site-header .main-menu[class] {
@@ -97,17 +96,17 @@
 }
 
 .site-label {
-	text-align: right;
+	text-align: center;
 	position: absolute;
 	top: 45%;
 	transform: translateY(-50%);
-	right: $gutter * 0.5;
-	left: $gutter * 0.5;
+	right: $gutter * 1;
+	left: $gutter * 1;
 
-	@media screen and (min-width: breakpoint('desktop')) {
-		top: 50%;
-		right: $gutter * 1;
-		left: $gutter * 1;
+	@media screen and (min-width: breakpoint('tablet')) {
+		text-align: right;
+		right: $gutter * 1.5;
+		left: $gutter * 1.5;
 	}
 
 	.site-header &[class] {
@@ -122,32 +121,25 @@
 	}
 }
 
-.logo-rede {
-	@include image-replacement;
-		background-image: url('../assets/images/textReplace/img-title.png');
-		background-position: right;
+.site-header h1 {
+	margin: 0;
+	padding: 0;
+	line-height: $leading * 0.5em;
 
-		background-size: 290px auto;
-		padding: 0;
-		margin: 0;
-		display: block;
-		min-height: 45px;
-
-		@media screen and (min-width: 400px) {
-			background-size: 350px auto;
-			min-height: 50px;
-		}
-
-		@media screen and (min-width: breakpoint('phablet')) {
-			background-size: 430px auto;
-			min-height: 55px;
-		}
-
-		@media screen and (min-width: breakpoint('desktop')) {
-			background-position: right;
-			background-size: 600px auto;
-			min-height: 75px;
-		}
+//  @media (min-width: breakpoint('wide')) {
+// 		&::after {
+// 			background-image: url('../assets/images/icons/ic-play-video.png');
+// 			background-position: center center;
+// 			background-size: auto 50px;
+// 			float: right;
+// 			width: 90px;
+// 			height: 90px;
+// 			border-radius: 50%;
+// 			background-color: black;
+// 			opacity: 0.8;
+// 			content: '';
+// 		}
+// 	}
 }
 
 a.call-to-action {
@@ -161,5 +153,6 @@ a.call-to-action {
 	@media screen and (min-width: breakpoint('phablet')) {
 		font-size: ms(4);
 	}
+
 
 }
