@@ -1,8 +1,18 @@
+$default-articles-padding-small: 6rem;
+
 $default-articles-padding: 12.5rem;
 
+
+
 .home-page article {
-	padding-top: $default-articles-padding;
-	padding-bottom: $default-articles-padding;
+	padding-top: $default-articles-padding-small;
+	padding-bottom: $default-articles-padding-small;
+
+	@media screen and (min-width: breakpoint('tablet')) {
+		padding-top: $default-articles-padding;
+		padding-bottom: $default-articles-padding;
+	}
+
 }
 
 .home__intro {
@@ -196,7 +206,13 @@ $default-articles-padding: 12.5rem;
 
 		background-position: left bottom;
 		&[class] {
+
+		padding-bottom: $default-articles-padding-small;
+
+		@media screen and (min-width: breakpoint('tablet')) {
 			padding-bottom: $default-articles-padding;
+	}
+
 		}
 	}
 
