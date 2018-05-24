@@ -3,15 +3,14 @@
     <h2 v-for="(message, i) in messages" :key="i">{{ message.text }}</h2>
 
 
-	<!-- <ul id="wrap-share">
+	<ul id="wrap-share">
 		<li>
-			<a href="https://twitter.com/appcivico" target="_blank" class="twitter"></a>
+			<a class="twitter-hashtag-button twitter" href="https://twitter.com/intent/tweet?button_hashtag=SomosRede">Compartilhar</a>
 		</li>
 		<li>
-			<a href="https://www.facebook.com/AppCivicoCSB" target="_blank" class="facebook"></a>
+			<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsomosrede.com.br%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
 		</li>
-	</ul> -->
-
+	</ul>
   </section>
 </template>
 
