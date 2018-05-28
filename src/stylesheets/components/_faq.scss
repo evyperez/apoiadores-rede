@@ -1,13 +1,23 @@
 .home__faq {
-	$bg: palette('orange');
+	$bg: palette('gray', 'light');
 	color: text-contrast($bg, palette('white'));
 	background-color: $bg;
 
 	& h2 {
-		color: palette('white');
+		color: palette('green');
 	}
 }
 
 .faq-group li {
 	list-style: none;
+}
+
+.home__faq details {
+	margin-bottom: 2em;
+}
+
+.home__faq details>summary {
+	margin-bottom: 1em;
+	color: palette('black');
+	font-weight: 600;
 }

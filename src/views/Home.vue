@@ -110,29 +110,24 @@
 	</div>
 	</article>
 
-	<!-- <article id="home__faq" class="home__faq">
+	<article id="home__faq" class="home__faq">
 	<div class="container" id="donation-wrap">
 		<h2>
 		Doadores
 		</h2>
 
-		<ul class="faq-group">
-			<li>
-				<a class="faq-question" href="#0">Como faço doação?</a>
-				<div class="faq-content">
-					<p>Para fazer a doação...</p>
-				</div>
-			</li>
+		<details>
+			<summary><span class="caret"></span>Como faço doação?</summary>
+			<p>Para fazer a doação...</p>
+		</details>
 
-			<li>
-				<a class="faq-question" href="#0">Meus dados estão protegidos?</a>
-				<div class="faq-content">
-					<p>Exemplo de resposta</p>
-				</div>
-			</li>
-		</ul>
+		<details>
+			<summary><span class="caret"></span>Como faço doação?</summary>
+			<p>Para fazer a doação...</p>
+		</details>
+
 	</div>
-	</article> -->
+	</article>
 </main>
 </template>
 
