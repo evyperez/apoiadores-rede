@@ -110,29 +110,49 @@
 	</div>
 	</article>
 
-	<!-- <article id="home__faq" class="home__faq">
-	<div class="container" id="donation-wrap">
-		<h2>
-		Doadores
-		</h2>
-
-		<ul class="faq-group">
-			<li>
-				<a class="faq-question" href="#0">Como faço doação?</a>
-				<div class="faq-content">
-					<p>Para fazer a doação...</p>
-				</div>
-			</li>
-
-			<li>
-				<a class="faq-question" href="#0">Meus dados estão protegidos?</a>
-				<div class="faq-content">
-					<p>Exemplo de resposta</p>
-				</div>
-			</li>
-		</ul>
-	</div>
-	</article> -->
+	<article id="home__faq" class="home__faq">
+		<div class="container" id="donation-wrap">
+			<h2>
+			Perguntas Frequentes
+			</h2>
+			<details>
+				<summary><span class="caret"></span>Como posso fazer a minha doação?</summary>
+				<p>
+					Aqui no site, você pode doar por meio do cartão de crédito, apenas pelo titular do cartão, e boleto bancário. Fora daqui, você ainda pode fazer uma transferência bancária ou depósito identificado em dinheiro ou cheque direto na conta. Se quiser as informações da conta, por favor, envie um e-mail
+				</p>
+			</details>
+			<details>
+				<summary><span class="caret"></span>Os dados do meu cartão são armazenados no site?</summary>
+				<p>
+					Não, todo o processo é realizado por meio de canais seguros e direto com a processadora de pagamento. Não armazenamos os dados do cartão do doador.
+				</p>
+			</details>
+			<details>
+				<summary><span class="caret"></span>Eu recebo alguma comprovação da doação?</summary>
+				<p>
+					Assim que o pagamento for aprovado, enviaremos um recibo provisório com os dados da sua doação. Depois, mandaremos por e-mail o recibo de doação eleitoral. Não é necessária a assinatura do doador no recibo como acontece na doação fora da internet.
+				</p>
+			</details>
+			<details>
+				<summary><span class="caret"></span>Qual o limite de doação?</summary>
+				<p>
+					As doações acima de R$ 1.064,10 só podem ser realizadas por meio de transferência bancária direta para a conta do candidato.
+				</p>
+			</details>
+			<details>
+				<summary><span class="caret"></span>É preciso declarar a doação no próximo Imposto de Renda?</summary>
+				<p>
+					Sim. Todo mundo que é obrigado a declarar imposto de renda, precisa declarar a doação. Existe uma seção específica chamada: Doações para Partidos Políticos, Comitês Financeiros e Candidatos a Cargos Eletivos. Basta informar o nome da Rede Sustentabilidade, o valor da doação e o CNPJ do partido. Todas essas informações estão no Recibo Eleitoral que será enviado ao seu e-mail após a confirmação da doação.
+				</p>
+			</details>
+			<details>
+				<summary><span class="caret"></span>Quem não pode doar?</summary>
+				<p>
+					Não podem doar para o partido pessoas físicas que exerçam função ou cargo público de livre nomeação e exoneração, cargos de chefia ou direção na administração pública direta ou indireta, ou cargo ou emprego público temporário, ressalvados os filiados.
+				</p>
+			</details>
+		</div>
+	</article>
 </main>
 </template>
 
