@@ -111,22 +111,20 @@
 	</article>
 
 	<article id="home__faq" class="home__faq">
-	<div class="container" id="donation-wrap">
-		<h2>
-		Doadores
-		</h2>
+		<div class="container" id="donation-wrap">
+			<h2>
+			Perguntas Frequentes
+			</h2>
+			<details>
+				<summary><span class="caret"></span>Como faço doação?</summary>
+				<p>Para fazer a doação...</p>
+			</details>
 
-		<details>
-			<summary><span class="caret"></span>Como faço doação?</summary>
-			<p>Para fazer a doação...</p>
-		</details>
-
-		<details>
-			<summary><span class="caret"></span>Como faço doação?</summary>
-			<p>Para fazer a doação...</p>
-		</details>
-
-	</div>
+			<details>
+				<summary><span class="caret"></span>Como faço doação?</summary>
+				<p>Para fazer a doação...</p>
+			</details>
+		</div>
 	</article>
 </main>
 </template>
