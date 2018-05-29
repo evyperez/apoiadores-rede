@@ -1,7 +1,6 @@
 <template>
   <section>
-    <h2 v-for="(message, i) in messages" :key="i">{{ message.text }}</h2>
-
+	<div v-for="(message, i) in messages" :key="i" v-html="message.text"></div>
 	<ul id="wrap-share">
 		<li>
 			<a class="twitter-hashtag-button twitter" href="https://twitter.com/intent/tweet?button_hashtag=SomosRede%20https://somosrede.com.br/">Compartilhar</a>
