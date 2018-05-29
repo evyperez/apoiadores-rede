@@ -75,24 +75,6 @@ $default-articles-padding: 12.5rem;
 	color: palette('white');
 }
 
-.home__donate h2 strong {
-	background-color: palette('orange');
-	border-radius: $rounded-corner;
-	padding: $gutter * 0.5;
-
-
-	@media (max-width: 490px) {
-		display: inline-block;
-		padding: $gutter * 0.4;
-		font-size: ms(4);
-		white-space: nowrap;
-	}
-
-	@media (max-width: 320px) {
-		padding: $gutter * 0.2;
-	}
-}
-
 .home__donate .donation-form[class] {
 	margin-right: auto;
 	margin-left: auto;
