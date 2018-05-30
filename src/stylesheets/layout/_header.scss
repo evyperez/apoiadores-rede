@@ -69,18 +69,18 @@
 }
 
 .header-container {
-	position: relative;
-
 	min-height: 25em;
 	height: 90vh;
 	max-width: $max-width;
-	padding-right: $gutter;
-	padding-left: $gutter;
+	margin-right: $gutter;
+	margin-left: $gutter;
 	margin-right: auto;
 	margin-left: auto;
 }
 
 .site-label {
+
+	max-width: $max-width;
 	margin: auto;
 	position: absolute;
 	text-align: center;
@@ -89,11 +89,11 @@
 	transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
 	width: 100%;
-	padding-right: $gutter;
-	padding-left: $gutter;
 
 	@media screen and(min-width: breakpoint('desktop')) {
 		text-align: right;
+		padding-right: $gutter;
+		padding-left: $gutter;
 	}
 }
 
