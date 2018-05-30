@@ -1,49 +1,91 @@
 <template>
-  <header class="site-header">
-    <nav class="skip-links">
-      <ul>
-        <li class="to-content"><a href="#conteudo">conteúdo</a></li>
-        <li class="to-menu"><a href="#menu">menu</a></li>
-      </ul>
-    </nav>
-    <div class="container">
-      <nav class="main-menu">
-        <ul>
-          <li>
-            <a href="#home__knowMore" v-scroll-to="'#home__knowMore'">
-              Saiba Mais
-            </a>
-          </li>
-          <li>
-            <a href="#home__goals" v-scroll-to="'#home__goals'">
-              Metas
-            </a>
-          </li>
-          <li>
-            <a href="#home__donors" v-scroll-to="'#home__donors'">
-              Doadores
-            </a>
-          </li>
-          <li class="donate-nav">
-            <a href="#home__donate" v-scroll-to="'#home__donate'">
-              Doar
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div class="site-label">
-			<h1>#Somos<span class="orange-highlight">Rede</span></h1>
-			<a class="call-to-action" href="#home__donate" v-scroll-to="'#home__donate'">
-				> quero doar
-			</a>
-      </div>
-    </div>
-  </header>
+	<header class="site-header">
+		<nav class="skip-links">
+			<ul>
+				<li class="to-content"><a href="#conteudo">conteúdo</a></li>
+				<li class="to-menu"><a href="#menu">menu</a></li>
+			</ul>
+		</nav>
+		<nav class="main-menu">
+			<div class="menu-container">
+				<button class="mobile-button">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<div class="brand-wrap">
+					<a href="/" class="logo-rede">Rede Sustentabilidade 18</a>
+				</div>
+				<ul class="menu-wrap">
+					<li class="menu-item">
+						<a href="#home__knowMore" v-scroll-to="'#home__knowMore'">
+							Saiba Mais
+						</a>
+					</li>
+					<li class="menu-item">
+						<a href="#home__goals" v-scroll-to="'#home__goals'">
+							Metas
+						</a>
+					</li>
+					<li class="menu-item">
+						<a href="#home__donors" v-scroll-to="'#home__donors'">
+							Doadores
+						</a>
+					</li>
+					<li class="menu-item donate-nav">
+						<a href="#home__donate" v-scroll-to="'#home__donate'">
+							Doar
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="header-container">
+			<div class="site-label">
+				<h1>#Somos<span class="orange-highlight">Rede</span></h1>
+				<a class="call-to-action" href="#home__donate" v-scroll-to="'#home__donate'">
+					> quero doar
+				</a>
+			</div>
+		</div>
+
+</header>
 </template>
 
 <script>
 export default {
-  name: 'Header',
+	name: 'Header',
+
+	methods: {
+		scrollMenu() {
+			const element = document.querySelector('.main-menu');
+
+			window.addEventListener('scroll', (e) => {
+				const newOffset = window.scrollY;
+				const currentRouteName = this.$route.name;
+					if (newOffset > 13 && window.matchMedia("").matches) {
+						element.classList.add('animate');
+
+					} else {
+						element.classList.remove('animate');
+					}
+			});
+		},
+		showMenu() {
+			const element = document.querySelector('.mobile-button');
+			const menu = document.querySelector('.menu-wrap');
+			element.addEventListener('click', function() {
+				menu.classList.toggle('show');
+			})
+		}
+	},
+	created() {
+		this.$nextTick(function() {
+			this.scrollMenu();
+			this.showMenu();
+		});
+	}
 }
 </script>
 

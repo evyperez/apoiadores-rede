@@ -12,8 +12,8 @@ menu ul,
 menu ol,
 nav ul,
 nav ol {
+
 	text-align: center;
-	display: table-row;
 
 	margin: 0;
 	padding: 0;
@@ -23,57 +23,8 @@ nav ol {
 
 menu li,
 nav li {
-	display: table-cell;
-
-	margin-left: $gutter * 0.5;
-	margin-right: $gutter * 0.5;
-	margin-top: $gutter * 0.2;
-	margin-bottom: $gutter * 0.2;
-
 	&::before {
 		content: none;
-	}
-
-	@media screen and (min-width: breakpoint('desktop')) {
-		font-size: ms(1);
-		padding-left: $gutter * 1;
-		padding-right: $gutter * 1;
-		padding-top: $gutter * 0.2;
-		padding-bottom: $gutter * 0.2;
-	}
-
-}
-li.donate-nav {
-	color: palette('green', 'menu');
-}
-
-
-.donate-nav a {
-	border: 2px solid palette('green', 'menu');
-	padding-top: $gutter * 0.1;
-	padding-bottom: $gutter * 0.1;
-
-	border-radius: 10px;
-
-	@media screen and (min-width: breakpoint('tablet')) {
-		padding-left: 0;
-		padding-right: 0;
-
-	}
-
-	@media screen and (min-width: breakpoint('desktop')) {
-		font-size: ms(1);
-		padding-left: $gutter * 0.5;
-		padding-right: $gutter * 0.5;
-		padding-top: $gutter * 0.2;
-		padding-bottom: $gutter * 0.2;
-	}
-
-	&:link:focus,
-	&:focus,
-	&:active {
-		background-color: palette('green', 'menu');
-		color: palette('gray', 'x-dark');
 	}
 
 }
