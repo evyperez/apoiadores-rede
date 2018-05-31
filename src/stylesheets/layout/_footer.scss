@@ -1,14 +1,48 @@
 .site-footer {
-	padding-top: $leading * 2rem;
-	padding-bottom: $leading * 2rem;
-
 	color: palette('white');
 
 	background-color: palette('gray', 'dark');
 }
 
-.site-footer {
-	@include link-undercover;
+.footer-container {
+	max-width: $max-width;
+	padding-top: 6rem;
+	padding-bottom: 6rem;
+	padding-right: $gutter;
+	padding-left: $gutter;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.wrap-logo {
+	margin-bottom: $leading * 1em;
+}
+
+
+.wrap-logo a {
+	margin: 0;
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	padding: 0;
+}
+
+.votolegal-logo {
+	background: url('../assets/images/icons/votolegal-white.png');
+	background-repeat: no-repeat;
+	width: 171px;
+	height: 49px;
+}
+
+.site-footer__copyright {
+	font-size: 0.98em;
+	color: rgb(255, 255, 255);
+	text-align: center;
+
+	& a {
+
+		color: rgb(255, 255, 255);
+	}
 }
 
 .site-footer .rede-sustentabilidade[class] {
@@ -28,77 +62,9 @@
 
 	display: block;
 
-	height: $leading * 2rem;
 	min-width: 213px;
 	min-height: 39px;
 
 	background-image: url('../assets/images/icons/logo-rede-bottom.png');
 	background-position: 50% 50%;
-}
-
-.site-footer__copyright {
-	margin-right: auto;
-	margin-left: auto;
-
-	line-height: $leading * 2rem;
-
-	vertical-align: middle;
-
-	color: palette('orange');
-
-	@media screen and (min-width: breakpoint('desktop')) {
-		clear: both;
-
-		text-align: right;
-	}
-}
-
-.site-footer__copyright > * {
-	display: inline;
-}
-
-.site-footer__copyright div {
-}
-
-.site-footer__copyright ul {
-}
-
-.site-footer__copyright li {
-	display: inline-block;
-
-	padding-right: $gutter * 0.5;
-	padding-left: $gutter * 0.5;
-}
-
-.site-footer__copyright ul a {
-	@include image-replacement;
-
-	display: block;
-
-	height: $leading * 2rem;
-
-	background-position: 50% 50%;
-}
-
-.site-footer__copyright ul .apoiadores a {
-	min-width: 148px;
-
-	background-image: url('../assets/images/icons/logo-apoiadores.png');
-}
-
-.site-footer__copyright ul .appcivico a {
-	min-width: 138px;
-
-	background-image: url('../assets/images/icons/logo-appcivico.png');
-	background-position: 50% 35%;
-}
-
-.site-footer__copyright p {
-	display: block;
-	font-size: 0.8em;
-	color: palette('white');
-}
-
-.site-footer__copyright p a {
-	color: inherit;
 }
