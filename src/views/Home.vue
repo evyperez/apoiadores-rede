@@ -104,7 +104,7 @@
 		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
 		<p>
 		<span v-for="(person, i) in donations" :key="i">
-			{{ person }}{{ i < donations.length -1 ? ',' : '' }}
+			{{ person | titleCase }}{{ i < donations.length -1 ? ',' : '' }}
 		</span>
 		</p>
 	</div>
