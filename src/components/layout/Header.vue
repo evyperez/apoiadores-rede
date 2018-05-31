@@ -1,5 +1,5 @@
 <template>
-	<header class="site-header">
+	<header class="site-header" id="home__header">
 		<nav class="skip-links">
 			<ul>
 				<li class="to-content"><a href="#conteudo">conteúdo</a></li>
@@ -14,7 +14,7 @@
 					<span></span>
 				</button>
 				<div class="brand-wrap">
-					<a href="/" class="logo-rede">Rede Sustentabilidade 18</a>
+					<a href="#home__header" v-scroll-to="'#home__header'" class="logo-rede">Rede Sustentabilidade 18</a>
 				</div>
 				<ul class="menu-wrap">
 					<li class="menu-item">
