@@ -19,10 +19,10 @@ Vue.filter('upperCase', value => value.toUpperCase());
 Vue.filter('lowerCase', value => value.toLowerCase());
 
 Vue.filter('titleCase', str =>
-	str
-		.split(/\s+/)
-		.map(item => item.charAt(0).toUpperCase() + item.substring(1))
-		.join(' '));
+  str
+    .split(/\s+/)
+    .map(item => item.charAt(0).toUpperCase() + item.substring(1).toLowerCase())
+    .join(' '));
 
 
 new Vue({
