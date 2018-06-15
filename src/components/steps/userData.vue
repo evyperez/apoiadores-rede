@@ -2,6 +2,16 @@
   <section>
     <form @submit.prevent="validateForm" :aria-busy="loading ? 'true' : 'false'">
       <fieldset>
+        <ul class="payment-choices">
+          <li class="payment-type">
+            <input name="payment_method" id="credit_card" value="credit_card" type="radio" v-model="payment_method">
+            <label for="credit_card">Cartão de Crédito</label>
+          </li>
+          <li class="payment-type">
+            <input name="payment_method" id="boleto" value="boleto" type="radio" v-model="payment_method">
+            <label for="boleto">Boleto</label>
+          </li>
+        </ul>
         <div
           :class="`input-wrapper half
           ${validation.errors.name ? 'has-error' : ''}`"
@@ -88,6 +98,7 @@ export default {
       validation: {
         errors: {},
       },
+      payment_method: 'credit_card',
     };
   },
   computed: {
@@ -138,7 +149,7 @@ export default {
       this.getDonationFP()
         .then(() => {
           const payload = {
-            payment_method: 'credit_card',
+            payment_method: this.payment_method,
             device_authorization_token_id: this.token,
             email: data.email,
             cpf: data.cpf,
@@ -155,8 +166,18 @@ export default {
               }
               this.$store.dispatch('SAVE_USERNAME', user)
               this.handleIugu();
-              this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
+              if (this.payment_method === 'credit_card') {
+                this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
+              } else {
+                this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'boleto' });
+              }
             }).catch((err) => {
+              if (err.data[0].msg_id == 'need_billing_adddress') {
+                this.$store.dispatch('CHANGE_PAYMENT_STEP', {
+                  step: 'boleto'
+                });
+                return;
+              }
               this.toggleLoading();
               this.handleErrorMessage(err);
             });
