@@ -21,6 +21,8 @@ export default new Vuex.Store({
     username: {},
     candidate: {},
     donations: [],
+    address: {},
+    paymentData: {},
   },
   mutations: {
     SET_PAYMENT_STEP(state, { data }) {
@@ -49,6 +51,13 @@ export default new Vuex.Store({
     },
     SET_DONATIONS(state, { res }) {
       state.donations = res.names;
+    },
+    SET_ADDRESS: (state, payload) => {
+      state.address = payload;
+    },
+    SET_PAYMENT_DATA(state, { paymentData }) {
+      console.log('payment', paymentData);
+      state.paymentData = paymentData;
     },
   },
   actions: {
@@ -86,6 +95,7 @@ export default new Vuex.Store({
       });
     },
     GET_DONATION({ commit }, data) {
+      commit('SET_PAYMENT_DATA', { paymentData: data });
       return new Promise((resolve, reject) => {
         axios({
           method: 'POST',
@@ -97,6 +107,7 @@ export default new Vuex.Store({
             const { donation, ui } = response.data;
             commit('SET_DONATION', { donation });
             commit('SET_IUGU', { iugu: ui.messages[1] });
+            commit('SET_MESSAGES', { messages: response.data.ui.messages });
             resolve();
           },
           (err) => {
@@ -158,6 +169,19 @@ export default new Vuex.Store({
             console.error(err);
           },
         );
+      });
+    },
+    GET_ADDRESS: ({ commit }, cep) => {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(`${api}/api/cep?cep=${cep}`)
+          .then((response) => {
+            resolve(response.data);
+            commit('SET_ADDRESS', response.data);
+          })
+          .catch((erro) => {
+            reject(erro);
+          });
       });
     },
   },
