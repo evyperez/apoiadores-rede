@@ -184,5 +184,48 @@ export default new Vuex.Store({
           });
       });
     },
+    START_DONATION_BOLETO({ commit }, payload) {
+      let token = '';
+      if (window.localStorage) {
+        const tokenName = window.location.host === 'somosrede.com.br'
+          ? 'prod_apm_token'
+          : 'dev_apm_token';
+        token = localStorage.getItem(tokenName);
+      }
+
+      return new Promise((resolve, reject) => {
+        axios({
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          url: `${api}/api2/donations/${payload.donationId}?device_authorization_token_id=${token}`,
+        }).then((response) => {
+          const data = {
+            step: 'printBoleto',
+          };
+          const { donation, ui } = response.data;
+          commit('SET_DONATION', { donation });
+          commit('SET_MESSAGES', {
+            messages: ui,
+          });
+          commit('SET_PAYMENT_STEP', {
+            data,
+          });
+          resolve(response);
+        }, (error) => {
+          commit('SET_MESSAGES', {
+            messages: {
+              messages: [{
+                text: error.response.data[0].message,
+              }],
+            },
+          });
+
+          console.error(error.response);
+          reject(error.response);
+        });
+      });
+    },
   },
 });
