@@ -15,7 +15,6 @@
       return {
         loading: false,
         errorMessage: '',
-
         validation: {
           errors: {},
         },
