@@ -58,7 +58,21 @@ export default {
     },
   },
   mounted(){
-		this.getCertiFaceQueryString();
+		if(this.$route.query.donation_id){
+      this.toggleLoading();
+
+      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'printBoleto' });
+      const payload = {
+        donationId: this.$route.query.donation_id
+      }
+      this.$store.dispatch('START_DONATION_BOLETO', payload)
+        .then((response)=>{
+          this.toggleLoading();
+        },error => {
+          this.toggleLoading();
+          console.error(error);
+        });
+    }
 	},
   methods: {
     toggleLoading() {
@@ -68,23 +82,6 @@ export default {
       const step = this.paymentStep === 'userData' ? 'selectValue' : 'userData';
       this.$store.dispatch('CHANGE_PAYMENT_STEP', { step });
       },
-    },
-    getCertiFaceQueryString(){
-      if(this.$route.query.donation_id){
-        this.toggleLoading();
-
-        this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'printBoleto' });
-        const payload = {
-          donationId: this.$route.query.donation_id
-        }
-        this.$store.dispatch('START_DONATION_BOLETO', payload)
-          .then((response)=>{
-            this.toggleLoading();
-          },error => {
-            this.toggleLoading();
-            console.error(error);
-          });
-      }
     },
   };
 </script>

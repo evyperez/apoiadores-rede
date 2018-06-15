@@ -36,12 +36,12 @@
         this.errorMessage = err.data[0].message;
       },
       redirectUser(ui) {
-        if( ui.value === 'pay_with_cc' ){
+        if(ui.value === 'pay_with_cc'){
           this.$router.replace(this.$route.path);
             this.$store.dispatch('CHANGE_PAYMENT_STEP', {
               step: 'userData'
           });
-        }else{
+        } else {
           sessionStorage.clear();
           window.open(ui.href)
         }
