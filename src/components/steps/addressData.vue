@@ -157,7 +157,6 @@
           phone: this.phone.replace(/[^\d]+/g, ""),
           birthdate,
           billing_address_complement: this.complement,
-
           payment_method: this.paymentData.payment_method,
           device_authorization_token_id: this.paymentData.device_authorization_token_id,
           email: this.paymentData.email,
