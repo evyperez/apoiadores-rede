@@ -34,31 +34,59 @@ import certFaceVerify from '@/components/steps/certFaceVerify.vue';
 import printBoleto from '@/components/steps/printBoleto.vue';
 
 export default {
-name: 'Payment',
-components: {
-  selectValue,
-  userData,
-  cardData,
-  finalMessage,
-  addressData,
-  certFaceVerify,
-  printBoleto,
-},
-computed: {
-  paymentStep() {
-  return this.$store.state.paymentStep;
+  name: 'Payment',
+  components: {
+    selectValue,
+    userData,
+    cardData,
+    finalMessage,
+    addressData,
+    certFaceVerify,
+    printBoleto,
   },
-  amount() {
-  return this.$store.state.amount;
+  data(){
+		return{
+			loading: false,
+		}
+	},
+  computed: {
+    paymentStep() {
+      return this.$store.state.paymentStep;
+    },
+    amount() {
+      return this.$store.state.amount;
+    },
   },
-},
-methods: {
-  goBack() {
-  const step = this.paymentStep === 'userData' ? 'selectValue' : 'userData';
-  this.$store.dispatch('CHANGE_PAYMENT_STEP', { step });
-  },
-},
-};
+  mounted(){
+		this.getCertiFaceQueryString();
+	},
+  methods: {
+    toggleLoading() {
+      this.loading = !this.loading;
+    },
+    goBack() {
+      const step = this.paymentStep === 'userData' ? 'selectValue' : 'userData';
+      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step });
+      },
+    },
+    getCertiFaceQueryString(){
+      if(this.$route.query.donation_id){
+        this.toggleLoading();
+
+        this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'printBoleto' });
+        const payload = {
+          donationId: this.$route.query.donation_id
+        }
+        this.$store.dispatch('START_DONATION_BOLETO', payload)
+          .then((response)=>{
+            this.toggleLoading();
+          },error => {
+            this.toggleLoading();
+            console.error(error);
+          });
+      }
+    },
+  };
 </script>
 
 <style>
