@@ -1,7 +1,7 @@
 <template>
     <section class="certiface-verify" v-if="messages.length > 0">
       <div v-html="messages[0].text"></div>
-      <a :href="messages[1].href" target="_blank" class="donation-nav donation-nav--forward">{{ messages[1].text }}</a>
+      <a :href="messages[1].href" class="donation-nav donation-nav--forward">{{ messages[1].text }}</a>
     </section>
 </template>
 
