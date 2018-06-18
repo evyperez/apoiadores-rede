@@ -71,7 +71,15 @@ export default {
       this.$store.dispatch('START_DONATION_BOLETO', payload)
         .then((response)=>{
           this.toggleLoading();
+          setTimeout(() => {
+            const form = document.getElementById('donation-form');
+            form.scrollIntoView();
+          }, 1000);
         },error => {
+          setTimeout(() => {
+            const form = document.getElementById('donation-form');
+            form.scrollIntoView();
+          }, 1000);
           this.toggleLoading();
           console.error(error);
         });
