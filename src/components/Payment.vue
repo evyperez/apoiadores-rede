@@ -1,26 +1,27 @@
 <template>
-<div class="donation-form">
-  <template v-if="paymentStep === 'selectValue'">
-  <h2>Escolha um valor para doar</h2>
-  <selectValue />
-  </template>
-  <template v-else-if="paymentStep === 'finalMessage'">
-  <finalMessage />
-  </template>
-  <template v-else>
-  <div class="donation-form-title">
-    <h2>Você escolheu doar:</h2>
-    <h2 v-if="amount">R$ {{ amount | formatBRL }}</h2>
+  <div class="donation-form" id="donation-form">
+    <template v-if="paymentStep === 'selectValue'">
+      <h2>Escolha um valor para doar</h2>
+      <selectValue />
+    </template>
+    <template v-else-if="paymentStep === 'finalMessage'">
+      <finalMessage />
+    </template>
+    <template v-else>
+      <div class="donation-form-title" v-if="paymentStep !== 'printBoleto'">
+          <h2>Você escolheu doar:</h2>
+          <h2 v-if="amount">R$ {{ amount | formatBRL }}</h2>
+      </div>
+      <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack()">voltar</a>
+      <headSteps />
+      <userData v-if="paymentStep === 'userData'"/>
+      <cardData v-if="paymentStep === 'cardData'"/>
+      <addressData v-if="paymentStep === 'boleto'"/>
+      <certFaceVerify v-if="paymentStep === 'certFaceVerify'"/>
+      <section :aria-busy="loading " v-if="loading"> verificando</section>
+      <printBoleto v-if="paymentStep === 'printBoleto'" class="loading" />
+    </template>
   </div>
-  <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack()">voltar</a>
-
-  <userData v-if="paymentStep === 'userData'"/>
-  <addressData v-if="paymentStep === 'boleto'"/>
-  <certFaceVerify v-if="paymentStep === 'certFaceVerify'"/>
-  <printBoleto v-if="paymentStep === 'printBoleto'" :aria-busy="loading ? 'true' : 'false'"/>
-  <cardData v-if="paymentStep === 'cardData'"/>
-  </template>
-</div>
 </template>
 
 <script>
@@ -32,6 +33,7 @@ import finalMessage from '@/components/steps/finalMessage.vue';
 import addressData from '@/components/steps/addressData.vue';
 import certFaceVerify from '@/components/steps/certFaceVerify.vue';
 import printBoleto from '@/components/steps/printBoleto.vue';
+import headSteps from '@/components/steps/headSteps.vue';
 
 export default {
   name: 'Payment',
@@ -43,6 +45,7 @@ export default {
     addressData,
     certFaceVerify,
     printBoleto,
+    headSteps,
   },
   data(){
 		return{
