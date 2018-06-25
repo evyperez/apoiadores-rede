@@ -3,6 +3,10 @@
 	background-color: palette('green','dark');
 	margin: 0;
 	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: auto;
 	padding-top: 1em;
 	padding-bottom: 0.5rem;
 	z-index: 2;
@@ -26,10 +30,6 @@
 }
 
 .main-menu.animate {
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
 	padding-top: 0;
 	height: $menu-height-animate;
 	background-color: palette('green','dark');
