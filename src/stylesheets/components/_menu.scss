@@ -3,13 +3,16 @@
 	background-color: palette('green','dark');
 	margin: 0;
 	width: 100%;
-	padding-top: 0.5rem;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: auto;
+	padding-top: 1em;
 	padding-bottom: 0.5rem;
 	z-index: 2;
 	height: $menu-height;
 	transition-property: background-color, height;
 	transition-duration: 0.3s, 1s;
-	padding-top: 1em;
 
 	@media (min-width: breakpoint('tablet')) {
 		background-color: transparent;
@@ -27,13 +30,7 @@
 }
 
 .main-menu.animate {
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
 	padding-top: 0;
-	position: fixed;
-	width: 100%;
 	height: $menu-height-animate;
 	background-color: palette('green','dark');
 }
