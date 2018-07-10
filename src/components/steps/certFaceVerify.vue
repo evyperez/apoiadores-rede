@@ -28,13 +28,19 @@
       },
     },
     methods: {
+      scrollToDonate() {
+        const form = document.getElementById('doar');
+        form.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      },
       toggleLoading() {
         this.loading = !this.loading;
       },
-
       handleErrorMessage(err) {
         this.errorMessage = err.data[0].message;
       },
+    },
+    mounted() {
+      this.scrollToDonate();
     },
   };
 </script>

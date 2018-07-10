@@ -26,9 +26,16 @@ export default {
     form.scrollIntoView({ block: 'start', behavior: 'smooth' });
   },
   methods: {
+    scrollToDonate() {
+      const form = document.getElementById('doar');
+      form.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    },
     goBack() {
       this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
     },
+  },
+  mounted() {
+    this.scrollToDonate();
   },
 }
 </script>

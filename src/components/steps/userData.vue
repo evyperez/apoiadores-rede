@@ -117,6 +117,10 @@ export default {
     },
   },
   methods: {
+    scrollToDonate() {
+      const form = document.getElementById('doar');
+      form.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    },
     toggleLoading() {
       this.loading = !this.loading;
     },
@@ -276,6 +280,9 @@ export default {
       Iugu.setAccountID(this.iugu.account_id);
       Iugu.setTestMode(this.iugu.is_testing === 1 ? true : false);
     }
+  },
+  mounted() {
+    this.scrollToDonate();
   },
 };
 </script>

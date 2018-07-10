@@ -93,6 +93,10 @@ export default {
     },
   },
   methods: {
+    scrollToDonate() {
+      const form = document.getElementById('doar');
+      form.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    },
     toggleLoading() {
       this.loading = !this.loading;
     },
@@ -179,6 +183,9 @@ export default {
       const hash = fp.x64hash128(number, 31);
       return hash;
     }
+  },
+  mounted() {
+    this.scrollToDonate();
   },
 };
 </script>

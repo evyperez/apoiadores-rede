@@ -74,132 +74,139 @@
 </template>
 
 <script>
-  import {
-    mask
-  } from 'vue-the-mask';
-  import {
-    validate,
-    removeAccented
-  } from '../../utilities';
+import {
+  mask
+} from 'vue-the-mask';
+import {
+  validate,
+  removeAccented
+} from '../../utilities';
 
-  export default {
-    name: 'addressData',
-    directives: {
-      mask,
-    },
-    data() {
-      return {
-        loading: false,
-        errorMessage: '',
+export default {
+  name: 'addressData',
+  directives: {
+    mask,
+  },
+  data() {
+    return {
+      loading: false,
+      errorMessage: '',
 
-        zip_code: '',
-        state: '',
-        city: '',
-        street: '',
-        district: '',
-        number: '',
-        complement: '',
-        phone: '',
-        birthdate: '',
+      zip_code: '',
+      state: '',
+      city: '',
+      street: '',
+      district: '',
+      number: '',
+      complement: '',
+      phone: '',
+      birthdate: '',
 
-        validation: {
-          errors: {},
-        },
-      };
-    },
-    computed: {
-      paymentData() {
-        return this.$store.state.paymentData;
-      }
-    },
-    methods: {
-      toggleLoading() {
-        this.loading = !this.loading;
+      validation: {
+        errors: {},
       },
-      validateForm() {
-        this.toggleLoading();
-        let birthdate = this.birthdate.split('/');
-         birthdate.reverse();
-         birthdate = birthdate.join('-');
-
-        const address = {
-          zip_code: this.zip_code,
-          state: this.state,
-          city: this.city,
-          street: this.street,
-          district: this.district,
-          number: this.number,
-          phone: this.phone.replace(/[^\d]+/g, ''),
-          birthdate,
-        };
-
-        const validation = validate(address);
-
-        if (validation.valid) {
-          this.saveAddress();
-        } else {
-          this.validation = validation;
-          this.toggleLoading();
-        }
-      },
-      saveAddress(){
-        let birthdate = this.birthdate.split('/');
+    };
+  },
+  computed: {
+    paymentData() {
+      return this.$store.state.paymentData;
+    }
+  },
+  methods: {
+    scrollToDonate() {
+      const form = document.getElementById('doar');
+      form.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    },
+    toggleLoading() {
+      this.loading = !this.loading;
+    },
+    validateForm() {
+      this.toggleLoading();
+      let birthdate = this.birthdate.split('/');
         birthdate.reverse();
         birthdate = birthdate.join('-');
 
-        const payload = {
-          billing_address_zipcode: this.zip_code,
-          billing_address_state: this.state,
-          billing_address_city: this.city,
-          billing_address_street: this.street,
-          billing_address_district: this.district,
-          billing_address_house_number: this.number,
-          phone: this.phone.replace(/[^\d]+/g, ""),
-          birthdate,
-          billing_address_complement: this.complement,
-          payment_method: this.paymentData.payment_method,
-          device_authorization_token_id: this.paymentData.device_authorization_token_id,
-          email: this.paymentData.email,
-          cpf: this.paymentData.cpf,
-          name: this.paymentData.name,
-          amount: this.paymentData.amount,
-          candidate_id: this.paymentData.candidate_id,
-          donation_fp: this.paymentData.donation_fp
-        }
+      const address = {
+        zip_code: this.zip_code,
+        state: this.state,
+        city: this.city,
+        street: this.street,
+        district: this.district,
+        number: this.number,
+        phone: this.phone.replace(/[^\d]+/g, ''),
+        birthdate,
+      };
 
-         this.$store.dispatch('GET_DONATION', payload)
-          .then(res => {
-           this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'certFaceVerify' });
-          })
-          .catch(err => {
-            this.toggleLoading();
-            this.handleErrorMessage(err);
-          });
-      },
-      searchAddress(event){
+      const validation = validate(address);
+
+      if (validation.valid) {
+        this.saveAddress();
+      } else {
+        this.validation = validation;
         this.toggleLoading();
-        this.$store.dispatch('GET_ADDRESS', event.target.value).then((response) => {
-          this.state = ( response.state  == '' ) ? this.disableField('state') : response.state;
-          this.city = ( response.city  == '' ) ? this.disableField('city') : response.city;
-          this.street = ( response.street == '' ) ? this.disableField('street') : response.street;
-          this.district = ( response.district == '' ) ? this.disableField('district') : response.district;
-          this.toggleLoading();
-          this.errorMessage = '';
-        }).catch((erro)=>{
-          this.toggleLoading();
-          this.errorMessage = 'Cep não encontrado';
-        });
-      },
-      disableField(field) {
-        this.$nextTick(function () {
-          var element  = document.getElementsByName(field);
-          element[0].disabled=false;
-          return '';
-        });
-      },
-      handleErrorMessage(err) {
-        this.errorMessage = err.data[0].message;
-      },
+      }
     },
-  };
+    saveAddress(){
+      let birthdate = this.birthdate.split('/');
+      birthdate.reverse();
+      birthdate = birthdate.join('-');
+
+      const payload = {
+        billing_address_zipcode: this.zip_code,
+        billing_address_state: this.state,
+        billing_address_city: this.city,
+        billing_address_street: this.street,
+        billing_address_district: this.district,
+        billing_address_house_number: this.number,
+        phone: this.phone.replace(/[^\d]+/g, ""),
+        birthdate,
+        billing_address_complement: this.complement,
+        payment_method: this.paymentData.payment_method,
+        device_authorization_token_id: this.paymentData.device_authorization_token_id,
+        email: this.paymentData.email,
+        cpf: this.paymentData.cpf,
+        name: this.paymentData.name,
+        amount: this.paymentData.amount,
+        candidate_id: this.paymentData.candidate_id,
+        donation_fp: this.paymentData.donation_fp
+      }
+
+        this.$store.dispatch('GET_DONATION', payload)
+        .then(res => {
+          this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'certFaceVerify' });
+        })
+        .catch(err => {
+          this.toggleLoading();
+          this.handleErrorMessage(err);
+        });
+    },
+    searchAddress(event){
+      this.toggleLoading();
+      this.$store.dispatch('GET_ADDRESS', event.target.value).then((response) => {
+        this.state = ( response.state  == '' ) ? this.disableField('state') : response.state;
+        this.city = ( response.city  == '' ) ? this.disableField('city') : response.city;
+        this.street = ( response.street == '' ) ? this.disableField('street') : response.street;
+        this.district = ( response.district == '' ) ? this.disableField('district') : response.district;
+        this.toggleLoading();
+        this.errorMessage = '';
+      }).catch((erro)=>{
+        this.toggleLoading();
+        this.errorMessage = 'Cep não encontrado';
+      });
+    },
+    disableField(field) {
+      this.$nextTick(function () {
+        var element  = document.getElementsByName(field);
+        element[0].disabled=false;
+        return '';
+      });
+    },
+    handleErrorMessage(err) {
+      this.errorMessage = err.data[0].message;
+    },
+  },
+  mounted() {
+    this.scrollToDonate();
+  },
+};
 </script>

@@ -9,44 +9,50 @@
 
 <script>
 
-  export default {
-    name: 'printBoleto',
-    data() {
-      return {
-        loading: false,
-        errorMessage: '',
-        validation: {
-          errors: {},
-        },
-      };
+export default {
+  name: 'printBoleto',
+  data() {
+    return {
+      loading: false,
+      errorMessage: '',
+      validation: {
+        errors: {},
+      },
+    };
+  },
+  computed: {
+    username() {
+      return this.$store.state.username;
     },
-    computed: {
-      username() {
-        return this.$store.state.username;
-      },
-      messages() {
-        return this.$store.state.messages.messages;
-      },
+    messages() {
+      return this.$store.state.messages.messages;
     },
-    methods: {
-      toggleLoading() {
-        this.loading = !this.loading;
-      },
-      handleErrorMessage(err) {
-        this.errorMessage = err.data[0].message;
-      },
-      redirectUser(ui) {
-        if(ui.value === 'pay_with_cc'){
-          this.$router.replace(this.$route.path);
-            this.$store.dispatch('CHANGE_PAYMENT_STEP', {
-              step: 'userData'
-          });
-        } else {
-          sessionStorage.clear();
-          window.open(ui.href)
-        }
+  },
+  methods: {
+    scrollToDonate() {
+      const form = document.getElementById('doar');
+      form.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    },
+    toggleLoading() {
+      this.loading = !this.loading;
+    },
+    handleErrorMessage(err) {
+      this.errorMessage = err.data[0].message;
+    },
+    redirectUser(ui) {
+      if(ui.value === 'pay_with_cc'){
+        this.$router.replace(this.$route.path);
+          this.$store.dispatch('CHANGE_PAYMENT_STEP', {
+            step: 'userData'
+        });
+      } else {
+        sessionStorage.clear();
+        window.open(ui.href)
       }
-    },
-
-  };
+    }
+  },
+  mounted() {
+    this.scrollToDonate();
+  },
+};
 </script>
