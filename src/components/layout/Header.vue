@@ -46,7 +46,7 @@
 						</a>
 					</li>
 					<li class="menu-item donate-nav">
-						<a href="#home__donate" v-scroll-to="'#home__donate'">
+						<a href="#doar" v-scroll-to="'#doar'">
 							Doar
 						</a>
 					</li>
@@ -57,7 +57,7 @@
 		<div class="header-container">
 			<div class="site-label">
 				<h1>#Somos<span class="orange-highlight">Rede</span></h1>
-				<a class="call-to-action" href="#home__donate" v-scroll-to="'#home__donate'">
+				<a class="call-to-action" href="#doar" v-scroll-to="'#doar'">
 					> quero doar
 				</a>
 			</div>
