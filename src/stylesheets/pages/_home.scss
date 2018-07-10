@@ -225,3 +225,12 @@ $default-articles-padding: 9rem;
 	font-size: ms(1);
 	font-weight: 800;
 }
+
+#home__donors {
+	$bg: palette('gray', 'light');
+	background-color: $bg;
+
+	& h2 {
+		color: palette('green');
+	}
+}

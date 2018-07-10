@@ -95,21 +95,6 @@
 	</div>
 	</article>
 
-	<article id="home__donors" class="home__donors">
-	<div class="container" id="donation-wrap">
-		<h2>
-		Doadores
-		</h2>
-
-		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
-		<p>
-		<span v-for="(person, i) in donations" :key="i">
-			{{ person | titleCase }}{{ i < donations.length -1 ? ',' : '' }}
-		</span>
-		</p>
-	</div>
-	</article>
-
 	<article id="home__faq" class="home__faq">
 		<div class="container" id="donation-wrap">
 			<h2>
@@ -153,6 +138,24 @@
 			</details>
 		</div>
 	</article>
+
+
+	<article id="home__donors" class="home__donors">
+	<div class="container" id="donation-wrap">
+		<h2>
+		Doadores
+		</h2>
+
+		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
+		<p>
+		<span v-for="(person, i) in donations" :key="i">
+			{{ person | titleCase }}{{ i < donations.length -1 ? ',' : '' }}
+		</span>
+		</p>
+	</div>
+	</article>
+
+
 </main>
 </template>
 
