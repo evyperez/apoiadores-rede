@@ -1,0 +1,73 @@
+
+.menu-icon {
+	@include inline-block-item;
+	margin-right: $gutter / 2;
+	margin-left: $gutter / 2;
+	position: relative;
+	border-radius: 50%;
+	margin-top: 1em;
+	margin-bottom: 0;
+	width: 20px;
+	height: 20px;
+
+	&:first-child {
+		margin-left: 0.2em;
+	}
+
+	@media (min-width: breakpoint('tablet')) {
+		&:first-child {
+			margin-left: $gutter / 4;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+}
+
+.menu-icon a {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 36px;
+	height: 36px;
+
+	&.twitter {
+		background: url('../assets/images/icons/twitter-icon.png');
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: auto 15px;
+
+	}
+
+	&.youtube {
+		background: url('../assets/images/icons/youtube-icon.png');
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: auto 14px;
+	}
+
+
+	&.facebook {
+		background: url('../assets/images/icons/facebook-icon.png');
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: auto 16px;
+	}
+
+	&.website {
+		background: url('../assets/images/icons/website-dark.png');
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: auto 13px;
+	}
+
+	&.email {
+		background: url('../assets/images/icons/email-dark.png');
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: auto 16px;
+	}
+}
