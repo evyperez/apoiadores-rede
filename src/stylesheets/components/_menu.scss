@@ -35,7 +35,6 @@
 	background-color: palette('green','dark');
 }
 
-
 .brand-wrap {
 	position: absolute;
 	left: 50%;
@@ -76,27 +75,26 @@
 	}
 }
 
-.donate-nav {
-	color: palette('green', 'light');
-}
-
 .donate-nav a {
 	margin-left: auto;
 	margin-right: auto;
-	border: 2px solid palette('green', 'light');
+	border: none;
 	padding-top: $gutter * 0.2;
 	padding-bottom: $gutter * 0.2;
 	width: 5em;
 
+	color: palette('white');
+	border: 2px solid palette('orange');
+	background-color: palette('orange');
 	border-radius: 10px;
 
 	&:hover,
 	&:link:focus,
 	&:focus,
 	&:active {
-		color: palette('green', 'base');
+		color: palette('orange');
+		border: 2px solid palette('white');
 		background-color: palette('white');
-		border-color: palette('white');
 		text-decoration: none;
 	}
 
