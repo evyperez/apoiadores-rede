@@ -28,6 +28,11 @@
 						</a>
 					</li>
 					<li class="menu-item">
+						<a href="#home__faq" v-scroll-to="'#home__faq'">
+							Perguntas frequentes
+						</a>
+					</li>
+					<li class="menu-item">
 						<a href="#home__donors" v-scroll-to="'#home__donors'">
 							Doadores
 						</a>
