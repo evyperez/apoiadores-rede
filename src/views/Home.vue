@@ -39,7 +39,7 @@
 		</p>
 
 		<p class="contact-rede-email">
-			<a href="mailto:financiamento@redesustentabilidade.org.br">financiamento&#8203@redesustentabilidade.org.br</a>
+			<a href="mailto:doe@marinasilva.org.br">doe&#8203@marinasilva.org.br</a>
 		</p>
 
 		</section>
