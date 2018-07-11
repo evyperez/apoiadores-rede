@@ -1,8 +1,8 @@
 <template>
     <section v-if="messages" class="certiface-verify">
+      <a class="donation-nav donation-nav--rewind" href="/#doar">voltar</a>
       <div class="input-wrapper" v-html="messages[0].text"></div>
       <div class="input-wrapper" v-if="messages[1]">
-        <a class="donation-nav donation-nav--rewind" href="/#doar">voltar</a>
         <a target="_blank" class="donation-nav donation-nav--forward" @click.prevent="redirectUser(messages[1])" >{{ messages[1].text }} </a>
       </div>
     </section>
