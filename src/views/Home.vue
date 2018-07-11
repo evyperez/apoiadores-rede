@@ -147,11 +147,49 @@
 		</h2>
 
 		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
-		<p>
-		<span v-for="(person, i) in donations" :key="i">
-			{{ person | titleCase }}{{ i < donations.length -1 ? ',' : '' }}
-		</span>
-		</p>
+
+		<div v-if="donations">
+			<table class="donations-table" v-if="donations.length > 0">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>CPF</th>
+						<th>Data</th>
+						<th>Método</th>
+						<th>Valor</th>
+						<th>Decred Txid</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th>Nome</th>
+						<th>CPF</th>
+						<th>Data</th>
+						<th>Método</th>
+						<th>Valor</th>
+						<th>Decred Txid</th>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr v-for="donation in donations" :key="donation.id">
+						<th title="Nome">{{donation.name}}</th>
+						<td title="CPF">{{donation.cpf | formatCPF }}</td>
+						<td title="Data">{{ donation.captured_at | date }}</td>
+						<td title="Método">{{ donation.payment_method_human }}</td>
+						<td title="Valor">R$ {{donation.amount | formatBRL}} </td>
+						<td v-if="donation.transaction_link" title="Decred Txid">
+							<a :href="donation.transaction_link" target="_blank" title="Registro na blockchain"><i class="fa fa-link"></i></a>
+						</td>
+						<td title="Decred Txid" v-else>Processando</td>
+					</tr>
+				</tbody>
+			</table>
+			<h3 v-else>Ainda não há doações</h3>
+
+			<!-- <button class="button--load-more" type="button" @click.prevent="getDonationsList()" v-if="hasMoreDonations">
+				{{ 'loadMore' | translate }}
+			</button> -->
+		</div>
 	</div>
 	</article>
 

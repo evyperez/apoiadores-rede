@@ -23,6 +23,7 @@ export default new Vuex.Store({
     donations: [],
     address: {},
     paymentData: {},
+    hasMoreDonations: false,
   },
   mutations: {
     SET_PAYMENT_STEP(state, { data }) {
@@ -50,7 +51,7 @@ export default new Vuex.Store({
       state.candidate = res.candidate;
     },
     SET_DONATIONS(state, { res }) {
-      state.donations = res.names;
+      state.donations = res.donations;
     },
     SET_ADDRESS: (state, payload) => {
       state.address = payload;
@@ -159,7 +160,7 @@ export default new Vuex.Store({
     },
     GET_DONATIONS({ commit }, id) {
       return new Promise((resolve, reject) => {
-        axios.get(`${api}/public-api/candidate-donations/${id}/donators-name`).then(
+        axios.get(`${api}/public-api/candidate-donations/${id}`).then(
           (response) => {
             commit('SET_DONATIONS', { res: response.data });
             resolve();
