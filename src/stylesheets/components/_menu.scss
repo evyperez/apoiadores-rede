@@ -14,7 +14,7 @@
 	transition-property: background-color, height;
 	transition-duration: 0.3s, 1s;
 
-	@media (min-width: breakpoint('tablet')) {
+	@media (min-width: breakpoint('desktop')) {
 		background-color: transparent;
 	}
 }
@@ -42,7 +42,7 @@
 	transform: translate(-50%, -50%);
 	max-width: 100%;
 
-	@media (min-width: breakpoint('tablet')) {
+	@media (min-width: breakpoint('desktop')) {
 		left: 0;
 		top: 0;
 		transform: translate(0, 0);
@@ -62,7 +62,7 @@
 	transition-property: background-size;
 	transition-duration: 0.8s;
 
-	@media (min-width: breakpoint('tablet')) {
+	@media (min-width: breakpoint('desktop')) {
 		display: none;
 	}
 }
@@ -70,7 +70,7 @@
 .animate .logo-rede {
 	background-size: 150px 27px;
 
-	@media (min-width: breakpoint('tablet')) {
+	@media (min-width: breakpoint('desktop')) {
 		display: block;
 	}
 }
@@ -106,12 +106,12 @@
 	text-align: center;
 	overflow: hidden;
 
-	@media screen and (min-width: breakpoint('tablet')) {
+	@media screen and (min-width: breakpoint('desktop')) {
 		transform: translateY(-50%);
 		top: 50%;
 	}
 
-	@media (max-width: breakpoint('tablet')) {
+	@media (max-width: breakpoint('desktop')) {
 		opacity: 0;
 		max-height: 0;
 		overflow: hidden;
@@ -137,7 +137,7 @@
 		}
 	}
 
-	@media (min-width: breakpoint('tablet')) {
+	@media (min-width: breakpoint('desktop')) {
 		right: 0;
 	}
 }
@@ -146,7 +146,7 @@
 	display: none;
 	outline: none;
 
-	@media (max-width: breakpoint('tablet')) {
+	@media (max-width: breakpoint('desktop')) {
 		display: block;
 	}
 }
@@ -164,7 +164,7 @@
 	padding-top: 0.25em;
 	padding-bottom: 0.25em;
 
-	@media (min-width: breakpoint('tablet')) {
+	@media (min-width: breakpoint('desktop')) {
 		@include inline-block-item($align: 'top', $font-size:  1rem);
 		vertical-align: middle;
 		padding-right: 1em;
