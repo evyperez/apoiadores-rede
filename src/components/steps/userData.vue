@@ -22,8 +22,7 @@
         </div>
         <div
           :class="`input-wrapper half
-          ${validation.errors.name ? 'has-error' : ''}`"
-        >
+          ${validation.errors.name ? 'has-error' : ''}`">
           <label for="name">Nome</label>
           <input
             type="text"
@@ -36,8 +35,7 @@
 
         <div
           :class="`input-wrapper half
-          ${validation.errors.surname ? 'has-error' : ''}`"
-        >
+          ${validation.errors.surname ? 'has-error' : ''}`">
           <label for="surname">Sobrenome</label>
           <input
             type="text"
@@ -50,8 +48,7 @@
 
         <div
           :class="`input-wrapper
-          ${validation.errors.cpf ? 'has-error' : ''}`"
-        >
+          ${validation.errors.cpf ? 'has-error' : ''}`">
           <label for="cpf">CPF</label>
           <input
             type="text"
@@ -65,8 +62,7 @@
 
         <div
           :class="`input-wrapper
-          ${validation.errors.email ? 'has-error' : ''}`"
-        >
+          ${validation.errors.email ? 'has-error' : ''}`">
           <label for="email">Email</label>
           <input
             type="email"
