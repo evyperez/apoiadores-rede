@@ -177,8 +177,8 @@
 						<td title="Data">{{ donation.captured_at | date }}</td>
 						<td title="Método">{{ donation.payment_method_human }}</td>
 						<td title="Valor">R$ {{donation.amount | formatBRL}} </td>
-						<td v-if="donation.transaction_link" title="Decred Txid">
-							<a :href="donation.transaction_link" target="_blank" title="Registro na blockchain"><i class="fa fa-link"></i></a>
+						<td v-if="donation.transaction_link" title="Decred Txid" class="decred-link">
+							<a :href="donation.transaction_link" target="_blank" title="Registro na blockchain"><img src="../assets/images/icons/website-dark.png" alt="Decred Txid"/></a>
 						</td>
 						<td title="Decred Txid" v-else>Processando</td>
 					</tr>
