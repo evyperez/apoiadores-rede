@@ -10,7 +10,6 @@
       <li :class="paymentStep === 'certFaceVerify' ? 'active' : ''">
       </li>
       <li :class="paymentStep === 'printBoleto' ? 'active' : ''">
-        Boleto
       </li>
     </ul>
   </div>
