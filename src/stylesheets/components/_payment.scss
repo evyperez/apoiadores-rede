@@ -26,6 +26,7 @@
 
 .donation-form-title {
 	@include inline-block-wrapper;
+	margin-bottom: $gutter * 0.5;
 }
 
 .donation-form-title h2 {
@@ -63,9 +64,15 @@
 	display: none;
 }
 
-.instructions {
-	font-weight: 800;
+.instructions-donation {
+	margin-top: $leading * 0.5em;
 	margin-bottom: 0.5em;
+}
+
+.instructions {
+	margin: 0;
+	display: block;
+	font-weight: 800;
 	font-size: ms(0);
 }
 
@@ -109,6 +116,15 @@
 	}
 }
 
-.certiface-verify{
+.certiface-verify {
+	display: table;
+}
+
+.certiface-verify h3 {
+	color: palette('white');
+}
+
+.certiface-verify div {
 	text-align: center;
+	color: palette('white');
 }
