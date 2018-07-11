@@ -18,6 +18,16 @@ Vue.filter('formatDateBasic', formatDateBasic);
 Vue.filter('upperCase', value => value.toUpperCase());
 Vue.filter('lowerCase', value => value.toLowerCase());
 
+Vue.filter('date', (value) => {
+  if (!value) return;
+  const newDate = new Date(value.replace(' ', 'T'));
+  return `${(newDate.getDate() <= 9) ? `0${newDate.getDate()}` : newDate.getDate()}/${((newDate.getMonth() + 1) <= 9) ? `0${(newDate.getMonth() + 1)}` : (newDate.getMonth() + 1)}/${newDate.getFullYear()} - ${(newDate.getHours() <= 9) ? `0${newDate.getHours()}` : newDate.getHours()}:${(newDate.getUTCMinutes() <= 9) ? `0${newDate.getUTCMinutes()}` : newDate.getUTCMinutes()}`;
+});
+
+Vue.filter('formatCPF', (value) => {
+  return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "\$1.\$2.\$3\-\$4");
+});
+
 Vue.filter('titleCase', str =>
   str
     .split(/\s+/)
