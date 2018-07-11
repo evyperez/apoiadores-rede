@@ -1,6 +1,10 @@
 <template>
     <form @submit.prevent="validateForm" :aria-busy="loading ? 'true' : 'false'">
       <fieldset>
+        <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
+        <div class="instructions-donation">
+          <p class="instructions">Informe dados de pagamento</p>
+        </div>
         <div :class="`input-wrapper
           ${validation.errors.birthdate ? 'has-error' : ''}`">
           <label for="birthdate">Data de nascimento</label>
@@ -113,6 +117,9 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'userData' });
+    },
     scrollToDonate() {
       const form = document.getElementById('doar');
       form.scrollIntoView({ block: 'start', behavior: 'smooth' });

@@ -2,6 +2,7 @@
     <section v-if="messages" class="certiface-verify">
       <div class="input-wrapper" v-html="messages[0].text"></div>
       <div class="input-wrapper" v-if="messages[1]">
+        <a class="donation-nav donation-nav--rewind" :href="'/em/'+ candidate.username +'#doar'">voltar</a>
         <a target="_blank" class="donation-nav donation-nav--forward" @click.prevent="redirectUser(messages[1])" >{{ messages[1].text }} </a>
       </div>
     </section>
@@ -26,6 +27,12 @@ export default {
     },
     messages() {
       return this.$store.state.messages.messages;
+    },
+    candidate() {
+      return this.getMergeCandidate.candidate;
+    },
+    getMergeCandidate() {
+      return this.$store.getters.generateCandidateObject;
     },
   },
   methods: {

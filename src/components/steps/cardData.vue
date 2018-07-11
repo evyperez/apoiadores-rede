@@ -2,6 +2,10 @@
   <section>
     <form @submit.prevent="validateForm" :aria-busy="loading ? 'true' : 'false'">
       <fieldset>
+        <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
+        <div class="instructions-donation">
+          <p class="instructions">Informe dados do cartão de crédito</p>
+        </div>
         <div :class="`input-wrapper
           ${validation.errors.number ? 'has-error' : ''}`">
           <label for="number">Número do cartão de crédito</label>
@@ -93,6 +97,9 @@ export default {
     },
   },
   methods: {
+    goBack() {
+      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'userData' });
+    },
     scrollToDonate() {
       const form = document.getElementById('doar');
       form.scrollIntoView({ block: 'start', behavior: 'smooth' });

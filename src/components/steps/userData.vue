@@ -1,18 +1,25 @@
 <template>
   <section id="user-data-payment">
     <form @submit.prevent="validateForm" :aria-busy="loading ? 'true' : 'false'">
-      <ul class="payment-choices">
-        <li class="payment-type">
-          <input name="payment_method" id="credit_card" value="credit_card" type="radio" v-model="payment_method">
-          <label for="credit_card">Cartão de Crédito</label>
-        </li>
-        <li class="payment-type">
-          <input name="payment_method" id="boleto" value="boleto" type="radio" v-model="payment_method">
-          <label for="boleto">Boleto</label>
-        </li>
-      </ul>
+      <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
+
+      <div class="instructions-donation">
+        <p class="instructions">Escolha a forma de pagamento</p>
+        <ul class="payment-choices">
+          <li class="payment-type">
+            <input name="payment_method" id="credit_card" value="credit_card" type="radio" v-model="payment_method">
+            <label for="credit_card">Cartão de Crédito</label>
+          </li>
+          <li class="payment-type">
+            <input name="payment_method" id="boleto" value="boleto" type="radio" v-model="payment_method">
+            <label for="boleto">Boleto</label>
+          </li>
+        </ul>
+      </div>
       <fieldset>
-        <p class="instructions">Por favor, informe os seguintes dados:</p>
+        <div class="instructions-donation">
+          <p class="instructions">Por favor, informe os seguintes dados:</p>
+        </div>
         <div
           :class="`input-wrapper half
           ${validation.errors.name ? 'has-error' : ''}`"
@@ -117,6 +124,9 @@ export default {
     },
   },
   methods: {
+    goBack() {
+      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
+    },
     scrollToDonate() {
       const form = document.getElementById('doar');
       form.scrollIntoView({ block: 'start', behavior: 'smooth' });

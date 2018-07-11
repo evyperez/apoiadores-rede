@@ -2,16 +2,12 @@
   <div>
     <ul class="head-steps">
       <li :class="paymentStep === 'userData' ? 'active' : ''">
-        Escolha a forma de pagamento
       </li>
       <li :class="paymentStep === 'cardData' ? 'active' : ''">
-        Dados de cartão de crédito
       </li>
       <li :class="paymentStep === 'boleto' ? 'active' : ''">
-        Endereço
       </li>
       <li :class="paymentStep === 'certFaceVerify' ? 'active' : ''">
-        Verificação de segurança
       </li>
       <li :class="paymentStep === 'printBoleto' ? 'active' : ''">
         Boleto
