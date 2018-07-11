@@ -93,8 +93,6 @@ $modularscale: (
 );
 $_green--base: rgb(17, 135, 100);
 
-$_orange--light: tint(rgb(235, 92, 56), 50%);
-
 /// List all available colors and tones.
 ///
 /// @access private
@@ -167,7 +165,7 @@ $palette: (
 	'tap-highlight': transparent,
 	'target-highlight': transparent,
 	'orange': (
-		'light': $_orange--light,
+		'light': rgb(252, 125, 83),
 
 		'base': rgb(255, 102, 51),
 		'dark': rgb(208, 78, 42),
