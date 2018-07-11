@@ -1,6 +1,6 @@
 $default-articles-padding-small: 5rem;
 
-$default-articles-padding: 9rem;
+$default-articles-padding: 7rem;
 
 
 
@@ -88,6 +88,7 @@ $default-articles-padding: 9rem;
 
 .donation-nav[class] {
 	color: palette('green', 'light');
+	margin: 0;
 
 	@include link-undercover{
 		color: palette('green', 'light');
@@ -97,15 +98,19 @@ $default-articles-padding: 9rem;
 	text-decoration: underline;
 	font-weight: 800;
 	background: none;
-	margin-right: 0;
 	text-transform: lowercase;
 	display: block;
-	margin-top: $leading * 1rem;
-	margin-bottom: $leading * 1rem;
 }
 
 .donation-nav--rewind[class] {
-	float: left;
+
+	&::before {
+		content: '< ';
+	}
+}
+
+.donation-nav--block {
+	text-align: center;
 
 	&::before {
 		content: '< ';
@@ -128,12 +133,10 @@ $default-articles-padding: 9rem;
 	padding: 0;
 	font-size: ms(1);
 	font-weight: 800;
-	margin-bottom: $leading * 1rem;
 
 	@media screen and (min-width: breakpoint('phablet')) {
 		font-size: ms(2);
 	}
-
 }
 
 .head_steps{
