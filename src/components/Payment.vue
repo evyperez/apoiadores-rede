@@ -60,7 +60,7 @@ export default {
     },
   },
   mounted(){
-		if(this.$route.query.donation_id){
+    if(this.$route.query.donation_id){
       this.toggleLoading();
 
       this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'printBoleto' });
@@ -83,7 +83,7 @@ export default {
           console.error(error);
         });
     }
-	},
+  },
   methods: {
     toggleLoading() {
       this.loading = !this.loading;
