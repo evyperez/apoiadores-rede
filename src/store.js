@@ -59,6 +59,9 @@ export default new Vuex.Store({
       console.log('payment', paymentData);
       state.paymentData = paymentData;
     },
+    SET_RECEIPT(state, { res }) {
+      state.receipt = res.donation;
+    },
   },
   actions: {
     CHANGE_PAYMENT_AMOUNT({ commit }, data) {
@@ -225,6 +228,19 @@ export default new Vuex.Store({
           console.error(error.response);
           reject(error.response);
         });
+      });
+    },
+    GET_RECEIPT({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        axios.get(`${api}/public-api/candidate/${payload.candidateId}/donation/digest/${payload.digest}`).then(
+          (response) => {
+            commit('SET_RECEIPT', { res: response.data });
+            resolve();
+          },
+          (err) => {
+            reject(err.response);
+          },
+        );
       });
     },
   },
