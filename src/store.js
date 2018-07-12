@@ -24,6 +24,7 @@ export default new Vuex.Store({
     address: {},
     paymentData: {},
     hasMoreDonations: false,
+    lastDonationMarker: '',
   },
   mutations: {
     SET_PAYMENT_STEP(state, { data }) {
@@ -50,8 +51,13 @@ export default new Vuex.Store({
     SET_CANDIDATE(state, { res }) {
       state.candidate = res.candidate;
     },
-    SET_DONATIONS(state, { res }) {
-      state.donations = res.donations;
+    SET_DONATIONS: (state, payload) => {
+      state.hasMoreDonations = payload.has_more || false;
+      if (payload.donations.length) {
+        state.lastDonationMarker = payload.donations[payload.donations.length - 1].marker;
+      }
+
+      state.donations = state.donations.concat(payload.donations);
     },
     SET_ADDRESS: (state, payload) => {
       state.address = payload;
@@ -158,18 +164,14 @@ export default new Vuex.Store({
         );
       });
     },
-    GET_DONATIONS({ commit }, id) {
-      return new Promise((resolve, reject) => {
-        axios.get(`${api}/public-api/candidate-donations/${id}`).then(
-          (response) => {
-            commit('SET_DONATIONS', { res: response.data });
-            resolve();
-          },
-          (err) => {
-            reject(err.response);
-            console.error(err);
-          },
-        );
+    GET_DONATIONS({ commit, state }, id) {
+      console.log('state.lastDonationMarker', state.lastDonationMarker);
+      return new Promise((resolve) => {
+        axios.get(`${api}/public-api/candidate-donations/${id}/${state.lastDonationMarker}`)
+          .then((response) => {
+            resolve(response.data.donations);
+            commit('SET_DONATIONS', response.data);
+          });
       });
     },
     GET_ADDRESS: ({ commit }, cep) => {
@@ -229,4 +231,12 @@ export default new Vuex.Store({
       });
     },
   },
+  getters: {
+    generateCandidateObject: state => {
+      const candidateMerge = {
+        donations: state.donations
+      };
+      return candidateMerge;
+    }
+  }
 });
