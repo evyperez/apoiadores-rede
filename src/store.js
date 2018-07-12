@@ -53,8 +53,8 @@ export default new Vuex.Store({
     },
     SET_DONATIONS: (state, payload) => {
       state.hasMoreDonations = payload.has_more || false;
-      if (payload.donations.length) {
-        state.lastDonationMarker = payload.donations[payload.donations.length - 1].marker;
+      if (payload.donations.length) { // eslint-disable-next-line
+        state.lastDonationMarker = payload.donations[payload.donations.length - 1]._marker;
       }
 
       state.donations = state.donations.concat(payload.donations);
@@ -168,7 +168,6 @@ export default new Vuex.Store({
       });
     },
     GET_DONATIONS({ commit, state }, id) {
-      console.log('state.lastDonationMarker', state.lastDonationMarker);
       return new Promise((resolve) => {
         axios.get(`${api}/public-api/candidate-donations/${id}/${state.lastDonationMarker}`)
           .then((response) => {
@@ -248,11 +247,11 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    generateCandidateObject: state => {
+    generateCandidateObject: (state) => {
       const candidateMerge = {
-        donations: state.donations
+        donations: state.donations,
       };
       return candidateMerge;
-    }
-  }
+    },
+  },
 });

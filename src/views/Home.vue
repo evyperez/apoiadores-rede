@@ -243,7 +243,6 @@ export default {
 			const value = (this.candidate.total_donated * 100) / this.expected;
 			return Math.ceil(value);
 		}
-
 		return 0
 		}
 	},
