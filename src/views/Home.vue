@@ -3,10 +3,10 @@
 		<article class="home__intro">
 			<div class="container">
 		<h2>
-			Expandir a Rede para unir o Brasil
+			Precisamos equilibrar a disputa
 		</h2>
 
-		<p>A Rede Sustentabilidade nasce da união de pessoas que acreditam em novas formas de fazer política. Na contramão deste desejo, os grandes partidos dividem o país numa falsa polarização, mas se unem por trás dos panos para criar fundos bilionários com recursos públicos, sufocar qualquer possibilidade de renovação e se manter no poder. Com Marina como porta-voz e milhares de apoiadores em todo país, temos chances reais de fazer frente a essa farsa. Juntos, podemos equilibrar a disputa. Criamos essa campanha de financiamento coletivo para expandir a Rede e assim unir todas as pessoas que compartilham desse sonho. Uma nova forma de fazer política nasce de uma forma diferente de financiar a política. Faça sua contribuição, compartilhe a página e seja parte da mudança.</p>
+		<p>Marina é a única candidata capaz de unir o Brasil e tirar o país do atraso. Mas sabemos que não basta ser a mais preparada. É preciso ter recursos para construir uma campanha que faça frente aos grandes partidos e suas mentiras. Marina tem uma trajetória de honestidade e superação e precisa do seu apoio para levar sua história e suas ideias para todos os brasileiros. Faça a sua doação e compartilhe a página. Vamos juntos preparar uma campanha vencedora e diferente: construída com diálogo, coragem e verdade.</p>
 
 		<section id="campaign-progress" class="campaign-progress">
 		<p>
@@ -66,23 +66,23 @@
 		</h2>
 
 		<p>
-			<strong>Os problemas da política nacional nascem no seu financiamento.</strong> No centro dos escândalos de corrupção recentes, as doações de empresa para a campanhas eleitorais foram proibidas pela Justiça em 2015. <strong>No palanque, os grandes e velhos partidos encenam uma  polarização que domina o debate público. Nos bastidores, porém, deixam de lado as rivalidades e fazem acordos para conseguir mais recursos e se manter no poder.</strong> Unidos, quase triplicaram o fundo partidário e criaram um fundo eleitoral bilionário. Foi assaltando os cofres públicos que eles resolveram o buraco deixado pela falta das doações das empresas.
+			Marina Silva tem uma história de superação. É, de muitas formas, um retrato do Brasil. Nascida mulher, negra e numa família de seringueiros, começou a trabalhar na infância e conheceu de perto a miséria e a fome. Perdeu a mãe e irmãos para doenças. E foi para cidade grande tratar os problemas de saúde que a vida difícil lhe deu e realizar o sonho de estudar.
 		</p>
 
 		<p>
-			A Rede Sustentabilidade é a favor da participação do dinheiro público no financiamento da política. Quando as campanhas são financiadas apenas pelo dinheiro privado, os políticos podem acabar ficando amarrados aos interesses dos financiadores. Em 2014, as eleições foram financiadas com 95% de dinheiro privado e apenas 5% de dinheiro público. O resultado desse desequilíbrio vem sendo revelado pela Polícia Federal em operações como a Lava-Jato.
+			Aprendeu a ler e escrever aos 16 anos e foi a primeira dentre os irmãos a fazê-lo. Dez anos depois formou-se em História pela Universidade do Acre. Tornou-se também professora e psicopedagoga. Dedicou sua vida ao ambientalismo, tendo lutado, ao lado de Chico Mendes, pela preservação da Amazônia.
 		</p>
 
 		<p>
-			A maneira como foi aprovada pelo Congresso, no entanto, só serve para beneficiar os mesmos partidos e engessar a política. <strong>O fundo precisa ser menor e mais bem distribuído.</strong> Os grandes partidos criaram um ciclo vicioso que favorece imensamente quem já está no poder.
+			Dedicou sua vida às causas em que acredita. Foi a vereadora mais votada em 1988 e, em 1990, a mais votada deputada estadual, bem como a senadora mais jovem da República, na história do Senado, eleita em 1994. Por fim, exerceu o cargo de Ministra do Meio Ambiente entre 2003 e 2008. Conhece o Brasil, seus problemas e potenciais como poucas pessoas. Ao contrário de muitos políticos, tem uma trajetória limpa, sem absolutamente nenhuma marca de corrupção.
 		</p>
 
 		<p>
-			<strong>Acreditamos que temos chances reais de romper com essa lógica em 2018.</strong> Queremos concentrar esforços em expandir a presença e o alcance da Rede pelo Brasil. Assim poderemos articular todas e todos que compartilham desse objetivo comum. <strong>E para isso, nada melhor do que Marina Silva levar nossas ideias pelos quatro cantos do país,</strong> conversando olhos nos olhos com brasileiras e brasileiros e mostrando não apenas que existem novas formas de se fazer política, mas também que é possível começarmos agora!
+			Essa trajetória é reconhecida internacionalmente. Foi premiada mais de 60 vezes no Brasil e no exterior. Por sua atuação na proteção da floresta amazônica, Marina recebeu prêmios importantes nos Estados Unidos, Noruega e Mônaco. Em 2007, teve a honra de receber o maior prêmio da ONU na área ambiental, o Campeões da Terra. Além disto, teve a honra de participar da abertura dos jogos Olímpicos de 2012 em Londres em função de sua história de vida dedicada à defesa do meio ambiente global.
 		</p>
 
 		<p>
-			<strong>Para reinventar o país é preciso reinventar a forma como financiamos a política.</strong> Mais uma vez acreditamos na colaboração como caminho. <strong>Contribua e faça parte da expansão da rede que vai unir o Brasil.</strong>
+			Em um ambiente político conturbado, marcado pelo debate raso e notícias falsas, Marina se sobressai. Mantém sempre uma postura serena, expõe suas ideias, debate com aliados e tem a mesma disposição ao diálogo com os adversários. Não precisa gritar para demonstrar coragem no enfrentamento de situações adversas. A história, a coerência e as propostas de Marina falam por si só.
 		</p>
 	</div>
 	</article>
@@ -94,10 +94,10 @@
 		</h2>
 
 		<h3>R$ 100 mil</h3>
-		<p>Para que possamos realizar tudo que desejamos, precisamos financiar as viagens da Marina e outras lideranças da Rede pelo país. Com esse valor, conseguiremos realizar eventos em cinco capitais diferentes, levando ideias, propostas e uma visão diferente de país para diversas regiões</p>
+		<p>Para levar a história e as ideias de Marina para os brasileiros, precisamos custear suas viagens pelo Brasil. Com esse valor, conseguiremos realizar eventos em cinco capitais diferentes, levando as nossas propostas para diversas regiões.</p>
 
 		<h3>R$ 200 mil</h3>
-		<p>Sabemos que os adversários políticos usarão de todas as artimanhas para desestabilizar a Rede e a Marina. São os reis das mentiras, acusações levianas e notícias falsas. Precisamos combater isso tudo. Com essa arrecadação produziremos vídeos e materiais gráficos abordando essas fake news contra a Marina e a Rede e divulgando as verdadeiras propostas para unir o Brasil</p>
+		<p>Sabemos que os adversários políticos usarão de todas as artimanhas para desestabilizar a candidatura de Marina. Precisamos combater suas mentiras, acusações levianas e notícias falsas. Com essa quantia, produziremos vídeos e materiais gráficos divulgando a verdade e as reais propostas de Marina para unir o Brasil.</p>
 
 	</div>
 	</article>
@@ -110,7 +110,7 @@
 			<details>
 				<summary><span class="caret"></span>Como posso fazer a minha doação?</summary>
 				<p>
-					Aqui no site, você pode doar por meio do cartão de crédito, apenas pelo titular do cartão, e boleto bancário. Fora daqui, você ainda pode fazer uma transferência bancária ou depósito identificado em dinheiro ou cheque direto na conta. Se quiser as informações da conta, por favor, envie um e-mail
+					Aqui no site, você pode doar por meio do cartão de crédito, apenas pelo titular do cartão, e boleto bancário. Fora daqui, você ainda pode fazer uma transferência bancária ou depósito identificado em dinheiro ou cheque direto na conta. Se quiser as informações da conta, por favor, envie um e-mail.
 				</p>
 			</details>
 			<details>
@@ -128,19 +128,19 @@
 			<details>
 				<summary><span class="caret"></span>Qual o limite de doação?</summary>
 				<p>
-					As doações acima de R$ 1.064,10 só podem ser realizadas por meio de transferência bancária direta para a conta do candidato.
+					Cada pessoa pode doar até 10% da renda declarada referente ao ano anterior. O limite para quem não declarou imposto de renda em 2018 é de R$2.855.  As doações acima de R$ 1.064,10 só podem ser realizadas por meio de transferência bancária direta para a conta do candidato, portanto não podem ser realizadas pela internet..
 				</p>
 			</details>
 			<details>
 				<summary><span class="caret"></span>É preciso declarar a doação no próximo Imposto de Renda?</summary>
 				<p>
-					Sim. Todo mundo que é obrigado a declarar imposto de renda, precisa declarar a doação. Existe uma seção específica chamada: Doações para Partidos Políticos, Comitês Financeiros e Candidatos a Cargos Eletivos. Basta informar o nome da Rede Sustentabilidade, o valor da doação e o CNPJ do partido. Todas essas informações estão no Recibo Eleitoral que será enviado ao seu e-mail após a confirmação da doação.
+					Sim. Todo mundo que é obrigado a declarar imposto de renda, precisa declarar a doação para a campanhade Marina. Existe uma seção específica chamada: Doações para Partidos Políticos, Comitês Financeiros e Candidatos a Cargos Eletivos. Basta informar os dados da candidatura de Marina que estão no Recibo Eleitoral.
 				</p>
 			</details>
 			<details>
 				<summary><span class="caret"></span>Quem não pode doar?</summary>
 				<p>
-					Não podem doar para o partido pessoas físicas que exerçam função ou cargo público de livre nomeação e exoneração, cargos de chefia ou direção na administração pública direta ou indireta, ou cargo ou emprego público temporário, ressalvados os filiados.
+					Não podem doar pessoas jurídicas, estrangeiros e pessoas físicas que exerçam atividade comercial decorrente de permissão pública.
 				</p>
 			</details>
 		</div>
