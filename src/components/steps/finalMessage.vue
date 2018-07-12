@@ -3,10 +3,10 @@
   <div v-for="(message, i) in messages" :key="i" v-html="message.text"></div>
   <ul id="wrap-share">
     <li>
-      <a class="twitter-hashtag-button twitter" href="https://twitter.com/intent/tweet?button_hashtag=SomosRede%20https://somosrede.com.br/">Compartilhar</a>
+      <a class="twitter-hashtag-button twitter" href="https://twitter.com/intent/tweet?button_hashtag=doemarina%20https://doemarina.com.br/">Compartilhar</a>
     </li>
     <li>
-      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsomosrede.com.br%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
+      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoemarina.com.br%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
     </li>
   </ul>
   <a class="donation-nav donation-nav--block" href="#" @click.prevent="goBack">deseja doar novamente?</a>

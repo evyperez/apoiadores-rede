@@ -6,7 +6,7 @@ import axios from 'axios';
 Vue.use(Vuex);
 
 const api =
-  window.location.host === 'somosrede.com.br'
+  window.location.host === 'doemarina.com.br'
     ? 'https://api.votolegal.com.br'
     : 'https://dapi.votolegal.com.br';
 
@@ -65,9 +65,6 @@ export default new Vuex.Store({
     SET_PAYMENT_DATA(state, { paymentData }) {
       console.log('payment', paymentData);
       state.paymentData = paymentData;
-    },
-    SET_RECEIPT(state, { res }) {
-      state.receipt = res.donation;
     },
   },
   actions: {
@@ -192,7 +189,7 @@ export default new Vuex.Store({
     START_DONATION_BOLETO({ commit }, payload) {
       let token = '';
       if (window.localStorage) {
-        const tokenName = window.location.host === 'somosrede.com.br'
+        const tokenName = window.location.host === 'doemarina.com.br'
           ? 'prod_apm_token'
           : 'dev_apm_token';
         token = localStorage.getItem(tokenName);
@@ -230,19 +227,6 @@ export default new Vuex.Store({
           console.error(error.response);
           reject(error.response);
         });
-      });
-    },
-    GET_RECEIPT({ commit }, payload) {
-      return new Promise((resolve, reject) => {
-        axios.get(`${api}/public-api/candidate/${payload.candidateId}/donation/digest/${payload.digest}`).then(
-          (response) => {
-            commit('SET_RECEIPT', { res: response.data });
-            resolve();
-          },
-          (err) => {
-            reject(err.response);
-          },
-        );
       });
     },
   },
