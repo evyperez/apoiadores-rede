@@ -73,6 +73,15 @@
           </div>
         </div>
       </fieldset>
+      <div class="candidate-amount" v-if="candidateAmount">
+        <p>Valor Líquido da doação: R${{ candidateAmount | formatBRLDec }}</p>
+      </div>
+      <div v-if="this.payment_method === 'credit_card'">
+        <p class="form__disclaimer">Taxa de 7,4% via cartão de crédito. Esse valor é destinado a taxas de operação financeira, sistemas de controle anti-fraude, impostos e infraestrutura.</p>
+      </div>
+      <div v-if="this.payment_method === 'boleto'">
+        <p class="form__disclaimer">Taxa de 4% + R$4 via boleto. Esse valor é destinado a taxas de operação financeira, sistemas de controle anti-fraude, impostos e infraestrutura.</p>
+      </div>
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
@@ -117,6 +126,19 @@ export default {
     },
     candidate() {
       return this.$store.state.candidate;
+    },
+    candidateAmount() {
+    let newAmount = null;
+      if (this.payment_method === 'credit_card') {
+        newAmount = this.amount - (this.amount *0.074);
+      }
+      else if (this.payment_method === 'boleto') {
+        newAmount = this.amount - this.amount *0.04;
+        newAmount = newAmount - 400;
+      }
+      if (newAmount) {
+        return Math.floor(newAmount).toFixed(0);
+      }
     },
   },
   methods: {
