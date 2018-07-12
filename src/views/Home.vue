@@ -12,7 +12,13 @@
 		<p>
 			<span class="currency">R$</span>
 			<strong class="amount">
-			<template v-if="candidate.total_donated">{{ candidate.total_donated | formatBRL }}</template>
+			<template v-if="candidate.total_donated">
+				<animated-number
+					:value="candidate.total_donated"
+					:formatValue="FormatFixedBRL"
+					:duration="1000"/>
+				</span>
+			</template>
 			<template v-else>0</template>
 			</strong>
 		</p>
@@ -161,44 +167,55 @@
 
 <script>
 // @ is an alias to /src
-import Payment from '@/components/Payment.vue';
+import Payment from "@/components/Payment.vue";
+import AnimatedNumber from "animated-number-vue";
 
 export default {
-name: 'home',
-components: {
-	Payment,
-},
-mounted() {
-	const candidateId = window.location.host === 'somosrede.com.br'
-	? 40
-	: 130;
-	this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
-	this.$store.dispatch('GET_DONATIONS', candidateId);
-},
-computed: {
-	candidate() {
-	return this.$store.state.candidate;
+	name: "home",
+	components: {
+		Payment,
+		AnimatedNumber
 	},
-	donations() {
-	return this.$store.state.donations;
+	mounted() {
+		const candidateId = window.location.host === "somosrede.com.br" ? 40 : 130;
+		this.$store.dispatch("GET_CANDIDATE_INFO", candidateId);
+		this.$store.dispatch("GET_DONATIONS", candidateId);
 	},
-	expected() {
-	if (this.candidate) {
-		if (this.candidate.raising_goal) {
-		return this.candidate.raising_goal;
+	computed: {
+		candidate() {
+			return this.$store.state.candidate;
+		},
+		donations() {
+			return this.$store.state.donations;
+		},
+		expected() {
+			if (this.candidate) {
+				if (this.candidate.raising_goal) {
+					return this.candidate.raising_goal;
+				}
+			}
+
+			return 0;
+		},
+		porcentage() {
+			if (this.candidate) {
+				const value = this.candidate.total_donated * 100 / this.expected;
+				return Math.ceil(value);
+			}
+
+			return 0;
+		}
+	},
+	methods: {
+		FormatFixedBRL(amount) {
+			let formated = `${(amount / 100).toFixed(2)}`;
+
+			formated = formated
+				.substring(0, formated.length - 2)
+				.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+				.replace(/\.+$/, "");
+			return formated;
 		}
 	}
-
-	return 0
-	},
-	porcentage() {
-	if (this.candidate) {
-		const value = (this.candidate.total_donated * 100) / this.expected;
-		return Math.ceil(value);
-	}
-
-	return 0
-	}
-},
 };
 </script>
