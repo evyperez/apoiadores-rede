@@ -130,6 +130,11 @@ $palette: (
 		'submit': rgb(217, 83, 79),
 		'reset': transparent,
 	),
+	'box': (
+		'base': rgb(241, 241, 241),
+		'dark': rgb(102, 102, 102),
+		'disabled': rgb(197, 197, 197),
+	),
 	'disabled': (
 		'foreground': hsl(0, 0%, 42%),
 		'background': hsl(0, 0%, 94%),

@@ -3,7 +3,7 @@
 		<article class="home__intro">
 			<div class="container">
 		<h2>
-		Expandir a Rede para unir o Brasil
+			Expandir a Rede para unir o Brasil
 		</h2>
 
 		<p>A Rede Sustentabilidade nasce da união de pessoas que acreditam em novas formas de fazer política. Na contramão deste desejo, os grandes partidos dividem o país numa falsa polarização, mas se unem por trás dos panos para criar fundos bilionários com recursos públicos, sufocar qualquer possibilidade de renovação e se manter no poder. Com Marina como porta-voz e milhares de apoiadores em todo país, temos chances reais de fazer frente a essa farsa. Juntos, podemos equilibrar a disputa. Criamos essa campanha de financiamento coletivo para expandir a Rede e assim unir todas as pessoas que compartilham desse sonho. Uma nova forma de fazer política nasce de uma forma diferente de financiar a política. Faça sua contribuição, compartilhe a página e seja parte da mudança.</p>
@@ -13,16 +13,17 @@
 			<span class="currency">R$</span>
 			<strong class="amount">
 			<template v-if="candidate.total_donated">
-				<animated-number
-					:value="candidate.total_donated"
-					:formatValue="FormatFixedBRL"
-					:duration="1000"/>
+				<span>
+					<animated-number
+						:value="candidate.total_donated"
+						:formatValue="FormatFixedBRL"
+						:duration="1000"/>
 				</span>
 			</template>
 			<template v-else>0</template>
 			</strong>
 		</p>
-		<p class="campaign-progress-amount">Doados por {{ candidate.people_donated }} pessoas</p>
+		<p class="campaign-progress-amount">{{ candidate.people_donated }} doações realizadas</p>
 
 		<progress :value="candidate.total_donated" :max="expected">
 			<div class="progress-bar">
@@ -153,11 +154,49 @@
 		</h2>
 
 		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
-		<p>
-		<span v-for="(person, i) in donations" :key="i">
-			{{ person | titleCase }}{{ i < donations.length -1 ? ',' : '' }}
-		</span>
-		</p>
+
+		<div v-if="donations">
+			<table class="donations-table" v-if="donations.length > 0">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>CPF</th>
+						<th>Data</th>
+						<th>Método</th>
+						<th>Valor</th>
+						<th>Decred Txid</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th>Nome</th>
+						<th>CPF</th>
+						<th>Data</th>
+						<th>Método</th>
+						<th>Valor</th>
+						<th>Decred Txid</th>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr v-for="donation in donations" :key="donation.id">
+						<th title="Nome">{{donation.name}}</th>
+						<td title="CPF">{{donation.cpf | formatCPF }}</td>
+						<td title="Data">{{ donation.captured_at | date }}</td>
+						<td title="Método">{{ donation.payment_method_human }}</td>
+						<td title="Valor">R$ {{donation.amount | formatBRL}} </td>
+						<td v-if="donation.transaction_link" title="Decred Txid" class="decred-link">
+							<a :href="donation.transaction_link" target="_blank" title="Registro na blockchain"><img src="../assets/images/icons/website-dark.png" alt="Decred Txid"/></a>
+						</td>
+						<td title="Decred Txid" v-else>Processando</td>
+					</tr>
+				</tbody>
+			</table>
+			<h3 v-else>Ainda não há doações</h3>
+
+			<button class="button--load-more" type="button" @click.prevent="getDonationsList()" v-if="hasMoreDonations">
+				Carregar mais
+			</button>
+		</div>
 	</div>
 	</article>
 
@@ -177,33 +216,35 @@ export default {
 		AnimatedNumber
 	},
 	mounted() {
-		const candidateId = window.location.host === "doemarina.com.br" ? 40 : 130;
+		const candidateId = window.location.host === "somosrede.com.br" ? 40 : 130;
 		this.$store.dispatch("GET_CANDIDATE_INFO", candidateId);
 		this.$store.dispatch("GET_DONATIONS", candidateId);
 	},
 	computed: {
 		candidate() {
-			return this.$store.state.candidate;
+		return this.$store.state.candidate;
 		},
 		donations() {
-			return this.$store.state.donations;
+		return this.$store.state.donations;
+		},
+		hasMoreDonations() {
+			return this.$store.state.hasMoreDonations;
 		},
 		expected() {
-			if (this.candidate) {
-				if (this.candidate.raising_goal) {
-					return this.candidate.raising_goal;
-				}
+		if (this.candidate) {
+			if (this.candidate.raising_goal) {
+			return this.candidate.raising_goal;
 			}
+		}
 
-			return 0;
+		return 0
 		},
 		porcentage() {
-			if (this.candidate) {
-				const value = this.candidate.total_donated * 100 / this.expected;
-				return Math.ceil(value);
-			}
-
-			return 0;
+		if (this.candidate) {
+			const value = (this.candidate.total_donated * 100) / this.expected;
+			return Math.ceil(value);
+		}
+		return 0
 		}
 	},
 	methods: {
@@ -215,7 +256,10 @@ export default {
 				.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
 				.replace(/\.+$/, "");
 			return formated;
-		}
-	}
+		},
+		getDonationsList() {
+			this.$store.dispatch('GET_DONATIONS', this.candidate.id);
+		},
+	},
 };
 </script>

@@ -23,6 +23,8 @@ export default new Vuex.Store({
     donations: [],
     address: {},
     paymentData: {},
+    hasMoreDonations: false,
+    lastDonationMarker: '',
   },
   mutations: {
     SET_PAYMENT_STEP(state, { data }) {
@@ -49,8 +51,13 @@ export default new Vuex.Store({
     SET_CANDIDATE(state, { res }) {
       state.candidate = res.candidate;
     },
-    SET_DONATIONS(state, { res }) {
-      state.donations = res.names;
+    SET_DONATIONS: (state, payload) => {
+      state.hasMoreDonations = payload.has_more || false;
+      if (payload.donations.length) { // eslint-disable-next-line
+        state.lastDonationMarker = payload.donations[payload.donations.length - 1]._marker;
+      }
+
+      state.donations = state.donations.concat(payload.donations);
     },
     SET_ADDRESS: (state, payload) => {
       state.address = payload;
@@ -157,18 +164,13 @@ export default new Vuex.Store({
         );
       });
     },
-    GET_DONATIONS({ commit }, id) {
-      return new Promise((resolve, reject) => {
-        axios.get(`${api}/public-api/candidate-donations/${id}/donators-name`).then(
-          (response) => {
-            commit('SET_DONATIONS', { res: response.data });
-            resolve();
-          },
-          (err) => {
-            reject(err.response);
-            console.error(err);
-          },
-        );
+    GET_DONATIONS({ commit, state }, id) {
+      return new Promise((resolve) => {
+        axios.get(`${api}/public-api/candidate-donations/${id}/${state.lastDonationMarker}`)
+          .then((response) => {
+            resolve(response.data.donations);
+            commit('SET_DONATIONS', response.data);
+          });
       });
     },
     GET_ADDRESS: ({ commit }, cep) => {
@@ -226,6 +228,14 @@ export default new Vuex.Store({
           reject(error.response);
         });
       });
+    },
+  },
+  getters: {
+    generateCandidateObject: (state) => {
+      const candidateMerge = {
+        donations: state.donations,
+      };
+      return candidateMerge;
     },
   },
 });
