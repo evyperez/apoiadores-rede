@@ -5,6 +5,14 @@
         <p class="instructions">Pagamento boleto</p>
       </div>
       <div class="input-wrapper" v-html="messages[0].text"></div>
+      <ul id="wrap-share">
+        <li>
+        <a class="twitter-hashtag-button twitter" href="https://twitter.com/intent/tweet?button_hashtag=SomosRede%20https://somosrede.com.br/">Compartilhar</a>
+        </li>
+        <li>
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsomosrede.com.br%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
+        </li>
+      </ul>
       <div class="input-wrapper" v-if="messages[1]">
         <a target="_blank" class="donation-nav donation-nav--forward" @click.prevent="redirectUser(messages[1])" >{{ messages[1].text }} </a>
       </div>
