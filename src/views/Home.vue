@@ -12,11 +12,11 @@
 		<p>
 			<span class="currency">R$</span>
 			<strong class="amount">
-			<template v-if="candidate.total_donated">{{ candidate.total_donated | formatBRL }}</template>
+					<template v-if="candidate.total_donated">{{ candidate.total_donated | formatBRL }}</template>
 			<template v-else>0</template>
 			</strong>
 		</p>
-		<p class="campaign-progress-amount">Doados por {{ candidate.people_donated }} pessoas</p>
+		<p class="campaign-progress-amount">{{ candidate.people_donated }} doações realizadas</p>
 
 		<progress :value="candidate.total_donated" :max="expected">
 			<div class="progress-bar">
@@ -186,9 +186,9 @@
 			</table>
 			<h3 v-else>Ainda não há doações</h3>
 
-			<!-- <button class="button--load-more" type="button" @click.prevent="getDonationsList()" v-if="hasMoreDonations">
-				{{ 'loadMore' | translate }}
-			</button> -->
+			<button class="button--load-more" type="button" @click.prevent="getDonationsList()" v-if="hasMoreDonations">
+				Carregar mais
+			</button>
 		</div>
 	</div>
 	</article>
@@ -202,41 +202,49 @@
 import Payment from '@/components/Payment.vue';
 
 export default {
-name: 'home',
-components: {
-	Payment,
-},
-mounted() {
-	const candidateId = window.location.host === 'somosrede.com.br'
-	? 40
+	name: 'home',
+	components: {
+		Payment,
+	},
+	mounted() {
+		const candidateId = window.location.host === 'somosrede.com.br'
+		? 40
 	: 130;
-	this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
-	this.$store.dispatch('GET_DONATIONS', candidateId);
-},
-computed: {
-	candidate() {
-	return this.$store.state.candidate;
+		this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
+		this.$store.dispatch('GET_DONATIONS', candidateId);
 	},
-	donations() {
-	return this.$store.state.donations;
-	},
-	expected() {
-	if (this.candidate) {
-		if (this.candidate.raising_goal) {
-		return this.candidate.raising_goal;
+	computed: {
+		candidate() {
+		return this.$store.state.candidate;
+		},
+		donations() {
+		return this.$store.state.donations;
+		},
+		hasMoreDonations() {
+			return this.$store.state.hasMoreDonations;
+		},
+		expected() {
+		if (this.candidate) {
+			if (this.candidate.raising_goal) {
+			return this.candidate.raising_goal;
+			}
 		}
-	}
 
-	return 0
+		return 0
+		},
+		porcentage() {
+		if (this.candidate) {
+			const value = (this.candidate.total_donated * 100) / this.expected;
+			return Math.ceil(value);
+		}
+
+		return 0
+		}
 	},
-	porcentage() {
-	if (this.candidate) {
-		const value = (this.candidate.total_donated * 100) / this.expected;
-		return Math.ceil(value);
-	}
-
-	return 0
-	}
-},
+	methods: {
+		getDonationsList() {
+			this.$store.dispatch('GET_DONATIONS', this.candidate.id);
+		},
+	},
 };
 </script>
