@@ -13,10 +13,11 @@
 			<span class="currency">R$</span>
 			<strong class="amount">
 			<template v-if="candidate.total_donated">
-				<animated-number
-					:value="candidate.total_donated"
-					:formatValue="FormatFixedBRL"
-					:duration="1000"/>
+				<span>
+					<animated-number
+						:value="candidate.total_donated"
+						:formatValue="FormatFixedBRL"
+						:duration="1000"/>
 				</span>
 			</template>
 			<template v-else>0</template>
