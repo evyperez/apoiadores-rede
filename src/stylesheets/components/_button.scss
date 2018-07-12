@@ -81,3 +81,31 @@ button:-moz-focusring,
 input:-moz-focusring {
 	outline: 1px dotted ButtonText;
 }
+
+.button--load-more[class] {
+	display: block;
+	padding: .5em 1.2em;
+	border-radius: 1.25rem;
+	border: 0;
+	overflow: visible;
+	text-indent: 0;
+	white-space: inherit;
+	padding-top: $leading * 0.15rem;
+	padding-bottom: $leading * 0.15rem;
+	margin-top: $leading * 1rem;
+	margin-right: auto;
+	margin-bottom: $leading * 2rem;
+	margin-left: auto;
+	font-weight: bold;
+	cursor: pointer;
+
+	background-color: palette('gray', 'base');
+	color: palette('white');
+
+	text-transform: lowercase;
+
+	&:hover {
+		background-color: palette('green', 'base');
+
+	}
+}
