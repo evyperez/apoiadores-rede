@@ -3,7 +3,7 @@
 		<article class="home__intro">
 			<div class="container">
 		<h2>
-		Expandir a Rede para unir o Brasil
+			Expandir a Rede para unir o Brasil
 		</h2>
 
 		<p>A Rede Sustentabilidade nasce da união de pessoas que acreditam em novas formas de fazer política. Na contramão deste desejo, os grandes partidos dividem o país numa falsa polarização, mas se unem por trás dos panos para criar fundos bilionários com recursos públicos, sufocar qualquer possibilidade de renovação e se manter no poder. Com Marina como porta-voz e milhares de apoiadores em todo país, temos chances reais de fazer frente a essa farsa. Juntos, podemos equilibrar a disputa. Criamos essa campanha de financiamento coletivo para expandir a Rede e assim unir todas as pessoas que compartilham desse sonho. Uma nova forma de fazer política nasce de uma forma diferente de financiar a política. Faça sua contribuição, compartilhe a página e seja parte da mudança.</p>
@@ -12,7 +12,13 @@
 		<p>
 			<span class="currency">R$</span>
 			<strong class="amount">
-					<template v-if="candidate.total_donated">{{ candidate.total_donated | formatBRL }}</template>
+			<template v-if="candidate.total_donated">
+				<animated-number
+					:value="candidate.total_donated"
+					:formatValue="FormatFixedBRL"
+					:duration="1000"/>
+				</span>
+			</template>
 			<template v-else>0</template>
 			</strong>
 		</p>
@@ -199,19 +205,19 @@
 
 <script>
 // @ is an alias to /src
-import Payment from '@/components/Payment.vue';
+import Payment from "@/components/Payment.vue";
+import AnimatedNumber from "animated-number-vue";
 
 export default {
-	name: 'home',
+	name: "home",
 	components: {
 		Payment,
+		AnimatedNumber
 	},
 	mounted() {
-		const candidateId = window.location.host === 'somosrede.com.br'
-		? 40
-	: 130;
-		this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
-		this.$store.dispatch('GET_DONATIONS', candidateId);
+		const candidateId = window.location.host === "somosrede.com.br" ? 40 : 130;
+		this.$store.dispatch("GET_CANDIDATE_INFO", candidateId);
+		this.$store.dispatch("GET_DONATIONS", candidateId);
 	},
 	computed: {
 		candidate() {
@@ -242,6 +248,15 @@ export default {
 		}
 	},
 	methods: {
+		FormatFixedBRL(amount) {
+			let formated = `${(amount / 100).toFixed(2)}`;
+
+			formated = formated
+				.substring(0, formated.length - 2)
+				.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+				.replace(/\.+$/, "");
+			return formated;
+		},
 		getDonationsList() {
 			this.$store.dispatch('GET_DONATIONS', this.candidate.id);
 		},

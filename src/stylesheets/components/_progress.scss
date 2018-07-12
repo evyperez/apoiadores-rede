@@ -27,14 +27,6 @@
 }
 
 progress {
-	@include progress-bar-fg {
-		// sass-lint:disable-line mixins-before-declarations
-		background-color: palette('progress');
-	}
-	@include progress-bar-bg {
-		// sass-lint:disable-line mixins-before-declarations
-		background-color: palette('orange', 'dark');
-	}
 
 	display: block;
 
@@ -49,4 +41,14 @@ progress {
 	border: 0;
 
 	appearance: none;
+
+	@include progress-bar-fg {
+		// sass-lint:disable-line mixins-before-declarations
+		background-color: palette('progress');
+		transition: width 0.5s;
+	}
+	@include progress-bar-bg {
+		// sass-lint:disable-line mixins-before-declarations
+		background-color: palette('orange', 'dark');
+	}
 }
