@@ -1,11 +1,28 @@
 <template>
-  <section>
+  <section id="user-data-payment">
     <form @submit.prevent="validateForm" :aria-busy="loading ? 'true' : 'false'">
+      <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
+
+      <div class="instructions-donation">
+        <p class="instructions">Escolha a forma de pagamento</p>
+        <ul class="payment-choices">
+          <li class="payment-type">
+            <input name="payment_method" id="credit_card" value="credit_card" type="radio" v-model="payment_method">
+            <label for="credit_card">Cartão de Crédito</label>
+          </li>
+          <li class="payment-type">
+            <input name="payment_method" id="boleto" value="boleto" type="radio" v-model="payment_method">
+            <label for="boleto">Boleto</label>
+          </li>
+        </ul>
+      </div>
       <fieldset>
+        <div class="instructions-donation">
+          <p class="instructions">Por favor, informe os seguintes dados:</p>
+        </div>
         <div
           :class="`input-wrapper half
-          ${validation.errors.name ? 'has-error' : ''}`"
-        >
+          ${validation.errors.name ? 'has-error' : ''}`">
           <label for="name">Nome</label>
           <input
             type="text"
@@ -18,8 +35,7 @@
 
         <div
           :class="`input-wrapper half
-          ${validation.errors.surname ? 'has-error' : ''}`"
-        >
+          ${validation.errors.surname ? 'has-error' : ''}`">
           <label for="surname">Sobrenome</label>
           <input
             type="text"
@@ -32,8 +48,7 @@
 
         <div
           :class="`input-wrapper
-          ${validation.errors.cpf ? 'has-error' : ''}`"
-        >
+          ${validation.errors.cpf ? 'has-error' : ''}`">
           <label for="cpf">CPF</label>
           <input
             type="text"
@@ -47,8 +62,7 @@
 
         <div
           :class="`input-wrapper
-          ${validation.errors.email ? 'has-error' : ''}`"
-        >
+          ${validation.errors.email ? 'has-error' : ''}`">
           <label for="email">Email</label>
           <input
             type="email"
@@ -88,6 +102,7 @@ export default {
       validation: {
         errors: {},
       },
+      payment_method: 'credit_card',
     };
   },
   computed: {
@@ -105,6 +120,13 @@ export default {
     },
   },
   methods: {
+    goBack() {
+      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
+    },
+    scrollToDonate() {
+      const form = document.getElementById('doar');
+      form.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    },
     toggleLoading() {
       this.loading = !this.loading;
     },
@@ -138,7 +160,7 @@ export default {
       this.getDonationFP()
         .then(() => {
           const payload = {
-            payment_method: 'credit_card',
+            payment_method: this.payment_method,
             device_authorization_token_id: this.token,
             email: data.email,
             cpf: data.cpf,
@@ -155,8 +177,18 @@ export default {
               }
               this.$store.dispatch('SAVE_USERNAME', user)
               this.handleIugu();
-              this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
+              if (this.payment_method === 'credit_card') {
+                this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
+              } else {
+                this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'boleto' });
+              }
             }).catch((err) => {
+              if (err.data[0].msg_id == 'need_billing_adddress') {
+                this.$store.dispatch('CHANGE_PAYMENT_STEP', {
+                  step: 'boleto'
+                });
+                return;
+              }
               this.toggleLoading();
               this.handleErrorMessage(err);
             });
@@ -254,6 +286,9 @@ export default {
       Iugu.setAccountID(this.iugu.account_id);
       Iugu.setTestMode(this.iugu.is_testing === 1 ? true : false);
     }
+  },
+  mounted() {
+    this.scrollToDonate();
   },
 };
 </script>

@@ -1,6 +1,6 @@
-$default-articles-padding-small: 6rem;
+$default-articles-padding-small: 5rem;
 
-$default-articles-padding: 12.5rem;
+$default-articles-padding: 7rem;
 
 
 
@@ -39,6 +39,7 @@ $default-articles-padding: 12.5rem;
 }
 
 .home__intro h2 {
+	margin-top: 0;
 	max-width: 100%;
 
 	font-size: ms(2);
@@ -81,8 +82,13 @@ $default-articles-padding: 12.5rem;
 	max-width: 33.75rem;
 }
 
+.campaign-progress {
+	margin-bottom: 0;
+}
+
 .donation-nav[class] {
 	color: palette('green', 'light');
+	margin: 0;
 
 	@include link-undercover{
 		color: palette('green', 'light');
@@ -92,15 +98,19 @@ $default-articles-padding: 12.5rem;
 	text-decoration: underline;
 	font-weight: 800;
 	background: none;
-	margin-right: 0;
 	text-transform: lowercase;
 	display: block;
-	margin-top: $leading * 1rem;
-	margin-bottom: $leading * 1rem;
 }
 
 .donation-nav--rewind[class] {
-	float: left;
+
+	&::before {
+		content: '< ';
+	}
+}
+
+.donation-nav--block {
+	text-align: center;
 
 	&::before {
 		content: '< ';
@@ -123,20 +133,21 @@ $default-articles-padding: 12.5rem;
 	padding: 0;
 	font-size: ms(1);
 	font-weight: 800;
-	margin-bottom: $leading * 1rem;
 
 	@media screen and (min-width: breakpoint('phablet')) {
 		font-size: ms(2);
 	}
+}
 
+.head_steps{
+	margin-bottom: 0px;
 }
 
 .home__donate li {
 	display: inline;
 	position: relative;
 	margin-right: 2em;
-
-	opacity: 0.4;
+	display: none;
 
 	&::before {
 		content: none;
@@ -144,10 +155,11 @@ $default-articles-padding: 12.5rem;
 }
 
 .home__donate li.active {
-	opacity: 1;
+	display: block;
+	font-size: ms(0);
 
 	&::before {
-		content: '\2022';
+		// content: '\2022';
 		position: absolute;
 		width: 1em;
 		left: 50%;
@@ -155,7 +167,6 @@ $default-articles-padding: 12.5rem;
 		text-align: center;
 		top: -1em;
 	}
-
 }
 
 .home__knowMore {
@@ -207,4 +218,22 @@ $default-articles-padding: 12.5rem;
 	$bg: palette('gray', 'light');
 
 	background-color: $bg;
+}
+
+.italic-text {
+	font-style: italic;
+}
+
+.bigger-text {
+	font-size: ms(1);
+	font-weight: 800;
+}
+
+#home__donors {
+	$bg: palette('gray', 'light');
+	background-color: $bg;
+
+	& h2 {
+		color: palette('green');
+	}
 }

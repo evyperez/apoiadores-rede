@@ -26,6 +26,7 @@
 
 .donation-form-title {
 	@include inline-block-wrapper;
+	margin-bottom: $gutter * 0.5;
 }
 
 .donation-form-title h2 {
@@ -45,4 +46,85 @@
 		white-space: nowrap;
 	}
 
+}
+
+.home__donate .head-steps {
+	margin-bottom: 0;
+
+	:first-child {
+		margin-bottom: 0;
+		font-weight: 800;
+		font-size: ms(0);
+	}
+}
+
+.head-steps li {
+	margin-bottom: 0.5em;
+	font-weight: 800;
+	display: none;
+}
+
+.instructions-donation {
+	margin-top: $leading * 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.instructions {
+	margin: 0;
+	display: block;
+	font-weight: 800;
+	font-size: ms(0);
+}
+
+.certiface-link {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.payment-confirmation-message {
+	text-align: center;
+	font-weight: 800;
+	text-transform: uppercase;
+	font-size: ms(1);
+}
+
+.payment-final-message {
+	font-size: ms(1);
+	text-align: center;
+}
+
+.chosen-value-title {
+	font-size: ms(3);
+	margin-bottom: 0;
+	color: palette('white');
+	display: inline-block;
+
+}
+
+#final-message-payment {
+	text-align: center;
+	& .donation-nav--rewind {
+		float: none;
+
+		font-size: ms(0);
+
+		@media screen and (min-width: breakpoint('phablet')) {
+			margin-top: 0.5em;
+			font-size: ms(1);
+		}
+	}
+}
+
+.certiface-verify {
+	display: table;
+}
+
+.certiface-verify h3 {
+	color: palette('white');
+}
+
+.certiface-verify div {
+	text-align: center;
+	color: palette('white');
 }

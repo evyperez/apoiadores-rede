@@ -39,17 +39,17 @@
 		</p>
 
 		<p class="contact-rede-email">
-			<a href="mailto:financiamento@redesustentabilidade.org.br">financiamento&#8203@redesustentabilidade.org.br</a>
+			<a href="mailto:doe@marinasilva.org.br">doe&#8203@marinasilva.org.br</a>
 		</p>
 
 		</section>
 	</div>
 	</article>
 
-	<article id="home__donate" class="home__donate">
-	<div class="container" id="donation-wrap">
-		<Payment />
-	</div>
+	<article id="doar" class="home__donate">
+		<div class="container" id="donation-wrap">
+			<Payment />
+		</div>
 	</article>
 
 	<article id="home__knowMore" class="home__knowMore">
@@ -92,21 +92,6 @@
 		<h3>R$ 200 mil</h3>
 		<p>Sabemos que os adversários políticos usarão de todas as artimanhas para desestabilizar a Rede e a Marina. São os reis das mentiras, acusações levianas e notícias falsas. Precisamos combater isso tudo. Com essa arrecadação produziremos vídeos e materiais gráficos abordando essas fake news contra a Marina e a Rede e divulgando as verdadeiras propostas para unir o Brasil</p>
 
-	</div>
-	</article>
-
-	<article id="home__donors" class="home__donors">
-	<div class="container" id="donation-wrap">
-		<h2>
-		Doadores
-		</h2>
-
-		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
-		<p>
-		<span v-for="(person, i) in donations" :key="i">
-			{{ person | titleCase }}{{ i < donations.length -1 ? ',' : '' }}
-		</span>
-		</p>
 	</div>
 	</article>
 
@@ -153,6 +138,24 @@
 			</details>
 		</div>
 	</article>
+
+
+	<article id="home__donors" class="home__donors">
+	<div class="container" id="donation-wrap">
+		<h2>
+		Doadores
+		</h2>
+
+		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
+		<p>
+		<span v-for="(person, i) in donations" :key="i">
+			{{ person | titleCase }}{{ i < donations.length -1 ? ',' : '' }}
+		</span>
+		</p>
+	</div>
+	</article>
+
+
 </main>
 </template>
 

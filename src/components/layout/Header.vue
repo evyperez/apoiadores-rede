@@ -16,7 +16,15 @@
 				<div class="brand-wrap">
 					<a href="#home__header" v-scroll-to="'#home__header'" class="logo-rede">Rede Sustentabilidade 18</a>
 				</div>
+
+
 				<ul class="menu-wrap">
+					<li class="menu-icon">
+						<a href="https://twitter.com/intent/tweet?button_hashtag=SomosRede%20https://somosrede.com.br" target="_blank" class="twitter"></a>
+					</li>
+					<li class="menu-icon">
+						<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsomosrede.com.br%2F&amp;src=sdkpreparse" target="_blank" class="fb-xfbml-parse-ignore facebook"></a>
+					</li>
 					<li class="menu-item">
 						<a href="#home__knowMore" v-scroll-to="'#home__knowMore'">
 							Saiba Mais
@@ -28,12 +36,17 @@
 						</a>
 					</li>
 					<li class="menu-item">
+						<a href="#home__faq" v-scroll-to="'#home__faq'">
+							Perguntas frequentes
+						</a>
+					</li>
+					<li class="menu-item">
 						<a href="#home__donors" v-scroll-to="'#home__donors'">
 							Doadores
 						</a>
 					</li>
 					<li class="menu-item donate-nav">
-						<a href="#home__donate" v-scroll-to="'#home__donate'">
+						<a href="#doar" v-scroll-to="'#doar'">
 							Doar
 						</a>
 					</li>
@@ -44,7 +57,7 @@
 		<div class="header-container">
 			<div class="site-label">
 				<h1>#Somos<span class="orange-highlight">Rede</span></h1>
-				<a class="call-to-action" href="#home__donate" v-scroll-to="'#home__donate'">
+				<a class="call-to-action" href="#doar" v-scroll-to="'#doar'">
 					> quero doar
 				</a>
 			</div>
