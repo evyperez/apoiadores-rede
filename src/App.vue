@@ -24,7 +24,7 @@ export default {
   methods: {
     handleSession() {
       if(window.localStorage) {
-        const tokenName = window.location.host === 'somosrede.com.br'
+        const tokenName = window.location.host === 'doemarina.com.br'
 						? 'prod_apm_token'
 						: 'dev_apm_token';
         const token = localStorage.getItem(tokenName);

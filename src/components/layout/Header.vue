@@ -20,10 +20,10 @@
 
 				<ul class="menu-wrap">
 					<li class="menu-icon">
-						<a href="https://twitter.com/intent/tweet?button_hashtag=SomosRede%20https://somosrede.com.br" target="_blank" class="twitter"></a>
+						<a href="https://twitter.com/intent/tweet?button_hashtag=doemarina%20https://doemarina.com.br" target="_blank" class="twitter"></a>
 					</li>
 					<li class="menu-icon">
-						<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsomosrede.com.br%2F&amp;src=sdkpreparse" target="_blank" class="fb-xfbml-parse-ignore facebook"></a>
+						<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoemarina.com.br%2F&amp;src=sdkpreparse" target="_blank" class="fb-xfbml-parse-ignore facebook"></a>
 					</li>
 					<li class="menu-item">
 						<a href="#home__knowMore" v-scroll-to="'#home__knowMore'">
