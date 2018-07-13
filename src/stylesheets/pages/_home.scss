@@ -78,7 +78,6 @@ $default-articles-padding: 7rem;
 	}
 }
 
-
 .subtitle {
 	font-size: ms(-1);
 	color: palette('white');
@@ -97,48 +96,6 @@ $default-articles-padding: 7rem;
 
 .campaign-progress {
 	margin-bottom: 0;
-}
-
-.donation-nav[class] {
-	color: palette('green', 'light');
-	margin: 0;
-
-	@include link-undercover{
-		color: palette('green', 'light');
-		text-decoration: underline;
-	}
-
-	text-decoration: underline;
-	font-weight: 800;
-	background: none;
-	text-transform: lowercase;
-	display: block;
-}
-
-.donation-nav--rewind[class] {
-
-	&::before {
-		content: '< ';
-	}
-}
-
-.donation-nav--block {
-	text-align: center;
-
-	&::before {
-		content: '> ';
-	}
-}
-
-.donation-nav--forward[class] {
-	text-decoration: underline;
-	color: palette('green', 'light');
-	float: right;
-	font-size: ms(1);
-
-	&::before {
-		content: '> ';
-	}
 }
 
 .home__donate ul {
@@ -245,6 +202,7 @@ $default-articles-padding: 7rem;
 #home__donors {
 	$bg: palette('gray', 'light');
 	background-color: $bg;
+	display: table;
 
 	& h2 {
 		color: palette('green');
