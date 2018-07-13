@@ -1,7 +1,11 @@
 <template>
   <div class="donation-form" id="donation-form">
     <template v-if="paymentStep === 'selectValue'">
-      <h2>Escolha um valor para doar</h2>
+      <h2 v-if="lastDonorFirstName">{{ lastDonorFirstName }} já doou!</h2>
+      <h2 v-else>Escolha um valor para doar</h2>
+      <p v-if="lastDonorFirstName">
+        Apoie você também:
+      </p>
       <selectValue />
     </template>
     <template v-else-if="paymentStep === 'finalMessage'">
@@ -58,6 +62,9 @@ export default {
     amount() {
       return this.$store.state.amount;
     },
+    lastDonorFirstName() {
+  		return this.$store.state.lastDonorFirstName;
+		},
   },
   mounted(){
     if(this.$route.query.donation_id){
