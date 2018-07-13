@@ -155,7 +155,7 @@
 
 		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
 
-		<div v-if="donations">
+		<div v-if="donations" class="donations-wrapper">
 			<table class="donations-table" v-if="donations.length > 0">
 				<thead>
 					<tr>

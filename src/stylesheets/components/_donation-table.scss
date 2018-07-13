@@ -1,3 +1,9 @@
+.donations-wrapper.donations-wrapper {
+	&[class] {
+		max-width: none;
+	}
+}
+
 .donations-table {
 	font-size: 0.9em;
 
