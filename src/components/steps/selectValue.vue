@@ -20,9 +20,7 @@
             v-model="other"
             pattern="[0-9]*"
             :disabled="amount === 'other' ? false : true"
-            @keyup="formatOther"
             v-mask="'########'">
-          <span class="real-value">{{ formatedOther }}</span>
           <button type="button" href="#" @click.prevent="validateForm">OK</button>
         </div>
       </fieldset>
@@ -51,7 +49,6 @@ export default {
       errorMessage: '',
       amount: '',
       other: '',
-      formatedOther: '',
       pledges: [
         2000,
         5000,
@@ -70,11 +67,17 @@ export default {
   methods: {
     validateForm() {
       const { amount, other } = this;
-      const values = amount === 'other' ? { amount, other } : { amount };
+      let values = amount === 'other' ? { amount, other } : { amount };
       const maxvalue = this.candidate ? this.candidate.max_donation_value : 106400;
-            const minvalue = this.candidate ? this.candidate.min_donation_value : 2000;
+      const minvalue = this.candidate ? this.candidate.min_donation_value : 2000;
 
-    const validation = validate(values);
+      console.log ('values', values);
+      if (amount === 'other') {
+        values.amount = parseInt(values.other, 10) * 100;
+      //   console.warn('values.amount', values.other);
+      }
+
+      const validation = validate(values);
 
     if (amount === 'other' && other < minvalue) {
         this.errorMessage = `O valor mínimo da doação é de R$ ${formatBRL(minvalue)}`;
@@ -98,9 +101,6 @@ export default {
       };
 
       this.$store.dispatch('CHANGE_PAYMENT_AMOUNT', data);
-    },
-    formatOther() {
-      this.formatedOther = formatBRLDec(this.other);
     },
     cleanOther(value) {
       return value.replace(/\d{2}$/g, '00');
