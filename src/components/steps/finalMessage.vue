@@ -9,7 +9,9 @@
       <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoemarina.com.br%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
     </li>
   </ul>
-  <a class="donation-nav donation-nav--block" href="#" @click.prevent="goBack">deseja doar novamente?</a>
+  <div class="donation-nav-wrap">
+  	<a class="donation-nav donation-nav--block" href="https://eokoe2.typeform.com/to/iyaBER" target="_blank">responda nossa pesquisa</a>
+  </div>
   </section>
 </template>
 
