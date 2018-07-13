@@ -190,6 +190,7 @@ export default {
             amount: this.amount,
             candidate_id: this.candidate.id,
             donation_fp: this.donationFp,
+            referral_code: this.$store.state.referral,
           }
           this.$store.dispatch('GET_DONATION', payload)
             .then((res) => {

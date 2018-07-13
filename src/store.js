@@ -14,6 +14,7 @@ export default new Vuex.Store({
   state: {
     paymentStep: 'selectValue',
     amount: 0,
+    referral: '',
     token: '',
     donation: {},
     iugu: {},
@@ -43,6 +44,9 @@ export default new Vuex.Store({
     },
     SET_TOKEN(state, { token }) {
       state.token = token;
+    },
+    SET_REFERRAL(state, referral) {
+      state.referral = referral;
     },
     SET_USERNAME(state, { user }) {
       state.username = user;
@@ -155,6 +159,9 @@ export default new Vuex.Store({
     },
     ADD_TOKEN({ commit }, data) {
       commit('SET_TOKEN', { token: data });
+    },
+    ADD_REFERRAL({ commit }, data) {
+      commit('SET_REFERRAL', data);
     },
     GET_TOKEN({ commit }, data) {
       return new Promise((resolve, reject) => {

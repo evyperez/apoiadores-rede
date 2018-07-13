@@ -175,7 +175,8 @@ export default {
         name: this.paymentData.name,
         amount: this.paymentData.amount,
         candidate_id: this.paymentData.candidate_id,
-        donation_fp: this.paymentData.donation_fp
+        donation_fp: this.paymentData.donation_fp,
+        referral_code: this.$store.state.referral,
       }
 
         this.$store.dispatch('GET_DONATION', payload)
