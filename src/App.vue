@@ -20,6 +20,7 @@ export default {
   },
   mounted() {
     this.handleSession();
+    this.getReferral();
   },
   methods: {
     _getQueryString(url) {
@@ -38,6 +39,13 @@ export default {
         params[decodeURIComponent(element[0])] = decodeURIComponent(element[1] || '');
       }
       return params;
+    },
+    getReferral() {
+      const referral = this._getQueryString(window.location.search).campanha;
+
+      if(referral) {
+        this.$store.dispatch('ADD_REFERRAL', referral);
+      }
     },
     handleSession() {
       if(window.localStorage) {
