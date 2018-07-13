@@ -82,6 +82,13 @@ input:-moz-focusring {
 	outline: 1px dotted ButtonText;
 }
 
+table button[type] {
+	background-color: transparent;
+	border: 0;
+	font-weight: font-weight('heading');
+	padding: 0;
+}
+
 .button--load-more[class] {
 	display: block;
 	padding: .5em 1.2em;
