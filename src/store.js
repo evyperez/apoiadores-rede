@@ -21,6 +21,8 @@ export default new Vuex.Store({
     username: {},
     candidate: {},
     donations: [],
+    donationsRecent: [],
+    donationsRecentCount: 0,
     address: {},
     paymentData: {},
     hasMoreDonations: false,
@@ -58,6 +60,28 @@ export default new Vuex.Store({
       }
 
       state.donations = state.donations.concat(payload.donations);
+    },
+    SET_RECENT_DONATIONS: (state, payload) => {
+      const donationToCompare = state.donationsRecent.length === 0 ?
+        state.donations[0] :
+        state.donationsRecent[0];
+      if (donationToCompare) {
+        if (state.donations.length === 0) {
+          state.donationsRecentCount = payload.donations.length;
+          state.donationsRecent = payload.donations;
+        } else {
+          let i = 0;
+
+          while (payload.donations[i] && payload.donations[i]._marker !== donationToCompare._marker) { // eslint-disable-line no-underscore-dangle
+            i += 1;
+          }
+
+          if (i > 0) {
+            state.donationsRecentCount += i;
+            state.donationsRecent = payload.donations;
+          }
+        }
+      }
     },
     SET_ADDRESS: (state, payload) => {
       state.address = payload;
@@ -185,6 +209,19 @@ export default new Vuex.Store({
             commit('SET_DONATIONS', response.data);
           });
       });
+    },
+    UPDATE_DONATIONS({
+      commit,
+    }, id) {
+      setInterval(() => {
+        return new Promise((resolve) => {
+          axios.get(`${api}/public-api/candidate-donations/${id}`)
+            .then((response) => {
+              resolve(response.data.donations);
+              commit('SET_RECENT_DONATIONS', response.data);
+            });
+        });
+      }, 1000 * 60);
     },
     UPDATE_DONATIONS_SUMMARY({
       commit,
