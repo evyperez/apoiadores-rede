@@ -66,6 +66,19 @@ export default new Vuex.Store({
       console.log('payment', paymentData);
       state.paymentData = paymentData;
     },
+    SET_DONATIONS_SUMMARY(state, summary) {
+      if (state.candidate.total_donated !== summary.total_donated_by_votolegal) {
+        state.candidate.total_donated = summary.total_donated_by_votolegal;
+      }
+
+      if (state.candidate.people_donated !== summary.count_donated_by_votolegal) {
+        state.candidate.people_donated = summary.count_donated_by_votolegal;
+      }
+
+      if (state.candidate.raising_goal !== summary.raising_goal) {
+        state.candidate.raising_goal = summary.raising_goal;
+      }
+    },
   },
   actions: {
     CHANGE_PAYMENT_AMOUNT({ commit }, data) {
@@ -172,6 +185,26 @@ export default new Vuex.Store({
             commit('SET_DONATIONS', response.data);
           });
       });
+    },
+    UPDATE_DONATIONS_SUMMARY({
+      commit,
+    }, id) {
+      setInterval(() => {
+        console.log('lala');
+        return new Promise((resolve, reject) => {
+          axios.get(`${api}/public-api/candidate-donations-summary/${id}`).then(
+            (response) => {
+              console.log('response', response);
+              commit('SET_DONATIONS_SUMMARY', response.data.candidate);
+              resolve();
+            },
+            (err) => {
+              reject(err.response);
+              console.error(err);
+            },
+          );
+        });
+      }, 1000 * 60);
     },
     GET_ADDRESS: ({ commit }, cep) => {
       return new Promise((resolve, reject) => {

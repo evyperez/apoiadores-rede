@@ -219,6 +219,7 @@ export default {
 		const candidateId = window.location.host === "somosrede.com.br" ? 40 : 130;
 		this.$store.dispatch("GET_CANDIDATE_INFO", candidateId);
 		this.$store.dispatch("GET_DONATIONS", candidateId);
+    this.$store.dispatch("UPDATE_DONATIONS_SUMMARY", candidateId);
 	},
 	computed: {
 		candidate() {
