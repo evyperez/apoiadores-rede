@@ -190,11 +190,9 @@ export default new Vuex.Store({
       commit,
     }, id) {
       setInterval(() => {
-        console.log('lala');
         return new Promise((resolve, reject) => {
           axios.get(`${api}/public-api/candidate-donations-summary/${id}`).then(
             (response) => {
-              console.log('response', response);
               commit('SET_DONATIONS_SUMMARY', response.data.candidate);
               resolve();
             },
