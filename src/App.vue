@@ -22,6 +22,23 @@ export default {
     this.handleSession();
   },
   methods: {
+    _getQueryString(url) {
+      const queryString = url.indexOf('?') !== -1
+        ? url.split('?')[1]
+        : [];
+      const params = {};
+      const queries = queryString.indexOf('&') !== -1
+        ? queryString.split('&')
+        : [queryString];
+
+      for (let i = 0; i < queries.length; i += 1) {
+        const element = queries[i].indexOf('=') !== -1
+          ? queries[i].split('=')
+          : [queries[i], null];
+        params[decodeURIComponent(element[0])] = decodeURIComponent(element[1] || '');
+      }
+      return params;
+    },
     handleSession() {
       if(window.localStorage) {
         const tokenName = window.location.host === 'doemarina.com.br'
