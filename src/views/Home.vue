@@ -164,7 +164,7 @@
 						<th>Data</th>
 						<th>Método</th>
 						<th>Valor</th>
-						<th>Decred Txid</th>
+						<th>Recibo</th>
 					</tr>
 				</thead>
 				<tfoot>
@@ -174,7 +174,7 @@
 						<th>Data</th>
 						<th>Método</th>
 						<th>Valor</th>
-						<th>Decred Txid</th>
+						<th>Recibo</th>
 					</tr>
 				</tfoot>
 				<tbody>
