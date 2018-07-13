@@ -148,7 +148,7 @@ $palette: (
 		'primary': rgb(51, 122, 183),
 		'success': rgb(66, 133, 66),
 		'info': rgb(60, 127, 145),
-		'warning': rgb(240, 173, 78),
+		'warning': tint(rgb(240, 173, 78), 75%),
 		'danger': rgb(217, 83, 79),
 	),
 	'mark': (

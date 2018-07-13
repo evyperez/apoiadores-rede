@@ -178,6 +178,12 @@
 					</tr>
 				</tfoot>
 				<tbody>
+          <tr v-show="donationsRecentCount > 0">
+            <td colspan="6" class="alert alert--warning" role="alert">
+              Há pelo menos <b>{{ donationsRecentCount }}</b> novas transações segundo os critérios escolhidos.
+              <button class="" type="button" @click="refreshDonationsList()">Carregar?</button>
+            </td>
+          </tr>
 					<tr v-for="donation in donations" :key="donation.id">
 						<th title="Nome">{{donation.name}}</th>
 						<td title="CPF">{{donation.cpf | formatCPF }}</td>
@@ -220,6 +226,7 @@ export default {
 		this.$store.dispatch("GET_CANDIDATE_INFO", candidateId);
 		this.$store.dispatch("GET_DONATIONS", candidateId);
     this.$store.dispatch("UPDATE_DONATIONS_SUMMARY", candidateId);
+    this.$store.dispatch("UPDATE_DONATIONS", candidateId);
 	},
 	computed: {
 		candidate() {
@@ -227,6 +234,12 @@ export default {
 		},
 		donations() {
 		return this.$store.state.donations;
+		},
+		donationsRecentCount() {
+  		return this.$store.state.donationsRecentCount;
+		},
+		donationsRecent() {
+  		return this.$store.state.donationsRecent;
 		},
 		hasMoreDonations() {
 			return this.$store.state.hasMoreDonations;
@@ -260,6 +273,9 @@ export default {
 		},
 		getDonationsList() {
 			this.$store.dispatch('GET_DONATIONS', this.candidate.id);
+		},
+		refreshDonationsList() {
+			this.$store.dispatch('REFRESH_DONATIONS');
 		},
 	},
 };

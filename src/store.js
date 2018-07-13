@@ -21,6 +21,9 @@ export default new Vuex.Store({
     username: {},
     candidate: {},
     donations: [],
+    donationsRecent: [],
+    donationsRecentCount: 0,
+    donationsRecentHasMore: false,
     address: {},
     paymentData: {},
     hasMoreDonations: false,
@@ -58,6 +61,44 @@ export default new Vuex.Store({
       }
 
       state.donations = state.donations.concat(payload.donations);
+    },
+    REPLACE_DONATIONS: (state) => {
+      const donationsRecent = state.donationsRecent;
+
+      if (donationsRecent.length) {
+        state.lastDonationMarker = donationsRecent[donationsRecent.length - 1]._marker; // eslint-disable-line no-underscore-dangle
+      }
+      state.donations = donationsRecent;
+      state.hasMoreDonations = state.donationsRecentHasMore;
+      state.donationsRecent = [];
+      state.donationsRecentCount = 0;
+      state.donationsRecentHasMore = false;
+    },
+    SET_RECENT_DONATIONS: (state, payload) => {
+      const donationToCompare = state.donationsRecent.length === 0 ?
+        state.donations[0] :
+        state.donationsRecent[0];
+      if (donationToCompare) {
+        const newDonations = payload.donations;
+
+        if (state.donations.length === 0) {
+          state.donationsRecentCount = newDonations.length;
+          state.donationsRecent = newDonations;
+          state.donationsRecentHasMore = payload.has_more;
+        } else {
+          let i = 0;
+
+          while (newDonations[i] && newDonations[i]._marker !== donationToCompare._marker) { // eslint-disable-line no-underscore-dangle
+            i += 1;
+          }
+
+          if (i > 0) {
+            state.donationsRecentCount += i;
+            state.donationsRecent = newDonations;
+            state.donationsRecentHasMore = payload.has_more;
+          }
+        }
+      }
     },
     SET_ADDRESS: (state, payload) => {
       state.address = payload;
@@ -186,15 +227,29 @@ export default new Vuex.Store({
           });
       });
     },
+    REFRESH_DONATIONS({ commit }) {
+      commit('REPLACE_DONATIONS');
+    },
+    UPDATE_DONATIONS({
+      commit,
+    }, id) {
+      setInterval(() => {
+        return new Promise((resolve) => {
+          axios.get(`${api}/public-api/candidate-donations/${id}`)
+            .then((response) => {
+              resolve(response.data.donations);
+              commit('SET_RECENT_DONATIONS', response.data);
+            });
+        });
+      }, 1000 * 60);
+    },
     UPDATE_DONATIONS_SUMMARY({
       commit,
     }, id) {
       setInterval(() => {
-        console.log('lala');
         return new Promise((resolve, reject) => {
           axios.get(`${api}/public-api/candidate-donations-summary/${id}`).then(
             (response) => {
-              console.log('response', response);
               commit('SET_DONATIONS_SUMMARY', response.data.candidate);
               resolve();
             },
