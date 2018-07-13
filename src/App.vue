@@ -41,7 +41,7 @@ export default {
       return params;
     },
     getReferral() {
-      const referral = this._getQueryString(window.location.search).campanha;
+      const referral = this._getQueryString(window.location.search).ref;
 
       if(referral) {
         this.$store.dispatch('ADD_REFERRAL', referral);
