@@ -202,7 +202,6 @@ $default-articles-padding: 7rem;
 #home__donors {
 	$bg: palette('gray', 'light');
 	background-color: $bg;
-	display: table;
 
 	& h2 {
 		color: palette('green');
