@@ -113,7 +113,7 @@ $default-articles-padding: 7rem;
 	text-align: center;
 
 	&::before {
-		content: '< ';
+		content: '> ';
 	}
 }
 
@@ -237,3 +237,4 @@ $default-articles-padding: 7rem;
 		color: palette('green');
 	}
 }
+
