@@ -23,6 +23,7 @@ export default new Vuex.Store({
     donations: [],
     donationsRecent: [],
     donationsRecentCount: 0,
+    donationsRecentHasMore: false,
     address: {},
     paymentData: {},
     hasMoreDonations: false,
@@ -61,24 +62,40 @@ export default new Vuex.Store({
 
       state.donations = state.donations.concat(payload.donations);
     },
+    REPLACE_DONATIONS: (state) => {
+      const donationsRecent = state.donationsRecent;
+
+      if (donationsRecent.length) {
+        state.lastDonationMarker = donationsRecent[donationsRecent.length - 1]._marker; // eslint-disable-line no-underscore-dangle
+      }
+      state.donations = donationsRecent;
+      state.hasMoreDonations = state.donationsRecentHasMore;
+      state.donationsRecent = [];
+      state.donationsRecentCount = 0;
+      state.donationsRecentHasMore = false;
+    },
     SET_RECENT_DONATIONS: (state, payload) => {
       const donationToCompare = state.donationsRecent.length === 0 ?
         state.donations[0] :
         state.donationsRecent[0];
       if (donationToCompare) {
+        const newDonations = payload.donations;
+
         if (state.donations.length === 0) {
-          state.donationsRecentCount = payload.donations.length;
-          state.donationsRecent = payload.donations;
+          state.donationsRecentCount = newDonations.length;
+          state.donationsRecent = newDonations;
+          state.donationsRecentHasMore = payload.has_more;
         } else {
           let i = 0;
 
-          while (payload.donations[i] && payload.donations[i]._marker !== donationToCompare._marker) { // eslint-disable-line no-underscore-dangle
+          while (newDonations[i] && newDonations[i]._marker !== donationToCompare._marker) { // eslint-disable-line no-underscore-dangle
             i += 1;
           }
 
           if (i > 0) {
             state.donationsRecentCount += i;
-            state.donationsRecent = payload.donations;
+            state.donationsRecent = newDonations;
+            state.donationsRecentHasMore = payload.has_more;
           }
         }
       }
@@ -209,6 +226,9 @@ export default new Vuex.Store({
             commit('SET_DONATIONS', response.data);
           });
       });
+    },
+    REFRESH_DONATIONS({ commit }) {
+      commit('REPLACE_DONATIONS');
     },
     UPDATE_DONATIONS({
       commit,
