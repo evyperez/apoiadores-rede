@@ -1,4 +1,9 @@
 .donation-nav-wrap {
 	margin-top: 1.2em;
 	font-size: 1.4em;
+	display: table;
+}
+
+.donation-nav--left {
+	float: left;
 }

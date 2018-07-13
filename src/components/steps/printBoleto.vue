@@ -13,9 +13,12 @@
           <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoemarina.com.br%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
         </li>
       </ul>
+    <div class="donation-nav-wrap">
+      <a class="donation-nav donation-nav--block donation-nav--left" href="https://eokoe2.typeform.com/to/iyaBER" target="_blank">responda nossa pesquisa</a>
       <div class="input-wrapper" v-if="messages[1]">
         <a target="_blank" class="donation-nav donation-nav--forward" @click.prevent="redirectUser(messages[1])" >{{ messages[1].text }} </a>
       </div>
+    </div>
     </section>
 </template>
 
