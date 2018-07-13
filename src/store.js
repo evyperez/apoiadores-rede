@@ -21,9 +21,14 @@ export default new Vuex.Store({
     username: {},
     candidate: {},
     donations: [],
+    todayDonations: {
+      total_donated: 0,
+      people_donated: 0,
+    },
     donationsRecent: [],
     donationsRecentCount: 0,
     donationsRecentHasMore: false,
+    lastDonorFirstName: '',
     address: {},
     paymentData: {},
     hasMoreDonations: false,
@@ -61,6 +66,13 @@ export default new Vuex.Store({
       }
 
       state.donations = state.donations.concat(payload.donations);
+    },
+    SET_LAST_DONOR: (state, payload) => {
+      const firstName = payload.name.substr(0, payload.name.indexOf(' ')) || payload.name;
+
+      if (state.lastDonorFirstName !== firstName) {
+        state.lastDonorFirstName = firstName;
+      }
     },
     REPLACE_DONATIONS: (state) => {
       const donationsRecent = state.donationsRecent;
@@ -106,6 +118,15 @@ export default new Vuex.Store({
     SET_PAYMENT_DATA(state, { paymentData }) {
       console.log('payment', paymentData);
       state.paymentData = paymentData;
+    },
+    SET_DONATIONS_TODAY(state, payload) {
+      if (state.todayDonations.total_donated !== payload.total_donated_by_votolegal) {
+        state.todayDonations.total_donated += payload.total_donated_by_votolegal;
+      }
+
+      if (state.todayDonations.people_donated !== payload.count_donated_by_votolegal) {
+        state.todayDonations.people_donated += payload.count_donated_by_votolegal;
+      }
     },
     SET_DONATIONS_SUMMARY(state, summary) {
       if (state.candidate.total_donated !== summary.total_donated_by_votolegal) {
@@ -224,6 +245,9 @@ export default new Vuex.Store({
           .then((response) => {
             resolve(response.data.donations);
             commit('SET_DONATIONS', response.data);
+            if (response.data.donations && response.data.donations[0]) {
+              commit('SET_LAST_DONOR', response.data.donations[0]);
+            }
           });
       });
     },
@@ -239,6 +263,9 @@ export default new Vuex.Store({
             .then((response) => {
               resolve(response.data.donations);
               commit('SET_RECENT_DONATIONS', response.data);
+              if (response.data.donations && response.data.donations[0]) {
+                commit('SET_LAST_DONOR', response.data.donations[0]);
+              }
             });
         });
       }, 1000 * 60);
@@ -251,6 +278,7 @@ export default new Vuex.Store({
           axios.get(`${api}/public-api/candidate-donations-summary/${id}`).then(
             (response) => {
               commit('SET_DONATIONS_SUMMARY', response.data.candidate);
+              commit('SET_DONATIONS_TODAY', response.data.today);
               resolve();
             },
             (err) => {
