@@ -1,5 +1,6 @@
 <template>
   <section>
+  <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
   <div v-for="(message, i) in messages" :key="i" v-html="message.text"></div>
   <ul id="wrap-share">
     <li>
@@ -10,7 +11,7 @@
     </li>
   </ul>
   <div class="donation-nav-wrap">
-  	<a class="donation-nav donation-nav--block" href="https://eokoe2.typeform.com/to/iyaBER" target="_blank">responda nossa pesquisa</a>
+  	<a class="donation-nav donation-nav--forward" href="https://eokoe2.typeform.com/to/iyaBER" target="_blank">responda nossa pesquisa</a>
   </div>
   </section>
 </template>
