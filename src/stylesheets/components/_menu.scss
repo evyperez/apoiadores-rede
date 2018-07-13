@@ -61,6 +61,7 @@
 	background-position: 50% 50%;
 	transition-property: background-size;
 	transition-duration: 0.8s;
+	width: 213px;
 
 	@media (min-width: breakpoint('desktop')) {
 		display: none;
