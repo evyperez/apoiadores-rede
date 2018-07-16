@@ -85,15 +85,15 @@
 	width: 5em;
 
 	color: palette('white');
-	border: 2px solid palette('orange');
-	background-color: palette('orange');
+	border: 2px solid palette('esmerald');
+	background-color: palette('esmerald');
 	border-radius: 10px;
 
 	&:hover,
 	&:link:focus,
 	&:focus,
 	&:active {
-		color: palette('orange');
+		color: palette('esmerald');
 		border: 2px solid palette('white');
 		background-color: palette('white');
 		text-decoration: none;

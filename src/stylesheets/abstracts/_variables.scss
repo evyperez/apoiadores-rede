@@ -183,11 +183,8 @@ $palette: (
 		'dark': rgb(208, 78, 42),
 		'highlight': rgb(255, 102, 51),
 	),
-	'green': (
-		'light': rgb(139, 255, 205),
-		'base': $_green--base,
-		'dark': shade($_green--base, 35%),
-		'menu': rgb(0, 255, 153),
+	'menu': (
+		'green': rgb(10, 102, 97),
 	),
 	'text': (
 		'dark': hsl(0, 0%, 13%),
