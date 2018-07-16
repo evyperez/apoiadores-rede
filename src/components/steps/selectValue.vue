@@ -69,7 +69,7 @@ export default {
       const { amount, other } = this;
       const values = amount === 'other' ? { amount, other: other * 100 } : { amount };
       const maxvalue = this.candidate ? this.candidate.max_donation_value : 106400;
-      const minvalue = this.candidate ? this.candidate.min_donation_value : 2000;
+      const minvalue = this.candidate ? this.candidate.min_donation_value : 1000;
 
       const validation = validate(values);
 
