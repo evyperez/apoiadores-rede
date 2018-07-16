@@ -43,6 +43,7 @@
 	color: palette('green', 'light');
 	float: right;
 	font-size: ms(1);
+	cursor: pointer;
 
 	&::before {
 		content: '> ';

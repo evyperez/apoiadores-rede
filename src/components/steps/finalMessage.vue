@@ -33,6 +33,17 @@ export default {
     scrollToDonate() {
       const form = document.getElementById('doar');
       form.scrollIntoView({ block: 'start', behavior: 'smooth' });
+	},
+    redirectUser(ui) {
+      if(ui.value === 'pay_with_cc'){
+        this.$router.replace(this.$route.path);
+          this.$store.dispatch('CHANGE_PAYMENT_STEP', {
+            step: 'userData'
+        });
+      } else {
+        sessionStorage.clear();
+        window.open(ui.href)
+      }
     },
     goBack() {
       this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
