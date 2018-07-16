@@ -67,22 +67,16 @@ export default {
   methods: {
     validateForm() {
       const { amount, other } = this;
-      let values = amount === 'other' ? { amount, other } : { amount };
+      const values = amount === 'other' ? { amount, other: other * 100 } : { amount };
       const maxvalue = this.candidate ? this.candidate.max_donation_value : 106400;
       const minvalue = this.candidate ? this.candidate.min_donation_value : 2000;
 
-      console.log ('values', values);
-      if (amount === 'other') {
-        values.amount = parseInt(values.other, 10) * 100;
-      //   console.warn('values.amount', values.other);
-      }
-
       const validation = validate(values);
 
-    if (amount === 'other' && other < minvalue) {
+    if (amount === 'other' && values.other < minvalue) {
         this.errorMessage = `O valor mínimo da doação é de R$ ${formatBRL(minvalue)}`;
         return;
-    } else if (amount === 'other' && other > maxvalue) {
+    } else if (amount === 'other' && values.other > maxvalue) {
         this.errorMessage = `O valor máximo da doação é de R$ ${formatBRL(maxvalue)}`;
         return;
     }
