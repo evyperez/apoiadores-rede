@@ -77,7 +77,7 @@ export default {
 	},
 	computed: {
 		generalSiteDomain(){
-			return window.location.host === 'doemarina.com.br'
+			return (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br')
 				? 'https://votolegal.com.br'
 				: 'https://dev.votolegal.com.br';
 		},
