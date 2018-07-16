@@ -6,23 +6,24 @@
           <input type="radio" :id="`amount_${pledge}`" name="amount" v-model="amount" :value="pledge" @change="validateForm">
           <label :for="`amount_${pledge}`" class="bigger">R$ {{ pledge | formatBRL }}</label>
         </div>
-
-        <div class="input-wrapper input-wrapper--full-width">
-          <input type="radio" id="amount_other" name="amount" v-model="amount" value="other">
+        <transition name="custom-value-fade" mode="out-in">
+          <div class="input-wrapper input-wrapper--full-width" v-if="amount !== 'other'" key="other">
+            <input type="radio" id="amount_other" name="amount" v-model="amount" value="other">
             <label for="amount_other">Outro valor</label>
-        </div>
+          </div>
 
-        <div class="input-wrapper half has-real-value" v-if="amount === 'other'">
-          <label for="other">R$</label>
-          <input
-            type="text"
-            name="other"
-            v-model.number="other"
-            pattern="[0-9]*"
-            :disabled="amount === 'other' ? false : true"
-            v-mask="'########'">
-          <button type="button" href="#" @click.prevent="validateForm">OK</button>
-        </div>
+          <div class="input-wrapper half has-real-value" v-else key="customValue">
+            <label for="other">R$</label>
+            <input
+              type="text"
+              name="other"
+              v-model.number="other"
+              pattern="[0-9]*"
+              :disabled="amount === 'other' ? false : true"
+              v-mask="'########'">
+            <button type="button" href="#" @click.prevent="validateForm">OK</button>
+          </div>
+        </transition>
       </fieldset>
         <p class="subtitle">Ao doar, você concorda com os <a href="./termos.pdf" target="_blank">termos de uso e política de privacidade</a></p>
 
