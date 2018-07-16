@@ -190,9 +190,9 @@
 						<td title="Data">{{ donation.captured_at | date }}</td>
 						<td title="Método">{{ donation.payment_method_human }}</td>
 						<td title="Valor">R$ {{donation.amount | formatBRL}} </td>
-						<td v-if="donation.transaction_link" title="Decred Txid" class="decred-link">
+						<td v-if="donation.digest" title="Decred Txid" class="decred-link">
               <!-- TODO: point to right environment -->
-							<a :href="'https://dev.votolegal.com.br/em/marinasilva/recibo/' + donation.digest" target="_blank" title="Registro na blockchain"><img src="../assets/images/icons/website-dark.png" alt="Decred Txid"/></a>
+							<a :href="'https://dev.votolegal.com.br/em/' + candidate.username +'/recibo/' + donation.digest" target="_blank" title="Registro na blockchain"><img src="../assets/images/icons/website-dark.png" alt="Decred Txid"/></a>
 						</td>
 						<td title="Decred Txid" v-else>Processando</td>
 					</tr>
