@@ -164,10 +164,11 @@
 			</span>
 			</p>
 
-
-			<a class="nav-link" href="/doadores">
-				ver todos
-			</a>
+			<div class="nav-link-donations-wrap">
+				<a class="nav-link-donations" href="/doadores">
+					ver doações
+				</a>
+			</div>
 		</div>
 	</div>
 	</article>
