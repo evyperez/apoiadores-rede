@@ -52,68 +52,12 @@
       </div>
     </nav>
 
-    <div class="header-container">
-      <div class="site-label">
-        <h1>#Somos
-          <vue-typer
-            :text='["marina","luta","paz","pessoas","muitos"]'
-            :repeat='Infinity'
-            :shuffle='false'
-            initial-action='typing'
-            :pre-type-delay='70'
-            :type-delay='70'
-            :pre-erase-delay='2000'
-            :erase-delay='250'
-            erase-style='clear'
-            :erase-on-complete='false'
-            caret-animation='phase'
-          ></vue-typer>
-        </h1>
-        <!-- <a class="call-to-action" href="#doar" v-scroll-to="'#doar'">
-          > quero doar
-        </a> -->
-      </div>
-    </div>
-
 </header>
 </template>
 
 <script>
-import { VueTyper } from 'vue-typer'
 export default {
-  name: 'Header',
-  components: {
-    VueTyper
-  },
-  methods: {
-    scrollMenu() {
-      const element = document.querySelector('.main-menu');
-
-      window.addEventListener('scroll', (e) => {
-        const newOffset = window.scrollY;
-        const currentRouteName = this.$route.name;
-          if (newOffset > 13 && window.matchMedia("").matches) {
-            element.classList.add('animate');
-
-          } else {
-            element.classList.remove('animate');
-          }
-      });
-    },
-    showMenu() {
-      const element = document.querySelector('.mobile-button');
-      const menu = document.querySelector('.menu-wrap');
-      element.addEventListener('click', function() {
-        menu.classList.toggle('show');
-      })
-    }
-  },
-  created() {
-    this.$nextTick(function() {
-      this.scrollMenu();
-      this.showMenu();
-    });
-  }
+  name: 'Menu',
 }
 </script>
 
