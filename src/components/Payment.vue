@@ -1,11 +1,7 @@
 <template>
   <div class="donation-form" id="donation-form">
     <template v-if="paymentStep === 'selectValue'">
-      <h2 v-if="lastDonorFirstName">{{ lastDonorFirstName }} já doou!</h2>
-      <h2 v-else>Escolha um valor para doar</h2>
-      <p v-if="lastDonorFirstName">
-        Apoie você também:
-      </p>
+      <h2>Escolha um valor para doar</h2>
       <selectValue />
     </template>
     <template v-else-if="paymentStep === 'finalMessage'">
