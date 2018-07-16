@@ -1,6 +1,6 @@
 .main-menu {
 	position: fixed;
-	background-color: palette('green','dark');
+	background-color: palette('menu','green');
 	margin: 0;
 	width: 100%;
 	top: 0;
@@ -32,7 +32,7 @@
 .main-menu.animate {
 	padding-top: 0;
 	height: $menu-height-animate;
-	background-color: palette('green','dark');
+	background-color: palette('menu','green');
 }
 
 .brand-wrap {
@@ -56,7 +56,7 @@
 	min-width: 190x;
 	min-height: 35px;
 	background-image: url('../assets/images/icons/logo-rede-bottom.png');
-	background-size: 213px 39px;
+	background-size: 170px auto;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	transition-property: background-size;
@@ -69,7 +69,7 @@
 }
 
 .animate .logo-rede {
-	background-size: 150px 27px;
+	background-size: 150px auto;
 
 	@media (min-width: breakpoint('desktop')) {
 		display: block;
@@ -134,7 +134,7 @@
 			max-height: auto;
 			right: 0;
 			left: 0;
-			background-color: palette('green','dark');
+			background-color: palette('menu','green');
 		}
 	}
 
