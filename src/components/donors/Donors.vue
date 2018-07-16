@@ -2,7 +2,7 @@
 <main id="conteudo">
 
 	<article id="home__donors" class="home__donors">
-	<div class="container" id="donation-wrap">
+	<div class="internal-container" id="donation-wrap">
 		<h2>
 		Doadores
 		</h2>

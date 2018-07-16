@@ -166,7 +166,7 @@
 
 			<div class="nav-link-donations-wrap">
 				<a class="nav-link-donations" href="/doadores">
-					ver doações
+					ver dados completos
 				</a>
 			</div>
 		</div>

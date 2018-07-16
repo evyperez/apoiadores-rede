@@ -129,8 +129,8 @@ table button[type] {
 	border-radius: 1.25rem;
 	white-space: inherit;
 	padding-top: $leading * 0.15rem;
-	padding-left: $leading * 1em;
-	padding-right: $leading * 1em;
+	padding-left: $leading * 0.8em;
+	padding-right: $leading * 0.8em;
 	padding-bottom: $leading * 0.15rem;
 	margin-top: $leading * 1rem;
 	margin-right: auto;
@@ -145,7 +145,7 @@ table button[type] {
 	color: palette('white');
 
 	text-transform: lowercase;
-	width: 12em;
+	width: 14em;
 
 	&:link {
 		text-decoration: none;
