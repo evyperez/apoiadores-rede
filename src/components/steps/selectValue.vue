@@ -96,14 +96,11 @@ export default {
     },
     saveStep(values) {
       const data = {
-        amount: values.amount !== 'other' ? values.amount : this.cleanOther(values.other),
+        amount: values.amount !== 'other' ? values.amount : values.other,
         step: 'userData',
       };
 
       this.$store.dispatch('CHANGE_PAYMENT_AMOUNT', data);
-    },
-    cleanOther(value) {
-      return value.replace(/\d{2}$/g, '00');
     },
     checkAmount() {
       if(this.amount !== '') {
