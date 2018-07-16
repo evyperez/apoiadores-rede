@@ -13,7 +13,7 @@
             type="text"
             v-model="number"
             name="number"
-            v-mask="'#### #### #### ####'">
+            v-mask="['#### #### #### ####', '#### #### #### ##']">
           <div class="error" v-if="validation.errors.number">
             {{ validation.errors.number }}
           </div>
@@ -51,7 +51,8 @@
             type="text"
             v-model="csc"
             name="csc"
-            maxlength="3">
+            v-mask="['###', '####']"
+            maxlength="4">
           <div class="error" v-if="validation.errors.csc">
             {{ validation.errors.csc }}
           </div>
