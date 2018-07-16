@@ -192,7 +192,7 @@ $default-articles-padding: 7rem;
 }
 
 .home__goals {
-	$bg: palette('gray', 'light');
+	$bg: palette('section', 'green');
 
 	background-color: $bg;
 }
@@ -207,7 +207,7 @@ $default-articles-padding: 7rem;
 }
 
 #home__donors {
-	$bg: palette('gray', 'light');
+	$bg: palette('section', 'green');
 	background-color: $bg;
 
 	& h2 {
