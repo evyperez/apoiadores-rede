@@ -22,6 +22,7 @@ export default new Vuex.Store({
     username: {},
     candidate: {},
     donations: [],
+    donors: [],
     todayDonations: {
       total_donated: 0,
       people_donated: 0,
@@ -70,6 +71,9 @@ export default new Vuex.Store({
       }
 
       state.donations = state.donations.concat(payload.donations);
+    },
+    SET_DONORS(state, { res }) {
+      state.donors = res.names;
     },
     SET_LAST_DONOR: (state, payload) => {
       const firstName = payload.name.substr(0, payload.name.indexOf(' ')) || payload.name;
@@ -120,7 +124,6 @@ export default new Vuex.Store({
       state.address = payload;
     },
     SET_PAYMENT_DATA(state, { paymentData }) {
-      console.log('payment', paymentData);
       state.paymentData = paymentData;
     },
     SET_DONATIONS_TODAY(state, payload) {
@@ -256,6 +259,20 @@ export default new Vuex.Store({
               commit('SET_LAST_DONOR', response.data.donations[0]);
             }
           });
+      });
+    },
+    GetDonorsNames({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        axios.get(`${api}/public-api/candidate-donations/${id}/donators-name`).then(
+          (response) => {
+            commit('SET_DONORS', { res: response.data });
+            resolve();
+          },
+          (err) => {
+            reject(err.response);
+            console.error(err);
+          },
+        );
       });
     },
     REFRESH_DONATIONS({ commit }) {

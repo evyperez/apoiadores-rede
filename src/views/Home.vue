@@ -155,54 +155,19 @@
 
 		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
 
-		<div v-if="donations" class="donations-wrapper">
-			<table class="donations-table" v-if="donations.length > 0">
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>CPF</th>
-						<th>Data</th>
-						<th>Método</th>
-						<th>Valor</th>
-						<th>Recibo</th>
-					</tr>
-				</thead>
-				<tfoot>
-					<tr>
-						<th>Nome</th>
-						<th>CPF</th>
-						<th>Data</th>
-						<th>Método</th>
-						<th>Valor</th>
-						<th>Recibo</th>
-					</tr>
-				</tfoot>
-				<tbody>
-					<tr v-show="donationsRecentCount > 0">
-						<td colspan="6" class="alert alert--warning" role="alert">
-						Há pelo menos <b>{{ donationsRecentCount }}</b> novas transações segundo os critérios escolhidos.
-						<button class="" type="button" @click="refreshDonationsList()">Carregar?</button>
-						</td>
-					</tr>
-					<tr v-for="donation in donations" :key="donation.id">
-						<th title="Nome">{{donation.name}}</th>
-						<td title="CPF">{{donation.cpf | formatCPF }}</td>
-						<td title="Data">{{ donation.captured_at | date }}</td>
-						<td title="Método">{{ donation.payment_method_human }}</td>
-						<td title="Valor">R$ {{donation.amount | formatBRL}} </td>
-						<td v-if="donation.digest" title="Decred Txid" class="decred-link">
-              <!-- TODO: point to right environment -->
-							<a :href="'https://dev.votolegal.com.br/em/' + candidate.username +'/recibo/' + donation.digest" target="_blank" title="Registro na blockchain"><img src="../assets/images/icons/website-dark.png" alt="Decred Txid"/></a>
-						</td>
-						<td title="Decred Txid" v-else>Processando</td>
-					</tr>
-				</tbody>
-			</table>
-			<h3 v-else>Ainda não há doações</h3>
 
-			<button class="button--load-more" type="button" @click.prevent="getDonationsList()" v-if="hasMoreDonations">
-				Carregar mais
-			</button>
+
+
+			<p>
+			<span v-for="(person, i) in donors" :key="i">
+			{{ person | titleCase }}{{ i < donors.length -1 ? ',' : '' }}
+			</span>
+			</p>
+
+
+			<a class="nav-link" href="/doadores">
+				ver todos
+			</a>
 		</div>
 	</div>
 	</article>
@@ -225,16 +190,17 @@ export default {
 	mounted() {
 		const candidateId = window.location.host === "somosrede.com.br" ? 40 : 130;
 		this.$store.dispatch("GET_CANDIDATE_INFO", candidateId);
-		this.$store.dispatch("GET_DONATIONS", candidateId);
-    this.$store.dispatch("UPDATE_DONATIONS_SUMMARY", candidateId);
-    this.$store.dispatch("UPDATE_DONATIONS", candidateId);
+		this.$store.dispatch('GetDonorsNames', candidateId);
+		// this.$store.dispatch("GET_DONATIONS", candidateId);
+    	this.$store.dispatch("UPDATE_DONATIONS_SUMMARY", candidateId);
+		// this.$store.dispatch("UPDATE_DONATIONS", candidateId);
 	},
 	computed: {
 		candidate() {
 		return this.$store.state.candidate;
 		},
-		donations() {
-		return this.$store.state.donations;
+		donors() {
+		return this.$store.state.donors;
 		},
 		donationsRecentCount() {
   		return this.$store.state.donationsRecentCount;
@@ -271,9 +237,6 @@ export default {
 				.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
 				.replace(/\.+$/, "");
 			return formated;
-		},
-		getDonationsList() {
-			this.$store.dispatch('GET_DONATIONS', this.candidate.id);
 		},
 		refreshDonationsList() {
 			this.$store.dispatch('REFRESH_DONATIONS');
