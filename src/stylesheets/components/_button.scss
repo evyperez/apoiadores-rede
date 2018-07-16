@@ -91,13 +91,14 @@ table button[type] {
 
 .button--load-more[class] {
 	display: block;
-	padding: .5em 1.2em;
 	border-radius: 1.25rem;
 	border: 0;
 	overflow: visible;
 	text-indent: 0;
 	white-space: inherit;
 	padding-top: $leading * 0.15rem;
+	padding-left: $leading * 1em;
+	padding-right: $leading * 1em;
 	padding-bottom: $leading * 0.15rem;
 	margin-top: $leading * 1rem;
 	margin-right: auto;
@@ -113,6 +114,48 @@ table button[type] {
 
 	&:hover {
 		background-color: palette('green', 'base');
+
+	}
+}
+
+
+.nav-link-donations-wrap {
+	text-align: center;
+	margin: auto;
+}
+
+.nav-link-donations-wrap a {
+	display: block;
+	border-radius: 1.25rem;
+	white-space: inherit;
+	padding-top: $leading * 0.15rem;
+	padding-left: $leading * 1em;
+	padding-right: $leading * 1em;
+	padding-bottom: $leading * 0.15rem;
+	margin-top: $leading * 1rem;
+	margin-right: auto;
+	margin-bottom: $leading * 2rem;
+	margin-left: auto;
+	font-weight: bold;
+	text-align: center;
+	color: palette('white');
+	text-decoration: none;
+
+	background-color: palette('gray', 'base');
+	color: palette('white');
+
+	text-transform: lowercase;
+	width: 12em;
+
+	&:link {
+		text-decoration: none;
+		color: palette('white');
+	}
+
+	&:hover {
+		text-decoration: none;
+		background-color: palette('green', 'base');
+		color: palette('white');
 
 	}
 }
