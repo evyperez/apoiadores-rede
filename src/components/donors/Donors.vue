@@ -45,8 +45,7 @@
 						<td title="Método">{{ donation.payment_method_human }}</td>
 						<td title="Valor">R$ {{donation.amount | formatBRL}} </td>
 						<td v-if="donation.digest" title="Decred Txid" class="decred-link">
-              <!-- TODO: point to right environment -->
-							<a :href="'https://dev.votolegal.com.br/em/' + candidate.username +'/recibo/' + donation.digest" target="_blank" title="Registro na blockchain"><img src="../../assets/images/icons/website-dark.png" alt="Decred Txid"/></a>
+							<a :href="generalSiteDomain + '/em/' + candidate.username + '/recibo/' + donation.digest" target="_blank" title="Registro na blockchain"><img src="../../assets/images/icons/website-dark.png" alt="Decred Txid"/></a>
 						</td>
 						<td title="Decred Txid" v-else>Processando</td>
 					</tr>
@@ -77,6 +76,11 @@ export default {
 		this.$store.dispatch("UPDATE_DONATIONS", candidateId);
 	},
 	computed: {
+		generalSiteDomain(){
+			return window.location.host === 'doemarina.com.br'
+				? 'https://votolegal.com.br'
+				: 'https://dev.votolegal.com.br';
+		},
 		candidate() {
 		return this.$store.state.candidate;
 		},
