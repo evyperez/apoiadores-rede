@@ -17,12 +17,10 @@
           <input
             type="text"
             name="other"
-            v-model="other"
+            v-model.number="other"
             pattern="[0-9]*"
             :disabled="amount === 'other' ? false : true"
-            @keyup="formatOther"
             v-mask="'########'">
-          <span class="real-value">{{ formatedOther }}</span>
           <button type="button" href="#" @click.prevent="validateForm">OK</button>
         </div>
       </fieldset>
@@ -51,7 +49,6 @@ export default {
       errorMessage: '',
       amount: '',
       other: '',
-      formatedOther: '',
       pledges: [
         2000,
         5000,
@@ -70,16 +67,16 @@ export default {
   methods: {
     validateForm() {
       const { amount, other } = this;
-      const values = amount === 'other' ? { amount, other } : { amount };
+      const values = amount === 'other' ? { amount, other: other * 100 } : { amount };
       const maxvalue = this.candidate ? this.candidate.max_donation_value : 106400;
-            const minvalue = this.candidate ? this.candidate.min_donation_value : 2000;
+      const minvalue = this.candidate ? this.candidate.min_donation_value : 2000;
 
-    const validation = validate(values);
+      const validation = validate(values);
 
-    if (amount === 'other' && other < minvalue) {
+    if (amount === 'other' && values.other < minvalue) {
         this.errorMessage = `O valor mínimo da doação é de R$ ${formatBRL(minvalue)}`;
         return;
-    } else if (amount === 'other' && other > maxvalue) {
+    } else if (amount === 'other' && values.other > maxvalue) {
         this.errorMessage = `O valor máximo da doação é de R$ ${formatBRL(maxvalue)}`;
         return;
     }
@@ -93,17 +90,11 @@ export default {
     },
     saveStep(values) {
       const data = {
-        amount: values.amount !== 'other' ? values.amount : this.cleanOther(values.other),
+        amount: values.amount !== 'other' ? values.amount : values.other,
         step: 'userData',
       };
 
       this.$store.dispatch('CHANGE_PAYMENT_AMOUNT', data);
-    },
-    formatOther() {
-      this.formatedOther = formatBRLDec(this.other);
-    },
-    cleanOther(value) {
-      return value.replace(/\d{2}$/g, '00');
     },
     checkAmount() {
       if(this.amount !== '') {
