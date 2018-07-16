@@ -9,7 +9,7 @@
 
         <div class="input-wrapper input-wrapper--full-width">
           <input type="radio" id="amount_other" name="amount" v-model="amount" value="other">
-          <label for="amount_other">OUTROS</label>
+            <label for="amount_other">Outro valor</label>
         </div>
 
         <div class="input-wrapper half has-real-value" v-if="amount === 'other'">

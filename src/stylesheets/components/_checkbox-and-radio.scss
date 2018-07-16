@@ -81,7 +81,8 @@ fieldset ul {
   padding-left: 0;
   padding-right: 0;
   white-space: nowrap;
-  text-align: center;
+	text-align: center;
+	text-transform: uppercase;
   font-weight: inherit;
   background-color: palette('green');
   border-radius: $rounded-corner;
@@ -262,4 +263,14 @@ fieldset ul {
 #user-data-payment .payment-type label:hover {
   background-color: palette('orange', 'light');
   color: palette('white');
+}
+
+.custom-value-fade-enter-active,
+.custom-value-fade-leave-active {
+	transition: opacity .3s ease;
+}
+
+.custom-value-fade-enter,
+.custom-value-fade-leave-to {
+	opacity: 0;
 }
