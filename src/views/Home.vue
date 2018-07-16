@@ -6,7 +6,7 @@
 			Precisamos equilibrar a disputa
 		</h2>
 
-		<p>Marina é a única candidata capaz de unir o Brasil e tirar o país do atraso. Mas sabemos que não basta ser a mais preparada. É preciso ter recursos para construir uma campanha que faça frente aos grandes partidos e suas mentiras. Marina tem uma trajetória de honestidade e superação e precisa do seu apoio para levar sua história e suas ideias para todos os brasileiros. Faça a sua doação e compartilhe a página. Vamos juntos preparar uma campanha vencedora e diferente: construída com diálogo, coragem e verdade.</p>
+		<p>Marina é a única pré-candidata capaz de unir o Brasil e tirar o país do atraso. Mas sabemos que não basta ser a mais preparada. É preciso ter recursos para construir uma campanha que faça frente aos grandes partidos e suas mentiras. Marina tem uma trajetória de honestidade e superação e precisa do seu apoio para levar sua história e suas ideias para todos os brasileiros. Faça a sua doação e compartilhe a página. Vamos juntos preparar uma campanha vencedora e diferente: construída com diálogo, coragem e verdade.</p>
 
 		<section id="campaign-progress" class="campaign-progress">
 		<p>
