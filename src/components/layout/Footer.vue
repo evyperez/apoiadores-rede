@@ -8,11 +8,9 @@
 		<div class="site-footer__copyright">
       <p>
         <a href="https://votolegal.com.br">Voto Legal</a> é uma plataforma de software livre homologada pelo TSE e opera sob o CNPJ "30.217.474/0001-50", razão social "Pague Junto - Tecnologia de Intermediação LTDA".
+        Todas as doações são registradas na blockchain da Decred com objetivo de garantir a autenticidade das transações, promovendo a confiabilidade no processo de doação eleitoral.
       </p>
       <p>
-        O VotoLegal registra todas as doações na blockchain da Decred com objetivo de garantir a autenticidade das transações, promovendo a confiabilidade no processo de doação eleitoral.
-      </p>
-			<p>
 				<strong>© 2016-2018 <a href="https://votolegal.com.br">Voto Legal</a> • Uma iniciativa <a href="http://www.appcivico.com/">AppCívico</a> - Tecnologias Cívicas • <a href="/termos.pdf" target="_blank">Contrato</a></strong>
 			</p>
 		</div>
