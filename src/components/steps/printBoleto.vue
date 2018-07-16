@@ -14,7 +14,10 @@
         </li>
       </ul>
     <div class="donation-nav-wrap">
-      <a class="donation-nav donation-nav--block donation-nav--left" href="https://eokoe2.typeform.com/to/iyaBER" target="_blank">responda nossa pesquisa</a>
+
+      <div class="input-wrapper" v-if="messages[2]">
+        <a target="_blank" class="donation-nav donation-nav--block donation-nav--left" @click.prevent="redirectUser(messages[2])" >{{ messages[2].text }} </a>
+      </div>
       <div class="input-wrapper" v-if="messages[1]">
         <a target="_blank" class="donation-nav donation-nav--forward" @click.prevent="redirectUser(messages[1])" >{{ messages[1].text }} </a>
       </div>
