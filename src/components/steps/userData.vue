@@ -73,15 +73,6 @@
           </div>
         </div>
       </fieldset>
-      <div class="candidate-amount" v-if="candidateAmount">
-        <p>Valor Líquido da doação: R${{ candidateAmount | formatBRLDec }}</p>
-      </div>
-      <div v-if="this.payment_method === 'credit_card'">
-        <p class="form__disclaimer">Taxa de 7,4% via cartão de crédito. Esse valor é destinado a taxas de operação financeira, sistemas de controle anti-fraude, impostos e infraestrutura.</p>
-      </div>
-      <div v-if="this.payment_method === 'boleto'">
-        <p class="form__disclaimer">Taxa de 4% + R$4 via boleto. Esse valor é destinado a taxas de operação financeira, sistemas de controle anti-fraude, impostos e infraestrutura.</p>
-      </div>
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
