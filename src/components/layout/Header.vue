@@ -54,7 +54,21 @@
 
 		<div class="header-container">
 			<div class="site-label">
-				<h1>#Somos<span class="orange-highlight">Rede</span></h1>
+				<h1>#Somos
+          <vue-typer
+            :text='["marina","luta","paz","pessoas","muitos"]'
+            :repeat='Infinity'
+            :shuffle='false'
+            initial-action='typing'
+            :pre-type-delay='70'
+            :type-delay='70'
+            :pre-erase-delay='2000'
+            :erase-delay='250'
+            erase-style='clear'
+            :erase-on-complete='false'
+            caret-animation='phase'
+          ></vue-typer>
+        </h1>
 				<a class="call-to-action" href="#doar" v-scroll-to="'#doar'">
 					> quero doar
 				</a>
@@ -65,9 +79,12 @@
 </template>
 
 <script>
+import { VueTyper } from 'vue-typer'
 export default {
 	name: 'Header',
-
+  components: {
+    VueTyper
+  },
 	methods: {
 		scrollMenu() {
 			const element = document.querySelector('.main-menu');
