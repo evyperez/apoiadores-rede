@@ -25,7 +25,7 @@
 					</li>
 					<li class="menu-item">
 						<a href="#home__knowMore" v-scroll-to="'#home__knowMore'">
-							Saiba Mais
+							Me conheça
 						</a>
 					</li>
 					<li class="menu-item">
