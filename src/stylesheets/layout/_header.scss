@@ -102,20 +102,23 @@
 	padding: 0;
 	line-height: $leading * 0.5em;
 
-//  @media (min-width: breakpoint('wide')) {
-// 		&::after {
-// 			background-image: url('../assets/images/icons/ic-play-video.png');
-// 			background-position: center center;
-// 			background-size: auto 50px;
-// 			float: right;
-// 			width: 90px;
-// 			height: 90px;
-// 			border-radius: 50%;
-// 			background-color: black;
-// 			opacity: 0.8;
-// 			content: '';
-// 		}
-// 	}
+ @media (min-width: breakpoint('wide')) {
+		&::after {
+			background-image: url('../assets/images/icons/ic-play-video.png');
+			background-position: center center;
+			background-size: auto 45px;
+			float: right;
+			width: 98px;
+			height: 98px;
+			height: 98px;
+			margin-left: -5px;
+			margin-top: 0.1em;
+			border-radius: 50%;
+			background-color: black;
+			opacity: 0.8;
+			content: '';
+		}
+	}
 }
 
 a.call-to-action {
