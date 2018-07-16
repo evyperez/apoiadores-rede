@@ -16,7 +16,7 @@
     <div class="donation-nav-wrap">
 
       <div class="input-wrapper" v-if="messages[2]">
-        <a target="_blank" class="donation-nav donation-nav--block donation-nav--left" @click.prevent="redirectUser(messages[2])" >{{ messages[2].text }} </a>
+        <a target="_blank" class="donation-nav donation-nav--block donation-nav--left" @click.prevent="redirectUserTypeform(messages[2])" >{{ messages[2].text }} </a>
       </div>
       <div class="input-wrapper" v-if="messages[1]">
         <a target="_blank" class="donation-nav donation-nav--forward" @click.prevent="redirectUser(messages[1])" >{{ messages[1].text }} </a>
@@ -58,6 +58,17 @@ export default {
       this.errorMessage = err.data[0].message;
     },
     redirectUser(ui) {
+      if(ui.value === 'pay_with_cc'){
+        this.$router.replace(this.$route.path);
+          this.$store.dispatch('CHANGE_PAYMENT_STEP', {
+            step: 'userData'
+        });
+      } else {
+        sessionStorage.clear();
+        window.open(ui.href)
+      }
+    },
+    redirectUserTypeform(ui) {
       if(ui.value === 'pay_with_cc'){
         this.$router.replace(this.$route.path);
           this.$store.dispatch('CHANGE_PAYMENT_STEP', {
