@@ -62,7 +62,7 @@
 	<article id="home__knowMore" class="home__knowMore">
 	<div class="container" id="donation-wrap">
 		<h2>
-		Me conheça
+		Conheça
 		</h2>
 
 		<p>
