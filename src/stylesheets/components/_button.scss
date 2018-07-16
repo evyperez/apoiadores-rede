@@ -81,3 +81,81 @@ button:-moz-focusring,
 input:-moz-focusring {
 	outline: 1px dotted ButtonText;
 }
+
+table button[type] {
+	background-color: transparent;
+	border: 0;
+	font-weight: font-weight('heading');
+	padding: 0;
+}
+
+.button--load-more[class] {
+	display: block;
+	border-radius: 1.25rem;
+	border: 0;
+	overflow: visible;
+	text-indent: 0;
+	white-space: inherit;
+	padding-top: $leading * 0.15rem;
+	padding-left: $leading * 1em;
+	padding-right: $leading * 1em;
+	padding-bottom: $leading * 0.15rem;
+	margin-top: $leading * 1rem;
+	margin-right: auto;
+	margin-bottom: $leading * 2rem;
+	margin-left: auto;
+	font-weight: bold;
+	cursor: pointer;
+
+	background-color: palette('gray', 'base');
+	color: palette('white');
+
+	text-transform: lowercase;
+
+	&:hover {
+		background-color: palette('green', 'base');
+
+	}
+}
+
+
+.nav-link-donations-wrap {
+	text-align: center;
+	margin: auto;
+}
+
+.nav-link-donations-wrap a {
+	display: block;
+	border-radius: 1.25rem;
+	white-space: inherit;
+	padding-top: $leading * 0.15rem;
+	padding-left: $leading * 0.8em;
+	padding-right: $leading * 0.8em;
+	padding-bottom: $leading * 0.15rem;
+	margin-top: $leading * 1rem;
+	margin-right: auto;
+	margin-bottom: $leading * 2rem;
+	margin-left: auto;
+	font-weight: bold;
+	text-align: center;
+	color: palette('white');
+	text-decoration: none;
+
+	background-color: palette('gray', 'base');
+	color: palette('white');
+
+	text-transform: lowercase;
+	width: 14em;
+
+	&:link {
+		text-decoration: none;
+		color: palette('white');
+	}
+
+	&:hover {
+		text-decoration: none;
+		background-color: palette('green', 'base');
+		color: palette('white');
+
+	}
+}

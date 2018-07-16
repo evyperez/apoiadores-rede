@@ -6,7 +6,7 @@ import axios from 'axios';
 Vue.use(Vuex);
 
 const api =
-  window.location.host === 'somosrede.com.br'
+  (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br')
     ? 'https://api.votolegal.com.br'
     : 'https://dapi.votolegal.com.br';
 
@@ -14,6 +14,7 @@ export default new Vuex.Store({
   state: {
     paymentStep: 'selectValue',
     amount: 0,
+    referral: '',
     token: '',
     donation: {},
     iugu: {},
@@ -21,8 +22,19 @@ export default new Vuex.Store({
     username: {},
     candidate: {},
     donations: [],
+    donors: [],
+    todayDonations: {
+      total_donated: 0,
+      people_donated: 0,
+    },
+    donationsRecent: [],
+    donationsRecentCount: 0,
+    donationsRecentHasMore: false,
+    lastDonorFirstName: '',
     address: {},
     paymentData: {},
+    hasMoreDonations: false,
+    lastDonationMarker: '',
   },
   mutations: {
     SET_PAYMENT_STEP(state, { data }) {
@@ -33,6 +45,9 @@ export default new Vuex.Store({
     },
     SET_TOKEN(state, { token }) {
       state.token = token;
+    },
+    SET_REFERRAL(state, referral) {
+      state.referral = referral;
     },
     SET_USERNAME(state, { user }) {
       state.username = user;
@@ -49,15 +64,89 @@ export default new Vuex.Store({
     SET_CANDIDATE(state, { res }) {
       state.candidate = res.candidate;
     },
-    SET_DONATIONS(state, { res }) {
-      state.donations = res.names;
+    SET_DONATIONS: (state, payload) => {
+      state.hasMoreDonations = payload.has_more || false;
+      if (payload.donations.length) { // eslint-disable-next-line
+        state.lastDonationMarker = payload.donations[payload.donations.length - 1]._marker;
+      }
+
+      state.donations = state.donations.concat(payload.donations);
+    },
+    SET_DONORS(state, { res }) {
+      state.donors = res.names;
+    },
+    SET_LAST_DONOR: (state, payload) => {
+      const firstName = payload.name.substr(0, payload.name.indexOf(' ')) || payload.name;
+
+      if (state.lastDonorFirstName !== firstName) {
+        state.lastDonorFirstName = firstName;
+      }
+    },
+    REPLACE_DONATIONS: (state) => {
+      const donationsRecent = state.donationsRecent;
+
+      if (donationsRecent.length) {
+        state.lastDonationMarker = donationsRecent[donationsRecent.length - 1]._marker; // eslint-disable-line no-underscore-dangle
+      }
+      state.donations = donationsRecent;
+      state.hasMoreDonations = state.donationsRecentHasMore;
+      state.donationsRecent = [];
+      state.donationsRecentCount = 0;
+      state.donationsRecentHasMore = false;
+    },
+    SET_RECENT_DONATIONS: (state, payload) => {
+      const donationToCompare = state.donationsRecent.length === 0 ?
+        state.donations[0] :
+        state.donationsRecent[0];
+      if (donationToCompare) {
+        const newDonations = payload.donations;
+
+        if (state.donations.length === 0) {
+          state.donationsRecentCount = newDonations.length;
+          state.donationsRecent = newDonations;
+          state.donationsRecentHasMore = payload.has_more;
+        } else {
+          let i = 0;
+
+          while (newDonations[i] && newDonations[i]._marker !== donationToCompare._marker) { // eslint-disable-line no-underscore-dangle
+            i += 1;
+          }
+
+          if (i > 0) {
+            state.donationsRecentCount += i;
+            state.donationsRecent = newDonations;
+            state.donationsRecentHasMore = payload.has_more;
+          }
+        }
+      }
     },
     SET_ADDRESS: (state, payload) => {
       state.address = payload;
     },
     SET_PAYMENT_DATA(state, { paymentData }) {
-      console.log('payment', paymentData);
       state.paymentData = paymentData;
+    },
+    SET_DONATIONS_TODAY(state, payload) {
+      if (state.todayDonations.total_donated !== payload.total_donated_by_votolegal) {
+        state.todayDonations.total_donated += payload.total_donated_by_votolegal;
+      }
+
+      if (state.todayDonations.people_donated !== payload.count_donated_by_votolegal) {
+        state.todayDonations.people_donated += payload.count_donated_by_votolegal;
+      }
+    },
+    SET_DONATIONS_SUMMARY(state, summary) {
+      if (state.candidate.total_donated !== summary.total_donated_by_votolegal) {
+        state.candidate.total_donated = summary.total_donated_by_votolegal;
+      }
+
+      if (state.candidate.people_donated !== summary.count_donated_by_votolegal) {
+        state.candidate.people_donated = summary.count_donated_by_votolegal;
+      }
+
+      if (state.candidate.raising_goal !== summary.raising_goal) {
+        state.candidate.raising_goal = summary.raising_goal;
+      }
     },
   },
   actions: {
@@ -73,6 +162,9 @@ export default new Vuex.Store({
     },
     ADD_TOKEN({ commit }, data) {
       commit('SET_TOKEN', { token: data });
+    },
+    ADD_REFERRAL({ commit }, data) {
+      commit('SET_REFERRAL', data);
     },
     GET_TOKEN({ commit }, data) {
       return new Promise((resolve, reject) => {
@@ -157,11 +249,23 @@ export default new Vuex.Store({
         );
       });
     },
-    GET_DONATIONS({ commit }, id) {
+    GET_DONATIONS({ commit, state }, id) {
+      return new Promise((resolve) => {
+        axios.get(`${api}/public-api/candidate-donations/${id}/${state.lastDonationMarker}`)
+          .then((response) => {
+            resolve(response.data.donations);
+            commit('SET_DONATIONS', response.data);
+            if (response.data.donations && response.data.donations[0]) {
+              commit('SET_LAST_DONOR', response.data.donations[0]);
+            }
+          });
+      });
+    },
+    GetDonorsNames({ commit }, id) {
       return new Promise((resolve, reject) => {
         axios.get(`${api}/public-api/candidate-donations/${id}/donators-name`).then(
           (response) => {
-            commit('SET_DONATIONS', { res: response.data });
+            commit('SET_DONORS', { res: response.data });
             resolve();
           },
           (err) => {
@@ -170,6 +274,44 @@ export default new Vuex.Store({
           },
         );
       });
+    },
+    REFRESH_DONATIONS({ commit }) {
+      commit('REPLACE_DONATIONS');
+    },
+    UPDATE_DONATIONS({
+      commit,
+    }, id) {
+      setInterval(() => {
+        return new Promise((resolve) => {
+          axios.get(`${api}/public-api/candidate-donations/${id}`)
+            .then((response) => {
+              resolve(response.data.donations);
+              commit('SET_RECENT_DONATIONS', response.data);
+              if (response.data.donations && response.data.donations[0]) {
+                commit('SET_LAST_DONOR', response.data.donations[0]);
+              }
+            });
+        });
+      }, 1000 * 60);
+    },
+    UPDATE_DONATIONS_SUMMARY({
+      commit,
+    }, id) {
+      setInterval(() => {
+        return new Promise((resolve, reject) => {
+          axios.get(`${api}/public-api/candidate-donations-summary/${id}`).then(
+            (response) => {
+              commit('SET_DONATIONS_SUMMARY', response.data.candidate);
+              commit('SET_DONATIONS_TODAY', response.data.today);
+              resolve();
+            },
+            (err) => {
+              reject(err.response);
+              console.error(err);
+            },
+          );
+        });
+      }, 1000 * 60);
     },
     GET_ADDRESS: ({ commit }, cep) => {
       return new Promise((resolve, reject) => {
@@ -187,7 +329,7 @@ export default new Vuex.Store({
     START_DONATION_BOLETO({ commit }, payload) {
       let token = '';
       if (window.localStorage) {
-        const tokenName = window.location.host === 'somosrede.com.br'
+        const tokenName = (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br')
           ? 'prod_apm_token'
           : 'dev_apm_token';
         token = localStorage.getItem(tokenName);
@@ -226,6 +368,14 @@ export default new Vuex.Store({
           reject(error.response);
         });
       });
+    },
+  },
+  getters: {
+    generateCandidateObject: (state) => {
+      const candidateMerge = {
+        donations: state.donations,
+      };
+      return candidateMerge;
     },
   },
 });

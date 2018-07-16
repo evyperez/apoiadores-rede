@@ -29,6 +29,13 @@ $default-articles-padding: 7rem;
 	margin-left: auto;
 }
 
+.internal-container {
+	max-width: 70rem;
+
+	margin-right: auto;
+	margin-left: auto;
+}
+
 .home__intro p,
 .home__intro ul,
 .home__intro h2 {
@@ -64,6 +71,18 @@ $default-articles-padding: 7rem;
 	color: text-contrast($bg, palette('white'));
 
 	background-color: $bg;
+	background-image: url('../assets/images/backgrounds/bg-doacao-very-small.jpg');
+	background-position: center center;
+	background-repeat: repeat;
+	background-size: cover;
+
+	@media screen and (min-width: breakpoint('phablet')) {
+		background-image: url('../assets/images/backgrounds/bg-doacao-medium.jpg');
+	}
+
+	@media screen and (min-width: breakpoint('desktop')) {
+		background-image: url('../assets/images/backgrounds/bg-doacao.jpg');
+	}
 }
 
 .subtitle {
@@ -84,48 +103,6 @@ $default-articles-padding: 7rem;
 
 .campaign-progress {
 	margin-bottom: 0;
-}
-
-.donation-nav[class] {
-	color: palette('green', 'light');
-	margin: 0;
-
-	@include link-undercover{
-		color: palette('green', 'light');
-		text-decoration: underline;
-	}
-
-	text-decoration: underline;
-	font-weight: 800;
-	background: none;
-	text-transform: lowercase;
-	display: block;
-}
-
-.donation-nav--rewind[class] {
-
-	&::before {
-		content: '< ';
-	}
-}
-
-.donation-nav--block {
-	text-align: center;
-
-	&::before {
-		content: '< ';
-	}
-}
-
-.donation-nav--forward[class] {
-	text-decoration: underline;
-	color: palette('green', 'light');
-	float: right;
-	font-size: ms(1);
-
-	&::before {
-		content: '> ';
-	}
 }
 
 .home__donate ul {
@@ -237,3 +214,4 @@ $default-articles-padding: 7rem;
 		color: palette('green');
 	}
 }
+

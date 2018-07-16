@@ -20,11 +20,36 @@ export default {
   },
   mounted() {
     this.handleSession();
+    this.getReferral();
   },
   methods: {
+    _getQueryString(url) {
+      const queryString = url.indexOf('?') !== -1
+        ? url.split('?')[1]
+        : [];
+      const params = {};
+      const queries = queryString.indexOf('&') !== -1
+        ? queryString.split('&')
+        : [queryString];
+
+      for (let i = 0; i < queries.length; i += 1) {
+        const element = queries[i].indexOf('=') !== -1
+          ? queries[i].split('=')
+          : [queries[i], null];
+        params[decodeURIComponent(element[0])] = decodeURIComponent(element[1] || '');
+      }
+      return params;
+    },
+    getReferral() {
+      const referral = this._getQueryString(window.location.search).ref;
+
+      if(referral) {
+        this.$store.dispatch('ADD_REFERRAL', referral);
+      }
+    },
     handleSession() {
       if(window.localStorage) {
-        const tokenName = window.location.host === 'somosrede.com.br'
+        const tokenName = (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br')
 						? 'prod_apm_token'
 						: 'dev_apm_token';
         const token = localStorage.getItem(tokenName);
