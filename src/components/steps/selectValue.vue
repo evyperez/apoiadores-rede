@@ -17,7 +17,7 @@
           <input
             type="text"
             name="other"
-            v-model="other"
+            v-model.number="other"
             pattern="[0-9]*"
             :disabled="amount === 'other' ? false : true"
             v-mask="'########'">
