@@ -22,7 +22,7 @@
       theme_color="#0a6661">
     </div>
     <div class="notifications-wrapper">
-      <Notification message="'Apoie você também!" :title="(recentDonorFirstName || 'Osmarina') + ' acabou de doar!'"/>
+      <Notification message="Apoie você também!" :title="(recentDonorFirstName || 'Osmarina') + ' acabou de doar!'"/>
     </div>
   </footer>
 </template>
@@ -40,6 +40,29 @@ export default {
   data: {
       isDev: (window.location.host === 'marina.appcivico.com'),
   }
+  mounted() {
+      const candidateId = (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br') ? 40 : 40;
+
+      this.$store.dispatch("UPDATE_DONATIONS_SUMMARY", candidateId);
+      this.$store.dispatch("UPDATE_DONATIONS", candidateId);
+      // this.$store.watch(this.$store.getters.getNewDonor, ()=> {console.log(lala)});
+  },
+  computed: {
+    recentDonorFirstName() {
+      return this.$store.state.recentDonorFirstName;
+    },
+  }
 }
 </script>
 
+<style>
+  .notification-fade-enter-active,
+  .notification-fade-leave-active {
+    transition: opacity .3s ease;
+  }
+  .notification-fade-enter,
+  .notification-fade-leave-to
+  /* .component-fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+</style>
