@@ -83,7 +83,7 @@
 <div class="modal closed" id="modal">
   <button class="close-button" id="close-button" @click="toggleModal()">&times;</button>
     <div class="embed-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/DKJWwGDT9F8?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/DKJWwGDT9F8?rel=0&amp;showinfo=0&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen id="iframeYoutube"></iframe>
     </div>
 </div>
 
@@ -104,9 +104,13 @@ export default {
       var modalOverlay = document.querySelector("#modal-overlay");
       var closeButton = document.querySelector("#close-button");
       var openButton = document.querySelector("#open-button");
+      var iframeYoutube = document.querySelector("#iframeYoutube");
 
       modal.classList.toggle("closed");
       modalOverlay.classList.toggle("closed");
+
+      func = modal.className.indexOf('closed') !== -1 ? 'pauseVideo' : 'playVideo';
+      iframe.postMessage('{"event":"command","func":"' + func + '","args":""}','*');
     },
     scrollMenu() {
       const element = document.querySelector('.main-menu');
