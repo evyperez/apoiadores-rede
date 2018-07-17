@@ -45,6 +45,7 @@
 			contato
 		</p>
 
+
 		<p class="contact-rede-email">
 			<a href="mailto:doe@marinasilva.org.br">doe&#8203@marinasilva.org.br</a>
 		</p>
@@ -169,7 +170,6 @@
 					ver dados completos
 				</a>
 			</div>
-		</div>
 	</div>
 	</article>
 
