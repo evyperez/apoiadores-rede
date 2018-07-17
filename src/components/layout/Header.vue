@@ -65,8 +65,8 @@
               :pre-type-delay='70'
               :type-delay='70'
               :pre-erase-delay='2000'
-              :erase-delay='250'
-              erase-style='clear'
+              :erase-delay='70'
+              erase-style='backspace'
               :erase-on-complete='false'
               caret-animation='phase'
             ></vue-typer>
