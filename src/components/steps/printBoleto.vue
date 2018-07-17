@@ -1,6 +1,6 @@
 <template>
     <section v-if="messages" class="certiface-verify">
-      <a class="donation-nav donation-nav--rewind" href="/#doar">voltar</a>
+      <a class="donation-nav donation-nav--rewind" @click.prevent="goBack" href="/#doar">voltar</a>
       <div class="instructions-donation">
         <h2 class="instructions">Pagamento boleto</h2>
       </div>
@@ -55,28 +55,9 @@ export default {
     handleErrorMessage(err) {
       this.errorMessage = err.data[0].message;
     },
-    redirectUser(ui) {
-      if(ui.value === 'pay_with_cc'){
-        this.$router.replace(this.$route.path);
-          this.$store.dispatch('CHANGE_PAYMENT_STEP', {
-            step: 'userData'
-        });
-      } else {
-        sessionStorage.clear();
-        window.open(ui.href)
-      }
+	goBack() {
+      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
     },
-    redirectUserTypeform(ui) {
-      if(ui.value === 'pay_with_cc'){
-        this.$router.replace(this.$route.path);
-          this.$store.dispatch('CHANGE_PAYMENT_STEP', {
-            step: 'userData'
-        });
-      } else {
-        sessionStorage.clear();
-        window.open(ui.href)
-      }
-    }
   },
   mounted() {
     this.scrollToDonate();
