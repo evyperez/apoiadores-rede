@@ -65,13 +65,15 @@
               :pre-type-delay='70'
               :type-delay='70'
               :pre-erase-delay='2000'
-              :erase-delay='250'
-              erase-style='clear'
+              :erase-delay='70'
+              erase-style='backspace'
               :erase-on-complete='false'
               caret-animation='phase'
             ></vue-typer>
           </h1>
-          <button id="open-button" @click="toggleModal()"></button>
+          <button id="open-modal" @click="toggleModal()" class="play-button">
+            assista ao vídeo
+          </button>
         <!-- <a class="call-to-action" href="#doar" v-scroll-to="'#doar'">
           > quero doar
         </a> -->
@@ -103,7 +105,7 @@ export default {
       var modal = document.querySelector("#modal");
       var modalOverlay = document.querySelector("#modal-overlay");
       var closeButton = document.querySelector("#close-button");
-      var openButton = document.querySelector("#open-button");
+      var openButton = document.querySelector("#open-modal");
       var iframeYoutube = document.querySelector("#iframeYoutube");
       var func = modal.className.indexOf('closed') === -1 ? 'pauseVideo' : 'playVideo';
 

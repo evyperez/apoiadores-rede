@@ -2,8 +2,6 @@ $default-articles-padding-small: 5rem;
 
 $default-articles-padding: 9.375em;
 
-
-
 .home-page article {
 	padding-top: $default-articles-padding-small;
 	padding-bottom: $default-articles-padding-small;
@@ -63,6 +61,14 @@ $default-articles-padding: 9.375em;
 	@media screen and (min-width: breakpoint('tablet')) {
 		font-size: ms(6);
 	}
+}
+
+.home__intro h2,
+.home__knowMore h2,
+.home__goals h2,
+.home__faq h2,
+.home__donors h2 {
+	margin-bottom: $leading * 1.2rem;
 }
 
 .home__donate {
@@ -216,3 +222,6 @@ $default-articles-padding: 9.375em;
 	}
 }
 
+#doar h2 {
+	margin-bottom: $leading * 1rem;
+}
