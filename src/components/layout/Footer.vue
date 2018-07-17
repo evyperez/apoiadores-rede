@@ -21,12 +21,22 @@
       page_id="257874391684846"
       theme_color="#0a6661">
     </div>
+    <div class="notifications-wrapper">
+      <Notification message="'Apoie você também!" :title="(recentDonorFirstName || 'Osmarina') + ' acabou de doar!'"/>
+    </div>
   </footer>
 </template>
 
 <script>
+import Notification from '@/components/Notification';
+
 export default {
   name: 'Footer',
+
+  components: {
+    Notification,
+  },
+
   data: {
       isDev: (window.location.host === 'marina.appcivico.com'),
   }
