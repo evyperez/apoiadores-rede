@@ -94,7 +94,7 @@
 		</h2>
 
 		<h3>R$ 100 mil</h3>
-		<p>Para levar a história e as ideias de Marina para os brasileiros, precisamos custear suas viagens pelo Brasil. Com esse valor, conseguiremos realizar eventos em cinco capitais diferentes, levando as nossas propostas para diversas regiões.</p>
+		<p>Para levar a história e as ideias de Marina para os brasileiros, precisamos custear suas viagens pelo Brasil. Com esse valor, conseguiremos realizar eventos em cinco cidades diferentes, levando as nossas propostas para diversas regiões.</p>
 
 		<h3>R$ 200 mil</h3>
 		<p>Sabemos que os adversários políticos usarão de todas as artimanhas para desestabilizar a candidatura de Marina. Precisamos combater suas mentiras, acusações levianas e notícias falsas. Com essa quantia, produziremos vídeos e materiais gráficos divulgando a verdade e as reais propostas de Marina para unir o Brasil.</p>
@@ -165,7 +165,7 @@
 			</p>
 
 			<div class="nav-link-donations-wrap">
-				<a class="nav-link-donations" href="/doadores">
+				<a class="nav-link-donations" href="/doadores" target="_blank">
 					ver dados completos
 				</a>
 			</div>
