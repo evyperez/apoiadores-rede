@@ -3,22 +3,14 @@
       <fieldset>
         <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
         <div class="instructions-donation">
-          <p class="instructions">Informe dados de pagamento</p>
+          <p class="instructions">Informe seu endereço</p>
         </div>
         <div :class="`input-wrapper
-          ${validation.errors.birthdate ? 'has-error' : ''}`">
+          ${validation.errors.birthdate ? 'has-error' : ''}`" v-show="paymentData.payment_method === 'boleto'">
           <label for="birthdate">Data de nascimento</label>
           <input type="text" v-model="birthdate" name="birthdate" v-mask="'##/##/####'">
           <div class="error" v-if="validation.errors.birthdate">
             {{ validation.errors.birthdate }}
-          </div>
-        </div>
-        <div :class="`input-wrapper
-          ${validation.errors.phone ? 'has-error' : ''}`">
-          <label for="phone">Telefone</label>
-          <input type="text" v-model="phone" name="phone" v-mask="'(##)#####-####'">
-          <div class="error" v-if="validation.errors.phone">
-            {{ validation.errors.phone }}
           </div>
         </div>
         <div :class="`input-wrapper
@@ -95,7 +87,6 @@ export default {
     return {
       loading: false,
       errorMessage: '',
-
       zip_code: '',
       state: '',
       city: '',
@@ -103,9 +94,8 @@ export default {
       district: '',
       number: '',
       complement: '',
-      phone: '',
       birthdate: '',
-
+      formData: {},
       validation: {
         errors: {},
       },
@@ -117,6 +107,23 @@ export default {
     }
   },
   methods: {
+
+    controlSession() {
+      const data = {
+          step: 'boleto',
+        };
+      const dataSession = JSON.parse(sessionStorage.getItem('user-donation-data'));
+      if(dataSession != null){
+        this.zip_code = dataSession.zip_code;
+        this.state = dataSession.state;
+        this.city = dataSession.city;
+        this.street = dataSession.street;
+        this.district = dataSession.district;
+        this.number = dataSession.number;
+        this.complement = dataSession.complement;
+        this.birthdate = dataSession.birthdate;
+      }
+    },
     goBack() {
       this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'userData' });
     },
@@ -129,9 +136,10 @@ export default {
     },
     validateForm() {
       this.toggleLoading();
-      let birthdate = this.birthdate.split('/');
-        birthdate.reverse();
-        birthdate = birthdate.join('-');
+
+      const birthdate = this.paymentData.payment_method === 'boleto'
+        ? this.birthdate.split('/').reverse().join('-')
+        : '';
 
       const address = {
         zip_code: this.zip_code,
@@ -140,34 +148,38 @@ export default {
         street: this.street,
         district: this.district,
         number: this.number,
-        phone: this.phone.replace(/[^\d]+/g, ''),
-        birthdate,
       };
+
+      if (this.paymentData.payment_method === 'boleto') {
+        address.birthdate = birthdate;
+      }
+
+      console.log('validar', address)
 
       const validation = validate(address);
 
       if (validation.valid) {
         this.saveAddress();
+
+        sessionStorage.setItem(
+          "user-donation-data",
+          JSON.stringify({
+          zip_code: this.zip_code,
+          state: this.state,
+          city: this.city,
+          street: this.street,
+          district: this.district,
+          number: this.number,
+          birthdate,
+          })
+        );
       } else {
         this.validation = validation;
         this.toggleLoading();
       }
     },
     saveAddress(){
-      let birthdate = this.birthdate.split('/');
-      birthdate.reverse();
-      birthdate = birthdate.join('-');
-
       const payload = {
-        billing_address_zipcode: this.zip_code,
-        billing_address_state: this.state,
-        billing_address_city: this.city,
-        billing_address_street: this.street,
-        billing_address_district: this.district,
-        billing_address_house_number: this.number,
-        phone: this.phone.replace(/[^\d]+/g, ""),
-        birthdate,
-        billing_address_complement: this.complement,
         payment_method: this.paymentData.payment_method,
         device_authorization_token_id: this.paymentData.device_authorization_token_id,
         email: this.paymentData.email,
@@ -177,11 +189,45 @@ export default {
         candidate_id: this.paymentData.candidate_id,
         donation_fp: this.paymentData.donation_fp,
         referral_code: this.$store.state.referral,
-	  }
+
+      }
+      if (this.paymentData.payment_method === 'credit_card') {
+        this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
+        payload.address_zipcode= this.zip_code;
+        payload.address_state= this.state;
+        payload.address_city= this.city;
+        payload.address_street= this.street;
+        payload.address_district= this.district;
+        payload.address_house_number= this.number;
+        payload.address_complement= this.complement;
+      } else {
+        let birthdate = this.birthdate.split('/');
+        birthdate.reverse();
+        birthdate = birthdate.join('-');
+        payload.address_zipcode= this.zip_code;
+        payload.address_state= this.state;
+        payload.address_city= this.city;
+        payload.address_street= this.street;
+        payload.address_district= this.district;
+        payload.address_house_number= this.number;
+        payload.address_complement= this.complement;
+        payload.billing_address_zipcode = this.zip_code;
+        payload.billing_address_state = this.state;
+        payload.billing_address_city = this.city;
+        payload.billing_address_street = this.street;
+        payload.billing_address_district = this.district;
+        payload.billing_address_house_number = this.number;
+        payload.birthdate = birthdate,
+        payload.billing_address_complement = this.complement;
+    }
 
         this.$store.dispatch('GET_DONATION', payload)
         .then(res => {
-		      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'printBoleto' });
+          const stepToGoTo = this.paymentData.payment_method === 'credit_card'
+            ? 'cardData'
+            : 'printBoleto';
+
+          this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: stepToGoTo });
         })
         .catch(err => {
           this.toggleLoading();
@@ -215,6 +261,7 @@ export default {
   },
   mounted() {
     this.scrollToDonate();
+    this.controlSession();
   },
 };
 </script>
