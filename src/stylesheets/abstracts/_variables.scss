@@ -190,10 +190,12 @@ $palette: (
 		'green': rgb(10, 102, 97),
 	),
 	'green': (
+		'x-light': rgb(0, 255, 153),
 		'light': rgb(139, 255, 205),
 		'base': $_green--base,
 		'dark': shade($_green--base, 35%),
 		'menu': rgb(0, 255, 153),
+		'x-dark': rgb(10, 102, 97),
 	),
 	'text': (
 		'dark': hsl(0, 0%, 13%),
