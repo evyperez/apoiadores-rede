@@ -54,7 +54,8 @@
 
     <div class="header-container">
       <div class="site-label">
-        <h1>#Somos
+        <h1>
+          <span>#Somos</span>
           <vue-typer
             :text='["marina","luta","paz","pessoas","muitos"]'
             :repeat='Infinity'
