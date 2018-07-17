@@ -15,6 +15,9 @@
             <label for="boleto">Boleto</label>
           </li>
         </ul>
+        <div class="error" v-if="validation.errors.payment_method">
+          Selecione uma forma de pagamento
+        </div>
       </div>
       <fieldset>
         <div class="instructions-donation">
@@ -155,6 +158,7 @@ export default {
         surname,
         cpf,
         email,
+        payment_method,
       } = this;
 
       const fields = {
@@ -162,6 +166,7 @@ export default {
         surname,
         cpf,
         email,
+        payment_method,
       };
 
       const validation = validate(fields);
