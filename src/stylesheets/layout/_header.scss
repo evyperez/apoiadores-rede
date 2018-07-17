@@ -225,40 +225,21 @@ body {
   text-decoration: none;
 }
 
-#open-button {
+.play-button {
+  display: inline-block;
+  background-position: 1em 45%;
+  background-image: url('../assets/images/icons/play-video.png');
+  background-color: palette('shadow');
   display: block;
-  background-image: url('../assets/images/icons/ic-play-video.png');
-  background-position: center center;
-  background-size: auto 25px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: black;
-  opacity: 0.9;
+	margin-top: 3rem;
+	margin-right: auto;
   margin-left: auto;
-  display: block;
-  margin-right: auto;
-  margin-top: 2.5rem;
-
-  @media (min-width: breakpoint('phablet')) {
-    display: block;
-    background-image: url('../assets/images/icons/ic-play-video.png');
-    background-position: center center;
-    background-size: auto 40px;
-    width: 80px;
-    height: 80px;
-    margin-top: 3rem;
-  }
-
-  @media (min-width: breakpoint('wide')) {
-    display: block;
-    background-image: url('../assets/images/icons/ic-play-video.png');
-    background-position: center center;
-    background-size: auto 50px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: black;
-    opacity: 0.9;
-  }
+	text-transform: uppercase;
+	font-weight: font-weight('heading');
+	font-size: ms(-1);
+	white-space: nowrap;
+	padding-top: $leading * 0.5em;
+	padding-right: $gutter * 0.5;
+	padding-bottom: $leading * 0.5em;
+	padding-left: $gutter;
 }
