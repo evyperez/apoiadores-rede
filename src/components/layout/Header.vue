@@ -105,12 +105,12 @@ export default {
       var closeButton = document.querySelector("#close-button");
       var openButton = document.querySelector("#open-button");
       var iframeYoutube = document.querySelector("#iframeYoutube");
+      var func = modal.className.indexOf('closed') === -1 ? 'pauseVideo' : 'playVideo';
 
       modal.classList.toggle("closed");
       modalOverlay.classList.toggle("closed");
 
-      func = modal.className.indexOf('closed') !== -1 ? 'pauseVideo' : 'playVideo';
-      iframe.postMessage('{"event":"command","func":"' + func + '","args":""}','*');
+      iframeYoutube.contentWindow.postMessage('{"event":"command","func":"' + func + '","args":""}','*');
     },
     scrollMenu() {
       const element = document.querySelector('.main-menu');
