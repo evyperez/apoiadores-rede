@@ -1,5 +1,5 @@
 <template>
-  <header class="site-header" id="home__header">
+  <header class="menu-header">
     <nav class="skip-links">
       <ul>
         <li class="to-content"><a href="#conteudo">conteúdo</a></li>

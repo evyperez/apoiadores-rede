@@ -1,3 +1,25 @@
+.menu-header .main-menu {
+	position: fixed;
+	background-color: palette('menu','green');
+	margin: 0;
+	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: auto;
+	padding-top: 1em;
+	padding-bottom: 0.5rem;
+	z-index: 2;
+	height: $menu-height;
+	transition-property: background-color, height;
+	transition-duration: 0.3s, 1s;
+
+	@media (min-width: breakpoint('desktop')) {
+		background-color: palette('menu','green');
+		color: palette('white');
+	}
+}
+
 .main-menu {
 	position: fixed;
 	background-color: palette('menu','green');
@@ -62,10 +84,6 @@
 	transition-property: background-size;
 	transition-duration: 0.8s;
 	width: 213px;
-
-	@media (min-width: breakpoint('desktop')) {
-		display: none;
-	}
 }
 
 .animate .logo-rede {
