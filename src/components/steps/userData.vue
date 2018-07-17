@@ -102,7 +102,7 @@ export default {
       validation: {
         errors: {},
       },
-      payment_method: 'credit_card',
+      payment_method: '',
     };
   },
   computed: {
