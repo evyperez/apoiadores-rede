@@ -54,27 +54,39 @@
 
     <div class="header-container">
       <div class="site-label">
-        <h1>
-          <span>#Somos</span>
-          <vue-typer
-            :text='["marina","luta","paz","pessoas","muitos"]'
-            :repeat='Infinity'
-            :shuffle='false'
-            initial-action='typing'
-            :pre-type-delay='70'
-            :type-delay='70'
-            :pre-erase-delay='2000'
-            :erase-delay='250'
-            erase-style='clear'
-            :erase-on-complete='false'
-            caret-animation='phase'
-          ></vue-typer>
-        </h1>
+
+          <h1>
+            <span>#Somos</span>
+            <vue-typer
+              :text='["marina","luta","paz","pessoas","muitos"]'
+              :repeat='Infinity'
+              :shuffle='false'
+              initial-action='typing'
+              :pre-type-delay='70'
+              :type-delay='70'
+              :pre-erase-delay='2000'
+              :erase-delay='250'
+              erase-style='clear'
+              :erase-on-complete='false'
+              caret-animation='phase'
+            ></vue-typer>
+          </h1>
+          <button id="open-button" @click="toggleModal()"></button>
         <!-- <a class="call-to-action" href="#doar" v-scroll-to="'#doar'">
           > quero doar
         </a> -->
       </div>
     </div>
+
+<div class="modal-overlay closed" @click="toggleModal()" id="modal-overlay"></div>
+
+<div class="modal closed" id="modal">
+  <button class="close-button" id="close-button" @click="toggleModal()">&times;</button>
+    <div class="embed-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/DKJWwGDT9F8?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+</div>
+
 
 </header>
 </template>
@@ -87,9 +99,17 @@ export default {
     VueTyper
   },
   methods: {
+    toggleModal() {
+      var modal = document.querySelector("#modal");
+      var modalOverlay = document.querySelector("#modal-overlay");
+      var closeButton = document.querySelector("#close-button");
+      var openButton = document.querySelector("#open-button");
+
+      modal.classList.toggle("closed");
+      modalOverlay.classList.toggle("closed");
+    },
     scrollMenu() {
       const element = document.querySelector('.main-menu');
-
       window.addEventListener('scroll', (e) => {
         const newOffset = window.scrollY;
         const currentRouteName = this.$route.name;
@@ -110,7 +130,7 @@ export default {
     }
   },
   created() {
-    this.$nextTick(function() {
+      this.$nextTick(function() {
       this.scrollMenu();
       this.showMenu();
     });
