@@ -110,6 +110,8 @@
 }
 
 .site-header h1 {
+	@include clearfix;
+
   margin: 0;
   padding: 0;
   line-height: $leading * 0.5em;
