@@ -45,6 +45,7 @@
 			contato
 		</p>
 
+
 		<p class="contact-rede-email">
 			<a href="mailto:doe@marinasilva.org.br">doe&#8203@marinasilva.org.br</a>
 		</p>
@@ -156,8 +157,6 @@
 		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um passo na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
 
 
-
-
 			<p>
 			<span v-for="(person, i) in donors" :key="i">
 			{{ person | titleCase }}{{ i < donors.length -1 ? ',' : '' }}
@@ -169,7 +168,6 @@
 					ver dados completos
 				</a>
 			</div>
-		</div>
 	</div>
 	</article>
 
