@@ -165,7 +165,7 @@
 			</p>
 
 			<div class="nav-link-donations-wrap">
-				<a class="nav-link-donations" href="/doadores">
+				<a class="nav-link-donations" href="/doadores" target="_blank">
 					ver dados completos
 				</a>
 			</div>
