@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     goBack() {
-      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'userData' });
+      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'boleto' });
     },
     scrollToDonate() {
       const form = document.getElementById('doar');
