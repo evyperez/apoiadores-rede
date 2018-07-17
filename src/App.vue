@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Header />
+    <Header v-if="$route.name === 'home'"/>
+    <Menu v-if="$route.name === 'donors'"/>
     <div class="content-container">
       <router-view/>
     </div>
@@ -11,12 +12,14 @@
 <script>
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import Menu from '@/components/layout/Menu';
 
 export default {
   name: 'App',
   components: {
     Header,
     Footer,
+    Menu,
   },
   mounted() {
     this.handleSession();
