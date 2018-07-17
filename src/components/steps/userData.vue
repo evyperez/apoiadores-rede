@@ -107,6 +107,7 @@ export default {
         errors: {},
       },
       payment_method: '',
+      formData: {},
     };
   },
   computed: {
@@ -137,6 +138,20 @@ export default {
     },
   },
   methods: {
+    controlSession() {
+      const dataSession = JSON.parse(sessionStorage.getItem('user-donation-data'));
+      if(dataSession != null){
+        const data = {
+            amount: (this.amount != undefined) ? this.amount : dataSession.amount,
+            step: 'userData',
+          };
+        this.$store.dispatch('CHANGE_PAYMENT_AMOUNT', data);
+        this.name = dataSession.firstName;
+        this.surname = dataSession.surname;
+        this.cpf = dataSession.cpf;
+        this.email = dataSession.email;
+      }
+    },
     focusNameField(){
       return this.$refs.nameField.focus();
     },
@@ -172,7 +187,22 @@ export default {
       const validation = validate(fields);
 
       if (validation.valid) {
+        this.formData = fields;
         this.registerUser(fields);
+
+        sessionStorage.setItem(
+          "user-donation-data",
+          JSON.stringify({
+            name,
+            cpf,
+            email: this.email,
+            firstName: this.name,
+            surname: this.surname,
+            cpfDirty: this.cpf,
+            amount: this.amount,
+            payment_method: this.payment_method,
+          })
+        );
       } else {
         this.validation = validation;
         this.toggleLoading();
@@ -200,11 +230,7 @@ export default {
               }
               this.$store.dispatch('SAVE_USERNAME', user)
               this.handleIugu();
-              if (this.payment_method === 'credit_card') {
-                this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
-              } else {
-                this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'boleto' });
-              }
+              this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'boleto' });
             }).catch((err) => {
               if (err.data[0].msg_id == 'need_billing_adddress') {
                 this.$store.dispatch('CHANGE_PAYMENT_STEP', {
@@ -312,6 +338,7 @@ export default {
   },
   mounted() {
     this.scrollToDonate();
+    this.controlSession();
   },
 };
 </script>
