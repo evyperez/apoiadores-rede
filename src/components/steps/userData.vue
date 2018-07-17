@@ -7,11 +7,11 @@
         <p class="instructions">Escolha a forma de pagamento</p>
         <ul class="payment-choices">
           <li class="payment-type">
-            <input name="payment_method" id="credit_card" value="credit_card" type="radio" v-model="payment_method">
+            <input name="payment_method" id="credit_card" value="credit_card" type="radio" v-model="payment_method" @change="focusNameField()">
             <label for="credit_card">Cartão de Crédito</label>
           </li>
           <li class="payment-type">
-            <input name="payment_method" id="boleto" value="boleto" type="radio" v-model="payment_method">
+            <input name="payment_method" id="boleto" value="boleto" type="radio" v-model="payment_method" @change="focusNameField()">
             <label for="boleto">Boleto</label>
           </li>
         </ul>
@@ -25,6 +25,7 @@
           ${validation.errors.name ? 'has-error' : ''}`">
           <label for="name">Nome</label>
           <input
+            ref="nameField"
             type="text"
             name="name"
             v-model="name">
@@ -133,6 +134,9 @@ export default {
     },
   },
   methods: {
+    focusNameField(){
+      return this.$refs.nameField.focus();
+    },
     goBack() {
       this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
     },
