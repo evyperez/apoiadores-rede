@@ -231,15 +231,19 @@ body {
   background-image: url('../assets/images/icons/play-video.png');
   background-color: palette('shadow');
   display: block;
-	margin-top: 3rem;
-	margin-right: auto;
+  margin-top: 3rem;
+  margin-right: auto;
   margin-left: auto;
-	text-transform: uppercase;
-	font-weight: font-weight('heading');
-	font-size: ms(-1);
-	white-space: nowrap;
-	padding-top: $leading * 0.5em;
-	padding-right: $gutter * 0.5;
-	padding-bottom: $leading * 0.5em;
-	padding-left: $gutter;
+  text-transform: uppercase;
+  font-weight: font-weight('heading');
+  font-size: ms(-1);
+  white-space: nowrap;
+  padding-top: $leading * 0.5em;
+  padding-right: $gutter * 0.5;
+  padding-bottom: $leading * 0.5em;
+  padding-left: $gutter;
+
+  &:hover {
+    background-color: palette('orange');
+  }
 }
