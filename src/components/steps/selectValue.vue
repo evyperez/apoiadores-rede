@@ -26,7 +26,7 @@
         </transition>
       </fieldset>
         <p class="subtitle">
-          Ao doar, declaro que minhas doações não ultrapassam 10% dos meus rendimentos brutos do ano anterior, a origem do dinheiro não é estrangeira, não sou concessionário ou permissionário de serviço público e concordo com os <a href="./termos.pdf">termos de doação</a>
+          Ao doar, declaro que minhas doações não ultrapassam 10% dos meus rendimentos brutos do ano anterior, a origem do dinheiro não é estrangeira, não sou concessionário ou permissionário de serviço público e concordo com os <a href="./termos.pdf" target="_blank">termos de doação</a>
       </p>
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
