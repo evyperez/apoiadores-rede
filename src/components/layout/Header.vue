@@ -14,7 +14,7 @@
           <span></span>
         </button>
         <div class="brand-wrap">
-          <a href="/" class="logo-rede">Doe Marina</a>
+          <a href="#home__header" v-scroll-to="'#home__header'" class="logo-rede">Doe Marina</a>
         </div>
         <ul class="menu-wrap">
           <li class="menu-icon">

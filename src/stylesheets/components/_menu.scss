@@ -13,6 +13,8 @@
 	height: $menu-height;
 	transition-property: background-color, height;
 	transition-duration: 0.3s, 1s;
+	padding-top: 0.2em;
+	height: 65px;
 
 	@media (min-width: breakpoint('desktop')) {
 		background-color: palette('menu','green');
