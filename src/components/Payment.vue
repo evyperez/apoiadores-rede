@@ -58,9 +58,6 @@ export default {
     amount() {
       return this.$store.state.amount;
     },
-    lastDonorFirstName() {
-  		return this.$store.state.lastDonorFirstName;
-		},
   },
   mounted(){
     if(this.$route.query.donation_id){

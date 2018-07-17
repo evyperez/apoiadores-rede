@@ -30,7 +30,7 @@ export default new Vuex.Store({
     donationsRecent: [],
     donationsRecentCount: 0,
     donationsRecentHasMore: false,
-    lastDonorFirstName: '',
+    recentDonorFirstName: '',
     address: {},
     paymentData: {},
     hasMoreDonations: false,
@@ -75,11 +75,11 @@ export default new Vuex.Store({
     SET_DONORS(state, { res }) {
       state.donors = res.names;
     },
-    SET_LAST_DONOR: (state, payload) => {
+    SET_RECENT_DONOR: (state, payload) => {
       const firstName = payload.name.substr(0, payload.name.indexOf(' ')) || payload.name;
 
-      if (state.lastDonorFirstName !== firstName) {
-        state.lastDonorFirstName = firstName;
+      if (state.recentDonorFirstName !== firstName) {
+        state.recentDonorFirstName = firstName;
       }
     },
     REPLACE_DONATIONS: (state) => {
@@ -288,11 +288,11 @@ export default new Vuex.Store({
               resolve(response.data.donations);
               commit('SET_RECENT_DONATIONS', response.data);
               if (response.data.donations && response.data.donations[0]) {
-                commit('SET_LAST_DONOR', response.data.donations[0]);
+                commit('SET_RECENT_DONOR', response.data.donations[0]);
               }
             });
         });
-      }, 1000 * 60);
+      }, 1000 * 10);
     },
     UPDATE_DONATIONS_SUMMARY({
       commit,
