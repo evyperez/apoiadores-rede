@@ -13,7 +13,7 @@
             type="text"
             v-model="number"
             name="number"
-            v-mask="'#### #### #### ####'">
+            v-mask="['#### #### #### ####', '#### #### #### ##']">
           <div class="error" v-if="validation.errors.number">
             {{ validation.errors.number }}
           </div>
@@ -51,7 +51,8 @@
             type="text"
             v-model="csc"
             name="csc"
-            maxlength="3">
+            v-mask="['###', '####']"
+            maxlength="4">
           <div class="error" v-if="validation.errors.csc">
             {{ validation.errors.csc }}
           </div>
@@ -60,7 +61,7 @@
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
-      <p class="form__disclaimer">Será enviado um recibo em seu e-mail com todos os dados sobre a doação.<br> Não armazenamos seus dados de cartão de crédito.</p>
+      <p class="form__disclaimer">Taxa de 7,4% via cartão de crédito. Esse valor é destinado a taxas de operação financeira, sistemas de controle anti-fraude, impostos e infraestrutura. Será enviado um recibo em seu e-mail com todos os dados sobre a doação. Não armazenamos seus dados de cartão de crédito.</p>
       <button class="donation-nav donation-nav--forward" type="submit" :disabled="loading">Continuar</button>
     </form>
   </section>

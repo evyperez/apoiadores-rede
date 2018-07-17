@@ -70,6 +70,7 @@
           </div>
         </div>
       </fieldset>
+        <p class="form__disclaimer">Taxa de 4% + R$4 via boleto. Esse valor é destinado a taxas de operação financeira, sistemas de controle anti-fraude, impostos e infraestrutura.</p>
         <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
@@ -177,11 +178,11 @@ export default {
         candidate_id: this.paymentData.candidate_id,
         donation_fp: this.paymentData.donation_fp,
         referral_code: this.$store.state.referral,
-      }
+	  }
 
         this.$store.dispatch('GET_DONATION', payload)
         .then(res => {
-          this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'certFaceVerify' });
+		      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'printBoleto' });
         })
         .catch(err => {
           this.toggleLoading();
@@ -208,7 +209,7 @@ export default {
         element[0].disabled=false;
         return '';
       });
-    },
+	},
     handleErrorMessage(err) {
       this.errorMessage = err.data[0].message;
     },

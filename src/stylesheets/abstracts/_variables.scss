@@ -109,6 +109,7 @@ $palette: (
 		'x-dark': shade(rgb(64, 68, 71), 10%),
 	),
 	'white': rgb(255, 255, 255),
+	'esmerald': rgb(9, 172, 163),
 	'black': rgb(0, 0, 0),
 	'debug': rgb(255, 0, 0),
 	'anchor': (
@@ -130,10 +131,16 @@ $palette: (
 		'submit': rgb(217, 83, 79),
 		'reset': transparent,
 	),
+	'section': (
+		'green': rgb(245, 253, 251),
+	),
 	'box': (
 		'base': rgb(241, 241, 241),
 		'dark': rgb(102, 102, 102),
 		'disabled': rgb(197, 197, 197),
+	),
+	'footer': (
+		'base': rgb(10, 102, 97),
 	),
 	'disabled': (
 		'foreground': hsl(0, 0%, 42%),
@@ -175,6 +182,9 @@ $palette: (
 		'base': rgb(255, 102, 51),
 		'dark': rgb(208, 78, 42),
 		'highlight': rgb(255, 102, 51),
+	),
+	'menu': (
+		'green': rgb(10, 102, 97),
 	),
 	'green': (
 		'light': rgb(139, 255, 205),

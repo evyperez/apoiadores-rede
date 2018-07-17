@@ -1,26 +1,24 @@
 <template>
     <section v-if="messages" class="certiface-verify">
-      <a class="donation-nav donation-nav--rewind" href="/#doar">voltar</a>
+      <a class="donation-nav donation-nav--rewind" @click.prevent="goBack" href="/#doar">voltar</a>
       <div class="instructions-donation">
-        <p class="instructions">Pagamento boleto</p>
+        <h2 class="instructions">Pagamento boleto</h2>
       </div>
-      <div class="input-wrapper" v-html="messages[0].text"></div>
+      <div class="input-wrapper" v-for="message in messages" v-if="message.type == 'msg'" v-html="message.text"></div>
+
       <ul id="wrap-share">
         <li>
-          <a class="twitter" href="https://twitter.com/intent/tweet?text=Marina%20precisa%20de%20n%C3%B3s%20para%20equilibrar%20a%20disputa%21%20https%3A%2F%2Fdoemarina.com.br">Compartilhar</a>
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=Marina%20precisa%20de%20n%C3%B3s%20para%20equilibrar%20a%20disputa%21%20https%3A%2F%2Fdoemarina.com.br%3Fref%3Dagradecimento">Compartilhar</a>
         </li>
         <li>
-          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoemarina.com.br%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoemarina.com.br%3Fref%3Dagradecimento&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
         </li>
       </ul>
-    <div class="donation-nav-wrap">
 
-      <div class="input-wrapper" v-if="messages[2]">
-        <a target="_blank" class="donation-nav donation-nav--block donation-nav--left" @click.prevent="redirectUserTypeform(messages[2])" >{{ messages[2].text }} </a>
-      </div>
-      <div class="input-wrapper" v-if="messages[1]">
-        <a target="_blank" class="donation-nav donation-nav--forward" @click.prevent="redirectUser(messages[1])" >{{ messages[1].text }} </a>
-      </div>
+      <div class="donation-nav-wrap">
+        <div class="input-wrapper" v-for="message in messages" v-if="message.type == 'link'">
+          <a target="_blank" class="donation-nav donation-nav--block" :href="message.href" >{{ message.text }} </a>
+        </div>
     </div>
     </section>
 </template>
@@ -43,7 +41,7 @@ export default {
       return this.$store.state.username;
     },
     messages() {
-      return this.$store.state.messages.messages;
+      return this.$store.state.messages;
     },
   },
   methods: {
@@ -57,28 +55,9 @@ export default {
     handleErrorMessage(err) {
       this.errorMessage = err.data[0].message;
     },
-    redirectUser(ui) {
-      if(ui.value === 'pay_with_cc'){
-        this.$router.replace(this.$route.path);
-          this.$store.dispatch('CHANGE_PAYMENT_STEP', {
-            step: 'userData'
-        });
-      } else {
-        sessionStorage.clear();
-        window.open(ui.href)
-      }
+	goBack() {
+      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
     },
-    redirectUserTypeform(ui) {
-      if(ui.value === 'pay_with_cc'){
-        this.$router.replace(this.$route.path);
-          this.$store.dispatch('CHANGE_PAYMENT_STEP', {
-            step: 'userData'
-        });
-      } else {
-        sessionStorage.clear();
-        window.open(ui.href)
-      }
-    }
   },
   mounted() {
     this.scrollToDonate();

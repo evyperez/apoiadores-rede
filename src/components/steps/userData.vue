@@ -7,11 +7,11 @@
         <p class="instructions">Escolha a forma de pagamento</p>
         <ul class="payment-choices">
           <li class="payment-type">
-            <input name="payment_method" id="credit_card" value="credit_card" type="radio" v-model="payment_method">
+            <input name="payment_method" id="credit_card" value="credit_card" type="radio" v-model="payment_method" @change="focusNameField()">
             <label for="credit_card">Cartão de Crédito</label>
           </li>
           <li class="payment-type">
-            <input name="payment_method" id="boleto" value="boleto" type="radio" v-model="payment_method">
+            <input name="payment_method" id="boleto" value="boleto" type="radio" v-model="payment_method" @change="focusNameField()">
             <label for="boleto">Boleto</label>
           </li>
         </ul>
@@ -25,6 +25,7 @@
           ${validation.errors.name ? 'has-error' : ''}`">
           <label for="name">Nome</label>
           <input
+            ref="nameField"
             type="text"
             name="name"
             v-model="name">
@@ -73,15 +74,6 @@
           </div>
         </div>
       </fieldset>
-      <div class="candidate-amount" v-if="candidateAmount">
-        <p>Valor Líquido da doação: R${{ candidateAmount | formatBRLDec }}</p>
-      </div>
-      <div v-if="this.payment_method === 'credit_card'">
-        <p class="form__disclaimer">Taxa de 7,4% via cartão de crédito. Esse valor é destinado a taxas de operação financeira, sistemas de controle anti-fraude, impostos e infraestrutura.</p>
-      </div>
-      <div v-if="this.payment_method === 'boleto'">
-        <p class="form__disclaimer">Taxa de 4% + R$4 via boleto. Esse valor é destinado a taxas de operação financeira, sistemas de controle anti-fraude, impostos e infraestrutura.</p>
-      </div>
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
@@ -111,7 +103,7 @@ export default {
       validation: {
         errors: {},
       },
-      payment_method: 'credit_card',
+      payment_method: '',
     };
   },
   computed: {
@@ -142,6 +134,9 @@ export default {
     },
   },
   methods: {
+    focusNameField(){
+      return this.$refs.nameField.focus();
+    },
     goBack() {
       this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
     },

@@ -20,7 +20,7 @@
               v-model.number="other"
               pattern="[0-9]*"
               :disabled="amount === 'other' ? false : true"
-              v-mask="'########'">
+              v-mask="'####'">
             <button type="button" href="#" @click.prevent="validateForm">OK</button>
           </div>
         </transition>

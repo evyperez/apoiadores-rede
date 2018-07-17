@@ -62,7 +62,7 @@
 	<article id="home__knowMore" class="home__knowMore">
 	<div class="container" id="donation-wrap">
 		<h2>
-		Me conheça
+		Conheça
 		</h2>
 
 		<p>
@@ -110,7 +110,7 @@
 			<details>
 				<summary><span class="caret"></span>Como posso fazer a minha doação?</summary>
 				<p>
-					Aqui no site, você pode doar por meio do cartão de crédito, apenas pelo titular do cartão, e boleto bancário. Fora daqui, você ainda pode fazer uma transferência bancária ou depósito identificado em dinheiro ou cheque direto na conta. Se quiser as informações da conta, por favor, envie um e-mail.
+					Aqui no site, você pode doar por meio do cartão de crédito, apenas pelo titular do cartão, e boleto bancário.
 				</p>
 			</details>
 			<details>
@@ -189,7 +189,7 @@ export default {
 		AnimatedNumber
 	},
 	mounted() {
-		const candidateId = window.location.host === "somosrede.com.br" ? 40 : 130;
+		const candidateId = (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br') ? 40 : 130;
 		this.$store.dispatch("GET_CANDIDATE_INFO", candidateId);
 		this.$store.dispatch('GetDonorsNames', candidateId);
 		// this.$store.dispatch("GET_DONATIONS", candidateId);
