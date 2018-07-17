@@ -39,7 +39,7 @@
 						</td>
 					</tr>
 					<tr v-for="donation in donations" :key="donation.id">
-						<th title="Nome">{{donation.name}}</th>
+						<th title="Nome">{{donation.name | titleCase}}</th>
 						<td title="CPF">{{donation.cpf | formatCPF }}</td>
 						<td title="Data">{{ donation.captured_at | date }}</td>
 						<td title="Método">{{ donation.payment_method_human }}</td>
