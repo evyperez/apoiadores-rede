@@ -110,7 +110,7 @@
 			<details>
 				<summary><span class="caret"></span>Como posso fazer a minha doação?</summary>
 				<p>
-					Aqui no site, você pode doar por meio do cartão de crédito, apenas pelo titular do cartão, e boleto bancário. Fora daqui, você ainda pode fazer uma transferência bancária ou depósito identificado em dinheiro ou cheque direto na conta. Se quiser as informações da conta, por favor, envie um e-mail.
+					Aqui no site, você pode doar por meio do cartão de crédito, apenas pelo titular do cartão, e boleto bancário.
 				</p>
 			</details>
 			<details>
