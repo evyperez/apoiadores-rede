@@ -39,12 +39,6 @@ export default {
 
   data: {
       isDev: (window.location.host === 'marina.appcivico.com'),
-  }
-  mounted() {
-      const candidateId = (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br') ? 40 : 130;
-
-      this.$store.dispatch("UPDATE_DONATIONS_SUMMARY", candidateId);
-      this.$store.dispatch("UPDATE_DONATIONS", candidateId);
   },
   computed: {
     recentDonorFirstName() {
