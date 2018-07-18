@@ -22,7 +22,7 @@
       theme_color="#0a6661">
     </div>
     <div class="notifications-wrapper">
-      <Notification message="Apoie você também!" :title="`R$${recentDonationAmount} acabam de serem doados por ${recentDonationFirstName}!`" :duration="5000" />
+      <Notification message="Apoie você também!" :title="`R$${recentDonationAmount} acabam de ser doados por ${recentDonationFirstName}!`" :duration="5000" />
     </div>
   </footer>
 </template>
