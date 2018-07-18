@@ -1,10 +1,5 @@
 <template>
   <footer class="site-footer">
-    <div v-if="window.location.host === 'marina.appcivico.com'" class="fb-customerchat"
-      attribution=setup_tool
-      page_id="257874391684846"
-      theme_color="#0a6661">
-    </div> -->
     <div class="footer-container">
       <div class="site-footer__copyright">
         <div class="wrap-logo">
@@ -21,12 +16,20 @@
         </div>
       </div>
     </div>
+    <div v-if="isDev" class="fb-customerchat"
+      attribution=setup_tool
+      page_id="257874391684846"
+      theme_color="#0a6661">
+    </div>
   </footer>
 </template>
 
 <script>
 export default {
   name: 'Footer',
+  data: {
+      isDev: (window.location.host === 'marina.appcivico.com'),
+  }
 }
 </script>
 
