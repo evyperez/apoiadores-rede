@@ -190,9 +190,7 @@ export default {
 		const candidateId = (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br') ? 40 : 130;
 		this.$store.dispatch("GET_CANDIDATE_INFO", candidateId);
 		this.$store.dispatch('GetDonorsNames', candidateId);
-		// this.$store.dispatch("GET_DONATIONS", candidateId);
     	this.$store.dispatch("UPDATE_DONATIONS_SUMMARY", candidateId);
-		// this.$store.dispatch("UPDATE_DONATIONS", candidateId);
 	},
 	computed: {
 		candidate() {
