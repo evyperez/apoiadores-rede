@@ -10,10 +10,10 @@
           ${validation.errors.number ? 'has-error' : ''}`">
           <label for="number">Número do cartão de crédito</label>
           <input
-            type="text"
+            type="tel"
             v-model="number"
             name="number"
-            v-mask="['#### #### #### ####', '#### #### #### ##']">
+            v-mask="['#### #### #### ####', '#### #### #### ##']" required>
           <div class="error" v-if="validation.errors.number">
             {{ validation.errors.number }}
           </div>
@@ -22,11 +22,11 @@
           ${validation.errors.validity_month ? 'has-error' : ''}`">
           <label for="validity_month">Mês</label>
           <input
-            type="text"
+            type="tel"
             v-model="validity_month"
             name="validity_month"
             placeholder="MM"
-            v-mask="'##'">
+            v-mask="'##'" required>
           <div class="error" v-if="validation.errors.validity_month">
             {{ validation.errors.validity_month }}
           </div>
@@ -35,11 +35,11 @@
           ${validation.errors.validity_year ? 'has-error' : ''}`">
           <label for="validity_year">Ano</label>
           <input
-            type="text"
+            type="tel"
             v-model="validity_year"
             name="validity_year"
             placeholder="AAAA"
-            v-mask="'####'">
+            v-mask="'####'" required>
           <div class="error" v-if="validation.errors.validity_year">
             {{ validation.errors.validity_year }}
           </div>
@@ -48,11 +48,11 @@
           ${validation.errors.csc ? 'has-error' : ''}`">
           <label for="csc">Cód. Segurança</label>
           <input
-            type="text"
+            type="tel"
             v-model="csc"
             name="csc"
             v-mask="['###', '####']"
-            maxlength="4">
+            maxlength="4" required>
           <div class="error" v-if="validation.errors.csc">
             {{ validation.errors.csc }}
           </div>
