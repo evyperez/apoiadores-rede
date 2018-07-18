@@ -255,9 +255,6 @@ export default new Vuex.Store({
           .then((response) => {
             resolve(response.data.donations);
             commit('SET_DONATIONS', response.data);
-            if (response.data.donations && response.data.donations[0]) {
-              commit('SET_LAST_DONOR', response.data.donations[0]);
-            }
           });
       });
     },
