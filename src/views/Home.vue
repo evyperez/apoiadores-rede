@@ -222,7 +222,7 @@ export default {
 		porcentage() {
 		if (this.candidate) {
 			const value = (this.candidate.total_donated * 100) / this.expected;
-			return Math.ceil(value);
+			return Math.round(value);
 		}
 		return 0
 		}
