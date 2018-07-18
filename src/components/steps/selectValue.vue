@@ -15,7 +15,7 @@
           <div class="input-wrapper half has-real-value" v-else key="customValue">
             <label for="other">R$</label>
             <input
-              type="text"
+              type="tel"
               name="other"
               v-model.number="other"
               pattern="[0-9]*"
