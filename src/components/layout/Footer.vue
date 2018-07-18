@@ -22,7 +22,7 @@
       theme_color="#0a6661">
     </div>
     <div class="notifications-wrapper">
-      <Notification message="Apoie você também!" :title="recentDonorFirstName + ' acabou de doar!'" :duration="5000" />
+      <Notification message="Apoie você também!" :title="`R$${recentDonationAmount} acabam de serem doados por ${recentDonationFirstName}!`" :duration="5000" />
     </div>
   </footer>
 </template>
@@ -43,8 +43,16 @@ export default {
     }
   },
   computed: {
-    recentDonorFirstName() {
-      return this.$store.state.recentDonorFirstName;
+    recentDonationAmount() {
+      const {amount = 0} = this.$store.state.recentDonation;
+
+      return amount / 100;
+    },
+    recentDonationFirstName() {
+      const {name = ''} = this.$store.state.recentDonation;
+      const firstName = name.substr(0, name.indexOf(' ')) || name;
+
+      return firstName;
     },
   }
 }
