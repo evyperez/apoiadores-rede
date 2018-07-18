@@ -22,7 +22,7 @@
       theme_color="#0a6661">
     </div>
     <div class="notifications-wrapper">
-      <Notification message="Apoie você também!" :title="(recentDonorFirstName || 'Osmarina') + ' acabou de doar!'"/>
+      <Notification message="Apoie você também!" :title="recentDonorFirstName + ' acabou de doar!'" :duration="5000" />
     </div>
   </footer>
 </template>
@@ -45,7 +45,6 @@ export default {
 
       this.$store.dispatch("UPDATE_DONATIONS_SUMMARY", candidateId);
       this.$store.dispatch("UPDATE_DONATIONS", candidateId);
-      // this.$store.watch(this.$store.getters.getNewDonor, ()=> {console.log(lala)});
   },
   computed: {
     recentDonorFirstName() {
