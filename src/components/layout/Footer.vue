@@ -1,6 +1,6 @@
 <template>
   <footer class="site-footer">
-    <!-- <div class="fb-customerchat"
+    <div v-if="window.location.host === 'marina.appcivico.com'" class="fb-customerchat"
       attribution=setup_tool
       page_id="257874391684846"
       theme_color="#0a6661">
