@@ -2,19 +2,19 @@
   <section>
   <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
     <div class="input-wrapper" v-for="(message, index) in messages" v-if="message.type == 'msg'" v-html="message.text" :key="index"></div>
-  <ul id="wrap-share">
-    <li>
-      <a class="twitter" href="https://twitter.com/intent/tweet?text=Marina%20precisa%20de%20n%C3%B3s%20para%20equilibrar%20a%20disputa%21%20https%3A%2F%2Fdoemarina.com.br%3Fref%3Dagradecimento">Compartilhar</a>
-    </li>
-    <li>
-      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoemarina.com.br%3Fref%3Dagradecimento&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
-    </li>
-  </ul>
     <div class="donation-nav-wrap">
       <div class="input-wrapper" v-for="(message, index) in messages" v-if="message.type == 'link'" :key="index">
         <a target="_blank" class="donation-nav donation-nav--block" :href="message.href" >{{ message.text }} </a>
       </div>
     </div>
+    <ul id="wrap-share">
+      <li>
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=Marina%20precisa%20de%20n%C3%B3s%20para%20equilibrar%20a%20disputa%21%20https%3A%2F%2Fdoemarina.com.br%3Fref%3Dagradecimento">Compartilhar</a>
+      </li>
+      <li>
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoemarina.com.br%3Fref%3Dagradecimento&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
+      </li>
+    </ul>
   </section>
 </template>
 
