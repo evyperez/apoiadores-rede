@@ -58,7 +58,7 @@
           <h1>
             <span>#Somos</span>
             <vue-typer
-              :text='["marina","luta","paz","pessoas","muitos"]'
+              :text='["marina","luta","paz","diversidade","deverdade","muitos"]'
               :repeat='Infinity'
               :shuffle='false'
               initial-action='typing'
