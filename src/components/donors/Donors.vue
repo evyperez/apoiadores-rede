@@ -9,7 +9,7 @@
 
 		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
 
-		<div v-if="donations" class="donations-wrapper">
+		<div v-if="donations" class="donations-wrapper" v-cloak>
 			<table class="donations-table" v-if="donations.length > 0">
 				<thead>
 					<tr>
@@ -51,7 +51,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<h3 v-else>Ainda não há doações</h3>
+			<h3 v-else-if="!donationsLoading" v-cloak>Ainda não há doações</h3>
 
 			<button class="button--load-more" type="button" @click.prevent="getDonationsList()" v-if="hasMoreDonations">
 				Carregar mais
@@ -85,6 +85,9 @@ export default {
 		},
 		donations() {
 		return this.$store.state.donations;
+		},
+		donationsLoading() {
+			return this.$store.state.donationsLoading;
 		},
 		donationsRecentCount() {
   		return this.$store.state.donationsRecentCount;

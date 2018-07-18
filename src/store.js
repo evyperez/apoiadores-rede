@@ -22,6 +22,7 @@ export default new Vuex.Store({
     username: {},
     candidate: {},
     donations: [],
+    donationsLoading: true,
     donors: [],
     todayDonations: {
       total_donated: 0,
@@ -246,11 +247,14 @@ export default new Vuex.Store({
       });
     },
     GET_DONATIONS({ commit, state }, id) {
+      state.donationsLoading = true;
+
       return new Promise((resolve) => {
         axios.get(`${api}/public-api/candidate-donations/${id}/${state.lastDonationMarker}`)
           .then((response) => {
             resolve(response.data.donations);
             commit('SET_DONATIONS', response.data);
+            sate.donationsLoading = false;
           });
       });
     },
