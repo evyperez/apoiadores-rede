@@ -37,8 +37,10 @@ export default {
     Notification,
   },
 
-  data: {
+  data() {
+    return {
       isDev: (window.location.host === 'marina.appcivico.com'),
+    }
   },
   computed: {
     recentDonorFirstName() {
