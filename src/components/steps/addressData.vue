@@ -6,9 +6,9 @@
           <p class="instructions">Informe seu endereço</p>
         </div>
         <div :class="`input-wrapper
-          ${validation.errors.birthdate ? 'has-error' : ''}`" v-show="paymentData.payment_method === 'boleto'">
+          ${validation.errors.birthdate ? 'has-error' : ''}`" v-if="paymentData.payment_method === 'boleto'">
           <label for="birthdate">Data de nascimento</label>
-          <input type="text" v-model="birthdate" name="birthdate" v-mask="'##/##/####'">
+          <input type="text" v-model="birthdate" name="birthdate" v-mask="'##/##/####'" required>
           <div class="error" v-if="validation.errors.birthdate">
             {{ validation.errors.birthdate }}
           </div>
@@ -16,7 +16,7 @@
         <div :class="`input-wrapper
           ${validation.errors.zip_code ? 'has-error' : ''}`">
           <label for="zip_code">CEP</label>
-          <input type="text" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @blur="searchAddress($event)" >
+          <input type="text" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @blur="searchAddress($event)" required>
           <div class="error" v-if="validation.errors.zip_code">
             {{ validation.errors.zip_code }}
           </div>
@@ -24,7 +24,7 @@
         <div :class="`input-wrapper
           ${validation.errors.city ? 'has-error' : ''}`">
           <label for="city">Cidade</label>
-          <input type="text" v-model="city" name="city" :disabled="true">
+          <input type="text" v-model="city" name="city" :disabled="true" required>
           <div class="error" v-if="validation.errors.city">
             {{ validation.errors.city }}
           </div>
@@ -32,7 +32,7 @@
         <div :class="`input-wrapper
           ${validation.errors.street ? 'has-error' : ''}`">
           <label for="street">Rua</label>
-          <input type="text" v-model="street" name="street" :disabled="true">
+          <input type="text" v-model="street" name="street" :disabled="true" required>
           <div class="error" v-if="validation.errors.street">
             {{ validation.errors.street }}
           </div>
@@ -40,7 +40,7 @@
         <div :class="`input-wrapper
           ${validation.errors.district ? 'has-error' : ''}`">
           <label for="district">Bairro</label>
-          <input type="text" v-model="district" name="district" :disabled="true">
+          <input type="text" v-model="district" name="district" :disabled="true" required>
           <div class="error" v-if="validation.errors.district">
             {{ validation.errors.district }}
           </div>
@@ -48,7 +48,7 @@
         <div :class="`input-wrapper
           ${validation.errors.number ? 'has-error' : ''}`">
           <label for="number">Número</label>
-          <input type="text" v-model="number" name="number" >
+          <input type="text" v-model="number" name="number" required>
           <div class="error" v-if="validation.errors.number" >
             {{ validation.errors.number }}
           </div>
@@ -56,7 +56,7 @@
           <div :class="`input-wrapper
           ${validation.errors.complement ? 'has-error' : ''}`">
           <label for="complement">Complemento</label>
-          <input type="text" v-model="complement" name="complement" >
+          <input type="text" v-model="complement" name="complement">
           <div class="error" v-if="validation.errors.complement">
             {{ validation.errors.complement }}
           </div>
