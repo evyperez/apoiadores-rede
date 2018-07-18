@@ -77,16 +77,24 @@ $default-articles-padding: 9.375em;
 	color: text-contrast($bg, palette('white'));
 
 	background-color: $bg;
-	background-image: url('../assets/images/backgrounds/bg-doacao-very-small.jpg');
+	background-image: url('../assets/images/backgrounds/bg-doacao__320w.jpg');
 	background-position: center center;
 	background-repeat: repeat;
 	background-size: cover;
 
-	@media screen and (min-width: breakpoint('phablet')) {
-		background-image: url('../assets/images/backgrounds/bg-doacao-medium.jpg');
+	@media screen and (min-width: 480px) {
+		background-image: url('../assets/images/backgrounds/bg-doacao__640w.jpg');
 	}
 
-	@media screen and (min-width: breakpoint('desktop')) {
+	@media screen and (min-width: 640px) {
+		background-image: url('../assets/images/backgrounds/bg-doacao__960w.jpg');
+	}
+
+	@media screen and (min-width: 960px) {
+		background-image: url('../assets/images/backgrounds/bg-doacao__1280w.jpg');
+	}
+
+	@media screen and (min-width: 1280px) {
 		background-image: url('../assets/images/backgrounds/bg-doacao.jpg');
 	}
 }
