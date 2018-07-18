@@ -30,7 +30,7 @@ export default new Vuex.Store({
     donationsRecent: [],
     donationsRecentCount: 0,
     donationsRecentHasMore: false,
-    lastDonorFirstName: '',
+    recentDonation: {},
     address: {},
     paymentData: {},
     hasMoreDonations: false,
@@ -75,12 +75,8 @@ export default new Vuex.Store({
     SET_DONORS(state, { res }) {
       state.donors = res.names;
     },
-    SET_LAST_DONOR: (state, payload) => {
-      const firstName = payload.name.substr(0, payload.name.indexOf(' ')) || payload.name;
-
-      if (state.lastDonorFirstName !== firstName) {
-        state.lastDonorFirstName = firstName;
-      }
+    SET_RECENT_DONATION: (state, payload) => {
+      state.recentDonation = payload;
     },
     REPLACE_DONATIONS: (state) => {
       const donationsRecent = state.donationsRecent;
@@ -255,9 +251,6 @@ export default new Vuex.Store({
           .then((response) => {
             resolve(response.data.donations);
             commit('SET_DONATIONS', response.data);
-            if (response.data.donations && response.data.donations[0]) {
-              commit('SET_LAST_DONOR', response.data.donations[0]);
-            }
           });
       });
     },
@@ -287,12 +280,9 @@ export default new Vuex.Store({
             .then((response) => {
               resolve(response.data.donations);
               commit('SET_RECENT_DONATIONS', response.data);
-              if (response.data.donations && response.data.donations[0]) {
-                commit('SET_LAST_DONOR', response.data.donations[0]);
-              }
             });
         });
-      }, 1000 * 60);
+      }, 1000 * 10);
     },
     UPDATE_DONATIONS_SUMMARY({
       commit,
@@ -303,6 +293,9 @@ export default new Vuex.Store({
             (response) => {
               commit('SET_DONATIONS_SUMMARY', response.data.candidate);
               commit('SET_DONATIONS_TODAY', response.data.today);
+              if (response.data.recent_donation) {
+                commit('SET_RECENT_DONATION', response.data.recent_donation);
+              }
               resolve();
             },
             (err) => {
