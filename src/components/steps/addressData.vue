@@ -16,7 +16,7 @@
         <div :class="`input-wrapper
           ${validation.errors.zip_code ? 'has-error' : ''}`">
           <label for="zip_code">CEP</label>
-          <input type="text" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @blur="searchAddress($event)" required>
+          <input type="tel" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @blur="searchAddress($event)" required>
           <div class="error" v-if="validation.errors.zip_code">
             {{ validation.errors.zip_code }}
           </div>
@@ -48,7 +48,7 @@
         <div :class="`input-wrapper
           ${validation.errors.number ? 'has-error' : ''}`">
           <label for="number">Número</label>
-          <input type="text" v-model="number" name="number" required>
+          <input type="tel" v-model="number" name="number" required>
           <div class="error" v-if="validation.errors.number" >
             {{ validation.errors.number }}
           </div>

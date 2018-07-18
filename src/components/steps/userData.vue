@@ -31,7 +31,7 @@
             ref="nameField"
             type="text"
             name="name"
-            v-model="name">
+            v-model="name" required>
           <div class="error" v-if="validation.errors.name">
             {{ validation.errors.name }}
           </div>
@@ -44,7 +44,7 @@
           <input
             type="text"
             name="surname"
-            v-model="surname">
+            v-model="surname" required>
           <div class="error" v-if="validation.errors.surname">
             {{ validation.errors.surname }}
           </div>
@@ -55,10 +55,10 @@
           ${validation.errors.cpf ? 'has-error' : ''}`">
           <label for="cpf">CPF</label>
           <input
-            type="text"
+            type="tel"
             name="cpf"
             v-model="cpf"
-            v-mask="'###.###.###-##'">
+            v-mask="'###.###.###-##'" required>
           <div class="error" v-if="validation.errors.cpf">
             {{ validation.errors.cpf }}
           </div>
@@ -71,7 +71,7 @@
           <input
             type="email"
             name="email"
-            v-model="email">
+            v-model="email" required>
           <div class="error" v-if="validation.errors.email">
             {{ validation.errors.email }}
           </div>

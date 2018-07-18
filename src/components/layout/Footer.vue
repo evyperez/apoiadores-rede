@@ -21,15 +21,51 @@
       page_id="257874391684846"
       theme_color="#0a6661">
     </div>
+    <div class="notifications-wrapper">
+      <Notification message="Apoie você também!" :title="`R$${recentDonationAmount} acabam de serem doados por ${recentDonationFirstName}!`" :duration="5000" />
+    </div>
   </footer>
 </template>
 
 <script>
+import Notification from '@/components/Notification';
+
 export default {
   name: 'Footer',
-  data: {
+
+  components: {
+    Notification,
+  },
+
+  data() {
+    return {
       isDev: (window.location.host === 'marina.appcivico.com'),
+    }
+  },
+  computed: {
+    recentDonationAmount() {
+      const {amount = 0} = this.$store.state.recentDonation;
+
+      return amount / 100;
+    },
+    recentDonationFirstName() {
+      const {name = ''} = this.$store.state.recentDonation;
+      const firstName = name.substr(0, name.indexOf(' ')) || name;
+
+      return firstName;
+    },
   }
 }
 </script>
 
+<style>
+  .notification-fade-enter-active,
+  .notification-fade-leave-active {
+    transition: opacity .3s ease;
+  }
+  .notification-fade-enter,
+  .notification-fade-leave-to
+  /* .component-fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+</style>
