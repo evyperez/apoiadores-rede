@@ -110,11 +110,17 @@
 }
 
 .site-header h1 {
-	@include clearfix;
+  @include clearfix;
 
   margin: 0;
   padding: 0;
   line-height: $leading * 0.5em;
+  letter-spacing: -0.12em;
+  font-size: 8vw;
+
+  @media screen and(min-width: breakpoint('wide')) {
+    font-size: ms(9);
+  }
 
   .vue-typer .custom.char.typed {
     color: palette('orange');
@@ -131,6 +137,7 @@
   float: left;
   width: 50%;
   text-align: left;
+  white-space: nowrap;
 
   &:first-child {
     text-align: right;
