@@ -235,9 +235,6 @@ export default {
 				.replace(/\.+$/, "");
 			return formated;
 		},
-		refreshDonationsList() {
-			this.$store.dispatch('REFRESH_DONATIONS');
-		},
 	},
 };
 </script>
