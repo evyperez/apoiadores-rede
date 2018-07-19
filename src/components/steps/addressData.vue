@@ -285,10 +285,34 @@ export default {
 
       this.toggleLoading();
       this.$store.dispatch('GET_ADDRESS', event.target.value).then((response) => {
-        this.state = ( response.state  == '' ) ? this.disableField('state') : response.state;
-        this.city = ( response.city  == '' ) ? this.disableField('city') : response.city;
-        this.street = ( response.street == '' ) ? this.disableField('street') : response.street;
-        this.district = ( response.district == '' ) ? this.disableField('district') : response.district;
+        if (!response.state) {
+          this.$refs.state.disabled = false;
+        } else {
+          this.$refs.state.disabled = true;
+          this.state = response.state;
+        }
+
+        if (!response.city) {
+          this.$refs.city.disabled = false;
+        } else {
+          this.$refs.city.disabled = true;
+          this.city = response.city;
+        }
+
+        if (!response.street) {
+          this.$refs.street.disabled = false;
+        } else {
+          this.$refs.street.disabled = true;
+          this.street = response.street;
+        }
+
+        if (!response.district) {
+          this.$refs.district.disabled = false;
+        } else {
+          this.$refs.district.disabled = true;
+          this.district = response.district;
+        }
+
         this.toggleLoading();
         this.errorMessage = '';
       }).catch((erro)=>{
@@ -296,13 +320,6 @@ export default {
         this.errorMessage = 'Cep não encontrado';
       });
     },
-    disableField(field) {
-      this.$nextTick(function () {
-        var element  = document.getElementsByName(field);
-        element[0].disabled=false;
-        return '';
-      });
-	},
     handleErrorMessage(err) {
       this.errorMessage = err.data[0].message;
     },
