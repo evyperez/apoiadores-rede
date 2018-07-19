@@ -284,6 +284,7 @@ export default {
       }
 
       this.toggleLoading();
+
       this.$store.dispatch('GET_ADDRESS', event.target.value).then((response) => {
         if (!response.state) {
           this.$refs.state.disabled = false;
@@ -314,10 +315,38 @@ export default {
         }
 
         this.toggleLoading();
-        this.errorMessage = '';
-      }).catch((erro)=>{
+        return this.errorMessage = '';
+
+      }).catch((error)=>{
         this.toggleLoading();
-        this.errorMessage = 'Cep não encontrado';
+
+        if (error.response.status === 404) {
+          this.$refs.state.disabled = true;
+          this.$refs.city.disabled = true;
+          this.$refs.street.disabled = true;
+          this.$refs.district.disabled = true;
+
+          this.$refs.zipCode.select() || this.$refs.zipCode.focus();
+
+          return this.errorMessage = 'Cep não encontrado';
+        }
+
+        if (error.response.status === 400) {
+          this.$refs.state.disabled = false;
+          this.$refs.city.disabled = false;
+          this.$refs.street.disabled = false;
+          this.$refs.district.disabled = false;
+
+          this.$refs.zipCode.focus();
+
+          if (error.response.data.form_error && error.response.data.form_error.CEP) {
+            return this.errorMessage = error.response.data.form_error.CEP.indexOf('dismembered') !== -1
+              ? 'CEP desmembrado. Por favor, confira se ele ainda está correto e corrija os campos necessários.'
+              : error.response.data.form_error.CEP;
+            } else {
+              return this.errorMessage = error.response.data.form_error;
+            }
+          }
       });
     },
     handleErrorMessage(err) {
