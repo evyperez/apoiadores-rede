@@ -16,7 +16,7 @@
         <div :class="`input-wrapper
           ${validation.errors.zip_code ? 'has-error' : ''}`">
           <label for="zip_code">CEP</label>
-          <input type="tel" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @change="searchAddress($event)" required ref="zipCode">
+          <input type="tel" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @change="searchAddress($event)" required minlength="9" ref="zipCode">
           <div class="error" v-if="validation.errors.zip_code">
             {{ validation.errors.zip_code }}
           </div>
@@ -276,6 +276,13 @@ export default {
       this.$data.city = '';
       this.$data.street = '';
       this.$data.district = '';
+
+      if(event.target.value.length !== parseInt(event.target.getAttribute('minlength'), 10)) {
+        this.$data.validation.errors.zip_code = 'CEP inválido';
+
+        return this.$refs.zipCode.select() || this.$refs.zipCode.focus();
+      }
+
       this.toggleLoading();
       this.$store.dispatch('GET_ADDRESS', event.target.value).then((response) => {
         this.state = ( response.state  == '' ) ? this.disableField('state') : response.state;
