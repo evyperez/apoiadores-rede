@@ -183,8 +183,10 @@ export default new Vuex.Store({
           });
       });
     },
-    GET_DONATION({ commit }, data) {
+    SAVE_PAYMENT_DATA({ commit }, data) {
       commit('SET_PAYMENT_DATA', { paymentData: data });
+    },
+    GET_DONATION({ commit }, data) {
       return new Promise((resolve, reject) => {
         axios({
           method: 'POST',

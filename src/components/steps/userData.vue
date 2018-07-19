@@ -114,9 +114,6 @@ export default {
     amount() {
       return this.$store.state.amount;
     },
-    iugu() {
-      return this.$store.state.iugu;
-    },
     token() {
       return this.$store.state.token;
     },
@@ -222,25 +219,13 @@ export default {
             donation_fp: this.donationFp,
             referral_code: this.$store.state.referral,
           }
-          this.$store.dispatch('GET_DONATION', payload)
-            .then((res) => {
-              const user = {
-                name: data.name,
-                surname: data.surname,
-              }
-              this.$store.dispatch('SAVE_USERNAME', user)
-              this.handleIugu();
-              this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'boleto' });
-            }).catch((err) => {
-              if (err.data[0].msg_id == 'need_billing_adddress') {
-                this.$store.dispatch('CHANGE_PAYMENT_STEP', {
-                  step: 'boleto'
-                });
-                return;
-              }
-              this.toggleLoading();
-              this.handleErrorMessage(err);
-            });
+          const user = {
+            name: data.name,
+            surname: data.surname,
+          }
+          this.$store.dispatch('SAVE_PAYMENT_DATA', payload);
+          this.$store.dispatch('SAVE_USERNAME', user);
+          this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'boleto' });
         }).catch(() => {
           this.toggleLoading();
           this.errorMessage = 'Ocorreu um erro inesperado, tente novamente!';
@@ -331,10 +316,6 @@ export default {
         });
       });
     },
-    handleIugu() {
-      Iugu.setAccountID(this.iugu.account_id);
-      Iugu.setTestMode(this.iugu.is_testing === 1 ? true : false);
-    }
   },
   mounted() {
     this.scrollToDonate();

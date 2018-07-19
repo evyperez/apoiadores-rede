@@ -102,6 +102,9 @@ export default {
     };
   },
   computed: {
+    iugu() {
+      return this.$store.state.iugu;
+    },
     paymentData() {
       return this.$store.state.paymentData;
     }
@@ -179,38 +182,20 @@ export default {
       }
     },
     saveAddress(){
-      const payload = {
-        payment_method: this.paymentData.payment_method,
-        device_authorization_token_id: this.paymentData.device_authorization_token_id,
-        email: this.paymentData.email,
-        cpf: this.paymentData.cpf,
-        name: this.paymentData.name,
-        amount: this.paymentData.amount,
-        candidate_id: this.paymentData.candidate_id,
-        donation_fp: this.paymentData.donation_fp,
-        referral_code: this.$store.state.referral,
+      const payload = this.$store.state.paymentData;
 
-      }
-      if (this.paymentData.payment_method === 'credit_card') {
-        this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'cardData' });
-        payload.address_zipcode= this.zip_code;
-        payload.address_state= this.state;
-        payload.address_city= this.city;
-        payload.address_street= this.street;
-        payload.address_district= this.district;
-        payload.address_house_number= this.number;
-        payload.address_complement= this.complement;
-      } else {
+      payload.address_zipcode = this.zip_code;
+      payload.address_state = this.state;
+      payload.address_city = this.city;
+      payload.address_street = this.street;
+      payload.address_district = this.district;
+      payload.address_house_number = this.number;
+      payload.address_complement = this.complement;
+
+      if (this.paymentData.payment_method === 'boleto') {
         let birthdate = this.birthdate.split('/');
         birthdate.reverse();
         birthdate = birthdate.join('-');
-        payload.address_zipcode= this.zip_code;
-        payload.address_state= this.state;
-        payload.address_city= this.city;
-        payload.address_street= this.street;
-        payload.address_district= this.district;
-        payload.address_house_number= this.number;
-        payload.address_complement= this.complement;
         payload.billing_address_zipcode = this.zip_code;
         payload.billing_address_state = this.state;
         payload.billing_address_city = this.city;
@@ -219,10 +204,11 @@ export default {
         payload.billing_address_house_number = this.number;
         payload.birthdate = birthdate,
         payload.billing_address_complement = this.complement;
-    }
+      }
 
         this.$store.dispatch('GET_DONATION', payload)
         .then(res => {
+          this.handleIugu();
           const stepToGoTo = this.paymentData.payment_method === 'credit_card'
             ? 'cardData'
             : 'printBoleto';
@@ -258,6 +244,10 @@ export default {
     handleErrorMessage(err) {
       this.errorMessage = err.data[0].message;
     },
+    handleIugu() {
+      Iugu.setAccountID(this.iugu.account_id);
+      Iugu.setTestMode(this.iugu.is_testing === 1 ? true : false);
+    }
   },
   mounted() {
     this.scrollToDonate();
