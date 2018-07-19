@@ -137,7 +137,13 @@ export default {
       birthdate: '',
       formData: {},
       validation: {
-        errors: {},
+        errors: {
+          zip_code: '',
+          state: '',
+          city: '',
+          street: '',
+          district: '',
+        },
       },
     };
   },
@@ -261,6 +267,15 @@ export default {
         });
     },
     searchAddress(event){
+      this.$data.validation.errors.zip_code = '';
+      this.$data.validation.errors.state = '';
+      this.$data.validation.errors.city = '';
+      this.$data.validation.errors.street = '';
+      this.$data.validation.errors.district = '';
+      this.$data.state = '';
+      this.$data.city = '';
+      this.$data.street = '';
+      this.$data.district = '';
       this.toggleLoading();
       this.$store.dispatch('GET_ADDRESS', event.target.value).then((response) => {
         this.state = ( response.state  == '' ) ? this.disableField('state') : response.state;
