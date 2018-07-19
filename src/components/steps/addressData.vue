@@ -16,7 +16,7 @@
         <div :class="`input-wrapper
           ${validation.errors.zip_code ? 'has-error' : ''}`">
           <label for="zip_code">CEP</label>
-          <input type="tel" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @blur="searchAddress($event)" required>
+          <input type="tel" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @change="searchAddress($event)" required ref="zipCode">
           <div class="error" v-if="validation.errors.zip_code">
             {{ validation.errors.zip_code }}
           </div>
@@ -24,7 +24,7 @@
         <div :class="`input-wrapper
           ${validation.errors.city ? 'has-error' : ''}`">
           <label for="city">Cidade</label>
-          <input type="text" v-model="city" name="city" :disabled="true" required>
+          <input type="text" v-model="city" name="city" :disabled="true" required ref="city">
           <div class="error" v-if="validation.errors.city">
             {{ validation.errors.city }}
           </div>
@@ -32,7 +32,7 @@
         <div :class="`input-wrapper
           ${validation.errors.street ? 'has-error' : ''}`">
           <label for="street">Rua</label>
-          <input type="text" v-model="street" name="street" :disabled="true" required>
+          <input type="text" v-model="street" name="street" :disabled="true" required ref="street">
           <div class="error" v-if="validation.errors.street">
             {{ validation.errors.street }}
           </div>
@@ -40,7 +40,7 @@
         <div :class="`input-wrapper
           ${validation.errors.district ? 'has-error' : ''}`">
           <label for="district">Bairro</label>
-          <input type="text" v-model="district" name="district" :disabled="true" required>
+          <input type="text" v-model="district" name="district" :disabled="true" required ref="district">
           <div class="error" v-if="validation.errors.district">
             {{ validation.errors.district }}
           </div>
