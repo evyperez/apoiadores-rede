@@ -8,7 +8,7 @@
         {{ message }}
       </div>
       <div class="notification__footer">
-        #somosrede
+        #SomosMarina
       </div>
     </div>
   </transition>
