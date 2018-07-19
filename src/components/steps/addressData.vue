@@ -30,6 +30,17 @@
           </div>
         </div>
         <div :class="`input-wrapper
+          ${validation.errors.state ? 'has-error' : ''}`">
+          <label for="state">Estado</label>
+          <select type="text" v-model="state" name="state" :disabled="true" required ref="state">
+            <option></option>
+            <option :value="key" v-for="(state, key) in states" :key="key">{{ state }}</option>
+          </select>
+          <div class="error" v-if="validation.errors.state">
+            {{ validation.errors.state }}
+          </div>
+        </div>
+        <div :class="`input-wrapper
           ${validation.errors.street ? 'has-error' : ''}`">
           <label for="street">Rua</label>
           <input type="text" v-model="street" name="street" :disabled="true" required ref="street">
@@ -86,6 +97,35 @@ export default {
   data() {
     return {
       loading: false,
+      states: {
+        AC: 'Acre',
+        AL: 'Alagoas',
+        AP: 'Amapá',
+        AM: 'Amazonas',
+        BA: 'Bahia',
+        CE: 'Ceará',
+        DF: 'Distrito Federal',
+        ES: 'Espírito Santo',
+        GO: 'Goiás',
+        MA: 'Maranhão',
+        MT: 'Mato Grosso',
+        MS: 'Mato Grosso do Sul',
+        MG: 'Minas Gerais',
+        PR: 'Paraná',
+        PB: 'Paraíba',
+        PA: 'Pará',
+        PE: 'Pernambuco',
+        PI: 'Piauí',
+        RJ: 'Rio de Janeiro',
+        RN: 'Rio Grande do Norte',
+        RS: 'Rio Grande do Sul',
+        RO: 'Rondônia',
+        RR: 'Roraima',
+        SC: 'Santa Catarina',
+        SE: 'Sergipe',
+        SP: 'São Paulo',
+        TO : 'Tocantins',
+      },
       errorMessage: '',
       zip_code: '',
       state: '',
