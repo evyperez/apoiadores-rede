@@ -188,6 +188,10 @@ export default new Vuex.Store({
     },
     GET_DONATION({ commit }, data) {
       return new Promise((resolve, reject) => {
+        const rejectionByTimeout = setTimeout(() => {
+          clearTimeout(rejectionByTimeout);
+          return reject(new Error('O servidor está ocupado. Tente novamente em alguns minutos.'));
+        }, 1000 * 60);
         axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
