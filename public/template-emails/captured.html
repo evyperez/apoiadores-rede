@@ -34,13 +34,9 @@
 
                                         <p>
                                           <strong>Informações da sua doação:</strong><br>
-                                          <strong>Nome do doador: </strong>[% donor_name %]<br>
+                                          <strong>Nome do doador:</strong> [% donor_name %]<br>
                                           <strong>e-mail:</strong> [% donor_email %]<br>
-                                          [% IF candidate.campaign_donation_type == 'party' %]
-                                          <strong>CNPJ:</strong> [% candidate.cnpj %]<br>
-                                          [%ELSE%]
-                                          <strong>CPF: </strong>[% candidate.cpf %]<br>
-                                          [%END%]
+                                          <strong>CPF do doador:</strong> [% donor_cpf %]<br>
                                           <strong>Valor: </strong>R$ [% amount_human %]<br>
                                           <strong>Forma de pagamento:</strong> [% payment_method_human%]<br>
                                           <strong>Data da confirmação do pagamento: </strong>[% captured_at_human %]<br>
