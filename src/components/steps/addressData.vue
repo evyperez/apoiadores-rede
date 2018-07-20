@@ -350,7 +350,7 @@ export default {
       });
     },
     handleErrorMessage(err) {
-      this.errorMessage = err.data[0].message;
+      this.errorMessage = err.message || err.name || err.data[0].message;
     },
     handleIugu() {
       Iugu.setAccountID(this.iugu.account_id);
