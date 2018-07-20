@@ -8,7 +8,7 @@
         <div :class="`input-wrapper
           ${validation.errors.birthdate ? 'has-error' : ''}`" v-if="paymentData.payment_method === 'boleto'">
           <label for="birthdate">Data de nascimento</label>
-          <input type="text" v-model="birthdate" name="birthdate" v-mask="'##/##/####'" required>
+          <input type="text" v-model="birthdate" name="birthdate" v-mask="'##/##/####'" required v-focus="(paymentData.payment_method === 'boleto')">
           <div class="error" v-if="validation.errors.birthdate">
             {{ validation.errors.birthdate }}
           </div>
@@ -16,7 +16,7 @@
         <div :class="`input-wrapper
           ${validation.errors.zip_code ? 'has-error' : ''}`">
           <label for="zip_code">CEP</label>
-          <input type="tel" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @change="searchAddress($event)" required minlength="9" ref="zipCode">
+          <input type="tel" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @change="searchAddress($event)" required minlength="9" ref="zipCode" v-focus="(paymentData.payment_method !== 'boleto')">
           <div class="error" v-if="validation.errors.zip_code">
             {{ validation.errors.zip_code }}
           </div>
