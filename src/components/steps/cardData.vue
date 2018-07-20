@@ -13,7 +13,7 @@
             type="tel"
             v-model="number"
             name="number"
-            v-mask="['#### #### #### ####', '#### #### #### ##']" required>
+            v-mask="['#### #### #### ####', '#### #### #### ##']" required v-focus>
           <div class="error" v-if="validation.errors.number">
             {{ validation.errors.number }}
           </div>

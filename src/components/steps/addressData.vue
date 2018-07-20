@@ -8,7 +8,7 @@
         <div :class="`input-wrapper
           ${validation.errors.birthdate ? 'has-error' : ''}`" v-if="paymentData.payment_method === 'boleto'">
           <label for="birthdate">Data de nascimento</label>
-          <input type="text" v-model="birthdate" name="birthdate" v-mask="'##/##/####'" required>
+          <input type="text" v-model="birthdate" name="birthdate" v-mask="'##/##/####'" required v-focus="(paymentData.payment_method === 'boleto')">
           <div class="error" v-if="validation.errors.birthdate">
             {{ validation.errors.birthdate }}
           </div>
@@ -16,7 +16,7 @@
         <div :class="`input-wrapper
           ${validation.errors.zip_code ? 'has-error' : ''}`">
           <label for="zip_code">CEP</label>
-          <input type="tel" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @blur="searchAddress($event)" required>
+          <input type="tel" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @change="searchAddress($event)" required minlength="9" ref="zipCode" v-focus="(paymentData.payment_method !== 'boleto')">
           <div class="error" v-if="validation.errors.zip_code">
             {{ validation.errors.zip_code }}
           </div>
@@ -24,15 +24,26 @@
         <div :class="`input-wrapper
           ${validation.errors.city ? 'has-error' : ''}`">
           <label for="city">Cidade</label>
-          <input type="text" v-model="city" name="city" :disabled="true" required>
+          <input type="text" v-model="city" name="city" :disabled="true" required ref="city">
           <div class="error" v-if="validation.errors.city">
             {{ validation.errors.city }}
           </div>
         </div>
         <div :class="`input-wrapper
+          ${validation.errors.state ? 'has-error' : ''}`">
+          <label for="state">Estado</label>
+          <select type="text" v-model="state" name="state" :disabled="true" required ref="state">
+            <option></option>
+            <option :value="key" v-for="(state, key) in states" :key="key">{{ state }}</option>
+          </select>
+          <div class="error" v-if="validation.errors.state">
+            {{ validation.errors.state }}
+          </div>
+        </div>
+        <div :class="`input-wrapper
           ${validation.errors.street ? 'has-error' : ''}`">
           <label for="street">Rua</label>
-          <input type="text" v-model="street" name="street" :disabled="true" required>
+          <input type="text" v-model="street" name="street" :disabled="true" required ref="street">
           <div class="error" v-if="validation.errors.street">
             {{ validation.errors.street }}
           </div>
@@ -40,7 +51,7 @@
         <div :class="`input-wrapper
           ${validation.errors.district ? 'has-error' : ''}`">
           <label for="district">Bairro</label>
-          <input type="text" v-model="district" name="district" :disabled="true" required>
+          <input type="text" v-model="district" name="district" :disabled="true" required ref="district">
           <div class="error" v-if="validation.errors.district">
             {{ validation.errors.district }}
           </div>
@@ -86,6 +97,35 @@ export default {
   data() {
     return {
       loading: false,
+      states: {
+        AC: 'Acre',
+        AL: 'Alagoas',
+        AP: 'Amapá',
+        AM: 'Amazonas',
+        BA: 'Bahia',
+        CE: 'Ceará',
+        DF: 'Distrito Federal',
+        ES: 'Espírito Santo',
+        GO: 'Goiás',
+        MA: 'Maranhão',
+        MT: 'Mato Grosso',
+        MS: 'Mato Grosso do Sul',
+        MG: 'Minas Gerais',
+        PR: 'Paraná',
+        PB: 'Paraíba',
+        PA: 'Pará',
+        PE: 'Pernambuco',
+        PI: 'Piauí',
+        RJ: 'Rio de Janeiro',
+        RN: 'Rio Grande do Norte',
+        RS: 'Rio Grande do Sul',
+        RO: 'Rondônia',
+        RR: 'Roraima',
+        SC: 'Santa Catarina',
+        SE: 'Sergipe',
+        SP: 'São Paulo',
+        TO : 'Tocantins',
+      },
       errorMessage: '',
       zip_code: '',
       state: '',
@@ -97,7 +137,13 @@ export default {
       birthdate: '',
       formData: {},
       validation: {
-        errors: {},
+        errors: {
+          zip_code: '',
+          state: '',
+          city: '',
+          street: '',
+          district: '',
+        },
       },
     };
   },
@@ -221,28 +267,90 @@ export default {
         });
     },
     searchAddress(event){
+      this.$data.validation.errors.zip_code = '';
+      this.$data.validation.errors.state = '';
+      this.$data.validation.errors.city = '';
+      this.$data.validation.errors.street = '';
+      this.$data.validation.errors.district = '';
+      this.$data.state = '';
+      this.$data.city = '';
+      this.$data.street = '';
+      this.$data.district = '';
+
+      if(event.target.value.length !== parseInt(event.target.getAttribute('minlength'), 10)) {
+        this.$data.validation.errors.zip_code = 'CEP inválido';
+
+        return this.$refs.zipCode.select() || this.$refs.zipCode.focus();
+      }
+
       this.toggleLoading();
+
       this.$store.dispatch('GET_ADDRESS', event.target.value).then((response) => {
-        this.state = ( response.state  == '' ) ? this.disableField('state') : response.state;
-        this.city = ( response.city  == '' ) ? this.disableField('city') : response.city;
-        this.street = ( response.street == '' ) ? this.disableField('street') : response.street;
-        this.district = ( response.district == '' ) ? this.disableField('district') : response.district;
+        if (!response.state) {
+          this.$refs.state.disabled = false;
+        } else {
+          this.$refs.state.disabled = true;
+          this.state = response.state;
+        }
+
+        if (!response.city) {
+          this.$refs.city.disabled = false;
+        } else {
+          this.$refs.city.disabled = true;
+          this.city = response.city;
+        }
+
+        if (!response.street) {
+          this.$refs.street.disabled = false;
+        } else {
+          this.$refs.street.disabled = true;
+          this.street = response.street;
+        }
+
+        if (!response.district) {
+          this.$refs.district.disabled = false;
+        } else {
+          this.$refs.district.disabled = true;
+          this.district = response.district;
+        }
+
         this.toggleLoading();
-        this.errorMessage = '';
-      }).catch((erro)=>{
+        return this.errorMessage = '';
+
+      }).catch((error)=>{
         this.toggleLoading();
-        this.errorMessage = 'Cep não encontrado';
+
+        if (error.response.status === 404) {
+          this.$refs.state.disabled = true;
+          this.$refs.city.disabled = true;
+          this.$refs.street.disabled = true;
+          this.$refs.district.disabled = true;
+
+          this.$refs.zipCode.select() || this.$refs.zipCode.focus();
+
+          return this.errorMessage = 'Cep não encontrado';
+        }
+
+        if (error.response.status === 400) {
+          this.$refs.state.disabled = false;
+          this.$refs.city.disabled = false;
+          this.$refs.street.disabled = false;
+          this.$refs.district.disabled = false;
+
+          this.$refs.zipCode.focus();
+
+          if (error.response.data.form_error && error.response.data.form_error.CEP) {
+            return this.errorMessage = error.response.data.form_error.CEP.indexOf('dismembered') !== -1
+              ? 'CEP desmembrado. Por favor, confira se ele ainda está correto e corrija os campos necessários.'
+              : error.response.data.form_error.CEP;
+            } else {
+              return this.errorMessage = error.response.data.form_error;
+            }
+          }
       });
     },
-    disableField(field) {
-      this.$nextTick(function () {
-        var element  = document.getElementsByName(field);
-        element[0].disabled=false;
-        return '';
-      });
-	},
     handleErrorMessage(err) {
-      this.errorMessage = err.data[0].message;
+      this.errorMessage = err.message || err.name || err.data[0].message;
     },
     handleIugu() {
       Iugu.setAccountID(this.iugu.account_id);
