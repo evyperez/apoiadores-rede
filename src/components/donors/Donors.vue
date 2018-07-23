@@ -7,7 +7,7 @@
 		Doadores
 		</h2>
 
-		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um pasos na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
+		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um passo na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
 
 		<div v-if="donations" class="donations-wrapper" v-cloak>
 			<table class="donations-table" v-if="donations.length > 0">
@@ -44,10 +44,10 @@
 						<td title="Data">{{ donation.captured_at | date }}</td>
 						<td title="Método">{{ donation.payment_method_human }}</td>
 						<td title="Valor">R$ {{donation.amount | formatBRL}} </td>
-						<td v-if="donation.digest" title="Decred Txid" class="decred-link">
-							<a :href="generalSiteDomain + '/em/' + candidate.username + '/recibo/' + donation.digest" target="_blank" title="Registro na blockchain"><img src="../../assets/images/icons/website-dark.png" alt="Decred Txid"/></a>
+						<td v-if="donation.digest" title="Recibo" class="decred-link">
+							<a :href="generalSiteDomain + '/em/' + candidate.username + '/recibo/' + donation.digest" target="_blank" title="Registro na blockchain"><img src="../../assets/images/icons/website-dark.png" alt="Recibo"/></a>
 						</td>
-						<td title="Decred Txid" v-else>Processando</td>
+						<td title="Recibo" v-else>Processando</td>
 					</tr>
 				</tbody>
 			</table>
