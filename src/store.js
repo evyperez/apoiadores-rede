@@ -256,7 +256,7 @@ export default new Vuex.Store({
           .then((response) => {
             resolve(response.data.donations);
             commit('SET_DONATIONS', response.data);
-            sate.donationsLoading = false;
+            state.donationsLoading = false;
           });
       });
     },
