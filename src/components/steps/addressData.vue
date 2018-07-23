@@ -73,9 +73,15 @@
           </div>
         </div>
       </fieldset>
-        <p class="error" v-if="errorMessage != ''">
+      <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
+      <div v-if="paymentData.payment_method === 'credit_card'">
+        <p class="form__disclaimer">Taxa de 7,4% via cartão de crédito. Esse valor é destinado a taxas de operação financeira, sistemas de controle anti-fraude, impostos e infraestrutura.</p>
+      </div>
+      <div v-if="paymentData.payment_method === 'boleto'">
+        <p class="form__disclaimer">Taxa de 4% + R$4 via boleto. Esse valor é destinado a taxas de operação financeira, sistemas de controle anti-fraude, impostos e infraestrutura.</p>
+      </div>
       <button type="submit" :disabled="loading" class="donation-nav donation-nav--forward">Continuar</button>
     </form>
 </template>
