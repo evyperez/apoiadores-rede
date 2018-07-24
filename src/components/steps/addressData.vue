@@ -282,6 +282,7 @@ export default {
       this.$data.city = '';
       this.$data.street = '';
       this.$data.district = '';
+      this.errorMessage = '';
 
       if(event.target.value.length !== parseInt(event.target.getAttribute('minlength'), 10)) {
         this.$data.validation.errors.zip_code = 'CEP inválido';
@@ -320,8 +321,7 @@ export default {
           this.district = response.district;
         }
 
-        this.toggleLoading();
-        return this.errorMessage = '';
+        return this.toggleLoading();
 
       }).catch((error)=>{
         this.toggleLoading();
@@ -334,7 +334,7 @@ export default {
 
           this.$refs.zipCode.select() || this.$refs.zipCode.focus();
 
-          return this.errorMessage = 'Cep não encontrado';
+          return this.$data.validation.errors.zip_code = 'Cep não encontrado';
         }
 
         if (error.response.status === 400) {
@@ -346,11 +346,11 @@ export default {
           this.$refs.zipCode.focus();
 
           if (error.response.data.form_error && error.response.data.form_error.CEP) {
-            return this.errorMessage = error.response.data.form_error.CEP.indexOf('dismembered') !== -1
-              ? 'CEP desmembrado. Por favor, confira se ele ainda está correto e corrija os campos necessários.'
+            return this.$data.validation.errors.zip_code = error.response.data.form_error.CEP.indexOf('dismembered') !== -1
+              ? 'Não foi possível identificar seu CEP. Por favor, digite o endereço completo.'
               : error.response.data.form_error.CEP;
             } else {
-              return this.errorMessage = error.response.data.form_error;
+              return this.$data.validation.errors.zip_code = error.response.data.form_error;
             }
           }
       });
