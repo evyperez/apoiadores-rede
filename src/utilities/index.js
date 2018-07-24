@@ -25,6 +25,10 @@ function formatBRLDec(amount) {
   return formated;
 }
 
+function thousandsSeparator(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
 function formatBRL(amount) {
   let formated = `${amount}`;
 
@@ -122,4 +126,5 @@ export {
   removeAccented,
   formatDateBasic,
   formatBRLDec,
+  thousandsSeparator,
 };
