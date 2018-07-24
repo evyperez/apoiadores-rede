@@ -23,7 +23,7 @@
 			<template v-else>0</template>
 			</strong>
 		</p>
-		<p class="campaign-progress-amount">{{ candidate.people_donated }} doações realizadas</p>
+		<p class="campaign-progress-amount">{{ candidate.people_donated | thousandsSeparator }} doações realizadas</p>
 
 		<progress :value="candidate.total_donated" :max="expected">
 			<div class="progress-bar">
