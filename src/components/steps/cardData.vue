@@ -1,6 +1,6 @@
 <template>
   <section>
-    <form @submit.prevent="validateForm" :aria-busy="loading ? 'true' : 'false'">
+    <form @submit.prevent="validateForm" :aria-busy="loading ? 'true' : 'false'" :data-aria-busy-message="paymentWatingMessage">
       <fieldset>
         <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
         <div class="instructions-donation">
@@ -93,6 +93,9 @@ export default {
     };
   },
   computed: {
+    paymentWatingMessage() {
+      return this.$store.state.paymentWatingMessage;
+    },
     username() {
       return this.$store.state.username;
     },
