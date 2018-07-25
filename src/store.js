@@ -106,7 +106,7 @@ export default new Vuex.Store({
         } else {
           let i = 0;
 
-          while (newDonations[i] && newDonations[i]._marker !== donationToCompare._marker) { // eslint-disable-line no-underscore-dangle
+          while (newDonations[i] && newDonations[i].id !== donationToCompare.id) { // eslint-disable-line no-underscore-dangle
             i += 1;
           }
 
