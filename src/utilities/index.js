@@ -25,7 +25,7 @@ function formatBRLDec(amount) {
   return formated;
 }
 
-function thousandsSeparator(x) {
+function thousandsSeparator(x = 0) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
 
