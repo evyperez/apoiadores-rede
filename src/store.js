@@ -34,6 +34,7 @@ export default new Vuex.Store({
     recentDonation: {},
     address: {},
     paymentData: {},
+    paymentWatingMessage: '',
     hasMoreDonations: false,
     lastDonationMarker: '',
   },
