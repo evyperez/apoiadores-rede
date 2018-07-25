@@ -34,6 +34,7 @@ export default new Vuex.Store({
     recentDonation: {},
     address: {},
     paymentData: {},
+    paymentWatingMessage: '',
     hasMoreDonations: false,
     lastDonationMarker: '',
   },
@@ -188,6 +189,10 @@ export default new Vuex.Store({
     },
     GET_DONATION({ commit }, data) {
       return new Promise((resolve, reject) => {
+        const rejectionByTimeout = setTimeout(() => {
+          clearTimeout(rejectionByTimeout);
+          return reject(new Error('O servidor está ocupado. Tente novamente em alguns minutos.'));
+        }, 1000 * 60);
         axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -209,6 +214,26 @@ export default new Vuex.Store({
       });
     },
     START_DONATION({ commit, state }, payload) {
+      const messages = [
+        'Validando seu cartão.',
+        'Processando pagamento.',
+        'Quase lá. Aguarde mais um pouco, por favor.',
+      ];
+
+      let i = 1;
+
+      const showMessage = setInterval(() => {
+        if (messages[i]) {
+          state.paymentWatingMessage = messages[i];
+        } else {
+          clearTimeout(showMessage);
+        }
+        i += 1;
+      }, 1000 * 5);
+
+      [state.paymentWatingMessage] = messages;
+      state.donationsLoading = true;
+
       return new Promise((resolve, reject) => {
         axios({
           method: 'POST',
@@ -231,7 +256,11 @@ export default new Vuex.Store({
             console.error(err.response);
             reject(err.response);
           },
-        );
+        ).then(() => {
+          clearTimeout(showMessage);
+          state.paymentWatingMessage = '';
+          state.donationsLoading = true;
+        });
       });
     },
     GET_CANDIDATE_INFO({ commit }, id) {
