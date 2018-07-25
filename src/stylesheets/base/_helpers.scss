@@ -15,15 +15,23 @@
 
 		border-radius: $rounded-corner;
 
+		padding: 180px $gutter $gutter;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
 		position: absolute;
 		top: $gutter * -0.5;
 		right: $gutter * -0.5;
 		bottom: $gutter * -0.5;
 		left: $gutter * -0.5;
 
+		text-align: center;
+
 		z-index: layer('modal');
 
-		content: '';
+		content: attr(data-aria-busy-message) '';
 	}
 }
 
