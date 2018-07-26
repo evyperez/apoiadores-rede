@@ -11,11 +11,11 @@
 		<section id="campaign-progress" class="campaign-progress">
 		<p>
 			<span class="currency">R$</span>
-			<strong class="amount">
+			<strong class="amount" v-inview="isAmountOnViewport">
 			<template v-if="candidate.total_donated">
 				<span>
 					<animated-number
-						:value="candidate.total_donated"
+						:value="amountInView ? candidate.total_donated : 0"
 						:formatValue="FormatFixedBRL"
 						:duration="1000"/>
 				</span>
@@ -181,6 +181,11 @@ import Payment from "@/components/Payment.vue";
 import AnimatedNumber from "animated-number-vue";
 
 export default {
+  data() {
+    return {
+      amountInView: false,
+    }
+  },
 	name: "home",
 	components: {
 		Payment,
@@ -190,7 +195,7 @@ export default {
 		const candidateId = (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br') ? 40 : 130;
 		this.$store.dispatch("GET_CANDIDATE_INFO", candidateId);
 		this.$store.dispatch('GetDonorsNames', candidateId);
-    	this.$store.dispatch("UPDATE_DONATIONS_SUMMARY", candidateId);
+		this.$store.dispatch("UPDATE_DONATIONS_SUMMARY", candidateId);
 	},
 	computed: {
 		candidate() {
@@ -235,6 +240,30 @@ export default {
 				.replace(/\.+$/, "");
 			return formated;
 		},
+		isAmountOnViewport(evt, el) {
+			const rect = el.getBoundingClientRect();
+			const inView = (
+				rect.width > 0 &&
+				rect.height > 0 &&
+				rect.top >= 0 &&
+				rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+			);
+
+			return this.$data.amountInView = inView;
+		}
 	},
+	directives: {
+		inview: {
+			inserted: (el, binding, vnode) => {
+				const f = (evt) => {
+					if (binding.value(evt, el)) {
+						window.removeEventListener('scroll', f);
+					}
+				}
+				window.addEventListener('scroll', f);
+				f();
+			}
+		}
+	}
 };
 </script>
