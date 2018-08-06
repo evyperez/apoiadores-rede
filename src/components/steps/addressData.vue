@@ -248,7 +248,7 @@ export default {
         payload.billing_address_street = this.street;
         payload.billing_address_district = this.district;
         payload.billing_address_house_number = this.number;
-        payload.birthdate = birthdate,
+        payload.birthdate = birthdate;
         payload.billing_address_complement = this.complement;
       }
 
