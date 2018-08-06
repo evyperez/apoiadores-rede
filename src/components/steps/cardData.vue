@@ -7,13 +7,24 @@
           <p class="instructions">Informe dados do cartão de crédito</p>
         </div>
         <div :class="`input-wrapper
+          ${validation.errors.name ? 'has-error' : ''}`">
+          <label for="name">Nome impresso no cartão de crédito</label>
+          <input
+            type="text"
+            v-model="name"
+            name="name" required v-focus>
+          <div class="error" v-if="validation.errors.name">
+            {{ validation.errors.name }}
+          </div>
+        </div>
+        <div :class="`input-wrapper
           ${validation.errors.number ? 'has-error' : ''}`">
           <label for="number">Número do cartão de crédito</label>
           <input
             type="tel"
             v-model="number"
             name="number"
-            v-mask="['#### #### #### ####', '#### #### #### ##']" required v-focus>
+            v-mask="['#### #### #### ####', '#### #### #### ##']" required>
           <div class="error" v-if="validation.errors.number">
             {{ validation.errors.number }}
           </div>
@@ -83,6 +94,7 @@ export default {
       loading: false,
       errorMessage: '',
       csc: '',
+      name: '',
       number: '',
       validity_month: '',
       validity_year: '',
@@ -116,6 +128,7 @@ export default {
 
       const {
         csc,
+        name,
         number,
         validity_year,
         validity_month,
@@ -123,6 +136,7 @@ export default {
 
       const fields = {
         csc,
+        name,
         number,
         validity_year,
         validity_month,
@@ -157,12 +171,26 @@ export default {
     saveCard(card) {
       const cc_hash = this.getCardHash(card.number);
 
+      let name = '';
+      let surname = '';
+
+      if (this.name) {
+        const names = this.name.split(' ');
+        name = names.shift();
+        surname = names.join(' ') || '';
+      } else {
+        ({ name, surname } = this.username);
+      }
+
+      name = removeAccented(name);
+      surname = removeAccented(surname);
+
       const cc = Iugu.CreditCard(
         card.number,
         card.validity_month,
         card.validity_year,
-        this.username.name,
-        this.username.surname,
+        name,
+        surname,
         card.csc,
       );
 
