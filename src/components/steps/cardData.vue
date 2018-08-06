@@ -135,25 +135,25 @@ export default {
 
 
         this.saveCard({
-            name: removeAccented(name),
-            csc,
-            number: number.replace(/\s+/g, ''),
-            validity_year,
-            validity_month,
-          });
+          name: removeAccented(name),
+          csc,
+          number: number.replace(/\s+/g, ''),
+          validity_year,
+          validity_month,
+        });
       } else {
         this.validation = validation;
         this.toggleLoading();
       }
     },
     getBrand(number) {
-			const result = creditCardType(number);
-			if (result.length < 1) {
-				return 'No brand found';
-			}
+      const result = creditCardType(number);
+      if (result.length < 1) {
+        return 'No brand found';
+      }
 
-			return result[0].type.replace('-', '');
-		},
+      return result[0].type.replace('-', '');
+    },
     saveCard(card) {
       const cc_hash = this.getCardHash(card.number);
 
@@ -163,7 +163,8 @@ export default {
         card.validity_year,
         this.username.name,
         this.username.surname,
-        card.csc);
+        card.csc,
+      );
 
       Iugu.createPaymentToken(cc, (response) => {
         if (response.errors) {
