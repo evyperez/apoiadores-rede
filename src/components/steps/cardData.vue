@@ -197,7 +197,9 @@ export default {
       Iugu.createPaymentToken(cc, (response) => {
         if (response.errors) {
           this.toggleLoading();
-          this.errorMessage =  'Erro salvando cartão';
+          this.errorMessage = response.errors.last_name === 'is_invalid'
+            ? 'Sobrenome inválido'
+            : 'Erro salvando cartão';
         } else {
           const payload = {
             cc_hash,
