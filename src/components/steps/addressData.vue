@@ -158,11 +158,8 @@ export default {
   methods: {
 
     controlSession() {
-      const data = {
-          step: 'boleto',
-        };
       const dataSession = JSON.parse(sessionStorage.getItem('user-donation-data'));
-      if(dataSession != null){
+      if (dataSession != null) {
         this.zip_code = dataSession.zip_code;
         this.state = dataSession.state;
         this.city = dataSession.city;
@@ -203,7 +200,7 @@ export default {
         address.birthdate = birthdate;
       }
 
-      console.log('validar', address)
+      console.log('validar', address);
 
       const validation = validate(address);
 
@@ -211,15 +208,15 @@ export default {
         this.saveAddress();
 
         sessionStorage.setItem(
-          "user-donation-data",
+          'user-donation-data',
           JSON.stringify({
-          zip_code: this.zip_code,
-          state: this.state,
-          city: this.city,
-          street: this.street,
-          district: this.district,
-          number: this.number,
-          birthdate,
+            zip_code: this.zip_code,
+            state: this.state,
+            city: this.city,
+            street: this.street,
+            district: this.district,
+            number: this.number,
+            birthdate,
           })
         );
       } else {
@@ -227,7 +224,7 @@ export default {
         this.toggleLoading();
       }
     },
-    saveAddress(){
+    saveAddress() {
       const payload = this.$store.state.paymentData;
 
       payload.address_zipcode = this.zip_code;
@@ -248,12 +245,12 @@ export default {
         payload.billing_address_street = this.street;
         payload.billing_address_district = this.district;
         payload.billing_address_house_number = this.number;
-        payload.birthdate = birthdate,
+        payload.birthdate = birthdate;
         payload.billing_address_complement = this.complement;
       }
 
-        this.$store.dispatch('GET_DONATION', payload)
-        .then(res => {
+      this.$store.dispatch('GET_DONATION', payload)
+        .then(() => {
           this.handleIugu();
           const stepToGoTo = this.paymentData.payment_method === 'credit_card'
             ? 'cardData'
@@ -261,12 +258,12 @@ export default {
 
           this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: stepToGoTo });
         })
-        .catch(err => {
+        .catch((err) => {
           this.toggleLoading();
           this.handleErrorMessage(err);
         });
     },
-    searchAddress(event){
+    searchAddress(event) {
       this.$data.validation.errors.zip_code = '';
       this.$data.validation.errors.state = '';
       this.$data.validation.errors.city = '';
@@ -278,7 +275,7 @@ export default {
       this.$data.district = '';
       this.errorMessage = '';
 
-      if(event.target.value.length !== parseInt(event.target.getAttribute('minlength'), 10)) {
+      if (event.target.value.length !== parseInt(event.target.getAttribute('minlength'), 10)) {
         this.$data.validation.errors.zip_code = 'CEP inválido';
 
         return this.$refs.zipCode.select() || this.$refs.zipCode.focus();
@@ -316,8 +313,7 @@ export default {
         }
 
         return this.toggleLoading();
-
-      }).catch((error)=>{
+      }).catch((error) => {
         this.toggleLoading();
 
         if (error.response.status === 404) {
@@ -328,10 +324,8 @@ export default {
 
           this.$refs.zipCode.select() || this.$refs.zipCode.focus();
 
-          return this.$data.validation.errors.zip_code = 'Cep não encontrado';
-        }
-
-        if (error.response.status === 400) {
+          this.$data.validation.errors.zip_code = 'Cep não encontrado';
+        } else if (error.response.status === 400) {
           this.$refs.state.disabled = false;
           this.$refs.city.disabled = false;
           this.$refs.street.disabled = false;
@@ -340,22 +334,26 @@ export default {
           this.$refs.zipCode.focus();
 
           if (error.response.data.form_error && error.response.data.form_error.CEP) {
-            return this.$data.validation.errors.zip_code = error.response.data.form_error.CEP.indexOf('dismembered') !== -1
+            this.$data.validation.errors.zip_code = error.response.data.form_error.CEP.indexOf('dismembered') !== -1
               ? 'Não foi possível identificar seu CEP. Por favor, digite o endereço completo.'
               : error.response.data.form_error.CEP;
-            } else {
-              return this.$data.validation.errors.zip_code = error.response.data.form_error;
-            }
+          } else {
+            this.$data.validation.errors.zip_code = error.response.data.form_error;
           }
+        }
+
+        return this.$data.validation.errors.zip_code;
       });
+
+      return true;
     },
     handleErrorMessage(err) {
       this.errorMessage = err.message || err.name || err.data[0].message;
     },
     handleIugu() {
       Iugu.setAccountID(this.iugu.account_id);
-      Iugu.setTestMode(this.iugu.is_testing === 1 ? true : false);
-    }
+      Iugu.setTestMode(this.iugu.is_testing === 1);
+    },
   },
   mounted() {
     this.scrollToDonate();
