@@ -100,6 +100,9 @@
 		<h3>R$ 200 mil</h3>
 		<p>Sabemos que os adversários políticos usarão de todas as artimanhas para desestabilizar a candidatura de Marina. Precisamos combater suas mentiras, acusações levianas e notícias falsas. Com essa quantia, produziremos vídeos e materiais gráficos divulgando a verdade e as reais propostas de Marina para unir o Brasil.</p>
 
+		<h3>R$ 300 mil</h3>
+		<p>Além de custear as primeiras viagens e os materiais para combater as notícias falsas contra a candidatura, conseguiremos imprimir os materiais gráficos para serem usados nas primeiras duas semanas da campanha. Assim, poderemos dar o pontapé inicial, levando as ideias de Marina e Eduardo para as ruas do Brasil de maneira didática e efetiva com adesivos, panfletos e santinhos.</p>
+
 	</div>
 	</article>
 
