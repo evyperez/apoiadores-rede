@@ -56,3 +56,17 @@
 		background-position: center center;
 	}
 }
+
+#wrap-share .whatsapp {
+	background: url('../assets/images/icons/ic-logo-whatsapp-green.png');
+	background-size: auto 22px;
+	background-repeat: no-repeat;
+	background-position: center center;
+
+	&:hover {
+		background: url('../assets/images/icons/ic-logo-whatsapp.png');
+		background-size: auto 22px;
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+}
