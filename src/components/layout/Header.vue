@@ -25,7 +25,7 @@
           </li>
           <li class="menu-item">
             <a href="#home__knowMore" v-scroll-to="'#home__knowMore'">
-              Conheça
+              Saiba mais
             </a>
           </li>
           <li class="menu-item">
@@ -58,7 +58,7 @@
           <h1>
             <span>#Somos</span>
             <vue-typer
-              :text='["marina","luta","paz","diversidade","deverdade","muitos"]'
+              :text='["marina","eduardo","luta","paz","diversidade","deverdade","muitos"]'
               :repeat='Infinity'
               :shuffle='false'
               initial-action='typing'
