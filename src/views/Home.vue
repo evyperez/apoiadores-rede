@@ -154,7 +154,7 @@
 		Doadores
 		</h2>
 
-		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um passo na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
+		<p><strong>Lista com o nome dos doadores:</strong></p>
 
 
 			<p>
