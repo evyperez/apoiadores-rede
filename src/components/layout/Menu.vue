@@ -15,6 +15,7 @@
         </button>
         <div class="brand-wrap">
           <a href="/" class="logo-rede">Doe Marina</a>
+          <a href="/" class="logo-pv">PV</a>
         </div>
         <!-- <ul class="menu-wrap">
           <li class="menu-icon">
@@ -31,11 +32,6 @@
           <li class="menu-item">
             <a href="/#home__goals" v-scroll-to="'/#home__goals'">
               Metas
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="/#home__faq" v-scroll-to="'/#home__faq'">
-              Perguntas frequentes
             </a>
           </li>
           <li class="menu-item">

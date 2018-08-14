@@ -16,7 +16,7 @@
 	padding-top: 0.2em;
 	height: 65px;
 
-	@media (min-width: breakpoint('desktop')) {
+	@media (min-width: breakpoint('wide')) {
 		background-color: palette('menu','green');
 		color: palette('white');
 	}
@@ -38,7 +38,7 @@
 	transition-property: background-color, height;
 	transition-duration: 0.3s, 1s;
 
-	@media (min-width: breakpoint('desktop')) {
+	@media (min-width: breakpoint('wide')) {
 		background-color: transparent;
 	}
 }
@@ -66,33 +66,114 @@
 	transform: translate(-50%, -50%);
 	max-width: 100%;
 
-	@media (min-width: breakpoint('desktop')) {
+	@media (min-width: breakpoint('wide')) {
 		left: 0;
 		top: 0;
 		transform: translate(0, 0);
 	}
+
+	& a {
+		margin-right: 2rem;
+
+		@media (min-width: breakpoint('wide')) {
+			margin-right: 1rem;
+		}
+	}
+
+	.animate & {
+		margin-top: 0.25rem;
+
+	}
+
 }
 
 .logo-rede {
-	@include image-replacement;
-	display: block;
-	height: $leading * 2rem;
-	min-width: 190x;
-	min-height: 35px;
-	background-image: url('../assets/images/icons/logo-rede-bottom.png');
-	background-size: 170px auto;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	transition-property: background-size;
-	transition-duration: 0.8s;
-	width: 213px;
+		@include image-replacement;
+		display: inline-block;
+		background-image: url('../assets/images/icons/logo-rede-bottom.png');
+		height: $leading * 2rem;
+		min-width: 120px;
+		min-height: 35px;
+		background-size: 120px auto;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		transition-property: background-size;
+		transition-duration: 0.3s;
+		width: 120px;
+
+
+
+	@media screen and (min-width: breakpoint('tablet')) {
+		width: 130px;
+		background-size: 120px auto;
+	}
+
+
+
+	@media screen and (min-width: breakpoint('wide')) {
+		width: 160px;
+		background-size: 150px auto;
+
+	}
+
+}
+
+
+
+.logo-pv {
+
+display: none;
+
+	@media screen and (min-width: 480px) {
+		@include image-replacement;
+		display: inline-block;
+		background-image: url('../assets/images/icons/logo-pv-small.png');
+		background-position: 50% 50%;
+		transition-duration: 0.3s;
+		transition-property: background-size;
+		background-repeat: no-repeat;
+		height: $leading * 2rem;
+		min-width: 40px;
+		min-height: 35px;
+		background-size: 40px auto;
+		width: 40px;
+	}
+
+
+
+	@media screen and (min-width: breakpoint('tablet')) {
+		width: 40px;
+		background-size: 40px auto;
+	}
+
+	@media screen and (min-width: breakpoint('desktop')) {
+		background-image: url('../assets/images/icons/logo-pv.png');
+		width: 130px;
+		background-size: 130px auto;
+
+	}
+
+	@media screen and (min-width: breakpoint('wide')) {
+		width: 181px;
+		background-size: 181px 35px;
+
+	}
 }
 
 .animate .logo-rede {
-	background-size: 150px auto;
 
-	@media (min-width: breakpoint('desktop')) {
-		display: block;
+	@media screen and (min-width: breakpoint('tablet')) {
+		background-size: 120px auto;
+	}
+
+}
+
+.animate .logo-pv {
+	background-size: 50px auto;
+
+
+	@media screen and (min-width: breakpoint('desktop')) {
+		background-size: 120px auto;
 	}
 }
 
@@ -127,12 +208,12 @@
 	text-align: center;
 	overflow: hidden;
 
-	@media screen and (min-width: breakpoint('desktop')) {
+	@media screen and (min-width: breakpoint('wide')) {
 		transform: translateY(-50%);
 		top: 50%;
 	}
 
-	@media (max-width: breakpoint('desktop')) {
+	@media (max-width: breakpoint('wide')) {
 		opacity: 0;
 		max-height: 0;
 		overflow: hidden;
@@ -158,7 +239,7 @@
 		}
 	}
 
-	@media (min-width: breakpoint('desktop')) {
+	@media (min-width: breakpoint('wide')) {
 		right: 0;
 	}
 }
@@ -167,7 +248,7 @@
 	display: none;
 	outline: none;
 
-	@media (max-width: breakpoint('desktop')) {
+	@media (max-width: breakpoint('wide')) {
 		display: block;
 	}
 }
@@ -185,7 +266,7 @@
 	padding-top: 0.25em;
 	padding-bottom: 0.25em;
 
-	@media (min-width: breakpoint('desktop')) {
+	@media (min-width: breakpoint('wide')) {
 		@include inline-block-item($align: 'top', $font-size:  1rem);
 		vertical-align: middle;
 		padding-right: 1em;
