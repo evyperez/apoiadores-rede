@@ -187,16 +187,11 @@ $default-articles-padding: 9.375em;
 
 	@media screen and (min-width: 1024px) {
 		background-image: url('../assets/images/backgrounds/img-saibamais--1024.jpg');
-		min-height: 683px;
+		min-height: 1550px;
 
-		background-position: left bottom;
 		&[class] {
 
 		padding-bottom: $default-articles-padding-small;
-
-		@media screen and (min-width: breakpoint('tablet')) {
-			padding-bottom: $default-articles-padding;
-	}
 
 		}
 	}

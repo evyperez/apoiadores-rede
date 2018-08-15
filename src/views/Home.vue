@@ -6,7 +6,7 @@
 			Precisamos equilibrar a disputa
 		</h2>
 
-		<p>Marina é a única pré-candidata capaz de unir o Brasil e tirar o país do atraso. Mas sabemos que não basta ser a mais preparada. É preciso ter recursos para construir uma campanha que faça frente aos grandes partidos e suas mentiras. Marina tem uma trajetória de honestidade e superação e precisa do seu apoio para levar sua história e suas ideias para todos os brasileiros. Faça a sua doação e compartilhe a página. Vamos juntos preparar uma campanha vencedora e diferente: construída com diálogo, coragem e verdade.</p>
+		<p>Os grandes partidos dividem o país numa falsa polarização, mas se unem por trás dos panos para criar fundos bilionários com recursos públicos, sufocar a renovação e se manter no poder. <strong>2018 chegou, e agora temos a chance de quebrar essa farsa!</strong> Com a sua colaboração, Marina Silva e Eduardo jorge podem equilibrar a disputa e resgatar o respeito e a esperança na política. Esse é o caminho para garantir uma vida digna, num país justo, em que todos ganham. Criamos essa campanha de financiamento coletivo para unir todas as pessoas que compartilham desses ideais. <strong>Uma nova forma de fazer política nasce de uma forma diferente de financiar a política.</strong></p>
 
 		<section id="campaign-progress" class="campaign-progress">
 		<p>
@@ -63,27 +63,23 @@
 	<article id="home__knowMore" class="home__knowMore">
 	<div class="container" id="donation-wrap">
 		<h2>
-		Conheça
+		Saiba mais
 		</h2>
 
 		<p>
-			Marina Silva tem uma história de superação. É, de muitas formas, um retrato do Brasil. Nascida mulher, negra e numa família de seringueiros, começou a trabalhar na infância e conheceu de perto a miséria e a fome. Perdeu a mãe e irmãos para doenças. E foi para cidade grande tratar os problemas de saúde que a vida difícil lhe deu e realizar o sonho de estudar.
+			O financiamento da política pode não ser o maior problema do Brasil, mas é um dos primeiros que precisamos enfrentar. Se não mudarmos a forma como as campanhas são financiadas, as mesmas pessoas continuarão dominando a política e mandando no país. Assim, não conseguiremos atacar os verdadeiros desafios da nossa nação: a corrupção, o desemprego, a insegurança, a degradação ambiental, e muitos outros temas que afligem a população.
 		</p>
 
 		<p>
-			Aprendeu a ler e escrever aos 16 anos e foi a primeira dentre os irmãos a fazê-lo. Dez anos depois formou-se em História pela Universidade do Acre. Tornou-se também professora e psicopedagoga. Dedicou sua vida ao ambientalismo, tendo lutado, ao lado de Chico Mendes, pela preservação da Amazônia.
+			A aparente polarização política que vivemos é um enorme teatro. Os grandes partidos se unem nos bastidores para garantir o poder. Juntos, quase triplicaram o fundo partidário,  criaram um fundo eleitoral bilionário e pegaram quase todo este dinheiro para si em uma tentativa de sufocar qualquer alternativa de renovação.
 		</p>
 
 		<p>
-			Dedicou sua vida às causas em que acredita. Foi a vereadora mais votada em 1988 e, em 1990, a mais votada deputada estadual, bem como a senadora mais jovem da República, na história do Senado, eleita em 1994. Por fim, exerceu o cargo de Ministra do Meio Ambiente entre 2003 e 2008. Conhece o Brasil, seus problemas e potenciais como poucas pessoas. Ao contrário de muitos políticos, tem uma trajetória limpa, sem absolutamente nenhuma marca de corrupção.
+			O dinheiro público precisa ser utilizado de uma forma melhor. O fundo precisa ser menor e mais bem distribuído. Não faz sentido termos eleições tão caras e tão desiguais.
 		</p>
 
 		<p>
-			Essa trajetória é reconhecida internacionalmente. Foi premiada mais de 60 vezes no Brasil e no exterior. Por sua atuação na proteção da floresta amazônica, Marina recebeu prêmios importantes nos Estados Unidos, Noruega e Mônaco. Em 2007, teve a honra de receber o maior prêmio da ONU na área ambiental, o Campeões da Terra. Além disto, teve a honra de participar da abertura dos jogos Olímpicos de 2012 em Londres em função de sua história de vida dedicada à defesa do meio ambiente global.
-		</p>
-
-		<p>
-			Em um ambiente político conturbado, marcado pelo debate raso e notícias falsas, Marina se sobressai. Mantém sempre uma postura serena, expõe suas ideias, debate com aliados e tem a mesma disposição ao diálogo com os adversários. Não precisa gritar para demonstrar coragem no enfrentamento de situações adversas. A história, a coerência e as propostas de Marina falam por si só.
+			<strong>Temos chances reais de romper com esse ciclo vicioso em 2018.</strong> Marina e Eduardo têm a independência, experiência e capacidade necessárias para levar o Brasil à frente e, com a mobilização de milhares de brasileiros, podemos equilibrar essa disputa. Queremos construir uma campanha junto com pessoas comuns, que vivem o dia a dia das nossas cidades, que conhecem a realidade do nosso país. Uma campanha feita por muitas pessoas doando o que podem, em vez de poucas pessoas fazendo tudo o que querem. Acreditamos na colaboração como caminho. Sua contribuição é um gesto político! Doe e faça parte dessa história!
 		</p>
 	</div>
 	</article>
@@ -95,10 +91,14 @@
 		</h2>
 
 		<h3>R$ 200 mil</h3>
-		<p>Sabemos que os adversários políticos usarão de todas as artimanhas para desestabilizar a candidatura de Marina. Precisamos combater suas mentiras, acusações levianas e notícias falsas. Com essa quantia, produziremos vídeos e materiais gráficos divulgando a verdade e as reais propostas de Marina para unir o Brasil.</p>
+		<p>
+			Sabemos que os adversários políticos usarão de todas as artimanhas para desestabilizar a candidatura de Marina. Precisamos combater suas mentiras, acusações levianas e notícias falsas. Com essa quantia, produziremos vídeos e materiais gráficos divulgando a verdade e as reais propostas de Marina para unir o Brasil.
+		</p>
 
 		<h3>R$ 300 mil</h3>
-		<p>Além de custear as primeiras viagens e os materiais para combater as notícias falsas contra a candidatura, conseguiremos imprimir os materiais gráficos para serem usados nas primeiras duas semanas da campanha. Assim, poderemos dar o pontapé inicial, levando as ideias de Marina e Eduardo para as ruas do Brasil de maneira didática e efetiva com adesivos, panfletos e santinhos.</p>
+		<p>
+			Além de custear as primeiras viagens e os materiais para combater as notícias falsas contra a candidatura, conseguiremos imprimir os materiais gráficos para serem usados nas primeiras duas semanas da campanha. Assim, poderemos dar o pontapé inicial, levando as ideias de Marina e Eduardo para as ruas do Brasil de maneira didática e efetiva com adesivos, panfletos e santinhos.
+		</p>
 
 	</div>
 	</article>
@@ -111,7 +111,7 @@
 			<details>
 				<summary><span class="caret"></span>Como posso fazer a minha doação?</summary>
 				<p>
-					Aqui no site, você pode doar por meio do cartão de crédito, apenas pelo titular do cartão, e boleto bancário.
+					Aqui no site, você pode doar por meio do cartão de crédito, apenas pelo titular do cartão, e boleto bancário. Fora da plataforma, você ainda pode fazer uma transferência bancária ou depósito identificado em dinheiro ou cheque direto na conta. Se quiser as informações da conta, por favor, envie um e-mail doe@marinasilva.org.br
 				</p>
 			</details>
 			<details>
@@ -129,13 +129,13 @@
 			<details>
 				<summary><span class="caret"></span>Qual o limite de doação?</summary>
 				<p>
-					Cada pessoa pode doar até 10% da renda declarada referente ao ano anterior. O limite para quem não declarou imposto de renda em 2018 é de R$2.855.  As doações acima de R$ 1.064,10 só podem ser realizadas por meio de transferência bancária direta para a conta do candidato, portanto não podem ser realizadas pela internet..
+					Cada pessoa pode doar até 10% da renda declarada referente ao ano anterior. O limite para quem não declarou imposto de renda em 2018 é de R$2.855.  As doações acima de R$ 1.064,10 só podem ser realizadas por meio de transferência bancária direta para a conta do candidato, portanto não podem ser realizadas pela internet. Se quiser as informações da conta, por favor, envie um e-mail doe@marinasilva.org.br
 				</p>
 			</details>
 			<details>
 				<summary><span class="caret"></span>É preciso declarar a doação no próximo Imposto de Renda?</summary>
 				<p>
-					Sim. Todo mundo que é obrigado a declarar imposto de renda, precisa declarar a doação para a campanhade Marina. Existe uma seção específica chamada: Doações para Partidos Políticos, Comitês Financeiros e Candidatos a Cargos Eletivos. Basta informar os dados da candidatura de Marina que estão no Recibo Eleitoral.
+					Sim. Todo mundo que é obrigado a declarar imposto de renda, precisa declarar a doação para a campanha de Marina. Existe uma seção específica chamada: Doações para Partidos Políticos, Comitês Financeiros e Candidatos a Cargos Eletivos. Basta informar os dados da candidatura de Marina que estão no Recibo Eleitoral.
 				</p>
 			</details>
 			<details>
@@ -154,7 +154,7 @@
 		Doadores
 		</h2>
 
-		<p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um passo na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
+		<p><strong>Lista com o nome dos doadores:</strong></p>
 
 
 			<p>

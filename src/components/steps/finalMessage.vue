@@ -14,6 +14,9 @@
       <li>
         <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoemarina.com.br%3Fref%3Dagradecimento&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
       </li>
+      <li>
+        <a target="_blank" href="https://wa.me/?text=A%20campanha%20da%20Marina%20Silva%20est%C3%A1%20sendo%20financiada%20pelas%20pessoas.%20Acabei%20de%20fazer%20minha%20contribui%C3%A7%C3%A3o.%0ASomos%20muitos%2C%20cada%20um%20doando%20o%20que%20pode.%20Juntos%20vamos%20fazer%20frente%20aos%20grandes%20partidos!%20Vem%20tamb%C3%A9m!%20%20https%3A%2F%2Fdoemarina.com.br%3Fref%3Dagradecimento" class="whatsapp">Compartilhar</a>
+      </li>
     </ul>
   </section>
 </template>
