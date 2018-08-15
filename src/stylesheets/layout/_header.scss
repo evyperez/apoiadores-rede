@@ -1,16 +1,15 @@
 .site-header {
   position: relative;
   color: palette('white');
+  background-color: palette('gray', 'dark');
   background-image:
-    url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
-    url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
-    url('../assets/images/backgrounds/img-destaque-320.jpg');
-
-  background-attachment: scroll, scroll, fixed;
+  url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
+  url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
+  url('../assets/images/backgrounds/img-destaque-320.jpg');
+  background-repeat: no-repeat;
 
   background-position: right 90%, left bottom, top center;
   background-size: auto, auto, cover;
-  background-color: palette('gray', 'dark');
   min-height: 600px;
 
   @media screen and (min-width: 480px) {
