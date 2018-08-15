@@ -21,7 +21,7 @@ $default-articles-padding: 9.375em;
 }
 
 .home-page .container > * {
-	max-width: 48rem;
+	max-width: 50rem;
 
 	margin-right: auto;
 	margin-left: auto;
@@ -205,7 +205,7 @@ $default-articles-padding: 9.375em;
 		background-position: left bottom, right bottom;
 	}
 
-	@media screen and (min-width: 1400px) {
+	@media screen and (min-width: 1500px) {
 		min-height: 750px;
 		background-image:
 		url('../assets/images/backgrounds/img-saibamais-1350-mar.jpg'),
