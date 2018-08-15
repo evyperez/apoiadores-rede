@@ -147,25 +147,44 @@ summary {
 	list-style-type: none;
 
 	cursor: pointer;
-	color: palette('black');
+
 
 	&::-webkit-details-marker {
 		display: none;
 	}
 
-	&:focus {
-		outline: none;
-	}
-
 	&::before {
+
 		padding-right: 0.5em;
 		color: palette('green');
-		content: '\25B6';
+		content: '\25B8';
 	}
 
 	details[open] > &::before {
 		color: palette('green');
-		content: '\25BC';
+		content: '\25BE';
+	}
+}
+
+details[open] summary ~ * {
+	overflow: hidden;
+
+	animation: here-comes-the-detail 0.5s ease-in-out;
+
+	@at-root {
+		@keyframes here-comes-the-detail {
+			0% {
+				max-height: 0;
+
+				opacity: 0;
+			}
+
+			100% {
+				max-height: 70em;
+
+				opacity: 1;
+			}
+		}
 	}
 }
 
