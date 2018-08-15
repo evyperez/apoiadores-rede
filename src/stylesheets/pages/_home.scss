@@ -23,7 +23,7 @@ $default-articles-padding: 9.375em;
 .home-page .container > * {
 	max-width: 50rem;
 
-	margin-right: 0;
+	margin-right: auto;
 	margin-left: auto;
 }
 
@@ -191,13 +191,25 @@ $default-articles-padding: 9.375em;
 
 		&[class] {
 
-		padding-bottom: $default-articles-padding-small;
+			padding-bottom: $default-articles-padding-small;
 
 		}
 	}
 
 	@media screen and (min-width: 1280px) {
-		background-image: url('../assets/images/backgrounds/img-saibamais--1280.jpg');
+		min-height: 750px;
+		background-image:
+		url('../assets/images/backgrounds/img-saibamais-1280-mar.jpg'),
+		url('../assets/images/backgrounds/img-saibamais-1280-edu.jpg');
+		background-position: left bottom, right bottom;
+	}
+
+	@media screen and (min-width: 1400px) {
+		min-height: 750px;
+		background-image:
+		url('../assets/images/backgrounds/img-saibamais-1350-mar.jpg'),
+		url('../assets/images/backgrounds/img-saibamais-1350-edu.jpg');
+		background-position: left bottom, right bottom;
 	}
 }
 
