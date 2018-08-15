@@ -79,7 +79,7 @@
 		</p>
 
 		<p>
-			<strong>Temos chances reais de romper com esse ciclo vicioso em 2018.</strong> Marina e Eduardo têm a independência, experiência e capacidade necessárias para levar o Brasil à frente e, com a mobilização de milhares de brasileiros, podemos equilibrar essa disputa. Queremos construir uma campanha junto com pessoas comuns, que vivem o dia-a-dia das nossas cidades, que conhecem a realidade do nosso país. Uma campanha feita por muitas pessoas doando o que podem, em vez de poucas pessoas fazendo tudo o que querem. Acreditamos na colaboração como caminho. Sua contribuição é um gesto político! Doe e faça parte dessa história!
+			<strong>Temos chances reais de romper com esse ciclo vicioso em 2018.</strong> Marina e Eduardo têm a independência, experiência e capacidade necessárias para levar o Brasil à frente e, com a mobilização de milhares de brasileiros, podemos equilibrar essa disputa. Queremos construir uma campanha junto com pessoas comuns, que vivem o dia a dia das nossas cidades, que conhecem a realidade do nosso país. Uma campanha feita por muitas pessoas doando o que podem, em vez de poucas pessoas fazendo tudo o que querem. Acreditamos na colaboração como caminho. Sua contribuição é um gesto político! Doe e faça parte dessa história!
 		</p>
 	</div>
 	</article>
