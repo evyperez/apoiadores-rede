@@ -21,7 +21,7 @@ $default-articles-padding: 9.375em;
 }
 
 .home-page .container > * {
-	max-width: 50rem;
+	max-width: 48rem;
 
 	margin-right: auto;
 	margin-left: auto;
@@ -162,6 +162,7 @@ $default-articles-padding: 9.375em;
 
 .home__knowMore {
 	background-color: palette('white');
+
 	background-position: center bottom;
 	background-image: url('../assets/images/backgrounds/img-saibamais--320.jpg');
 
