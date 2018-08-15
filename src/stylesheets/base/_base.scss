@@ -147,6 +147,7 @@ summary {
 	list-style-type: none;
 
 	cursor: pointer;
+	color: palette('black');
 
 	&::-webkit-details-marker {
 		display: none;
@@ -158,10 +159,12 @@ summary {
 
 	&::before {
 		padding-right: 0.5em;
+		color: palette('green');
 		content: '\25B6';
 	}
 
 	details[open] > &::before {
+		color: palette('green');
 		content: '\25BC';
 	}
 }

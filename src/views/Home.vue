@@ -109,37 +109,37 @@
 			Perguntas Frequentes
 			</h2>
 			<details>
-				<summary><span class="caret"></span>Como posso fazer a minha doação?</summary>
+				<summary>Como posso fazer a minha doação?</summary>
 				<p>
 					Aqui no site, você pode doar por meio do cartão de crédito, apenas pelo titular do cartão, e boleto bancário. Fora da plataforma, você ainda pode fazer uma transferência bancária ou depósito identificado em dinheiro ou cheque direto na conta. Se quiser as informações da conta, por favor, envie um e-mail doe@marinasilva.org.br
 				</p>
 			</details>
 			<details>
-				<summary><span class="caret"></span>Os dados do meu cartão são armazenados no site?</summary>
+				<summary>Os dados do meu cartão são armazenados no site?</summary>
 				<p>
 					Não, todo o processo é realizado por meio de canais seguros e direto com a processadora de pagamento. Não armazenamos os dados do cartão do doador.
 				</p>
 			</details>
 			<details>
-				<summary><span class="caret"></span>Eu recebo alguma comprovação da doação?</summary>
+				<summary>Eu recebo alguma comprovação da doação?</summary>
 				<p>
 					Assim que o pagamento for aprovado, enviaremos um recibo provisório com os dados da sua doação. Depois, mandaremos por e-mail o recibo de doação eleitoral. Não é necessária a assinatura do doador no recibo como acontece na doação fora da internet.
 				</p>
 			</details>
 			<details>
-				<summary><span class="caret"></span>Qual o limite de doação?</summary>
+				<summary>Qual o limite de doação?</summary>
 				<p>
 					Cada pessoa pode doar até 10% da renda declarada referente ao ano anterior. O limite para quem não declarou imposto de renda em 2018 é de R$2.855.  As doações acima de R$ 1.064,10 só podem ser realizadas por meio de transferência bancária direta para a conta do candidato, portanto não podem ser realizadas pela internet. Se quiser as informações da conta, por favor, envie um e-mail doe@marinasilva.org.br
 				</p>
 			</details>
 			<details>
-				<summary><span class="caret"></span>É preciso declarar a doação no próximo Imposto de Renda?</summary>
+				<summary>É preciso declarar a doação no próximo Imposto de Renda?</summary>
 				<p>
 					Sim. Todo mundo que é obrigado a declarar imposto de renda, precisa declarar a doação para a campanha de Marina. Existe uma seção específica chamada: Doações para Partidos Políticos, Comitês Financeiros e Candidatos a Cargos Eletivos. Basta informar os dados da candidatura de Marina que estão no Recibo Eleitoral.
 				</p>
 			</details>
 			<details>
-				<summary><span class="caret"></span>Quem não pode doar?</summary>
+				<summary>Quem não pode doar?</summary>
 				<p>
 					Não podem doar pessoas jurídicas, estrangeiros e pessoas físicas que exerçam atividade comercial decorrente de permissão pública.
 				</p>
