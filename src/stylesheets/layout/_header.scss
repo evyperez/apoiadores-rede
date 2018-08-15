@@ -4,7 +4,7 @@
   background-image:
     url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
     url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
-    url('../assets/images/backgrounds/img-destaque--320.jpg');
+    url('../assets/images/backgrounds/img-destaque-320.jpg');
 
   background-attachment: scroll, scroll, fixed;
 
@@ -17,28 +17,28 @@
     background-image:
     url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
     url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
-    url('../assets/images/backgrounds/img-destaque--480.jpg');
+    url('../assets/images/backgrounds/img-destaque-480.jpg');
   }
 
   @media screen and (min-width: 600px) {
     background-image:
     url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
     url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
-    url('../assets/images/backgrounds/img-destaque--600.jpg');
+    url('../assets/images/backgrounds/img-destaque-600.jpg');
   }
 
   @media screen and (min-width: 768px) {
     background-image:
     url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
     url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
-    url('../assets/images/backgrounds/img-destaque--768.jpg');
+    url('../assets/images/backgrounds/img-destaque-768.jpg');
   }
 
   @media screen and (min-width: 800px) {
     background-image:
     url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
     url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
-    url('../assets/images/backgrounds/img-destaque--800.jpg');
+    url('../assets/images/backgrounds/img-destaque-800.jpg');
     min-height: 650px;
   }
 
@@ -46,7 +46,7 @@
     background-image:
     url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
     url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
-    url('../assets/images/backgrounds/img-destaque--960.jpg');
+    url('../assets/images/backgrounds/img-destaque-960.jpg');
     min-height: 650px;
   }
 
@@ -54,7 +54,7 @@
     background-image:
     url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
     url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
-    url('../assets/images/backgrounds/img-destaque--1200.jpg');
+    url('../assets/images/backgrounds/img-destaque-1200.jpg');
     min-height: 750px;
   }
 
@@ -70,7 +70,7 @@
       background-image:
       url('../assets/images/backgrounds/bg-circles-destaque-gd.png'),
       url('../assets/images/backgrounds/bg-circles-destaque-pq.png'),
-      url('../assets/images/backgrounds/img-destaque--1600.jpg');
+      url('../assets/images/backgrounds/img-destaque-1600.jpg');
       min-height: 800px;
   }
 }
