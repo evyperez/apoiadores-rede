@@ -47,7 +47,11 @@
 						<td v-if="donation.digest" title="Recibo" class="decred-link">
 							<a :href="generalSiteDomain + '/em/' + candidate.username + '/recibo/' + donation.digest" target="_blank" title="Registro na blockchain"><img src="../../assets/images/icons/website-dark.png" alt="Recibo"/></a>
 						</td>
-						<td title="Recibo" v-else>Processando</td>
+            <td title="Recibo" v-else-if="!donation.platform || donation.platform === 'votolegal' || donation.platform === '30217474000150'">Processando</td>
+            <td title="Recibo" v-else-if="donation.platform">
+              {{ getPlatformName(donation.platform) }}
+            </td>
+            <td title="Recibo" v-else></td>
 					</tr>
 				</tbody>
 			</table>
@@ -131,6 +135,11 @@ export default {
 		refreshDonationsList() {
 			this.$store.dispatch('REFRESH_DONATIONS');
 		},
+    getPlatformName(platformCNPJ) {
+      return this.$store.state.donationPlatforms
+        .filter(x => x.cnpj === platformCNPJ)
+        .map(x => x.name)[0] || platformCNPJ;
+    },
 	},
 };
 </script>
