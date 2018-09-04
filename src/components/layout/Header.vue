@@ -82,7 +82,7 @@
 <div class="modal closed" id="modal">
   <button class="close-button" id="close-button" @click="toggleModal()">&times;</button>
     <div class="embed-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/DKJWwGDT9F8?rel=0&amp;showinfo=0&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen id="iframeYoutube"></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/OMszbnc-L6s?rel=0&amp;showinfo=0&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen id="iframeYoutube"></iframe>
     </div>
 </div>
 
