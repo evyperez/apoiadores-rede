@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { validate, formatBRLDec, formatBRL, getQueryString } from '../../utilities';
+import { validate, formatBRLDec, formatBRL } from '../../utilities';
 import {
     mask
 } from 'vue-the-mask';
@@ -104,7 +104,7 @@ export default {
       }
     },
     getDonationAmount() {
-      let amount = getQueryString(window.location.search).valor || '';
+      let amount = this.$route.query.valor || '';
 
       /*
       accepted formats:

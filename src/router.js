@@ -9,14 +9,14 @@ export default new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home,
-    },
-    {
       path: '/doadores',
       name: 'donors',
       component: Donors,
+    },
+    {
+      path: '/:ref?',
+      name: 'home',
+      component: Home,
     },
   ],
 });

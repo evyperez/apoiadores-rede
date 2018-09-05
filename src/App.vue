@@ -13,7 +13,6 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Menu from '@/components/layout/Menu';
-import { getQueryString } from './utilities';
 
 export default {
   name: 'App',
@@ -28,7 +27,7 @@ export default {
   },
   methods: {
     getReferral() {
-      const referral = getQueryString(window.location.search).ref;
+      const referral = this.$route.query.ref || this.$route.params.ref;
 
       if (referral) {
         this.$store.dispatch('ADD_REFERRAL', referral);
