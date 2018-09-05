@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     getReferral() {
-      const referral = this.$route.query.ref;
+      const referral = this.$route.query.ref || this.$route.params.ref;
 
       if (referral) {
         this.$store.dispatch('ADD_REFERRAL', referral);
