@@ -203,6 +203,10 @@ $palette: (
 	),
 );
 
+/// Default transition duration
+/// @todo Customize it to match your design.
+/// @type number
+$duration: 1s;
 
 /// Default border-radius
 /// @todo Customize it to match your design.
