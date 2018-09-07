@@ -90,15 +90,37 @@
 		Metas
 		</h2>
 
-		<h3>R$ 200 mil</h3>
-		<p>
-			Sabemos que os adversários políticos usarão de todas as artimanhas para desestabilizar a candidatura de Marina. Precisamos combater suas mentiras, acusações levianas e notícias falsas. Com essa quantia, produziremos vídeos e materiais gráficos divulgando a verdade e as reais propostas de Marina para unir o Brasil.
-		</p>
+    <div class="goal-description"
+      :class="{ 'goal-description--reached': (candidate.total_donated >= 30000000) }">
+      <h3>
+        <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
+        v-if="candidate.total_donated >= 30000000">
+          <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
+        </svg>
+        R$ 300 mil
+      </h3>
+      <p>
+        Além de custear as primeiras viagens e os materiais para combater as notícias falsas contra a candidatura, conseguiremos imprimir os materiais gráficos para serem usados nas primeiras duas semanas da campanha. Assim, poderemos dar o pontapé inicial, levando as ideias de Marina e Eduardo para as ruas do Brasil de maneira didática e efetiva com adesivos, panfletos e santinhos.
+      </p>
+    </div>
 
-		<h3>R$ 300 mil</h3>
-		<p>
-			Além de custear as primeiras viagens e os materiais para combater as notícias falsas contra a candidatura, conseguiremos imprimir os materiais gráficos para serem usados nas primeiras duas semanas da campanha. Assim, poderemos dar o pontapé inicial, levando as ideias de Marina e Eduardo para as ruas do Brasil de maneira didática e efetiva com adesivos, panfletos e santinhos.
-		</p>
+    <div class="goal-description"
+      :class="{ 'goal-description--reached': (candidate.total_donated >= 50000000) }">
+      <h3>
+        <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
+        v-if="candidate.total_donated >= 50000000">
+          <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
+        </svg>
+        R$ 500 mil
+      </h3>
+      <p>
+        Temos apenas 21 segundos de cada bloco do horário eleitoral na TV. Para
+        superar essa limitação, vamos produzir com esse valor uma série de filmes
+        autorais com uma rede de cineastas voluntários e aumentaremos o alcance
+        dos conteúdos nas redes sociais para que as mensagens de Marina Silva e
+        Eduardo Jorge cheguem a todo Brasil.
+      </p>
+    </div>
 
 	</div>
 	</article>
@@ -192,7 +214,7 @@ export default {
 		AnimatedNumber
 	},
 	mounted() {
-		const candidateId = (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br') ? 40 : 130;
+		const candidateId = (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br') ? 40 : 40;
 		this.$store.dispatch("GET_CANDIDATE_INFO", candidateId);
 		this.$store.dispatch('GetDonorsNames', candidateId);
 		this.$store.dispatch("UPDATE_DONATIONS_SUMMARY", candidateId);
