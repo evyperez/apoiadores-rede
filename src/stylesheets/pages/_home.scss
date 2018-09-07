@@ -1,6 +1,6 @@
 $default-articles-padding-small: 5rem;
-
 $default-articles-padding: 9.375em;
+$max-section-width: 50rem;
 
 .home-page article {
 	padding-top: $default-articles-padding-small;
@@ -240,4 +240,17 @@ $default-articles-padding: 9.375em;
 
 #doar h2 {
 	margin-bottom: $leading * 1rem;
+}
+
+.goal-description {}
+
+.goal-description h3 {
+	position: relative;
+}
+
+@media screen and (min-width: ($max-section-width + $gutter * 3)) {
+	.goal-description svg {
+		position: absolute;
+		left: -1.5em;
+	}
 }
