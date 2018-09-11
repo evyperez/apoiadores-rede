@@ -72,6 +72,9 @@
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
+      <p class="error" v-for="(message, key) in errorMessages" :key="key">
+        {{ message }}
+      </p>
       <p class="form__disclaimer">Será enviado um recibo em seu e-mail com todos os dados sobre a doação. Não armazenamos seus dados de cartão de crédito.</p>
       <button class="donation-nav donation-nav--forward" type="submit" :disabled="loading">Continuar</button>
     </form>
@@ -93,6 +96,7 @@ export default {
     return {
       loading: false,
       errorMessage: '',
+      errorMessages: [],
       csc: '',
       name: '',
       number: '',
@@ -197,9 +201,21 @@ export default {
       Iugu.createPaymentToken(cc, (response) => {
         if (response.errors) {
           this.toggleLoading();
-          this.errorMessage = response.errors.last_name === 'is_invalid'
-            ? 'Sobrenome inválido'
-            : 'Erro salvando cartão';
+
+          this.errorMessages = Object.keys(response.errors).map((k) => {
+            switch (k) {
+              case 'number':
+                return 'Número inválido';
+              case 'verification_value':
+                return 'Código de verificação inválido';
+              case 'last_name':
+                return 'Sobrenome inválido';
+              case 'expiration':
+                return 'Data de validade inválida';
+              default:
+                return 'Erro salvando cartão';
+            }
+          });
         } else {
           const payload = {
             cc_hash,
