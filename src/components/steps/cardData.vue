@@ -210,6 +210,9 @@ export default {
                 return 'Código de verificação inválido';
               case 'last_name':
                 return 'Sobrenome inválido';
+              case 'full_name':
+              case 'first_name':
+                return 'Nome inválido';
               case 'expiration':
                 return 'Data de validade inválida';
               default:
