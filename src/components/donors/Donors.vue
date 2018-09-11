@@ -73,14 +73,14 @@
 export default {
 	name: "donors",
 	mounted() {
-		const candidateId = (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br') ? 40 : 130;
+		const candidateId = (window.location.host === 'doemarina.com.br' || window.location.host === 'www.doemarina.com.br') ? 40 : 130;
 		this.$store.dispatch("GET_CANDIDATE_INFO", candidateId);
 		this.$store.dispatch("GET_DONATIONS", candidateId);
 		this.$store.dispatch("UPDATE_DONATIONS", candidateId);
 	},
 	computed: {
 		generalSiteDomain(){
-			return (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br')
+			return (window.location.host === 'doemarina.com.br' || window.location.host === 'www.doemarina.com.br')
 				? 'https://votolegal.com.br'
 				: 'https://dev.votolegal.com.br';
 		},

@@ -43,7 +43,7 @@ export default {
     },
     handleSession() {
       if(window.localStorage) {
-        const tokenName = (window.location.host === 'doemarina.com.br' || window.location.host === 'test.doemarina.com.br')
+        const tokenName = (window.location.host === 'doemarina.com.br' || window.location.host === 'www.doemarina.com.br')
           ? 'prod_apm_token'
           : 'dev_apm_token';
         const token = localStorage.getItem(tokenName);
