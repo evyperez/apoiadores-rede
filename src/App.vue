@@ -24,6 +24,7 @@ export default {
   mounted() {
     this.handleSession();
     this.getReferral();
+    this.getBranch();
   },
   methods: {
     getReferral() {
@@ -31,6 +32,13 @@ export default {
 
       if (referral) {
         this.$store.dispatch('ADD_REFERRAL', referral);
+      }
+    },
+    getBranch() {
+      const { branch } = window;
+
+      if (branch) {
+        this.$store.dispatch('ADD_BRANCH', branch);
       }
     },
     handleSession() {

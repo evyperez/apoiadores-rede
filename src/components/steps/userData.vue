@@ -229,6 +229,7 @@ export default {
             candidate_id: this.candidate.id,
             donation_fp: this.donationFp,
             referral_code: this.$store.state.referral,
+            branch: this.$store.state.branch,
           };
           const user = {
             name: data.name,
