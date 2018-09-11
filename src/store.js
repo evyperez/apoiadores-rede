@@ -15,6 +15,7 @@ export default new Vuex.Store({
     paymentStep: 'selectValue',
     amount: 0,
     referral: '',
+    branch: '',
     token: '',
     donation: {},
     iugu: {},
@@ -52,6 +53,9 @@ export default new Vuex.Store({
     },
     SET_REFERRAL(state, referral) {
       state.referral = referral;
+    },
+    SET_BRANCH(state, branch) {
+      state.branch = branch;
     },
     SET_USERNAME(state, { user }) {
       state.username = user;
@@ -187,6 +191,9 @@ export default new Vuex.Store({
     },
     ADD_REFERRAL({ commit }, data) {
       commit('SET_REFERRAL', data);
+    },
+    ADD_BRANCH({ commit }, data) {
+      commit('SET_BRANCH', data);
     },
     GET_TOKEN({ commit }, data) {
       return new Promise((resolve, reject) => {
