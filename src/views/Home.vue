@@ -8,7 +8,7 @@
 
 		<p>Os grandes partidos dividem o país numa falsa polarização, mas se unem por trás dos panos para criar fundos bilionários com recursos públicos, sufocar a renovação e se manter no poder. <strong>2018 chegou, e agora temos a chance de quebrar essa farsa!</strong> Com a sua colaboração, Marina Silva e Eduardo jorge podem equilibrar a disputa e resgatar o respeito e a esperança na política. Esse é o caminho para garantir uma vida digna, num país justo, em que todos ganham. Criamos essa campanha de financiamento coletivo para unir todas as pessoas que compartilham desses ideais. <strong>Uma nova forma de fazer política nasce de uma forma diferente de financiar a política.</strong></p>
 
-		<section id="campaign-progress" class="campaign-progress">
+		<section id="campaign-progress" class="campaign-progress" v-show="totalAmount">
 		<p>
 			<span class="currency">R$</span>
 			<strong class="amount" v-inview="isAmountOnViewport">
