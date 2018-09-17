@@ -318,7 +318,7 @@ export default {
 	},
 	methods: {
     porcentage(amount = this.totalAmount) {
-      return Math.round((parseFloat(amount) * 100) / Math.max(this.totalAmount, this.expected));
+      return Math.round((parseFloat(amount || 0) * 100) / Math.max(this.totalAmount, this.expected)) || 0;
     },
     progressBarStyle(source) {
       return {
