@@ -44,7 +44,7 @@ import {
 export default {
   name: 'selectValue',
   directives: {
-      mask,
+    mask,
   },
   data() {
     return {
@@ -62,10 +62,10 @@ export default {
     };
   },
   computed: {
-        candidate() {
+    candidate() {
       return this.$store.state.candidate;
     },
-    },
+  },
   methods: {
     validateForm() {
       const { amount, other } = this;
