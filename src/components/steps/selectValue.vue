@@ -52,7 +52,7 @@ export default {
       amount: '',
       other: '',
       pledges: [
-        2000,
+        1800,
         5000,
         10000,
         20000,
