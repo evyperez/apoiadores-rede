@@ -1,3 +1,7 @@
+# Proxy dev domain develop branch domain
+http://dev.doemarina.com.br/* https://dev.doemarina.com.br/:splat 302
+https://dev.doemarina.com.br/* https://develop.doemarina.com.br/:splat 200
+
 # Redirect default Netlify subdomain to primary domain
 # to avoid duplicate content.  Do this for http and https
 https://friendly-hypatia-68687f.netlify.com/* https://doemarina.com.br/:splat 301!
@@ -5,7 +9,6 @@ http://friendly-hypatia-68687f.netlify.com/* http://doemarina.com.br/:splat 301!
 
 # also redirect http to https for your custom domain.
 # Note that netlify automatically redirects to your custom domain from the bare domain (or vice versa), so you only need one rule here.
-http://www.doemarina.com.br/* https://doemarina.com.br/:splat 301!
 http://doemarina.com.br/* https://doemarina.com.br/:splat 301!
 
 /*  /index.html 200
