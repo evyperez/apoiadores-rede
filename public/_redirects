@@ -1,3 +1,7 @@
+# Proxy dev domain develop branch domain
+http://dev.doemarina.com.br/* https://dev.doemarina.com.br/:splat 302
+https://dev.doemarina.com.br/* https://develop.doemarina.com.br/:splat 200
+
 # Redirect default Netlify subdomain to primary domain
 # to avoid duplicate content.  Do this for http and https
 https://friendly-hypatia-68687f.netlify.com/* https://doemarina.com.br/:splat 301!
