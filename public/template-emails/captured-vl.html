@@ -38,7 +38,7 @@
 <p><strong>Valor da contribuição:</strong> R$ [% amount_human %]</p>
 
 [% IF candidate.campaign_donation_type == 'pre-campaign' %]
-  <p><strong>Nome do pré-candidato:</strong> [% candidate.name %] </p>
+  <p><strong>Nome do candidato:</strong> [% candidate.name %] </p>
 [% ELSIF candidate.campaign_donation_type == 'party' %]
   <p><strong>[% candidate.name %]</strong></p>
 [%ELSE%]
